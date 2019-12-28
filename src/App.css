@@ -16,6 +16,28 @@ a {
   text-align: center;
 }
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formBorder {
+  border: 1px solid hsla(0, 0%, 78%, 0.747);
+  border-radius: 5px;
+  margin: 30px 0px;
+  max-width: 350px;
+  width: 80%;
+}
+
+.formInput {
+  margin: 5px;
+  max-width: 350px;
+  padding: 5px;
+  width: 80%;
+}
+
 /* App component ID styles */
 
 /* Responsive Adjustments */

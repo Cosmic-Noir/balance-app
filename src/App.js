@@ -5,6 +5,7 @@ import config from "./config";
 
 /* Custom Components */
 import Landing from "./components/landing/landing";
+import SignIn from "./components/signIn/signIn";
 import SignUp from "./components/signUp/signUp";
 
 /* Styling & Images */
@@ -36,6 +37,7 @@ class App extends Component {
         <main role="main">
           <h2>Balance</h2>
           <Route path="/landing" component={Landing} />
+          <Route path="/signIn" component={SignIn} />
           <Route path="/signUp" component={SignUp} />
         </main>
         <footer role="contentinfo">
