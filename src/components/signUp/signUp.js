@@ -88,13 +88,9 @@ class SignUp extends Component {
           ) : (
             ""
           )}
-          <button className="whiteButton" type="submit">
-            Create Account
-          </button>
+          <button type="submit">Create Account</button>
         </form>
-        <Link className="whiteButton" to="/signIn">
-          Sign In
-        </Link>
+        <Link to="/signIn">Sign In</Link>
       </div>
     );
   }

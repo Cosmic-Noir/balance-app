@@ -41,7 +41,7 @@ class Nav extends Component {
   render() {
     return (
       <div className="navBar">
-        <h1 className="white balance">Balance</h1>
+        <h1 className="balance">Balance</h1>
         <Link id="navLogo" to="/">
           <img alt="Logo" className="hidden logo" src={logo} />
         </Link>

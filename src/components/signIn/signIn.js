@@ -77,7 +77,7 @@ class SignIn extends Component {
           ) : (
             ""
           )}
-          <button className="whiteButton" type="submit">
+          <button className="light" type="submit">
             Log In
           </button>
         </form>

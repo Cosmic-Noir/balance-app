@@ -10,7 +10,7 @@ a {
   text-decoration: none;
 }
 body {
-  background-color: hsl(211, 100%, 8%);
+  background-color: #048abf48;
 }
 
 main {
@@ -45,8 +45,8 @@ main {
   width: 80%;
 }
 
-.white {
-  color: white;
+.light {
+  color: #bde8f2;
 }
 
 /* App component ID styles */
