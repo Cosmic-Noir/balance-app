@@ -1,3 +1,8 @@
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 /* Class styling */
 
 .logo,
@@ -41,12 +46,15 @@
 }
 
 .navBar {
-  background-color: rgb(97, 188, 231);
+  background: url(background1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 15px;
+  margin: 15px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 15px;
-  position: fixed;
+  height: 400px;
   width: 100%;
   z-index: 10;
 }
