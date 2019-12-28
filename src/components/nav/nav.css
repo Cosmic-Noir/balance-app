@@ -6,7 +6,10 @@ nav {
 /* Class styling */
 
 .balance {
-  color: white;
+  color: black;
+  font-size: 25px;
+  padding: 0px;
+  height: 10px;
   margin: 0 auto;
 }
 
@@ -40,7 +43,7 @@ nav {
 
 .nav {
   border-radius: 4px;
-  color: white;
+  /* color: white; */
   font-size: 12px;
   margin: 0px 5px;
   padding: 0px;
@@ -51,17 +54,18 @@ nav {
 }
 
 .navBar {
-  background: url(background3.jpg);
+  /* background: url(background3.jpg); */
+  /* background: url(background4.jpg); */
   background-repeat: no-repeat;
   background-size: cover;
+  border: 1px solid black;
   border-radius: 5px;
   box-shadow: 3px 3px 3px #5faad9;
-
   margin: 2px;
   display: flex;
   justify-content: space-between;
-  padding: 15px;
-  height: 200px;
+  padding: 5px;
+  height: 40px;
   width: 100%;
   z-index: 10;
 }
@@ -92,7 +96,7 @@ nav {
 #signUp {
   border: 1px solid light;
   border-radius: 4px;
-  color: white;
+  /* color: white; */
   min-width: 77px;
   padding: 5px;
   transition-duration: 1s;
