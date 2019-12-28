@@ -9,6 +9,9 @@
 a {
   text-decoration: none;
 }
+body {
+  background-color: hsl(211, 100%, 8%);
+}
 
 main {
   padding-top: 60px;
@@ -40,6 +43,10 @@ main {
   max-width: 350px;
   padding: 5px;
   width: 80%;
+}
+
+.white {
+  color: white;
 }
 
 /* App component ID styles */

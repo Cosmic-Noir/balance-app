@@ -5,6 +5,10 @@ nav {
 }
 /* Class styling */
 
+.balance {
+  margin: 0 auto;
+}
+
 .logo,
 .deskNav {
   display: none;
@@ -37,8 +41,8 @@ nav {
   border-radius: 4px;
   color: white;
   font-size: 12px;
-  margin: 0px 15px;
-  padding: 5px;
+  margin: 0px 5px;
+  padding: 0px;
 }
 
 .nav:hover {
@@ -46,15 +50,15 @@ nav {
 }
 
 .navBar {
-  background: url(background1.jpg);
+  background: url(background3.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 15px;
-  margin: 15px;
+  margin: 5px;
   display: flex;
   justify-content: space-between;
   padding: 15px;
-  height: 400px;
+  height: 200px;
   width: 100%;
   z-index: 10;
 }
