@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
-import config from "../../config";
+// import config from "../../config";
 
 /* Custom Components */
 // import TokenService from "../../auth/token-service";

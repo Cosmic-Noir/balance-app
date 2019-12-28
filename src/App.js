@@ -5,11 +5,15 @@ import config from "./config";
 
 /* Custom Components */
 import Landing from "./components/landing/landing";
+import Nav from "./components/nav/nav";
 import SignIn from "./components/signIn/signIn";
 import SignUp from "./components/signUp/signUp";
 
 /* Styling & Images */
 import "./App.css";
+
+/* Context */
+import balanceContext from "./balanceContext";
 
 class App extends Component {
   state = {
@@ -31,15 +35,26 @@ class App extends Component {
   }
 
   render() {
+    const contextValue = {
+      // Methods
+      checkLoginStatus: this.checkLoginStatus,
+
+      // Values
+      loggedIn: this.state.loggedIn
+    };
     return (
       <div className="App">
-        <nav role="navigation"></nav>
-        <main role="main">
-          <h2>Balance</h2>
-          <Route path="/landing" component={Landing} />
-          <Route path="/signIn" component={SignIn} />
-          <Route path="/signUp" component={SignUp} />
-        </main>
+        <balanceContext.Provider value={contextValue}>
+          <nav role="navigation">
+            <Nav />
+          </nav>
+          <main role="main">
+            <Route path="/signIn" component={SignIn} />
+            <Route path="/signUp" component={SignUp} />
+            <Route exact path="/" component={Landing} />
+          </main>
+        </balanceContext.Provider>
+
         <footer role="contentinfo">
           {this.state.loggedIn === false ? (
             <Link to="/signUp" id="footerSignUp">
