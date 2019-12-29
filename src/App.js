@@ -51,7 +51,8 @@ class App extends Component {
 
   // Temp function to filter data to find matching month tables to userInfo when user signs in
   setMonthlyReports = user_id => {
-    console.log(Data);
+    // console.log(Data);
+    // eslint-disable-next-line
     let matchedReports = Data.monthlyReports.map(report => {
       if (report.user_id === user_id) {
         return report;
@@ -61,7 +62,7 @@ class App extends Component {
     this.setState({
       monthlyReports: matchedReports
     });
-    console.log(user_id);
+    // console.log(user_id);
   };
 
   // Temp function to set fake user data
@@ -119,6 +120,7 @@ class App extends Component {
           </nav>
           <main role="main">
             <Route path="/monthlyReports" component={MonthlyReports} />
+            <Route path="/montlyReports/:month_id" component={BudgetReport} />
             <Route path="/createBudget" component={CreateBudget} />
             <Route path="/viewSavings" component={ViewSavings} />
             <Route path="/viewSpending" component={ViewSpending} />
