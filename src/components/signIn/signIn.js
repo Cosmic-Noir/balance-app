@@ -39,7 +39,20 @@ class SignIn extends Component {
         error: "Error, valid password is at least 6 characters"
       });
     } else {
-      this.login();
+      // this.login();
+      this.context.users.find(user => {
+        if (
+          user.username === this.state.username &&
+          user.pass === this.state.pass
+        ) {
+          this.context.onSignIn();
+          this.context.setUserInfo(user);
+          this.props.history.push("/dashboard");
+          return user;
+        } else {
+          this.setState({ error: `User and email match not found` });
+        }
+      });
     }
   };
 

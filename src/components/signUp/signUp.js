@@ -11,7 +11,7 @@ class SignUp extends Component {
     id: "",
     username: "",
     email: "",
-    password: "",
+    pass: "",
     passTwo: ""
   };
 
@@ -26,8 +26,8 @@ class SignUp extends Component {
     this.setState({ email: email });
   };
 
-  updatePass = password => {
-    this.setState({ password: password });
+  updatePass = pass => {
+    this.setState({ pass: pass });
   };
 
   updateId = () => {
@@ -42,7 +42,7 @@ class SignUp extends Component {
     e.preventDefault();
     console.log("Create Account pressed, checking user info...");
     // Check if username or email already taken
-    let matchingUser = this.context.users.find(user => {
+    this.context.users.find(user => {
       if (
         user.email === this.state.email ||
         user.username === this.state.username
@@ -74,13 +74,17 @@ class SignUp extends Component {
       this.context.onSignIn();
       this.context.addNewUser(newUser);
       this.context.setUserInfo(newUser);
-      this.props.history.push("/dahsboard");
+      this.props.history.push("/dashboard");
     }
   };
 
   render() {
     return (
       <div className="flex-column" data-aos="fade-in" data-aos-duration="1000">
+        <p class="error">
+          {" "}
+          This is a demo site, please do not use a real password
+        </p>
         <form
           className="flex-column formBorder"
           onSubmit={e => {
