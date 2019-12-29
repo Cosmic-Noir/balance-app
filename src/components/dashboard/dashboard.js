@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 /* Context */
 import balanceContext from "../../balanceContext";
@@ -14,7 +15,9 @@ class Dashboard extends Component {
       <div className="dashboard flex-column">
         <h2>Welcome {this.context.userInfo.username}</h2>
         <div className="lGrey grid-container list">
-          <div className="block">"View Budgets</div>
+          <Link to="budgetsList" className="block">
+            "View Budgets
+          </Link>
           <div className="block">Create Budget</div>
 
           <div className="block">View Savings</div>

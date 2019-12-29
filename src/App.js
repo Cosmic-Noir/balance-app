@@ -95,6 +95,7 @@ class App extends Component {
           </nav>
           <main role="main">
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/budgetsList" component={BudgetsList} />
             <Route path="/signIn" component={SignIn} />
             <Route path="/signOut" component={SignOut} />
             <Route path="/signUp" component={SignUp} />
