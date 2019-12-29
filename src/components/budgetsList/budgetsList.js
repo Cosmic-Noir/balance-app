@@ -14,6 +14,20 @@ class BudgetsList extends Component {
 
   /* Custom Methods */
 
+  displayMonthlyReports = () => {
+    const reports = this.context.monthlyReports.map(report => {
+      const { month_id, user_id, month_name } = report;
+      return (
+        <BudgetPreview
+          key={month_id}
+          user_id={user_id}
+          month_name={month_name}
+        />
+      );
+    });
+    return reports;
+  };
+
   // Responsible for when user clicks cancel button
   handleBack = () => {
     this.props.history.goBack();
@@ -23,7 +37,7 @@ class BudgetsList extends Component {
     return (
       <div className="bugetsList">
         <h2>Your Most Recent Budget: 'Month Year Here'</h2>
-        {/* List of monthly budget tables here */}
+        {this.displayMonthlyReports()}
         <button onClick={this.handleBack} type="button">
           Back
         </button>
