@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import config from "../../config";
 
 /* Custom Components */
@@ -97,6 +97,7 @@ class SignIn extends Component {
           )}
           <button type="submit">Log In</button>
         </form>
+        <Link to="/signUp">Sign Up</Link>
       </div>
     );
   }

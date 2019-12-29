@@ -102,13 +102,6 @@ class App extends Component {
         </balanceContext.Provider>
 
         <footer role="contentinfo">
-          {this.state.signedIn === false ? (
-            <Link to="/signUp" id="footerSignUp">
-              Sign Up
-            </Link>
-          ) : (
-            ""
-          )}
           <h5>&copy; 2020.</h5>
         </footer>
       </div>
