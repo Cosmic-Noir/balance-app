@@ -35,7 +35,7 @@ class BudgetsList extends Component {
 
   render() {
     return (
-      <div className="bugetsList">
+      <div className="bugetsList flex-column">
         <h2>Your Most Recent Budget: 'Month Year Here'</h2>
         {this.displayMonthlyReports()}
         <button onClick={this.handleBack} type="button">

@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 /* Context */
 import balanceContext from "../../balanceContext";
 
+/* Styling & Images */
+import "./budgetPreview.css";
+
 class BudgetsPreview extends Component {
   state = {};
 
@@ -13,7 +16,7 @@ class BudgetsPreview extends Component {
 
   render() {
     return (
-      <Link to={`/:montlyReports/${this.props.user_id}`}>
+      <Link to={`/:montlyReports/${this.props.user_id}`} className="block">
         <h3 className="month_name">{this.props.month_name}</h3>
       </Link>
     );
