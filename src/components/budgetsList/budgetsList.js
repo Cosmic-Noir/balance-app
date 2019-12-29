@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 
+/* Custom Components */
+import BudgetPreview from "../budgetPreview/budgetPreview";
+
 /* Context */
 import balanceContext from "../../balanceContext";
 
