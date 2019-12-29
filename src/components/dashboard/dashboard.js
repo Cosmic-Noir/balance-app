@@ -13,12 +13,12 @@ class Dashboard extends Component {
     return (
       <div className="dashboard flex-column">
         <h2>Welcome {this.context.userInfo.username}</h2>
-        <div class="lGrey grid-container list">
-          <div class="block">"View Budgets</div>
-          <div class="block">Create Budget</div>
+        <div className="lGrey grid-container list">
+          <div className="block">"View Budgets</div>
+          <div className="block">Create Budget</div>
 
-          <div class="block">View Savings</div>
-          <div class="block">View Spending</div>
+          <div className="block">View Savings</div>
+          <div className="block">View Spending</div>
         </div>
       </div>
     );

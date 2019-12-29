@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import config from "./config";
 
 /* Custom Components */
+import BudgetsList from "./components/budgetsList/budgetsList";
 import Dashboard from "./components/dashboard/dashboard";
 import Landing from "./components/landing/landing";
 import Nav from "./components/nav/nav";
