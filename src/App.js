@@ -5,6 +5,10 @@ import config from "./config";
 
 /* Custom Components */
 import BudgetsList from "./components/budgetsList/budgetsList";
+import CreateBudget from "./components/createBudget/createBudget";
+import ViewSavings from "./components/viewSavings/viewSavings";
+import ViewSpending from "./components/viewSpending/viewSpending";
+
 import Dashboard from "./components/dashboard/dashboard";
 import Landing from "./components/landing/landing";
 import Nav from "./components/nav/nav";
@@ -94,8 +98,12 @@ class App extends Component {
             <Nav />
           </nav>
           <main role="main">
-            <Route path="/dashboard" component={Dashboard} />
             <Route path="/budgetsList" component={BudgetsList} />
+            <Route path="/createBudget" component={CreateBudget} />
+            <Route path="/viewSavings" component={ViewSavings} />
+            <Route path="/viewSpending" component={ViewSpending} />
+
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="/signIn" component={SignIn} />
             <Route path="/signOut" component={SignOut} />
             <Route path="/signUp" component={SignUp} />

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 /* Context */
 import balanceContext from "../../balanceContext";
@@ -11,7 +11,7 @@ class ViewSavings extends Component {
 
   render() {
     return (
-      <div className="createBudget">
+      <div className="viewSavings">
         <h2>Savings Report:</h2>
         {/* Savings report with graph */}
       </div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 /* Context */
 import balanceContext from "../../balanceContext";
@@ -14,7 +14,6 @@ class BudgetsList extends Component {
       <div className="bugetsList">
         <h2>Your Most Recent Budget: 'Month Year Here'</h2>
         {/* List of monthly budget tables here */}
-        //
       </div>
     );
   }
