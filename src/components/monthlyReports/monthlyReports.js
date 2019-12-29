@@ -22,6 +22,7 @@ class MonthlyReports extends Component {
           key={month_id}
           user_id={user_id}
           month_name={month_name}
+          month_id={month_id}
         />
       );
     });

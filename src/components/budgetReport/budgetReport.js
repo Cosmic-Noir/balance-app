@@ -6,27 +6,30 @@ import balanceContext from "../../balanceContext";
 
 // Should turn into function when can test
 class BudgetReport extends Component {
+  state = {
+    report: ""
+  };
+
   static contextType = balanceContext;
 
+  setReport = () => {
+    const report = this.context.monthlyReports.map(report => {
+      if (report.month_id === this.props.match.params.month_id) {
+        console.log("matching report found");
+        this.setState({ report: report });
+      }
+    });
+  };
   /* Custom Methods */
-  // displayMonthlyReports = () => {
-  //   const report = this.context.monthlyReports.map(report => {
-  //     const { month_id, user_id, month_name } = report;
-  //     return (
-  //       <BudgetPreview
-  //         key={month_id}
-  //         user_id={user_id}
-  //         month_name={month_name}
-  //       />
-  //     );
-  //   });
-  //   return reports;
-  // };
 
   // Responsible for when user clicks cancel button
   handleBack = () => {
     this.props.history.goBack();
   };
+
+  componentDidMount() {
+    this.setReport();
+  }
 
   render() {
     return (

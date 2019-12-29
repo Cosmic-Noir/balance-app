@@ -16,7 +16,7 @@ class BudgetsPreview extends Component {
 
   render() {
     return (
-      <Link to={`/:montlyReports/${this.props.user_id}`} className="block">
+      <Link to={`/monthlyReports/${this.props.month_id}`} className="block">
         <h3 className="month_name">{this.props.month_name}</h3>
       </Link>
     );

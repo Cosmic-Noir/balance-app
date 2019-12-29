@@ -46,7 +46,7 @@ class App extends Component {
     this.setState({
       signedIn: true
     });
-    console.log("User has logged in successfully");
+    // console.log("User has logged in successfully");
   };
 
   // Temp function to filter data to find matching month tables to userInfo when user signs in
@@ -70,7 +70,7 @@ class App extends Component {
     this.setState({ userInfo: user });
     this.setMonthlyReports(user.user_id);
 
-    console.log(`User info set as ${user}`);
+    // console.log(`User info set as ${user}`);
   };
 
   // Temp function to log user out
@@ -79,7 +79,7 @@ class App extends Component {
       signedIn: false,
       userInfo: []
     });
-    console.log("User has logged out");
+    // console.log("User has logged out");
   };
 
   /* State Setting Methods */
@@ -119,8 +119,8 @@ class App extends Component {
             <Nav />
           </nav>
           <main role="main">
-            <Route path="/monthlyReports" component={MonthlyReports} />
-            <Route path="/montlyReports/:month_id" component={BudgetReport} />
+            <Route exact path="/monthlyReports" component={MonthlyReports} />
+            <Route path="/monthlyReports/:month_id" component={BudgetReport} />
             <Route path="/createBudget" component={CreateBudget} />
             <Route path="/viewSavings" component={ViewSavings} />
             <Route path="/viewSpending" component={ViewSpending} />
