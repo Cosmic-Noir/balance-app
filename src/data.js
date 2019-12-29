@@ -13,7 +13,8 @@ const Data = {
       email: "cooler@email.com",
       pass: "cold789"
     }
-  ]
+  ],
+  charges: []
 };
 
 export default Data;

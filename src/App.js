@@ -8,6 +8,7 @@ import Dashboard from "./components/dashboard/dashboard";
 import Landing from "./components/landing/landing";
 import Nav from "./components/nav/nav";
 import SignIn from "./components/signIn/signIn";
+import SignOut from "./components/signOut/signOut";
 import SignUp from "./components/signUp/signUp";
 
 /* Styling & Images */
@@ -81,6 +82,7 @@ class App extends Component {
       // Values
       charges: this.state.charges,
       signedIn: this.state.signedIn,
+      userInfo: this.state.userInfo,
       users: this.state.users
     };
     return (
@@ -92,6 +94,7 @@ class App extends Component {
           <main role="main">
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/signIn" component={SignIn} />
+            <Route path="/signOut" component={SignOut} />
             <Route path="/signUp" component={SignUp} />
             <Route exact path="/" component={Landing} />
           </main>
