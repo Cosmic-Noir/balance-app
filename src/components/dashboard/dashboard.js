@@ -18,10 +18,16 @@ class Dashboard extends Component {
           <Link to="budgetsList" className="block">
             "View Budgets
           </Link>
-          <div className="block">Create Budget</div>
+          <Link to="createBudget" className="block">
+            Create Budget
+          </Link>
 
-          <div className="block">View Savings</div>
-          <div className="block">View Spending</div>
+          <Link to="viewSavings" className="block">
+            View Savings
+          </Link>
+          <Link to="viewSpending" className="block">
+            View Spending
+          </Link>
         </div>
       </div>
     );
