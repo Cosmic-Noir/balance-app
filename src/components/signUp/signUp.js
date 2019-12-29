@@ -82,7 +82,7 @@ class SignUp extends Component {
   render() {
     return (
       <div className="flex-column" data-aos="fade-in" data-aos-duration="1000">
-        <p class="error">
+        <p className="error">
           {" "}
           This is a demo site, please do not use a real password
         </p>

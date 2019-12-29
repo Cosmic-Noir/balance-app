@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 /* Context */
 import balanceContext from "../../balanceContext";
@@ -11,6 +12,7 @@ class SignOut extends Component {
     return (
       <div className="flex-column">
         <h2 className="title">You have signed out!</h2>
+        <Link to="/signIn">Sign In</Link>
       </div>
     );
   }

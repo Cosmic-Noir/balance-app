@@ -11,10 +11,10 @@ const Data = {
       user_id: 2,
       username: "dudette",
       email: "cooler@email.com",
-      pass: "cold789"
+      pass: "cool123"
     }
   ],
-  monthReport: [
+  monthlyReports: [
     // hard coded values for now
     {
       month_id: 1,

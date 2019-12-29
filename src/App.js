@@ -30,6 +30,7 @@ class App extends Component {
     signedIn: "",
     // Initially set to seed data
     charges: [],
+    monthlyReports: [],
     users: Data.users,
     userInfo: []
   };
@@ -47,6 +48,29 @@ class App extends Component {
     console.log("User has logged in successfully");
   };
 
+  // Temp function to filter data to find matching month tables to userInfo when user signs in
+  setMonthlyReports = user_id => {
+    console.log(Data);
+    let matchedReports = Data.monthlyReports.map(report => {
+      if (report.user_id === user_id) {
+        return report;
+      }
+    });
+
+    this.setState({
+      monthlyReports: matchedReports
+    });
+    console.log(user_id);
+  };
+
+  // Temp function to set fake user data
+  setUserInfo = user => {
+    this.setState({ userInfo: user });
+    this.setMonthlyReports(user.user_id);
+
+    console.log(`User info set as ${user}`);
+  };
+
   // Temp function to log user out
   onSignOut = () => {
     this.setState({
@@ -54,12 +78,6 @@ class App extends Component {
       userInfo: []
     });
     console.log("User has logged out");
-  };
-
-  // Temp function to set fake user data
-  setUserInfo = user => {
-    this.setState({ userInfo: user });
-    console.log(`User info set as ${user}`);
   };
 
   /* State Setting Methods */
