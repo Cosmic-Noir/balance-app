@@ -16,7 +16,7 @@ class Dashboard extends Component {
         <h2>Welcome {this.context.userInfo.username}</h2>
         <div className="lGrey grid-container list">
           <Link to="budgetsList" className="block">
-            "View Budgets
+            View Budgets
           </Link>
           <Link to="createBudget" className="block">
             Create Budget
