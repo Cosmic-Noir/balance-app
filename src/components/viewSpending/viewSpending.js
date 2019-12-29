@@ -9,11 +9,21 @@ class viewSpending extends Component {
 
   static contextType = balanceContext;
 
+  /* Custom Methods */
+
+  // Responsible for when user clicks cancel button
+  handleBack = () => {
+    this.props.history.goBack();
+  };
+
   render() {
     return (
       <div className="viewSpending">
         <h2>Spending Report:</h2>
         {/* Spending report with pie graph */}
+        <button onClick={this.handleBack} type="button">
+          Back
+        </button>
       </div>
     );
   }
