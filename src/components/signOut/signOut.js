@@ -6,6 +6,7 @@ import balanceContext from "../../balanceContext";
 // Should turn into function when can test
 class SignOut extends Component {
   static contextType = balanceContext;
+
   render() {
     return (
       <div className="flex-column">

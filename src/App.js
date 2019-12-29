@@ -37,7 +37,7 @@ class App extends Component {
   // Temp function for when user logs in.
   onSignIn = () => {
     this.setState({
-      loggedIn: true
+      signedIn: true
     });
     console.log("User has logged in successfully");
   };
@@ -45,7 +45,7 @@ class App extends Component {
   // Temp function to log user out
   onSignOut = () => {
     this.setState({
-      loggedIn: false,
+      signedIn: false,
       userInfo: []
     });
     console.log("User has logged out");
@@ -58,12 +58,12 @@ class App extends Component {
   };
 
   /* State Setting Methods */
-  // Responsible for setting user's loggedIn status to true or false if JWT present
+  // Responsible for setting user's signedIn status to true or false if JWT present
   checkLoginStatus = () => {
     if (window.sessionStorage.getItem(config.TOKEN_KEY)) {
-      this.setState({ loggedIn: true });
+      this.setState({ signedIn: true });
     } else {
-      this.setState({ loggedIn: false });
+      this.setState({ signedIn: false });
     }
   };
 
@@ -102,7 +102,7 @@ class App extends Component {
         </balanceContext.Provider>
 
         <footer role="contentinfo">
-          {this.state.loggedIn === false ? (
+          {this.state.signedIn === false ? (
             <Link to="/signUp" id="footerSignUp">
               Sign Up
             </Link>

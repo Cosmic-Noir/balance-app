@@ -18,11 +18,12 @@ class Nav extends Component {
 
   // Responsible for when user clicks Sign Out button
   handleSignOut = () => {
-    TokenService.clearAuthToken();
-    this.context.checkLoginStatus();
-    if (window.innerWidth < 600) {
-      this.toggleMobileMenu();
-    }
+    // TokenService.clearAuthToken();
+    // this.context.checkLoginStatus();
+    // if (window.innerWidth < 600) {
+    //   this.toggleMobileMenu();
+    // }
+    this.context.onSignOut();
   };
 
   // Responsible for toggling display of mobile nav menu
@@ -50,7 +51,7 @@ class Nav extends Component {
             <Link className="nav" to="/">
               Home
             </Link>
-            {this.context.loggedIn === true ? (
+            {this.context.signedIn === true ? (
               <Link className="nav" to="/dashboard">
                 Dashboard
               </Link>
@@ -59,7 +60,7 @@ class Nav extends Component {
                 Demo
               </Link>
             )}
-            {this.context.loggedIn === false ? (
+            {this.context.signedIn === false ? (
               <Link id="signUp" to="/signUp">
                 Sign Up
               </Link>
