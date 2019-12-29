@@ -74,6 +74,7 @@ class SignUp extends Component {
       this.context.onSignIn();
       this.context.addNewUser(newUser);
       this.context.setUserInfo(newUser);
+      this.props.history.push("/dahsboard");
     }
   };
 

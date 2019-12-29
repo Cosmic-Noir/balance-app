@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import config from "./config";
 
 /* Custom Components */
+import Dashboard from "./components/dashboard/dashboard";
 import Landing from "./components/landing/landing";
 import Nav from "./components/nav/nav";
 import SignIn from "./components/signIn/signIn";
@@ -89,6 +90,7 @@ class App extends Component {
             <Nav />
           </nav>
           <main role="main">
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="/signIn" component={SignIn} />
             <Route path="/signUp" component={SignUp} />
             <Route exact path="/" component={Landing} />
