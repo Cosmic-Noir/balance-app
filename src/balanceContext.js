@@ -5,6 +5,7 @@ const balanceContext = React.createContext({
   addNewuser: () => {},
   checkLoginStatus: () => {},
   onSingIn: () => {},
+  onSignOut: () => {},
   setUserInfo: () => {},
 
   // Values

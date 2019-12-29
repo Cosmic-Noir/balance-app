@@ -77,6 +77,7 @@ class App extends Component {
       addNewUser: this.addNewUser,
       checkLoginStatus: this.checkLoginStatus,
       onSignIn: this.onSignIn,
+      onSignOut: this.onSignOut,
       setUserInfo: this.setUserInfo,
 
       // Values
