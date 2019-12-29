@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 /* Custom Components */
-import TokenService from "../../auth/token-service";
+// import TokenService from "../../auth/token-service";
 
 /* Styling and Images: */
 import logo from "./logo.png";

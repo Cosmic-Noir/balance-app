@@ -42,6 +42,7 @@ class SignUp extends Component {
     e.preventDefault();
     console.log("Create Account pressed, checking user info...");
     // Check if username or email already taken
+    // eslint-disable-next-line
     this.context.users.find(user => {
       if (
         user.email === this.state.email ||

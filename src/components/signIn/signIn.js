@@ -40,6 +40,7 @@ class SignIn extends Component {
       });
     } else {
       // this.login();
+      // eslint-disable-next-line
       this.context.users.find(user => {
         if (
           user.username === this.state.username &&
