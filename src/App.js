@@ -17,7 +17,39 @@ import balanceContext from "./balanceContext";
 
 class App extends Component {
   state = {
-    loggedIn: ""
+    signedIn: "",
+    // Initially set to seed data
+    charges: [],
+    users: [],
+    userInfo: []
+  };
+
+  // Temp function to add user to data state
+  addNewUser = newUser => {
+    this.setState({ users: [...this.state.users, newUser] });
+  };
+
+  // Temp function for when user logs in.
+  onSignIn = () => {
+    this.setState({
+      loggedIn: true
+    });
+    console.log("User has logged in successfully");
+  };
+
+  // Temp function to log user out
+  onSignOut = () => {
+    this.setState({
+      loggedIn: false,
+      userInfo: []
+    });
+    console.log("User has logged out");
+  };
+
+  // Temp function to set fake user data
+  setUserInfo = user => {
+    this.setState({ userInfo: user });
+    console.log(`User info set as ${user}`);
   };
 
   /* State Setting Methods */
@@ -37,10 +69,13 @@ class App extends Component {
   render() {
     const contextValue = {
       // Methods
+      addNewUser: this.addNewUser,
       checkLoginStatus: this.checkLoginStatus,
+      setUserInfo: this.setUserInfo,
 
       // Values
-      loggedIn: this.state.loggedIn
+      charges: this.state.charges,
+      signedIn: this.state.signedIn
     };
     return (
       <div className="App">

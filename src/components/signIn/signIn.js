@@ -5,12 +5,17 @@ import React, { Component } from "react";
 /* Custom Components */
 // import TokenService from "../../auth/token-service";
 
+/* Context */
+import balanceContext from "../../balanceContext";
+
 class SignIn extends Component {
   state = {
     error: null,
     pass: "",
     username: ""
   };
+
+  static contextType = balanceContext;
 
   /* State Updating Methods */
   updateUsername(username) {
@@ -77,9 +82,7 @@ class SignIn extends Component {
           ) : (
             ""
           )}
-          <button className="light" type="submit">
-            Log In
-          </button>
+          <button type="submit">Log In</button>
         </form>
       </div>
     );
