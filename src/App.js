@@ -4,7 +4,8 @@ import { Route } from "react-router-dom";
 import config from "./config";
 
 /* Custom Components */
-import BudgetsList from "./components/budgetsList/budgetsList";
+import MonthlyReports from "./components/monthlyReports/monthlyReports";
+import BudgetReport from "./components/budgetReport/budgetReport";
 import CreateBudget from "./components/createBudget/createBudget";
 import ViewSavings from "./components/viewSavings/viewSavings";
 import ViewSpending from "./components/viewSpending/viewSpending";
@@ -117,7 +118,7 @@ class App extends Component {
             <Nav />
           </nav>
           <main role="main">
-            <Route path="/budgetsList" component={BudgetsList} />
+            <Route path="/monthlyReports" component={MonthlyReports} />
             <Route path="/createBudget" component={CreateBudget} />
             <Route path="/viewSavings" component={ViewSavings} />
             <Route path="/viewSpending" component={ViewSpending} />

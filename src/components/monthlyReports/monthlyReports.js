@@ -7,7 +7,7 @@ import BudgetPreview from "../budgetPreview/budgetPreview";
 /* Context */
 import balanceContext from "../../balanceContext";
 
-class BudgetsList extends Component {
+class MonthlyReports extends Component {
   state = {};
 
   static contextType = balanceContext;
@@ -46,4 +46,4 @@ class BudgetsList extends Component {
   }
 }
 
-export default BudgetsList;
+export default MonthlyReports;
