@@ -4,11 +4,13 @@ const balanceContext = React.createContext({
   // Methods
   addNewuser: () => {},
   checkLoginStatus: () => {},
+  onSingIn: () => {},
   setUserInfo: () => {},
 
   // Values
   charges: [],
-  signedIn: ""
+  signedIn: "",
+  users: []
 });
 
 export default balanceContext;

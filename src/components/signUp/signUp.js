@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import config from "../../config";
 
+/* Context */
+import balanceContext from "../../balanceContext";
+
 class SignUp extends Component {
   state = {
     error: null,
@@ -11,6 +14,8 @@ class SignUp extends Component {
     password: "",
     passTwo: ""
   };
+
+  static contextType = balanceContext;
 
   /* State updating methods */
   updateUsername = username => {
@@ -31,6 +36,45 @@ class SignUp extends Component {
 
   updatePassTwo = passTwo => {
     this.setState({ passTwo: passTwo });
+  };
+
+  handlSubmit = e => {
+    e.preventDefault();
+    console.log("Create Account pressed, checking user info...");
+    // Check if username or email already taken
+    let matchingUser = this.context.users.find(user => {
+      if (
+        user.email === this.state.email ||
+        user.username === this.state.username
+      ) {
+        return `Error,  ${this.state.email} or ${this.state.username} already taken`;
+      }
+    });
+
+    // Check if info is not valid
+    if (this.state.username.length < 6) {
+      this.setState({
+        error: `Username length must be greater than 5 characters`
+      });
+    } else if (this.state.email.length < 6) {
+      this.setState({
+        error: `Must enter valid e-mail addres`
+      });
+    } else if (this.state.password.length < 6) {
+      this.setState({
+        error: `Password length must be greater than 5 characters`
+      });
+    } else if (this.state.password !== this.state.passTwo) {
+      this.setState({
+        error: `Password fields must match`
+      });
+    } else {
+      this.updateId();
+      let newUser = this.state;
+      this.context.onSignIn();
+      this.context.addNewUser(newUser);
+      this.context.setUserInfo(newUser);
+    }
   };
 
   render() {

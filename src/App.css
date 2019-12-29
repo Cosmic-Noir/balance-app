@@ -23,6 +23,10 @@ main {
   text-align: center;
 }
 
+.error {
+  color: red;
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;

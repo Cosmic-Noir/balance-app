@@ -15,12 +15,15 @@ import "./App.css";
 /* Context */
 import balanceContext from "./balanceContext";
 
+// Seed Data
+import Data from "./data.js";
+
 class App extends Component {
   state = {
     signedIn: "",
     // Initially set to seed data
     charges: [],
-    users: [],
+    users: Data.users,
     userInfo: []
   };
 
@@ -71,11 +74,13 @@ class App extends Component {
       // Methods
       addNewUser: this.addNewUser,
       checkLoginStatus: this.checkLoginStatus,
+      onSignIn: this.onSignIn,
       setUserInfo: this.setUserInfo,
 
       // Values
       charges: this.state.charges,
-      signedIn: this.state.signedIn
+      signedIn: this.state.signedIn,
+      users: this.state.users
     };
     return (
       <div className="App">
