@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 
+/* Context */
+import balanceContext from "../../balanceContext";
+
 class Charge extends Component {
+  static contextType = balanceContext;
+
   render() {
     return (
       <tr className="charge">
