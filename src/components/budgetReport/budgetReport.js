@@ -7,18 +7,43 @@ import balanceContext from "../../balanceContext";
 // Should turn into function when can test
 class BudgetReport extends Component {
   state = {
-    report: ""
+    report: "",
+    charges: []
   };
 
   static contextType = balanceContext;
 
-  setReport = () => {
-    const report = this.context.monthlyReports.map(report => {
-      if (report.month_id === this.props.match.params.month_id) {
-        console.log("matching report found");
-        this.setState({ report: report });
+  /* State Setting Methods */
+
+  setCharges = () => {
+    console.log(this.context.charges);
+    let charges = this.context.charges.map(charge => {
+      console.log(charge);
+      if (charge.month_id === parseInt(this.props.match.params.month_id)) {
+        console.log("matching charge found");
+        return charge;
+      } else {
+        return "";
       }
     });
+    this.setState({ charges: charges });
+
+    console.log("setCharges ran");
+  };
+
+  setReport = () => {
+    let report = this.context.monthlyReports.map(report => {
+      // console.log("Searching for match...");
+      // console.log(typeof this.props.match.params.month_id);
+      // console.log(typeof report.month_id);
+      if (report.month_id === parseInt(this.props.match.params.month_id)) {
+        // console.log("matching report found");
+        return report;
+      } else {
+        return "";
+      }
+    });
+    this.setState({ report: report[0] });
   };
   /* Custom Methods */
 
@@ -29,12 +54,15 @@ class BudgetReport extends Component {
 
   componentDidMount() {
     this.setReport();
+    this.setCharges();
   }
 
   render() {
+    const { month_name } = this.state.report;
     return (
       <div className="budgetReport flex-column">
         <h2 className="title">Budget Report</h2>
+        <h3>{month_name}</h3>
         <button onClick={this.handleBack} type="button">
           Back
         </button>

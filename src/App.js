@@ -49,6 +49,17 @@ class App extends Component {
     // console.log("User has logged in successfully");
   };
 
+  // Temp func to set charges
+  setCharges = user_id => {
+    let matchingCharges = Data.charges.map(charge => {
+      if (charge.user_id === user_id) {
+        return charge;
+      }
+    });
+
+    this.setState({ charges: matchingCharges });
+  };
+
   // Temp function to filter data to find matching month tables to userInfo when user signs in
   setMonthlyReports = user_id => {
     // console.log(Data);
@@ -69,6 +80,7 @@ class App extends Component {
   setUserInfo = user => {
     this.setState({ userInfo: user });
     this.setMonthlyReports(user.user_id);
+    this.setCharges(user.user_id);
 
     // console.log(`User info set as ${user}`);
   };
