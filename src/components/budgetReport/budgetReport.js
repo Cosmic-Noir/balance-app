@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 
+/* Custom Components */
+import Charge from "../charge/charge";
+
 /* Context */
 import balanceContext from "../../balanceContext";
 
@@ -47,6 +50,21 @@ class BudgetReport extends Component {
   };
   /* Custom Methods */
 
+  displayCharges = () => {
+    const allCharges = this.state.charges.map(charge => {
+      const { charge_id, charge_name, due_date, amount } = charge;
+      return (
+        <Charge
+          amount={amount}
+          due_date={due_date}
+          charge_name={charge_name}
+          key={charge_id}
+        />
+      );
+    });
+    return allCharges;
+  };
+
   // Responsible for when user clicks cancel button
   handleBack = () => {
     this.props.history.goBack();
@@ -63,6 +81,7 @@ class BudgetReport extends Component {
       <div className="budgetReport flex-column">
         <h2 className="title">Budget Report</h2>
         <h3>{month_name}</h3>
+        <table>{this.displayCharges()}</table>
         <button onClick={this.handleBack} type="button">
           Back
         </button>

@@ -51,6 +51,7 @@ class App extends Component {
 
   // Temp func to set charges
   setCharges = user_id => {
+    // eslint-disable-next-line
     let matchingCharges = Data.charges.map(charge => {
       if (charge.user_id === user_id) {
         return charge;
