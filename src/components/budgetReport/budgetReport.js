@@ -4,6 +4,9 @@ import React, { Component } from "react";
 /* Custom Components */
 import Charge from "../charge/charge";
 
+/* Styling & Images */
+import "./budgetReport.css";
+
 /* Context */
 import balanceContext from "../../balanceContext";
 
@@ -19,11 +22,11 @@ class BudgetReport extends Component {
   /* State Setting Methods */
 
   setCharges = () => {
-    console.log(this.context.charges);
+    // console.log(this.context.charges);
     let charges = this.context.charges.map(charge => {
-      console.log(charge);
+      // console.log(charge);
       if (charge.month_id === parseInt(this.props.match.params.month_id)) {
-        console.log("matching charge found");
+        // console.log("matching charge found");
         return charge;
       } else {
         return "";
@@ -31,7 +34,7 @@ class BudgetReport extends Component {
     });
     this.setState({ charges: charges });
 
-    console.log("setCharges ran");
+    // console.log("setCharges ran");
   };
 
   setReport = () => {
@@ -49,18 +52,33 @@ class BudgetReport extends Component {
     this.setState({ report: report[0] });
   };
   /* Custom Methods */
+  // Need to sort charges by date
 
   displayCharges = () => {
+    let totIncome = 0;
+    let totExpenses = 0;
+    let remaining = 200;
     const allCharges = this.state.charges.map(charge => {
       const { charge_id, charge_name, due_date, amount } = charge;
-      return (
-        <Charge
-          amount={amount}
-          due_date={due_date}
-          charge_name={charge_name}
-          key={charge_id}
-        />
-      );
+      if (charge.category === "Income") {
+        return (
+          <tr class="remaining">
+            <td>{totIncome}</td>
+            <td>{totExpenses}</td>
+            <td>{remaining}</td>
+          </tr>
+        );
+      } else {
+        totExpenses -= charge.amount;
+        return (
+          <Charge
+            amount={amount}
+            due_date={due_date}
+            charge_name={charge_name}
+            key={charge_id}
+          />
+        );
+      }
     });
     return allCharges;
   };
@@ -81,7 +99,14 @@ class BudgetReport extends Component {
       <div className="budgetReport flex-column">
         <h2 className="title">Budget Report</h2>
         <h3>{month_name}</h3>
-        <table>{this.displayCharges()}</table>
+        <table>
+          <tr>
+            <th>Due Date</th>
+            <th>Charge Name</th>
+            <th>Amount</th>
+          </tr>
+          {this.displayCharges()}
+        </table>
         <button onClick={this.handleBack} type="button">
           Back
         </button>

@@ -66,8 +66,35 @@ const Data = {
       charge_id: 4,
       charge_name: "Paycheck",
       category: "Income",
-      due_date: 1,
+      due_date: 6,
       amount: 150,
+      month_id: 1,
+      user_id: 1
+    },
+    {
+      charge_id: 5,
+      charge_name: "Pet Insurance",
+      category: "Insurance/Financial",
+      due_date: 7,
+      amount: 60,
+      month_id: 1,
+      user_id: 1
+    },
+    {
+      charge_id: 6,
+      charge_name: "Groceries",
+      category: "Food/Drink",
+      due_date: 9,
+      amount: 150,
+      month_id: 1,
+      user_id: 1
+    },
+    {
+      charge_id: 7,
+      charge_name: "Paycheck",
+      category: "Income",
+      due_date: 20,
+      amount: 1200,
       month_id: 1,
       user_id: 1
     }

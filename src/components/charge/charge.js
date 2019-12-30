@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+/* Styling & Images */
+import "./charge.css";
+
 /* Context */
 import balanceContext from "../../balanceContext";
 
