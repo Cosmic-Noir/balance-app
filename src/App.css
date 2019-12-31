@@ -49,8 +49,20 @@ main {
   width: 80%;
 }
 
+.green {
+  color: green;
+}
+
 .light {
   color: #bde8f2;
+}
+
+.red {
+  color: red;
+}
+
+.width-100 {
+  width: 80%;
 }
 
 /* App component ID styles */

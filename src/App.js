@@ -4,8 +4,7 @@ import { Route } from "react-router-dom";
 import config from "./config";
 
 /* Custom Components */
-import MonthlyReports from "./components/monthlyReports/monthlyReports";
-import BudgetReport from "./components/budgetReport/budgetReport";
+import Budget from "./components/budget/budget";
 import CreateBudget from "./components/createBudget/createBudget";
 import ViewSavings from "./components/viewSavings/viewSavings";
 import ViewSpending from "./components/viewSpending/viewSpending";
@@ -31,7 +30,6 @@ class App extends Component {
     signedIn: "",
     // Initially set to seed data
     charges: [],
-    monthlyReports: [],
     users: Data.users,
     userInfo: []
   };
@@ -61,26 +59,9 @@ class App extends Component {
     this.setState({ charges: matchingCharges });
   };
 
-  // Temp function to filter data to find matching month tables to userInfo when user signs in
-  setMonthlyReports = user_id => {
-    // console.log(Data);
-    // eslint-disable-next-line
-    let matchedReports = Data.monthlyReports.map(report => {
-      if (report.user_id === user_id) {
-        return report;
-      }
-    });
-
-    this.setState({
-      monthlyReports: matchedReports
-    });
-    // console.log(user_id);
-  };
-
   // Temp function to set fake user data
   setUserInfo = user => {
     this.setState({ userInfo: user });
-    this.setMonthlyReports(user.user_id);
     this.setCharges(user.user_id);
 
     // console.log(`User info set as ${user}`);
@@ -120,7 +101,6 @@ class App extends Component {
 
       // Values
       charges: this.state.charges,
-      monthlyReports: this.state.monthlyReports,
       signedIn: this.state.signedIn,
       userInfo: this.state.userInfo,
       users: this.state.users
@@ -132,8 +112,8 @@ class App extends Component {
             <Nav />
           </nav>
           <main role="main">
-            <Route exact path="/monthlyReports" component={MonthlyReports} />
-            <Route path="/monthlyReports/:month_id" component={BudgetReport} />
+            <Route exact path="/budgets" component={Budget} />
+            <Route path="/monthlyReports/:month_id" component={Budget} />
             <Route path="/createBudget" component={CreateBudget} />
             <Route path="/viewSavings" component={ViewSavings} />
             <Route path="/viewSpending" component={ViewSpending} />

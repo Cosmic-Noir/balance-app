@@ -13,8 +13,8 @@ tr.remaining {
   padding: 10px;
 }
 
-.remain_row {
-  width: 20px;
+.float-right {
+  float: right;
 }
 
 .report {

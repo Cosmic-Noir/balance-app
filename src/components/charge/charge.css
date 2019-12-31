@@ -11,3 +11,23 @@
 .detail {
   padding: 0px 10px;
 }
+
+.Income {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  width: 100%;
+}
+
+.checkRemainder {
+  align-items: center;
+  border-top: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  list-style-type: none;
+  padding: 5px;
+  width: 100%;
+}

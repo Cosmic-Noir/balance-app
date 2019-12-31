@@ -15,8 +15,8 @@ class Dashboard extends Component {
       <div className="dashboard flex-column">
         <h2>Welcome {this.context.userInfo.username}</h2>
         <div className="lGrey grid-container list">
-          <Link to="monthlyReports" className="block">
-            View Monthly Reports
+          <Link to="budgets" className="block">
+            View Budgets
           </Link>
           <Link to="createBudget" className="block">
             Create Budget
