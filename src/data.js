@@ -67,7 +67,7 @@ const Data = {
       charge_name: "Paycheck",
       category: "Income",
       due_date: 6,
-      amount: 150,
+      amount: 1200,
       month_id: 1,
       user_id: 1
     },

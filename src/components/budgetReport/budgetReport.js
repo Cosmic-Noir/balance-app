@@ -57,16 +57,24 @@ class BudgetReport extends Component {
   displayCharges = () => {
     let totIncome = 0;
     let totExpenses = 0;
-    let remaining = 200;
     const allCharges = this.state.charges.map(charge => {
       const { charge_id, charge_name, due_date, amount } = charge;
       if (charge.category === "Income") {
+        let currentRemainder = totIncome + totExpenses;
+        totIncome += charge.amount;
+        totExpenses = 0;
         return (
-          <tr class="remaining">
-            <td>{totIncome}</td>
-            <td>{totExpenses}</td>
-            <td>{remaining}</td>
-          </tr>
+          <div className="remain_row">
+            <h2> Remaining</h2>
+            <tr class="remaining">
+              <td>Paycheck:</td>
+              <td>{charge.amount}</td>
+              <td>
+                {currentRemainder > 0 ? "Remaining " : "Need to Save "}
+                {currentRemainder}
+              </td>
+            </tr>
+          </div>
         );
       } else {
         totExpenses -= charge.amount;
@@ -99,14 +107,15 @@ class BudgetReport extends Component {
       <div className="budgetReport flex-column">
         <h2 className="title">Budget Report</h2>
         <h3>{month_name}</h3>
-        <table>
+        <div className="flex-column report">{this.displayCharges()}</div>
+        {/* <table className="charges_table">
           <tr>
             <th>Due Date</th>
             <th>Charge Name</th>
             <th>Amount</th>
           </tr>
           {this.displayCharges()}
-        </table>
+        </table> */}
         <button onClick={this.handleBack} type="button">
           Back
         </button>
