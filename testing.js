@@ -25,7 +25,8 @@ const Data = {
         due_date: 1,
         amount: 600,
         month_id: 1,
-        user_id: 1
+        user_id: 1,
+        occurance: 'monthly'
       },
       {
         charge_id: 2,
@@ -34,7 +35,9 @@ const Data = {
         due_date: 1,
         amount: 150,
         month_id: 1,
-        user_id: 1
+        user_id: 1,
+        occurance: 'biweekly'
+
       },
       {
         charge_id: 3,
@@ -43,7 +46,9 @@ const Data = {
         due_date: 4,
         amount: 100,
         month_id: 1,
-        user_id: 1
+        user_id: 1, 
+        occurance: 'monthly'
+
       },
       {
         charge_id: 4,
@@ -52,7 +57,9 @@ const Data = {
         due_date: 6,
         amount: 1200,
         month_id: 1,
-        user_id: 1
+        user_id: 1,
+        occurance: 'biweekly'
+
       },
       {
         charge_id: 5,
@@ -61,7 +68,9 @@ const Data = {
         due_date: 7,
         amount: 60,
         month_id: 1,
-        user_id: 1
+        user_id: 1,
+        occurance: 'monthly'
+
       },
       {
         charge_id: 6,
@@ -70,7 +79,9 @@ const Data = {
         due_date: 9,
         amount: 150,
         month_id: 1,
-        user_id: 1
+        user_id: 1,
+        occurance: 'biweekly'
+
       },
       {
         charge_id: 7,
@@ -79,26 +90,21 @@ const Data = {
         due_date: 20,
         amount: 1200,
         month_id: 1,
-        user_id: 1
+        user_id: 1,
+        occurance: 'biweekly'
       }
     ]
   };
 
 
 // I need functions to :
-// - Search and return all charges for matching user_id and month_id
+// - Search and return all charges for matching user_id and month_id - DONE - will likely be done server side 
 // - Sort array of "charges" by due date
 // Then with matching charges correctly sorted
-// Return dependent components, where a paycheck triggers a remainder report and income/expenses are reported, then returns the new paycheck and moves onto the next charges after reseting calculations.
+// Return dependent components, where a paycheck triggers a remainder report and income/expenses are reported, then returns the new paycheck and moves onto the next charges after reseting calculations. -DONE 
+// Eventually need a function that asses the "occurance" category and then increases the due_date based on selection. Can map each charge, could do BEFORE sorting. 
 
-/* for (every charge in matching array) {
-    if (category !== income){
-        return <Charge />
-    } else if (category === 'income'){
-        return <Remainder />
-    }
-}
-*/
+
 let chargesArray = Data.charges;
 
 const filterArray = (array, user_id, month_id) => {
@@ -115,6 +121,28 @@ let matchingCharges = filterArray(chargesArray, 1, 1);
 // console.log(matchingCharges);
 
 // console.log(filterArray(chargesArray, 2, 2));
+
+// Responsible for mapping every charge and updating due_date based on 'occurance' type
+// How do we check for next month? 
+const dueDateUpdater = arr => {
+  // What if this simply checked the state, then updated the state if occurance is not monthly? 
+  let updatedDateCharges = arr.map(charge => {
+    if (charge.occurance === 'monthly'){
+      console.log(`${charge.charge_name} occures monthly`)
+    } else if (charge.occurance === 'biweekly'){
+      console.log(`${charge.charge_name} occures biweekly`)
+    } else if (charge.occurance === 'weekly'){
+      console.log(`${charge.charge_name} occures weekly`)
+
+    }
+  })
+  
+}
+
+dueDateUpdater(matchingCharges);
+
+
+// Responsible for returning correct element based on charge type of array, as well as remainder reports and monthly reports.
 
 const returnElement = arr => {
   let totalIncome = 0;
@@ -146,4 +174,4 @@ const returnElement = arr => {
     }
 }
 
-returnElement(matchingCharges);
+// returnElement(matchingCharges);
