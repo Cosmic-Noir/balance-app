@@ -6,8 +6,8 @@ const Data = {
         user_id: 1,
         username: "dudest",
         email: "cool@email.com",
-        pass: "cool123",
-        score: 25
+        pass: "cool123"
+      
       },
       {
         user_id: 2,
@@ -122,21 +122,26 @@ let matchingCharges = filterArray(chargesArray, 1, 1);
 
 // console.log(filterArray(chargesArray, 2, 2));
 
-// Responsible for mapping every charge and updating due_date based on 'occurance' type
-// How do we check for next month? 
-const dueDateUpdater = arr => {
-  // What if this simply checked the state, then updated the state if occurance is not monthly? 
-  let updatedDateCharges = arr.map(charge => {
+// Responsible for updating the dates of paychecks? Probably needs more work like when paychecks go into next month.
+const dueDateUpdater = incomeArr => {
+  // Should only have to update income, and then check whether weekly or biweekly and add 7 or 14 days. 
+  let updatedPaychecks = incomeArr.map(charge => {
     if (charge.occurance === 'monthly'){
-      console.log(`${charge.charge_name} occures monthly`)
+      console.log(charge.due_date);
+      // console.log(`${charge.charge_name} occures monthly`)
+      return charge;
     } else if (charge.occurance === 'biweekly'){
+      console.log(charge.due_date);
+      // if biweekly, increase due date by 14
       console.log(`${charge.charge_name} occures biweekly`)
     } else if (charge.occurance === 'weekly'){
+      console.log(charge.due_date);
+      // if biweekly, increase due date by 7
       console.log(`${charge.charge_name} occures weekly`)
 
     }
   })
-  
+  return updatedPaychecks;
 }
 
 dueDateUpdater(matchingCharges);

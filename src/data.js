@@ -4,8 +4,8 @@ const Data = {
       user_id: 1,
       username: "dudest",
       email: "cool@email.com",
-      pass: "cool123",
-      score: 25
+      pass: "cool123"
+      
     },
     {
       user_id: 2,
