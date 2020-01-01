@@ -104,6 +104,8 @@ const Data = {
 // Return dependent components, where a paycheck triggers a remainder report and income/expenses are reported, then returns the new paycheck and moves onto the next charges after reseting calculations. -DONE 
 // Eventually need a function that asses the "occurance" category and then increases the due_date based on selection. Can map each charge, could do BEFORE sorting. 
 
+// ** Will need a function that actually creates a new paycheck charge, gets rid of the old, then add days once, adds paycheck, then adds days AGAIN to that date, adds a paycheck, and IF the next paycheck is outside of the month, then return nothing, paychecks are updated. 
+
 
 let chargesArray = Data.charges;
 
@@ -122,29 +124,20 @@ let matchingCharges = filterArray(chargesArray, 1, 1);
 
 // console.log(filterArray(chargesArray, 2, 2));
 
-// Responsible for updating the dates of paychecks? Probably needs more work like when paychecks go into next month.
-const dueDateUpdater = incomeArr => {
-  // Should only have to update income, and then check whether weekly or biweekly and add 7 or 14 days. 
-  let updatedPaychecks = incomeArr.map(charge => {
-    if (charge.occurance === 'monthly'){
-      console.log(charge.due_date);
-      // console.log(`${charge.charge_name} occures monthly`)
-      return charge;
-    } else if (charge.occurance === 'biweekly'){
-      console.log(charge.due_date);
-      // if biweekly, increase due date by 14
-      console.log(`${charge.charge_name} occures biweekly`)
-    } else if (charge.occurance === 'weekly'){
-      console.log(charge.due_date);
-      // if biweekly, increase due date by 7
-      console.log(`${charge.charge_name} occures weekly`)
+// Responsible for taking last paycheck of last month, then creating new income array, which can then be merged with the charges array.
+// First, of the returned array, take only the last charge. - Does not account if there is more than one type of paycheck, maybe check for first paycheck of each charge_name
+const paycheckCreator = array => {
+  let firstPaycheck = array[array.length - 1];
+  let monthlyPaychecks = [];
+  monthlyPaychecks.push(firstPaycheck);
+ // Then we need a while the MONTH is NOT changed, add days to due_date BASED on occurance
 
-    }
-  })
-  return updatedPaychecks;
+ // Then add new paycheck to monthly paycheck array
+
+ // Then set state of paychecks to created array. 
 }
 
-// dueDateUpdater(matchingCharges);
+console.log(paycheckCreator(matchingCharges));
 
 
 // Responsible for returning correct element based on charge type of array, as well as remainder reports and monthly reports.
@@ -197,4 +190,5 @@ const saveGraph = (monthly, base) => {
 
 }
 
-console.log(saveGraph(200, 0));
+// console.log(saveGraph(200, 0));
+
