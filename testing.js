@@ -144,7 +144,7 @@ const dueDateUpdater = incomeArr => {
   return updatedPaychecks;
 }
 
-dueDateUpdater(matchingCharges);
+// dueDateUpdater(matchingCharges);
 
 
 // Responsible for returning correct element based on charge type of array, as well as remainder reports and monthly reports.
@@ -180,3 +180,21 @@ const returnElement = arr => {
 }
 
 // returnElement(matchingCharges);
+
+// Function to give graph plot points? 
+
+// let saveAmount = 200;
+
+const saveGraph = (monthly, base) => {
+  let savingTotal = base;
+  let savingPoints = [base];
+  for (let i=0; i < 10; i++){
+    savingTotal += monthly;
+    savingPoints.push(savingTotal)
+  }
+  return savingPoints;
+  
+
+}
+
+console.log(saveGraph(200, 0));
