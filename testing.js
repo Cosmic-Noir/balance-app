@@ -111,4 +111,34 @@ const filterArray = (array, user_id, month_id) => {
 
 }
 
-console.log(filterArray(chargesArray, 2, 2));
+let matchingCharges = filterArray(chargesArray, 1, 1);
+// console.log(matchingCharges);
+
+// console.log(filterArray(chargesArray, 2, 2));
+
+const returnElement = arr => {
+    let currentPaycheck = 0;
+    let expenses = 0;
+
+    for (let i=0; i <= arr.length; i++){
+        if (arr[i] === undefined){
+            let remainder = currentPaycheck + expenses;
+            console.log(`${remainder} left over from paycheck`);
+        } else if (arr[i].category !== 'Income'){
+            expenses -= arr[i].amount;
+            console.log(`${arr[i].charge_name} added to expnses: ${arr[i].amount} total: ${expenses}`)
+        } else if (arr[i].category === 'Income'){
+            // if income, calculate previous paychecks remainder
+            let remainder = currentPaycheck + expenses;
+            console.log(`Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`);
+            // Then set the current paycheck to the selected one
+            currentPaycheck = arr[i].amount;
+            // Then reset expenses
+            expenses = 0;
+            console.log('---------');
+            console.log(`Yay, a paycheck for ${arr[i].amount}`)
+        } 
+    }
+}
+
+returnElement(matchingCharges);
