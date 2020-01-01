@@ -78,8 +78,8 @@ const Data = {
         category: "Income",
         due_date: 20,
         amount: 1200,
-        month_id: 2,
-        user_id: 2
+        month_id: 1,
+        user_id: 1
       }
     ]
   };
@@ -117,6 +117,8 @@ let matchingCharges = filterArray(chargesArray, 1, 1);
 // console.log(filterArray(chargesArray, 2, 2));
 
 const returnElement = arr => {
+  let totalIncome = 0;
+  let totalExpenses = 0;
     let currentPaycheck = 0;
     let expenses = 0;
 
@@ -124,8 +126,10 @@ const returnElement = arr => {
         if (arr[i] === undefined){
             let remainder = currentPaycheck + expenses;
             console.log(`${remainder} left over from paycheck`);
+            console.log(`Monthly Income: ${totalIncome}. Montly Expenses: ${totalExpenses}. Montlhy leftover: ${totalIncome + totalExpenses}`)
         } else if (arr[i].category !== 'Income'){
             expenses -= arr[i].amount;
+            totalExpenses -= arr[i].amount;
             console.log(`${arr[i].charge_name} added to expnses: ${arr[i].amount} total: ${expenses}`)
         } else if (arr[i].category === 'Income'){
             // if income, calculate previous paychecks remainder
@@ -133,6 +137,7 @@ const returnElement = arr => {
             console.log(`Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`);
             // Then set the current paycheck to the selected one
             currentPaycheck = arr[i].amount;
+            totalIncome += arr[i].amount;
             // Then reset expenses
             expenses = 0;
             console.log('---------');
