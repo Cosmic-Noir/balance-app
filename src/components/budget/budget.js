@@ -23,25 +23,27 @@ class Budget extends Component {
   /* State Setting Methods */
   updateMonth = month_name => {
     this.setState({ month_name: month_name });
+    console.log("updateMonth ran");
     this.setCharges();
   };
 
   // Responsible for sortilng charges in context and updating state to match selected month_name
   setCharges = () => {
-    console.log(this.context.charges);
+    // console.log(this.context.charges);
+
     let charges = this.context.charges.filter(charge => {
-      console.log(charge);
+      // console.log(charge);
+
       if (charge.month_name === this.state.month_name) {
-        // console.log("matching charge found");
+        console.log("matching charge found");
         return charge;
       } else {
         return "";
       }
     });
     this.setState({ charges: charges });
-    console.log(charges);
-
-    console.log("setCharges ran");
+    console.log(`setCharges has run and setState`);
+    // this.returnElement();
   };
 
   /* Custom Methods */
@@ -73,6 +75,7 @@ class Budget extends Component {
     let expenses = 0;
 
     let arr = this.state.charges;
+    console.log(arr);
 
     for (let i = 0; i <= arr.length; i++) {
       if (arr[i] === undefined) {
@@ -120,7 +123,12 @@ class Budget extends Component {
     this.props.history.goBack();
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    let month_name = document.getElementById("month_name").value;
+    console.log(month_name);
+    this.setState({ month_name: month_name });
+    this.setCharges();
+  }
 
   render() {
     const { month_name } = this.state.month_name;
@@ -136,7 +144,7 @@ class Budget extends Component {
             ref={this.state.month_name}
             value={this.state.month_name}
           >
-            <option>Select</option>
+            {/* <option>Select</option> */}
             {this.displayMonths()}
           </select>
         </form>
