@@ -17,6 +17,10 @@ tr.remaining {
   float: right;
 }
 
+.month_totals {
+  margin: 25px;
+}
+
 .report {
   width: 100%;
 }
