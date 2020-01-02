@@ -15,7 +15,9 @@ class Budget extends Component {
   state = {
     charges: [],
     month_name: "",
-    months: []
+    months: [],
+    totalIncome: "",
+    totalExpenses: ""
   };
 
   static contextType = balanceContext;
@@ -69,97 +71,19 @@ class Budget extends Component {
     });
   };
 
-  // displayCharges = () => {
-  //   let totalIncome = 0;
-  //   let totalExpenses = 0;
-  //   let currentPaycheck = 0;
-  //   let expenses = 0;
+  displayCharges2 = () => {
+    let totalIncome = 0;
+    let totalExpenses = 0;
+    let currentPaycheck = 0;
+    let expenses = 0;
 
-  //   let arr = this.state.charges;
+    // let arr = this.state.charges;
 
-  //   let allCharges = () => {
-  //     for (let i = 0; i <= arr.length; i++) {
-  //       // console.log(arr[i]);
-  //       if (arr[i] === undefined) {
-  //         let remainder = currentPaycheck + expenses;
-  //         // console.log(`${remainder} left over from paycheck`);
-  //         // console.log(
-  //         //   `Monthly Income: ${totalIncome}. Montly Expenses: ${totalExpenses}. Montlhy leftover: ${totalIncome +
-  //         //     totalExpenses}`
-  //         // );
-  //         return (
-  //           <h2>
-  //             Monthly Income: {totalIncome}. Montly Expenses: {totalExpenses}.
-  //             Montlhy leftover: {totalIncome + totalExpenses}
-  //           </h2>
-  //         );
-  //       } else if (arr[i].category !== "Income") {
-  //         let { amount, due_date, charge_name, charge_id } = arr[i];
-
-  //         allCharges += <Charge />;
-  //         expenses -= arr[i].amount;
-  //         totalExpenses -= arr[i].amount;
-  //         // console.log(
-  //         //   `${arr[i].charge_name} added to expnses: ${arr[i].amount} total: ${expenses}`
-  //         // );
-  //         return (
-  //           <Charge
-  //             amount={amount}
-  //             due_date={due_date}
-  //             charge_name={charge_name}
-  //             key={charge_id}
-  //           />
-  //         );
-  //       } else if (arr[i].category === "Income") {
-  //         // if income, calculate previous paychecks remainder
-  //         let remainder = currentPaycheck + expenses;
-  //         // console.log(
-  //         //   `Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`
-  //         // );
-
-  //         // Then set the current paycheck to the selected one
-  //         currentPaycheck = arr[i].amount;
-  //         totalIncome += arr[i].amount;
-  //         // Then reset expenses
-  //         expenses = 0;
-  //         // console.log("---------");
-  //         // console.log(`Yay, a paycheck for ${arr[i].amount}`);
-  //         return <h2>Yay, a paycheck for {arr[i].amount}</h2>;
-  //       }
-  //     }
-  //   };
-
-  //   return allCharges;
-  // };
-
-  displayCharges = () => {
-    let totIncome = 0;
-    let totExpenses = 0;
-
-    const allCharges = this.state.charges.map(charge => {
+    let allCharges = this.state.charges.map(charge => {
       const { charge_id, charge_name, due_date, amount } = charge;
-      if (charge.category === "Income") {
-        let currentRemainder = totIncome + totExpenses;
-        totIncome += charge.amount;
-        totExpenses = 0;
-        return (
-          <div className="width-100">
-            <div className="checkRemainder">
-              <li className={currentRemainder > 0 ? "green" : "red"}>
-                {currentRemainder > 0 ? "Remaining: " : "Need to Save: "}{" "}
-                {currentRemainder}
-              </li>
-            </div>
-
-            <div className="Income">
-              <li className="detail">{charge.due_date}</li>
-              <li className="detail">{charge.charge_name}</li>
-              <li className="detail">{charge.amount}</li>
-            </div>
-          </div>
-        );
-      } else {
-        totExpenses -= charge.amount;
+      if (charge.category !== "Income") {
+        expenses -= amount;
+        totalExpenses -= amount;
         return (
           <Charge
             amount={amount}
@@ -168,8 +92,39 @@ class Budget extends Component {
             key={charge_id}
           />
         );
+      } else {
+        // Then it should be category "Income"
+        // if income, calculate previous paychecks remainder
+        let remainder = currentPaycheck + expenses;
+        let pastPaycheck = currentPaycheck;
+        // console.log(
+        //   `Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`
+        // );
+
+        // Then set the current paycheck to the selected one
+        currentPaycheck = amount;
+        totalIncome += amount;
+        // Then reset expenses
+        expenses = 0;
+        return (
+          <h2>
+            Current Paycheck: {pastPaycheck} means {remainder} left over from
+            paycheck{" "}
+          </h2>
+        );
       }
     });
+
+    let remainder = currentPaycheck + expenses;
+    let pastPaycheck = currentPaycheck;
+
+    allCharges = [
+      ...allCharges,
+      <h2>
+        Current Paycheck: {pastPaycheck} means {remainder} left over from
+        paycheck{" "}
+      </h2>
+    ];
     return allCharges;
   };
 
@@ -202,7 +157,15 @@ class Budget extends Component {
           </select>
         </form>
         <h3>{month_name}</h3>
-        <div className="flex-column report">{this.displayCharges()}</div>
+        <div className="flex-column report">{this.displayCharges2()}</div>
+        <div className="month_totals">
+          <h4>Monthly total Income: {this.state.totalIncome}</h4>
+          <h4>Monthly total Expenses: {this.state.totalExpenses}</h4>
+          <h4>
+            Monthly leftover:{" "}
+            {this.state.totalIncome + this.state.totalExpenses}
+          </h4>
+        </div>
 
         <button onClick={this.handleBack} type="button">
           Back
