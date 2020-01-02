@@ -23,36 +23,28 @@ class Budget extends Component {
   /* State Setting Methods */
   setMonth = month_name => {
     this.setState({ month_name: month_name });
-    console.log(`setMonth ran and state is now: ${this.state.month_name}`);
     this.setCharges();
   };
 
   updateMonth = month_name => {
     this.setState({ month_name: month_name });
-    console.log("updateMonth ran");
-    console.log(this.state.month_name);
     this.setCharges();
   };
 
   // Responsible for sortilng charges in context and updating state to match selected month_name
   setCharges = () => {
-    console.log(this.context.charges);
-    console.log(this.state.month_name);
-
     let month_name = document.getElementById("month_name").value;
 
     let charges = this.context.charges.filter(charge => {
-      // console.log(charge);
-
       if (charge.month_name === month_name) {
-        console.log("matching charge found");
+        // console.log("matching charge found");
         return charge;
       } else {
         return "";
       }
     });
     this.setState({ charges: charges });
-    console.log(`setCharges has run and setState`);
+    // console.log(`setCharges has run and setState`);
   };
 
   /* Custom Methods */
@@ -84,9 +76,9 @@ class Budget extends Component {
     let expenses = 0;
 
     let arr = this.state.charges;
-    console.log(arr);
 
     for (let i = 0; i <= arr.length; i++) {
+      console.log(arr[i]);
       if (arr[i] === undefined) {
         let remainder = currentPaycheck + expenses;
         console.log(`${remainder} left over from paycheck`);
@@ -102,14 +94,14 @@ class Budget extends Component {
         console.log(
           `${arr[i].charge_name} added to expnses: ${arr[i].amount} total: ${expenses}`
         );
-        return (
-          <Charge
-            amount={amount}
-            due_date={due_date}
-            charge_name={charge_name}
-            key={charge_id}
-          />
-        );
+        // return (
+        //   <Charge
+        //     amount={amount}
+        //     due_date={due_date}
+        //     charge_name={charge_name}
+        //     key={charge_id}
+        //   />
+        // );
       } else if (arr[i].category === "Income") {
         // if income, calculate previous paychecks remainder
         let remainder = currentPaycheck + expenses;
@@ -156,7 +148,7 @@ class Budget extends Component {
           </select>
         </form>
         <h3>{month_name}</h3>
-        {/* <div className="flex-column report">{this.displayCharges()}</div> */}
+        <div className="flex-column report">{this.displayCharges()}</div>
 
         <button onClick={this.handleBack} type="button">
           Back
