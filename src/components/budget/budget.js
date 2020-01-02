@@ -23,13 +23,14 @@ class Budget extends Component {
   /* State Setting Methods */
   updateMonth = month_name => {
     this.setState({ month_name: month_name });
+    this.setCharges();
   };
 
   // Responsible for sortilng charges in context and updating state to match selected month_name
   setCharges = () => {
-    // console.log(this.context.charges);
-    let charges = this.context.charges.map(charge => {
-      // console.log(charge);
+    console.log(this.context.charges);
+    let charges = this.context.charges.filter(charge => {
+      console.log(charge);
       if (charge.month_name === this.state.month_name) {
         // console.log("matching charge found");
         return charge;
@@ -38,36 +39,14 @@ class Budget extends Component {
       }
     });
     this.setState({ charges: charges });
+    console.log(charges);
 
-    // console.log("setCharges ran");
-  };
-
-  // Responsible for setting initial month_name to latest monthly report
-  setMonth = array => {
-    this.setState({
-      month_name: array[array.length - 1]
-    });
+    console.log("setCharges ran");
   };
 
   /* Custom Methods */
 
-  // Responsible for creating list of user's created month reports
-  // createMonthList = () => {
-  //   let monthList = [];
-
-  //   this.context.charges.map(charge => {
-  //     const { month_name } = charge;
-
-  //     if (monthList.includes(month_name) === true) {
-  //       return null;
-  //     }
-  //     monthList.push(month_name);
-  //   });
-  //   // this.setMonth(monthList);
-  //   // this.setState({ months: monthList });
-  //   console.log(monthList);
-  // };
-
+  // Responsible for providing options of monthly budgets
   displayMonths = () => {
     const months = {};
 
@@ -141,11 +120,7 @@ class Budget extends Component {
     this.props.history.goBack();
   };
 
-  componentDidMount() {
-    // this.setCharges();
-    // this.createMonthList();
-    // this.setMonth();
-  }
+  componentDidMount() {}
 
   render() {
     const { month_name } = this.state.month_name;
@@ -161,6 +136,7 @@ class Budget extends Component {
             ref={this.state.month_name}
             value={this.state.month_name}
           >
+            <option>Select</option>
             {this.displayMonths()}
           </select>
         </form>
