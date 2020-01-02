@@ -72,8 +72,6 @@ class Budget extends Component {
   };
 
   displayCharges2 = () => {
-    let totalIncome = 0;
-    let totalExpenses = 0;
     let currentPaycheck = 0;
     let expenses = 0;
 
@@ -83,7 +81,7 @@ class Budget extends Component {
       const { charge_id, charge_name, due_date, amount } = charge;
       if (charge.category !== "Income") {
         expenses -= amount;
-        totalExpenses -= amount;
+
         return (
           <Charge
             amount={amount}
@@ -103,14 +101,22 @@ class Budget extends Component {
 
         // Then set the current paycheck to the selected one
         currentPaycheck = amount;
-        totalIncome += amount;
+
         // Then reset expenses
         expenses = 0;
         return (
-          <h2>
-            Current Paycheck: {pastPaycheck} means {remainder} left over from
-            paycheck{" "}
-          </h2>
+          <div>
+            <h2>
+              Current Paycheck: {pastPaycheck} means {remainder} left over from
+              paycheck{" "}
+            </h2>
+            <Charge
+              amount={amount}
+              due_date={due_date}
+              charge_name={charge_name}
+              key={charge_id}
+            />
+          </div>
         );
       }
     });
