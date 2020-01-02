@@ -67,7 +67,7 @@ const Data = {
       category: "Food/Drink",
       due_date: 9,
       amount: 150,
-      month_name: "December 2019",
+      month_name: "December 2018",
       user_id: 1
     },
     {
@@ -76,7 +76,7 @@ const Data = {
       category: "Income",
       due_date: 20,
       amount: 1200,
-      month_name: "December 2019",
+      month_name: "January 2020",
       user_id: 1
     }
   ]

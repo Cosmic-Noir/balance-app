@@ -14,7 +14,8 @@ import balanceContext from "../../balanceContext";
 class Budget extends Component {
   state = {
     charges: [],
-    month: "",
+    month_name: "",
+    months: [],
     report: ""
   };
 
@@ -41,25 +42,36 @@ class Budget extends Component {
     // console.log("setCharges ran");
   };
 
+  setMonth = array => {
+    this.setState({
+      month_name: array[array.length - 1]
+    });
+  };
+
   /* Custom Methods */
   // Responsible for creating list of user's created month reports
   createMonthList = () => {
-    const monthList = {};
+    let monthList = [];
 
-    return this.context.charges.map(charge => {
+    this.context.charges.map(charge => {
       const { month_name } = charge;
 
-      if (monthList[month_name] === true) {
+      if (monthList.includes(month_name) === true) {
         return null;
       }
-      monthList[month_name] = true;
-      return (
-        <option value={month_name} key={month_name}>
-          {month_name}
-        </option>
-      );
+      monthList.push(month_name);
     });
+    console.log(monthList);
+    this.setMonth(monthList);
   };
+
+  // monthOptions = () => {
+  //   return (
+  //     <option value={month_name} key={month_name}>
+  //       {month_name}
+  //     </option>
+  //   );
+  // };
 
   // Need to sort charges by date
 
@@ -160,6 +172,8 @@ class Budget extends Component {
 
   componentDidMount() {
     this.setCharges();
+    this.createMonthList();
+    // this.setMonth();
   }
 
   render() {
@@ -177,11 +191,11 @@ class Budget extends Component {
             value={this.state.month_name}
           >
             <option value="">{this.state.month_name}</option>
-            {this.createMonthList()}
+            {/* {this.createMonthList()} */}
           </select>
         </form>
         <h3>{month_name}</h3>
-        <div className="flex-column report">{this.returnElement()}</div>
+        {/* <div className="flex-column report">{this.returnElement()}</div> */}
 
         <button onClick={this.handleBack} type="button">
           Back
