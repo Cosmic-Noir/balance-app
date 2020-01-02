@@ -15,8 +15,7 @@ class Budget extends Component {
   state = {
     charges: [],
     month_name: "",
-    months: [],
-    report: ""
+    months: []
   };
 
   static contextType = balanceContext;
@@ -26,11 +25,12 @@ class Budget extends Component {
     this.setState({ month_name: month_name });
   };
 
+  // Responsible for sortilng charges in context and updating state to match selected month_name
   setCharges = () => {
     // console.log(this.context.charges);
     let charges = this.context.charges.map(charge => {
       // console.log(charge);
-      if (charge.month_id === parseInt(this.props.match.params.month_id)) {
+      if (charge.month_name === this.state.month_name) {
         // console.log("matching charge found");
         return charge;
       } else {
@@ -42,6 +42,7 @@ class Budget extends Component {
     // console.log("setCharges ran");
   };
 
+  // Responsible for setting initial month_name to latest monthly report
   setMonth = array => {
     this.setState({
       month_name: array[array.length - 1]
@@ -49,71 +50,41 @@ class Budget extends Component {
   };
 
   /* Custom Methods */
+
   // Responsible for creating list of user's created month reports
-  createMonthList = () => {
-    let monthList = [];
+  // createMonthList = () => {
+  //   let monthList = [];
 
-    this.context.charges.map(charge => {
-      const { month_name } = charge;
+  //   this.context.charges.map(charge => {
+  //     const { month_name } = charge;
 
-      if (monthList.includes(month_name) === true) {
-        return null;
-      }
-      monthList.push(month_name);
-    });
-    console.log(monthList);
-    this.setMonth(monthList);
-  };
-
-  // monthOptions = () => {
-  //   return (
-  //     <option value={month_name} key={month_name}>
-  //       {month_name}
-  //     </option>
-  //   );
+  //     if (monthList.includes(month_name) === true) {
+  //       return null;
+  //     }
+  //     monthList.push(month_name);
+  //   });
+  //   // this.setMonth(monthList);
+  //   // this.setState({ months: monthList });
+  //   console.log(monthList);
   // };
 
-  // Need to sort charges by date
+  displayMonths = () => {
+    const months = {};
 
-  displayCharges = () => {
-    let totIncome = 0;
-    let totExpenses = 0;
+    return this.context.charges.map(charge => {
+      const { month_name } = charge;
 
-    const allCharges = this.state.charges.map(charge => {
-      const { charge_id, charge_name, due_date, amount } = charge;
-      if (charge.category === "Income") {
-        let currentRemainder = totIncome + totExpenses;
-        totIncome += charge.amount;
-        totExpenses = 0;
-        return (
-          <div className="width-100">
-            <div className="checkRemainder">
-              <li className={currentRemainder > 0 ? "green" : "red"}>
-                {currentRemainder > 0 ? "Remaining: " : "Need to Save: "}{" "}
-                {currentRemainder}
-              </li>
-            </div>
-
-            <div className="Income">
-              <li className="detail">{charge.due_date}</li>
-              <li className="detail">{charge.charge_name}</li>
-              <li className="detail">{charge.amount}</li>
-            </div>
-          </div>
-        );
-      } else {
-        totExpenses -= charge.amount;
-        return (
-          <Charge
-            amount={amount}
-            due_date={due_date}
-            charge_name={charge_name}
-            key={charge_id}
-          />
-        );
+      if (months[month_name] === true) {
+        return null;
       }
+      months[month_name] = true;
+
+      return (
+        <option value={month_name} key={month_name}>
+          {month_name}
+        </option>
+      );
     });
-    return allCharges;
   };
 
   returnElement = () => {
@@ -171,13 +142,13 @@ class Budget extends Component {
   };
 
   componentDidMount() {
-    this.setCharges();
-    this.createMonthList();
+    // this.setCharges();
+    // this.createMonthList();
     // this.setMonth();
   }
 
   render() {
-    const { month_name } = this.state.report;
+    const { month_name } = this.state.month_name;
     return (
       <div className="budgetReport flex-column">
         <h2 className="title">Budget Report</h2>
@@ -190,8 +161,7 @@ class Budget extends Component {
             ref={this.state.month_name}
             value={this.state.month_name}
           >
-            <option value="">{this.state.month_name}</option>
-            {/* {this.createMonthList()} */}
+            {this.displayMonths()}
           </select>
         </form>
         <h3>{month_name}</h3>
