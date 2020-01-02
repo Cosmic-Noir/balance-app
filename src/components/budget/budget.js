@@ -46,10 +46,20 @@ class Budget extends Component {
       }
     });
     this.setState({ charges: charges });
-    // console.log(`setCharges has run and setState`);
+
+    console.log(`setCharges has run and setState`);
+    this.calcMonthTotals();
   };
 
   /* Custom Methods */
+
+  // Responsible for calculating total monthly values
+  calcMonthTotals = () => {
+    let totalIncome = 0;
+    let totalExpenses = 0;
+    console.log(this.state);
+    console.log(totalIncome + " " + totalExpenses);
+  };
 
   // Responsible for providing options of monthly budgets
   displayMonths = () => {
@@ -71,6 +81,7 @@ class Budget extends Component {
     });
   };
 
+  // Responsible for displaying correct charge line depending on charge category
   displayCharges2 = () => {
     let currentPaycheck = 0;
     let expenses = 0;
@@ -141,7 +152,6 @@ class Budget extends Component {
 
   componentDidMount() {
     let month_name = document.getElementById("month_name").value;
-    console.log(month_name);
     this.setMonth(month_name);
   }
 
