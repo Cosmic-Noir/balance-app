@@ -113,7 +113,6 @@ class App extends Component {
           </nav>
           <main role="main">
             <Route exact path="/budgets" component={Budget} />
-            <Route path="/monthlyReports/:month_id" component={Budget} />
             <Route path="/createBudget" component={CreateBudget} />
             <Route path="/viewSavings" component={ViewSavings} />
             <Route path="/viewSpending" component={ViewSpending} />

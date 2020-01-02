@@ -5,7 +5,6 @@ const Data = {
       username: "dudest",
       email: "cool@email.com",
       pass: "cool123"
-      
     },
     {
       user_id: 2,
@@ -14,25 +13,7 @@ const Data = {
       pass: "cool123"
     }
   ],
-  monthlyReports: [
-    // hard coded values for now
-    {
-      month_id: 1,
-      month_name: "February 2020",
-      total_income: 2400,
-      totale_expenses: 1826,
-      total_remainder: 574,
-      user_id: 1
-    },
-    {
-      month_id: 2,
-      month_name: "March 2020",
-      total_income: 2400,
-      totale_expenses: 1866,
-      total_remainder: 774,
-      user_id: 1
-    }
-  ],
+
   charges: [
     // dudest charges
     {
@@ -41,7 +22,7 @@ const Data = {
       category: "Housing",
       due_date: 1,
       amount: 600,
-      month_id: 1,
+      month_name: "December 2019",
       user_id: 1
     },
     {
@@ -50,7 +31,7 @@ const Data = {
       category: "Food/Drink",
       due_date: 1,
       amount: 150,
-      month_id: 1,
+      month_name: "December 2019",
       user_id: 1
     },
     {
@@ -59,7 +40,7 @@ const Data = {
       category: "Insurance/Financial",
       due_date: 4,
       amount: 100,
-      month_id: 1,
+      month_name: "December 2019",
       user_id: 1
     },
     {
@@ -68,7 +49,7 @@ const Data = {
       category: "Income",
       due_date: 6,
       amount: 1200,
-      month_id: 1,
+      month_name: "December 2019",
       user_id: 1
     },
     {
@@ -77,7 +58,7 @@ const Data = {
       category: "Insurance/Financial",
       due_date: 7,
       amount: 60,
-      month_id: 1,
+      month_name: "December 2019",
       user_id: 1
     },
     {
@@ -86,7 +67,7 @@ const Data = {
       category: "Food/Drink",
       due_date: 9,
       amount: 150,
-      month_id: 1,
+      month_name: "December 2019",
       user_id: 1
     },
     {
@@ -95,7 +76,7 @@ const Data = {
       category: "Income",
       due_date: 20,
       amount: 1200,
-      month_id: 1,
+      month_name: "December 2019",
       user_id: 1
     }
   ]
