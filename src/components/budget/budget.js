@@ -21,6 +21,9 @@ class Budget extends Component {
   static contextType = balanceContext;
 
   /* State Setting Methods */
+  updateMonth = month_name => {
+    this.setState({ month_name: month_name });
+  };
 
   setCharges = () => {
     // console.log(this.context.charges);
@@ -40,17 +43,23 @@ class Budget extends Component {
 
   /* Custom Methods */
   // Responsible for creating list of user's created month reports
-  // createMonthList = () => {
-  //   const monthList = {};
+  createMonthList = () => {
+    const monthList = {};
 
-  //   return this.context.charges.map(charge => {
-  //     const { month_name }
-  //     if (monthList[charge.charge_name] === true){
-  //       return ull;
-  //     }
-  //     monthList[charge.charge_name] = true;
-  //   })
-  // }
+    return this.context.charges.map(charge => {
+      const { month_name } = charge;
+
+      if (monthList[month_name] === true) {
+        return null;
+      }
+      monthList[month_name] = true;
+      return (
+        <option value={month_name} key={month_name}>
+          {month_name}
+        </option>
+      );
+    });
+  };
 
   // Need to sort charges by date
 
@@ -158,6 +167,19 @@ class Budget extends Component {
     return (
       <div className="budgetReport flex-column">
         <h2 className="title">Budget Report</h2>
+        <form className="siteList">
+          <h3>Select Budget:</h3>
+          <select
+            id="month_name"
+            name="month_name"
+            onChange={e => this.updateMonth(e.target.value)}
+            ref={this.state.month_name}
+            value={this.state.month_name}
+          >
+            <option value="">{this.state.month_name}</option>
+            {this.createMonthList()}
+          </select>
+        </form>
         <h3>{month_name}</h3>
         <div className="flex-column report">{this.returnElement()}</div>
 
