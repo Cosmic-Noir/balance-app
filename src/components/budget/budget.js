@@ -21,20 +21,30 @@ class Budget extends Component {
   static contextType = balanceContext;
 
   /* State Setting Methods */
+  setMonth = month_name => {
+    this.setState({ month_name: month_name });
+    console.log(`setMonth ran and state is now: ${this.state.month_name}`);
+    this.setCharges();
+  };
+
   updateMonth = month_name => {
     this.setState({ month_name: month_name });
     console.log("updateMonth ran");
+    console.log(this.state.month_name);
     this.setCharges();
   };
 
   // Responsible for sortilng charges in context and updating state to match selected month_name
   setCharges = () => {
-    // console.log(this.context.charges);
+    console.log(this.context.charges);
+    console.log(this.state.month_name);
+
+    let month_name = document.getElementById("month_name").value;
 
     let charges = this.context.charges.filter(charge => {
       // console.log(charge);
 
-      if (charge.month_name === this.state.month_name) {
+      if (charge.month_name === month_name) {
         console.log("matching charge found");
         return charge;
       } else {
@@ -43,7 +53,6 @@ class Budget extends Component {
     });
     this.setState({ charges: charges });
     console.log(`setCharges has run and setState`);
-    // this.returnElement();
   };
 
   /* Custom Methods */
@@ -68,7 +77,7 @@ class Budget extends Component {
     });
   };
 
-  returnElement = () => {
+  displayCharges = () => {
     let totalIncome = 0;
     let totalExpenses = 0;
     let currentPaycheck = 0;
@@ -126,8 +135,7 @@ class Budget extends Component {
   componentDidMount() {
     let month_name = document.getElementById("month_name").value;
     console.log(month_name);
-    this.setState({ month_name: month_name });
-    this.setCharges();
+    this.setMonth(month_name);
   }
 
   render() {
@@ -144,12 +152,11 @@ class Budget extends Component {
             ref={this.state.month_name}
             value={this.state.month_name}
           >
-            {/* <option>Select</option> */}
             {this.displayMonths()}
           </select>
         </form>
         <h3>{month_name}</h3>
-        {/* <div className="flex-column report">{this.returnElement()}</div> */}
+        {/* <div className="flex-column report">{this.displayCharges()}</div> */}
 
         <button onClick={this.handleBack} type="button">
           Back
