@@ -118,10 +118,11 @@ export default Data;
     -Food/Drink
     -Health
     -Housing
+    -Income 
     -Insurance/Financial
     -Other
     -Pets
     -Savings
     -Shopping
     -Travel
-    -Income */
+    */

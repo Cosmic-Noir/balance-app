@@ -53,6 +53,10 @@ main {
   color: green;
 }
 
+.hidden {
+  display: none;
+}
+
 .light {
   color: #bde8f2;
 }

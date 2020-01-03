@@ -3,6 +3,7 @@ import React, { Component } from "react";
 
 /* Custom Components */
 import Charge from "../charge/charge";
+import AddCharge from "../addCharge/addCharge";
 
 /* Styling & Images */
 import "./budget.css";
@@ -178,6 +179,12 @@ class Budget extends Component {
     this.props.history.goBack();
   };
 
+  // Responsible for showing Add Charge
+  showAddCharge = () => {
+    let addCharge = document.getElementById("addCharge");
+    addCharge.classList.remove("hidden");
+  };
+
   componentDidMount() {
     let month_name = document.getElementById("month_name").value;
     this.setMonth(month_name);
@@ -209,7 +216,10 @@ class Budget extends Component {
             Monthly leftover: {this.displayIncome() + this.displayExpenses()}
           </h4>
         </div>
-
+        <AddCharge />
+        <button onClick={this.showAddCharge} type="button">
+          Add Charge
+        </button>
         <button onClick={this.handleBack} type="button">
           Back
         </button>
