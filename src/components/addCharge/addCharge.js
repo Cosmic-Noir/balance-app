@@ -63,6 +63,7 @@ class AddCharge extends Component {
   };
 
   // Responsible for changing fields to empty
+  // Not working properly
   resetCharge = () => {
     this.setState({ charge_name: "" });
   };
