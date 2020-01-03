@@ -183,6 +183,8 @@ class Budget extends Component {
   showAddCharge = () => {
     let addCharge = document.getElementById("addCharge");
     addCharge.classList.remove("hidden");
+    let addButton = document.getElementById("showAdd");
+    addButton.classList.add("hidden");
   };
 
   componentDidMount() {
@@ -217,7 +219,7 @@ class Budget extends Component {
           </h4>
         </div>
         <AddCharge />
-        <button onClick={this.showAddCharge} type="button">
+        <button onClick={this.showAddCharge} type="button" id="showAdd">
           Add Charge
         </button>
         <button onClick={this.handleBack} type="button">

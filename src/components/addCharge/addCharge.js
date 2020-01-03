@@ -58,7 +58,10 @@ class AddCharge extends Component {
 
   // Responsible for when user clicks cancel button
   handleCancel = () => {
-    // Add hidden class to form
+    let addCharge = document.getElementById("addCharge");
+    addCharge.classList.add("hidden");
+    let addButton = document.getElementById("showAdd");
+    addButton.classList.remove("hidden");
   };
 
   render() {
