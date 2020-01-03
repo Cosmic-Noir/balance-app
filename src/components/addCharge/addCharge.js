@@ -55,9 +55,16 @@ class AddCharge extends Component {
 
     newCharge.month_name = this.props.month_name;
     newCharge.user_id = this.context.userInfo.user_id;
-    console.log(newCharge);
+    // console.log(newCharge);
+    this.props.addNewCharge(newCharge);
+    this.resetCharge();
     console.log("Form submitted");
     // console.log(this.props);
+  };
+
+  // Responsible for changing fields to empty
+  resetCharge = () => {
+    this.setState({ charge_name: "" });
   };
 
   // Responsible for when user clicks cancel button

@@ -187,6 +187,11 @@ class Budget extends Component {
     addButton.classList.add("hidden");
   };
 
+  // Responsible for adding new charge to current array
+  addNewCharge = charge => {
+    this.setState({ charges: [...this.state.charges, charge] });
+  };
+
   componentDidMount() {
     let month_name = document.getElementById("month_name").value;
     this.setMonth(month_name);
@@ -218,7 +223,10 @@ class Budget extends Component {
             Monthly leftover: {this.displayIncome() + this.displayExpenses()}
           </h4>
         </div>
-        <AddCharge month_name={this.state.month_name} />
+        <AddCharge
+          month_name={this.state.month_name}
+          addNewCharge={this.addNewCharge}
+        />
         <button onClick={this.showAddCharge} type="button" id="showAdd">
           Add Charge
         </button>
