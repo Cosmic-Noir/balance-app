@@ -15,9 +15,7 @@ class Budget extends Component {
   state = {
     charges: [],
     month_name: "",
-    months: [],
-    totalIncome: "",
-    totalExpenses: ""
+    months: []
   };
 
   static contextType = balanceContext;
@@ -48,17 +46,43 @@ class Budget extends Component {
     this.setState({ charges: charges });
 
     console.log(`setCharges has run and setState`);
-    this.calcMonthTotals();
+    this.displayIncome();
   };
 
   /* Custom Methods */
 
-  // Responsible for calculating total monthly values
-  calcMonthTotals = () => {
+  // Responsible for displaying total monthly income
+  displayIncome = () => {
     let totalIncome = 0;
+    let charges = this.state.charges;
+    for (let i = 0; i < charges.length; i++) {
+      if (charges[i].category === "Income") {
+        totalIncome += charges[i].amount;
+      }
+    }
+
+    console.log("displayIncome ran");
+
+    return totalIncome;
+  };
+
+  // Responsible for displaying total monthly expenses
+  displayExpenses = () => {
     let totalExpenses = 0;
-    console.log(this.state);
-    console.log(totalIncome + " " + totalExpenses);
+    let charges = this.state.charges;
+    for (let i = 0; i < charges.length; i++) {
+      if (charges[i].category !== "Income") {
+        totalExpenses -= charges[i].amount;
+      }
+    }
+
+    console.log("displayIncome ran");
+
+    return totalExpenses;
+  };
+
+  displayTotalRemainder = () => {
+    let income = document.getElementById("");
   };
 
   // Responsible for providing options of monthly budgets
@@ -155,6 +179,7 @@ class Budget extends Component {
         </p>
       </div>
     ];
+    this.displayIncome();
     return allCharges;
   };
 
@@ -188,11 +213,10 @@ class Budget extends Component {
         <h3 className="title">{this.state.month_name}</h3>
         <div className="flex-column report">{this.displayCharges2()}</div>
         <div className="month_totals">
-          <h4>Monthly total Income: {this.state.totalIncome}</h4>
-          <h4>Monthly total Expenses: {this.state.totalExpenses}</h4>
+          <h4>Monthly total Income: {this.displayIncome()} </h4>
+          <h4>Monthly total Expenses: {this.displayExpenses()}</h4>
           <h4>
-            Monthly leftover:{" "}
-            {this.state.totalIncome + this.state.totalExpenses}
+            Monthly leftover: {this.displayIncome() + this.displayExpenses()}
           </h4>
         </div>
 
