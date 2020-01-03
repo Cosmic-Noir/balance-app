@@ -15,11 +15,10 @@ class AddCharge extends Component {
     // Will randomly create charge_id for now
     charge_id: "",
     charge_name: "",
-    category: "",
+    category: "Auto",
     due_date: "",
     amount: "",
-    month_name: "",
-    occurance: "",
+    occurance: "monthly",
     user_id: ""
   };
 
@@ -52,8 +51,13 @@ class AddCharge extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    let newCharge = this.state;
 
+    newCharge.month_name = this.props.month_name;
+    newCharge.user_id = this.context.userInfo.user_id;
+    console.log(newCharge);
     console.log("Form submitted");
+    // console.log(this.props);
   };
 
   // Responsible for when user clicks cancel button
@@ -63,6 +67,8 @@ class AddCharge extends Component {
     let addButton = document.getElementById("showAdd");
     addButton.classList.remove("hidden");
   };
+
+  componentDidMount() {}
 
   render() {
     return (
@@ -110,19 +116,19 @@ class AddCharge extends Component {
             ref={this.category}
             required
           >
-            <option value="Income">Auto</option>
-            <option value="Income">Bills/Utilities</option>
-            <option value="Income">Entertainment</option>
-            <option value="Income">Food/Drink</option>
-            <option value="Income">Health</option>
-            <option value="Income">Housing</option>
+            <option value="Auto">Auto</option>
+            <option value="Bills/Utilities">Bills/Utilities</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Food/Drink">Food/Drink</option>
+            <option value="Health">Health</option>
+            <option value="Housing">Housing</option>
             <option value="Income">Income</option>
-            <option value="Income">Insurance/Financial</option>
-            <option value="Income">Other</option>
-            <option value="Income">Pets</option>
-            <option value="Income">Savings</option>
-            <option value="Income">Shopping</option>
-            <option value="Income">Travel</option>
+            <option value="Insurance/Financial">Insurance/Financial</option>
+            <option value="Other">Other</option>
+            <option value="Pets">Pets</option>
+            <option value="Savings">Savings</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Travel">Travel</option>
           </select>
           <select
             id="occurance"

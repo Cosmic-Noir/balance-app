@@ -218,7 +218,7 @@ class Budget extends Component {
             Monthly leftover: {this.displayIncome() + this.displayExpenses()}
           </h4>
         </div>
-        <AddCharge />
+        <AddCharge month_name={this.state.month_name} />
         <button onClick={this.showAddCharge} type="button" id="showAdd">
           Add Charge
         </button>
