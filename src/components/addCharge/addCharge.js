@@ -86,7 +86,7 @@ class AddCharge extends Component {
             className="chargeInput"
             id="due_date"
             onChange={e => this.updateDueDate(e.target.value)}
-            placeholder="due date (number)"
+            placeholder="due date"
             name="due_date"
             ref={this.due_date}
             required

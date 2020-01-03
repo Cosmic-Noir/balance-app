@@ -1,3 +1,19 @@
+/* Class styling */
+
 .chargeInput {
-  width: 20%;
+  margin: 5px;
+}
+
+/* Id styling */
+
+#charge_name {
+  width: 30%;
+}
+
+#due_date {
+  width: 8%;
+}
+
+#amount {
+  width: 10%;
 }
