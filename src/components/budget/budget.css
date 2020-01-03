@@ -41,3 +41,7 @@ tr.remaining {
 .report {
   width: 100%;
 }
+
+.title {
+  margin: 10px;
+}

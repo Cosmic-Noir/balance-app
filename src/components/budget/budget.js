@@ -185,7 +185,7 @@ class Budget extends Component {
             {this.displayMonths()}
           </select>
         </form>
-        <h3>{month_name}</h3>
+        <h3 className="title">{this.state.month_name}</h3>
         <div className="flex-column report">{this.displayCharges2()}</div>
         <div className="month_totals">
           <h4>Monthly total Income: {this.state.totalIncome}</h4>
