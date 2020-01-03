@@ -87,6 +87,24 @@ const Data = {
       amount: 1200,
       month_name: "January 2020",
       user_id: 1
+    },
+    {
+      charge_id: 9,
+      charge_name: "Groceries",
+      category: "Food/Drink",
+      due_date: 9,
+      amount: 150,
+      month_name: "January 2020",
+      user_id: 1
+    },
+    {
+      charge_id: 10,
+      charge_name: "Pet Insurance",
+      category: "Insurance/Financial",
+      due_date: 7,
+      amount: 60,
+      month_name: "January 2020",
+      user_id: 1
     }
   ]
 };

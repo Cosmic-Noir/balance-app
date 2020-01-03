@@ -45,7 +45,7 @@ class Budget extends Component {
     });
     this.setState({ charges: charges });
 
-    console.log(`setCharges has run and setState`);
+    // console.log(`setCharges has run and setState`);
     this.displayIncome();
   };
 
@@ -60,9 +60,6 @@ class Budget extends Component {
         totalIncome += charges[i].amount;
       }
     }
-
-    console.log("displayIncome ran");
-
     return totalIncome;
   };
 
@@ -75,14 +72,7 @@ class Budget extends Component {
         totalExpenses -= charges[i].amount;
       }
     }
-
-    console.log("displayIncome ran");
-
     return totalExpenses;
-  };
-
-  displayTotalRemainder = () => {
-    let income = document.getElementById("");
   };
 
   // Responsible for providing options of monthly budgets
@@ -194,7 +184,7 @@ class Budget extends Component {
   }
 
   render() {
-    const { month_name } = this.state.month_name;
+    // const { month_name } = this.state.month_name;
     return (
       <div className="budgetReport flex-column">
         <h2 className="title">Budget Report</h2>
