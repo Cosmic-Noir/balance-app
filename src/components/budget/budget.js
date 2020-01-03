@@ -90,7 +90,17 @@ class Budget extends Component {
 
     let allCharges = this.state.charges.map(charge => {
       const { charge_id, charge_name, due_date, amount } = charge;
-      if (charge.category !== "Income") {
+      if (charge.category === "Income" && charge === this.state.charges[0]) {
+        currentPaycheck = amount;
+        return (
+          <Charge
+            amount={amount}
+            due_date={due_date}
+            charge_name={charge_name}
+            key={charge_id}
+          />
+        );
+      } else if (charge.category !== "Income") {
         expenses -= amount;
 
         return (
@@ -116,13 +126,14 @@ class Budget extends Component {
         // Then reset expenses
         expenses = 0;
         return (
-          <div>
-            <h2>
+          <div className="remainder">
+            <p>
               Current Paycheck: {pastPaycheck} means {remainder} left over from
               paycheck{" "}
-            </h2>
+            </p>
             <Charge
               amount={amount}
+              class_name="paycheck"
               due_date={due_date}
               charge_name={charge_name}
               key={charge_id}
@@ -137,10 +148,12 @@ class Budget extends Component {
 
     allCharges = [
       ...allCharges,
-      <h2>
-        Current Paycheck: {pastPaycheck} means {remainder} left over from
-        paycheck{" "}
-      </h2>
+      <div className="remainder">
+        <p>
+          Current Paycheck: {pastPaycheck} means {remainder} left over from
+          paycheck{" "}
+        </p>
+      </div>
     ];
     return allCharges;
   };

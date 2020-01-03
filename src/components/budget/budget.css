@@ -21,6 +21,23 @@ tr.remaining {
   margin: 25px;
 }
 
+.paycheck {
+  width: 100%;
+}
+
+.remainder {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.remainder p {
+  border-top: 1px solid black;
+  justify-self: flex-end;
+}
+
 .report {
   width: 100%;
 }
