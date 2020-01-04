@@ -194,7 +194,7 @@ class Budget extends Component {
   sortCharges = () => {
     let charges = this.state.charges;
     charges.sort((a, b) => {
-      if (a.due_date > b.due_date) {
+      if (a.due_date > b.due_date || a.due_date === b.due_date) {
         return 1;
       } else {
         return -1;
