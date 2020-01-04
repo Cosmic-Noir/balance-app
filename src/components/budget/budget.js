@@ -128,7 +128,7 @@ class Budget extends Component {
       } else {
         // Then it should be category "Income"
         // if income, calculate previous paychecks remainder
-        let remainder = currentPaycheck + expenses;
+        let remainder = Math.round(currentPaycheck + expenses * 100) / 100;
         let pastPaycheck = currentPaycheck;
         // console.log(
         //   `Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`
@@ -190,8 +190,6 @@ class Budget extends Component {
     this.setState({ charges: [...this.state.charges, charge] }, function() {
       this.sortCharges();
     });
-    console.log(this.state.charges);
-    console.log(`addNewCharge has run`);
   };
 
   // Responsible for sorting the charges by due date
@@ -207,7 +205,6 @@ class Budget extends Component {
       }
     });
     this.setState({ charges: charges });
-    console.log(`sortCharges ran`);
   };
 
   componentDidMount() {

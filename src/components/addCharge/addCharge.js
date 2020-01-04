@@ -34,7 +34,7 @@ class AddCharge extends Component {
   }
 
   updateAmount(amount) {
-    this.setState({ amount: parseInt(amount) });
+    this.setState({ amount: parseFloat(amount) });
   }
 
   updateCategory(category) {
