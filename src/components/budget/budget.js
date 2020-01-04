@@ -42,10 +42,11 @@ class Budget extends Component {
         return "";
       }
     });
-    this.setState({ charges: charges });
+    this.setState({ charges: charges }, function() {
+      this.sortCharges();
+    });
 
     // console.log(`setCharges has run and setState`);
-    this.displayIncome();
   };
 
   /* Custom Methods */
