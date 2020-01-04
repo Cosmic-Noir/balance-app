@@ -11,7 +11,6 @@ import "./budget.css";
 /* Context */
 import balanceContext from "../../balanceContext";
 
-// Should turn into function when can test
 class Budget extends Component {
   state = {
     charges: [],
@@ -32,7 +31,7 @@ class Budget extends Component {
     this.setCharges();
   };
 
-  // Responsible for sortilng charges in context and updating state to match selected month_name
+  // Responsible for sorting charges in context and updating state to match selected month_name
   setCharges = () => {
     let month_name = document.getElementById("month_name").value;
 
@@ -170,7 +169,6 @@ class Budget extends Component {
         </p>
       </div>
     ];
-    this.displayIncome();
     return allCharges;
   };
 
@@ -190,6 +188,20 @@ class Budget extends Component {
   // Responsible for adding new charge to current array
   addNewCharge = charge => {
     this.setState({ charges: [...this.state.charges, charge] });
+  };
+
+  // Responsible for sorting the charges by due date
+  sortCharges = () => {
+    let charges = this.state.charges;
+    charges.sort((a, b) => {
+      if (a.due_date > b.due_date) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+    this.setState({ charges: charges });
+    console.log(`sortCharges ran`);
   };
 
   componentDidMount() {
@@ -226,6 +238,7 @@ class Budget extends Component {
         <AddCharge
           month_name={this.state.month_name}
           addNewCharge={this.addNewCharge}
+          sortCharges={this.sortCharges}
         />
         <button onClick={this.showAddCharge} type="button" id="showAdd">
           Add Charge
