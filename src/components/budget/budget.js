@@ -14,8 +14,7 @@ import balanceContext from "../../balanceContext";
 class Budget extends Component {
   state = {
     charges: [],
-    month_name: "",
-    months: []
+    month_name: ""
   };
 
   static contextType = balanceContext;
