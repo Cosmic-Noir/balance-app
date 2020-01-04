@@ -39,6 +39,11 @@ class App extends Component {
     this.setState({ users: [...this.state.users, newUser] });
   };
 
+  // Responsible for adding new charge to current array
+  addNewCharge = charge => {
+    this.setState({ charges: [...this.state.charges, charge] });
+  };
+
   // Temp function for when user logs in.
   onSignIn = () => {
     this.setState({
@@ -94,6 +99,7 @@ class App extends Component {
     const contextValue = {
       // Methods
       addNewUser: this.addNewUser,
+      addNewCharge: this.addNewCharge,
       checkLoginStatus: this.checkLoginStatus,
       onSignIn: this.onSignIn,
       onSignOut: this.onSignOut,

@@ -60,7 +60,7 @@ class Budget extends Component {
         totalIncome += charges[i].amount;
       }
     }
-    return totalIncome;
+    return Math.round(totalIncome * 100) / 100;
   };
 
   // Responsible for displaying total monthly expenses
@@ -72,7 +72,7 @@ class Budget extends Component {
         totalExpenses -= charges[i].amount;
       }
     }
-    return totalExpenses;
+    return Math.round(totalExpenses * 100) / 100;
   };
 
   // Responsible for providing options of monthly budgets
@@ -103,8 +103,9 @@ class Budget extends Component {
     // let arr = this.state.charges;
 
     let allCharges = this.state.charges.map(charge => {
-      const { charge_id, charge_name, due_date, amount } = charge;
-      if (charge.category === "Income" && charge === this.state.charges[0]) {
+      const { charge_id, charge_name, due_date, amount, category } = charge;
+
+      if (category === "Income" && charge === this.state.charges[0]) {
         currentPaycheck = amount;
         return (
           <Charge
@@ -114,9 +115,11 @@ class Budget extends Component {
             key={charge_id}
           />
         );
-      } else if (charge.category !== "Income") {
+      } else if (category !== "Income") {
         expenses -= amount;
-
+        console.log(
+          `${charge_name} is an expense for $${amount}, current expenses are ${expenses}`
+        );
         return (
           <Charge
             amount={amount}
@@ -126,9 +129,12 @@ class Budget extends Component {
           />
         );
       } else {
-        // Then it should be category "Income"
-        // if income, calculate previous paychecks remainder
-        let remainder = Math.round(currentPaycheck + expenses * 100) / 100;
+        // IF category IS income and it's NOT the first charge
+        let remainder = Math.round((currentPaycheck + expenses) * 100) / 100;
+        console.log(
+          `Paycheck detected, currentPaycheck is ${currentPaycheck} and expenses are ${expenses} so the remainder is ${currentPaycheck +
+            expenses}`
+        );
         let pastPaycheck = currentPaycheck;
         // console.log(
         //   `Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`
@@ -235,7 +241,9 @@ class Budget extends Component {
           <h4>Monthly total Income: {this.displayIncome()} </h4>
           <h4>Monthly total Expenses: {this.displayExpenses()}</h4>
           <h4>
-            Monthly leftover: {this.displayIncome() + this.displayExpenses()}
+            Monthly leftover:{" "}
+            {Math.round((this.displayIncome() + this.displayExpenses()) * 100) /
+              100}
           </h4>
         </div>
         <AddCharge
