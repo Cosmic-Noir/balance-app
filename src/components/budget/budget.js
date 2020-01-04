@@ -191,13 +191,6 @@ class Budget extends Component {
     addButton.classList.add("hidden");
   };
 
-  // Responsible for adding new charge to current array
-  addNewCharge = charge => {
-    this.setState({ charges: [...this.state.charges, charge] }, function() {
-      this.sortCharges();
-    });
-  };
-
   // Responsible for sorting the charges by due date
   sortCharges = () => {
     let charges = this.state.charges;
