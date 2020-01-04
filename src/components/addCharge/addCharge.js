@@ -57,9 +57,12 @@ class AddCharge extends Component {
     newCharge.user_id = this.context.userInfo.user_id;
     // console.log(newCharge);
     this.context.addNewCharge(newCharge);
+    setTimeout(() => {
+      this.props.setCharges();
+    }, 1000);
+    // this.props.setCharges();
     this.resetCharge();
     console.log("Form submitted");
-    // console.log(this.props);
   };
 
   // Responsible for changing fields to empty

@@ -45,8 +45,7 @@ class Budget extends Component {
     this.setState({ charges: charges }, function() {
       this.sortCharges();
     });
-
-    // console.log(`setCharges has run and setState`);
+    console.log(`setCharges has run and setState`);
   };
 
   /* Custom Methods */
@@ -117,9 +116,9 @@ class Budget extends Component {
         );
       } else if (category !== "Income") {
         expenses -= amount;
-        console.log(
-          `${charge_name} is an expense for $${amount}, current expenses are ${expenses}`
-        );
+        // console.log(
+        //   `${charge_name} is an expense for $${amount}, current expenses are ${expenses}`
+        // );
         return (
           <Charge
             amount={amount}
@@ -131,10 +130,10 @@ class Budget extends Component {
       } else {
         // IF category IS income and it's NOT the first charge
         let remainder = Math.round((currentPaycheck + expenses) * 100) / 100;
-        console.log(
-          `Paycheck detected, currentPaycheck is ${currentPaycheck} and expenses are ${expenses} so the remainder is ${currentPaycheck +
-            expenses}`
-        );
+        // console.log(
+        //   `Paycheck detected, currentPaycheck is ${currentPaycheck} and expenses are ${expenses} so the remainder is ${currentPaycheck +
+        //     expenses}`
+        // );
         let pastPaycheck = currentPaycheck;
         // console.log(
         //   `Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`
@@ -194,7 +193,7 @@ class Budget extends Component {
   // Responsible for sorting the charges by due date
   sortCharges = () => {
     let charges = this.state.charges;
-    console.log(this.state.charges);
+    // console.log(this.state.charges);
 
     charges.sort((a, b) => {
       if (a.due_date > b.due_date || a.due_date === b.due_date) {
@@ -241,7 +240,8 @@ class Budget extends Component {
         </div>
         <AddCharge
           month_name={this.state.month_name}
-          addNewCharge={this.addNewCharge}
+          setCharges={this.setCharges}
+          updateStuff={this.updateStuff}
         />
         <button onClick={this.showAddCharge} type="button" id="showAdd">
           Add Charge
