@@ -187,12 +187,18 @@ class Budget extends Component {
 
   // Responsible for adding new charge to current array
   addNewCharge = charge => {
-    this.setState({ charges: [...this.state.charges, charge] });
+    this.setState({ charges: [...this.state.charges, charge] }, function() {
+      this.sortCharges();
+    });
+    console.log(this.state.charges);
+    console.log(`addNewCharge has run`);
   };
 
   // Responsible for sorting the charges by due date
   sortCharges = () => {
     let charges = this.state.charges;
+    console.log(this.state.charges);
+
     charges.sort((a, b) => {
       if (a.due_date > b.due_date || a.due_date === b.due_date) {
         return 1;
@@ -238,7 +244,6 @@ class Budget extends Component {
         <AddCharge
           month_name={this.state.month_name}
           addNewCharge={this.addNewCharge}
-          sortCharges={this.sortCharges}
         />
         <button onClick={this.showAddCharge} type="button" id="showAdd">
           Add Charge

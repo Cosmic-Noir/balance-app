@@ -57,7 +57,6 @@ class AddCharge extends Component {
     newCharge.user_id = this.context.userInfo.user_id;
     // console.log(newCharge);
     this.props.addNewCharge(newCharge);
-    this.props.sortCharges();
     this.resetCharge();
     console.log("Form submitted");
     // console.log(this.props);
