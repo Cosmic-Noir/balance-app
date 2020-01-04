@@ -34,7 +34,7 @@ class AddCharge extends Component {
   }
 
   updateAmount(amount) {
-    this.setState({ amount });
+    this.setState({ amount: parseInt(amount) });
   }
 
   updateCategory(category) {
@@ -42,7 +42,7 @@ class AddCharge extends Component {
   }
 
   updateDueDate(due_date) {
-    this.setState({ due_date });
+    this.setState({ due_date: parseInt(due_date) });
   }
 
   /* Custom Methods */
