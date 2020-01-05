@@ -100,7 +100,7 @@ class Budget extends Component {
   };
 
   // Responsible for displaying correct charge line depending on charge category
-  displayCharges2 = () => {
+  displayCharges = () => {
     let currentPaycheck = 0;
     let expenses = 0;
 
@@ -263,7 +263,7 @@ class Budget extends Component {
           </select>
         </form>
         <h3 className="title">{this.state.month_name}</h3>
-        <div className="flex-column report">{this.displayCharges2()}</div>
+        <div className="flex-column report">{this.displayCharges()}</div>
         <div className="month_totals">
           <h4>Monthly total Income: {this.displayIncome()} </h4>
           <h4>Monthly total Expenses: {this.displayExpenses()}</h4>
