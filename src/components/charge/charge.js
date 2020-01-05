@@ -13,7 +13,7 @@ class Charge extends Component {
     charge_name: "",
     category: "",
     due_date: "",
-    occurance: "monthly"
+    occurance: ""
   };
 
   static contextType = balanceContext;

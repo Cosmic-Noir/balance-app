@@ -18,7 +18,7 @@ class AddCharge extends Component {
     charge_id: "",
     charge_name: "",
     due_date: "",
-    occurance: "monthly"
+    occurance: "One Time"
   };
 
   static contextType = balanceContext;
@@ -46,36 +46,50 @@ class AddCharge extends Component {
 
   /* Custom Methods */
 
-  generateId = () => {};
-
   handleSubmit = e => {
     e.preventDefault();
 
     if (this.props.editing === true) {
+      // Editing existing charge
       let updatedCharge = this.state;
       updatedCharge.charge_id = this.props.charge_id;
       updatedCharge.month_name = this.props.month_name;
-      // console.log(this.props);
-      // console.log(updatedCharge);
+
       this.context.updateCharge(updatedCharge);
       setTimeout(() => {
         this.props.setCharges();
       }, 1000);
       this.props.handleClickSave();
     } else {
+      // Adding unique new charge
       let newCharge = this.state;
-
+      console.log(newCharge);
       newCharge.month_name = this.props.month_name;
       newCharge.user_id = this.context.userInfo.user_id;
       newCharge.charge_id = Math.floor(Math.random() * 1000);
-      // console.log(newCharge);
+
       this.context.addNewCharge(newCharge);
+      this.addAdditionalCharge(newCharge);
       setTimeout(() => {
         this.props.setCharges();
       }, 1000);
       // this.props.setCharges();
       this.resetCharge();
     }
+  };
+
+  addAdditionalCharge = newCharge => {
+    let { occurance, charge_name } = newCharge;
+    if (occurance === "One Time") {
+      console.log(`${charge_name} is a One Time occurance`);
+    } else if (occurance === "Monthly") {
+      console.log(`${charge_name} is a Monthly occurance`);
+    } else if (occurance === "Biweekly") {
+      console.log(`${charge_name} is a Biweekly occurance`);
+    } else if (occurance === "Weekly") {
+      console.log(`${charge_name} is a Weekly occurance`);
+    }
+    console.log(`addAdditionalCharge has run`);
   };
 
   // Responsible for changing fields to empty
