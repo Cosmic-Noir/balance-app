@@ -283,7 +283,6 @@ class Budget extends Component {
         <AddCharge
           month_name={this.state.month_name}
           setCharges={this.setCharges}
-          updateStuff={this.updateStuff}
         />
         <button onClick={this.showAddCharge} type="button" id="showAdd">
           Add Charge

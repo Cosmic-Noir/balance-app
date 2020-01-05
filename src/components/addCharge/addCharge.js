@@ -13,7 +13,7 @@ import balanceContext from "../../balanceContext";
 class AddCharge extends Component {
   state = {
     // Will randomly create charge_id for now
-    charge_id: "",
+    charge_id: this.props.charge_id || "",
     charge_name: "",
     category: "Auto",
     due_date: "",
@@ -91,7 +91,10 @@ class AddCharge extends Component {
 
   render() {
     return (
-      <div className="addCharge hidden" id="addCharge">
+      <div
+        className="addCharge hidden"
+        id={this.props.editing === true ? "" : "addCharge"}
+      >
         <form
           onSubmit={e => {
             this.handleSubmit(e);
