@@ -15,8 +15,10 @@ class Charge extends Component {
         <span className="detail">{this.props.due_date}</span>
         <span className="detail">{this.props.charge_name}</span>
         <span className="detail">{this.props.amount}</span>
-        <button className="hidden editType">Edit</button>
-        <button className="hidden editType">Delete</button>
+        <div>
+          <button className="hidden editType">Delete</button>
+          <button className="hidden editType">Edit</button>
+        </div>
       </div>
     );
   }
