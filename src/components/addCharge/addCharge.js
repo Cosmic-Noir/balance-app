@@ -106,6 +106,7 @@ class AddCharge extends Component {
             ref={this.charge_name}
             required
             type="text"
+            value={this.state.charge_name}
           />
           <input
             className="chargeInput"
@@ -116,6 +117,7 @@ class AddCharge extends Component {
             ref={this.due_date}
             required
             type="text"
+            value={this.state.due_date}
           />
           <input
             className="chargeInput"
@@ -126,6 +128,7 @@ class AddCharge extends Component {
             ref={this.amount}
             required
             type="text"
+            value={this.state.amount}
           />
           <select
             id="category"
