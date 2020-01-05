@@ -12,6 +12,9 @@ class Charge extends Component {
   handleClickDelete = () => {
     // console.log(this.props.charge_id);
     this.context.deleteCharge(this.props.charge_id);
+    setTimeout(() => {
+      this.props.setCharges();
+    }, 1000);
   };
 
   render() {

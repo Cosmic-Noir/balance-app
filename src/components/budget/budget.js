@@ -117,6 +117,7 @@ class Budget extends Component {
             due_date={due_date}
             charge_name={charge_name}
             key={charge_id}
+            setCharges={this.setCharges}
           />
         );
       } else if (category !== "Income") {
@@ -131,6 +132,7 @@ class Budget extends Component {
             due_date={due_date}
             charge_name={charge_name}
             key={charge_id}
+            setCharges={this.setCharges}
           />
         );
       } else {
