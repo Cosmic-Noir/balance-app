@@ -113,6 +113,7 @@ class Budget extends Component {
         return (
           <Charge
             amount={amount}
+            charge_id={charge_id}
             due_date={due_date}
             charge_name={charge_name}
             key={charge_id}
@@ -126,6 +127,7 @@ class Budget extends Component {
         return (
           <Charge
             amount={amount}
+            charge_id={charge_id}
             due_date={due_date}
             charge_name={charge_name}
             key={charge_id}

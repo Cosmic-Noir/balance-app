@@ -44,6 +44,16 @@ class App extends Component {
     this.setState({ charges: [...this.state.charges, charge] });
   };
 
+  // Responsible for deleting charge
+  deleteCharge = chargeId => {
+    const newCharges = this.state.charges.filter(
+      charge => charge.charge_id !== chargeId
+    );
+    this.setState({ charges: newCharges });
+
+    console.log(`deleteCharge is called`);
+  };
+
   // Temp function for when user logs in.
   onSignIn = () => {
     this.setState({
@@ -104,6 +114,7 @@ class App extends Component {
       onSignIn: this.onSignIn,
       onSignOut: this.onSignOut,
       setUserInfo: this.setUserInfo,
+      deleteCharge: this.deleteCharge,
 
       // Values
       charges: this.state.charges,

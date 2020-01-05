@@ -9,6 +9,11 @@ import balanceContext from "../../balanceContext";
 class Charge extends Component {
   static contextType = balanceContext;
 
+  handleClickDelete = () => {
+    // console.log(this.props.charge_id);
+    this.context.deleteCharge(this.props.charge_id);
+  };
+
   render() {
     return (
       <div className="charge">
@@ -17,7 +22,9 @@ class Charge extends Component {
         <span className="detail">{this.props.amount}</span>
         <div className="hidden editType">
           <button>Edit</button>
-          <button>Delete</button>
+          <button onClick={this.handleClickDelete} type="button">
+            Delete
+          </button>
         </div>
       </div>
     );
