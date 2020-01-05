@@ -51,6 +51,7 @@ class AddCharge extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.state);
     let newCharge = this.state;
 
     newCharge.month_name = this.props.month_name;
@@ -62,13 +63,20 @@ class AddCharge extends Component {
     }, 1000);
     // this.props.setCharges();
     this.resetCharge();
-    console.log("Form submitted");
   };
 
   // Responsible for changing fields to empty
   // Not working properly
   resetCharge = () => {
-    this.setState({ charge_name: "" });
+    this.setState({
+      charge_id: "",
+      charge_name: "",
+      category: "Auto",
+      due_date: "",
+      amount: "",
+      occurance: "monthly",
+      user_id: ""
+    });
   };
 
   // Responsible for when user clicks cancel button

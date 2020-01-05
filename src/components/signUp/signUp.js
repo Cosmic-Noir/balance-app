@@ -61,11 +61,11 @@ class SignUp extends Component {
       this.setState({
         error: `Must enter valid e-mail addres`
       });
-    } else if (this.state.password.length < 6) {
+    } else if (this.state.pass.length < 6) {
       this.setState({
         error: `Password length must be greater than 5 characters`
       });
-    } else if (this.state.password !== this.state.passTwo) {
+    } else if (this.state.pass !== this.state.passTwo) {
       this.setState({
         error: `Password fields must match`
       });

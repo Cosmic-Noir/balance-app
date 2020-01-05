@@ -45,7 +45,7 @@ class Budget extends Component {
     this.setState({ charges: charges }, function() {
       this.sortCharges();
     });
-    console.log(`setCharges has run and setState`);
+    // console.log(`setCharges has run and setState`);
   };
 
   /* Custom Methods */
@@ -78,20 +78,24 @@ class Budget extends Component {
   displayMonths = () => {
     const months = {};
 
-    return this.context.charges.map(charge => {
-      const { month_name } = charge;
+    if (this.context.charges === null) {
+      return null;
+    } else {
+      return this.context.charges.map(charge => {
+        const { month_name } = charge;
 
-      if (months[month_name] === true) {
-        return null;
-      }
-      months[month_name] = true;
+        if (months[month_name] === true) {
+          return null;
+        }
+        months[month_name] = true;
 
-      return (
-        <option value={month_name} key={month_name}>
-          {month_name}
-        </option>
-      );
-    });
+        return (
+          <option value={month_name} key={month_name}>
+            {month_name}
+          </option>
+        );
+      });
+    }
   };
 
   // Responsible for displaying correct charge line depending on charge category

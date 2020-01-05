@@ -41,6 +41,7 @@ class App extends Component {
 
   // Responsible for adding new charge to current array
   addNewCharge = charge => {
+    console.log(charge);
     this.setState({ charges: [...this.state.charges, charge] });
   };
 
@@ -55,7 +56,7 @@ class App extends Component {
   // Temp func to set charges
   setCharges = user_id => {
     // eslint-disable-next-line
-    let matchingCharges = Data.charges.map(charge => {
+    let matchingCharges = Data.charges.filter(charge => {
       if (charge.user_id === user_id) {
         return charge;
       }
