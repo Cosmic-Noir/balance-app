@@ -186,6 +186,18 @@ class Budget extends Component {
     this.props.history.goBack();
   };
 
+  // Responsible for showing edit/delete buttons on each charge
+  showsEdits = () => {
+    let buttons = document.getElementsByClassName("editType");
+    // console.log(buttons);
+
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove("hidden");
+    }
+
+    console.log(`showsEdits button hit`);
+  };
+
   // Responsible for showing Add Charge
   showAddCharge = () => {
     let addCharge = document.getElementById("addCharge");
@@ -250,6 +262,10 @@ class Budget extends Component {
         <button onClick={this.showAddCharge} type="button" id="showAdd">
           Add Charge
         </button>
+        <button className="editTable" onClick={this.showsEdits}>
+          Edit Budget
+        </button>
+
         <button onClick={this.handleBack} type="button">
           Back
         </button>
