@@ -12,10 +12,6 @@
   padding: 0px 10px;
 }
 
-.editType {
-  float: right;
-}
-
 .Income {
   display: flex;
   flex-direction: row;
