@@ -81,12 +81,16 @@ class Charge extends Component {
             <span className="detail">{this.props.due_date}</span>
             <span className="detail">{this.props.charge_name}</span>
             <span className="detail">{this.props.amount}</span>
-            <div className="hidden editType">
-              <button onClick={this.handleClickEdit}>Edit</button>
-              <button onClick={this.handleClickDelete} type="button">
-                Delete
-              </button>
-            </div>
+            {this.props.editingBudget === true ? (
+              <div className="editType">
+                <button onClick={this.handleClickEdit}>Edit</button>
+                <button onClick={this.handleClickDelete} type="button">
+                  Delete
+                </button>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         )}
       </div>

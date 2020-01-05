@@ -117,6 +117,7 @@ class Budget extends Component {
             charge_id={charge_id}
             charge_name={charge_name}
             due_date={due_date}
+            editingBudget={this.state.editingBudget}
             key={charge_id}
             month_name={this.state.month_name}
             setCharges={this.setCharges}
@@ -131,8 +132,9 @@ class Budget extends Component {
           <Charge
             amount={amount}
             charge_id={charge_id}
-            due_date={due_date}
             charge_name={charge_name}
+            due_date={due_date}
+            editingBudget={this.state.editingBudget}
             key={charge_id}
             month_name={this.state.month_name}
             setCharges={this.setCharges}
@@ -163,10 +165,13 @@ class Budget extends Component {
             </p>
             <Charge
               amount={amount}
-              class_name="paycheck"
-              due_date={due_date}
+              charge_id={charge_id}
               charge_name={charge_name}
+              due_date={due_date}
+              editingBudget={this.state.editingBudget}
               key={charge_id}
+              month_name={this.state.month_name}
+              setCharges={this.setCharges}
             />
           </div>
         );
@@ -194,19 +199,15 @@ class Budget extends Component {
   };
 
   // Responsible for showing edit/delete buttons on each charge
-  showsEdits = () => {
-    let buttons = document.getElementsByClassName("editType");
-    // console.log(buttons);
+  handleEditBudgetClick = () => {
+    // let buttons = document.getElementsByClassName("editType");
+    // // console.log(buttons);
 
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove("hidden");
-    }
+    // for (let i = 0; i < buttons.length; i++) {
+    //   buttons[i].classList.remove("hidden");
+    // }
 
-    let editTableButton = document.getElementById("editTable");
-    editTableButton.classList.add("hidden");
-
-    let doneEditingButton = document.getElementById("saveTable");
-    doneEditingButton.classList.remove("hidden");
+    this.setState({ editingBudget: true });
 
     // console.log(`showsEdits button hit`);
   };
@@ -290,7 +291,7 @@ class Budget extends Component {
         <button onClick={this.showAddCharge} type="button" id="showAdd">
           Add Charge
         </button>
-        <button id="editTable" onClick={this.showsEdits}>
+        <button id="editBudget" onClick={this.handleEditBudgetClick}>
           Edit Budget
         </button>
         <button id="saveTable" className="hidden" onClick={this.hideEdits}>
