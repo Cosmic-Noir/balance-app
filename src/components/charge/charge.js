@@ -66,7 +66,11 @@ class Charge extends Component {
     return (
       <div className="flex-column width-80">
         {this.state.editing === true ? (
-          <AddCharge editing={this.state.editing} />
+          <AddCharge
+            editing={this.state.editing}
+            charge_id={this.props.charge_id}
+            charge_name={this.props.charge_name}
+          />
         ) : (
           <div className="charge" id={"charge" + this.props.charge_id}>
             <span className="detail">{this.props.due_date}</span>

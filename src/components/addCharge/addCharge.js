@@ -70,7 +70,7 @@ class AddCharge extends Component {
   resetCharge = () => {
     this.setState({
       charge_id: "",
-      charge_name: "",
+      charge_name: this.props.charge_name || "",
       category: "Auto",
       due_date: "",
       amount: "",
@@ -92,8 +92,14 @@ class AddCharge extends Component {
   render() {
     return (
       <div
-        className="addCharge hidden"
-        id={this.props.editing === true ? "" : "addCharge"}
+        className={
+          this.props.editing === true ? "addCharge" : "addCharge hidden"
+        }
+        id={
+          this.props.editing === true
+            ? "addCharge" + this.props.charge_id
+            : "addCharge"
+        }
       >
         <form
           onSubmit={e => {
