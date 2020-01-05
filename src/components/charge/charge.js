@@ -11,11 +11,11 @@ class Charge extends Component {
 
   render() {
     return (
-      <ul className="charge">
-        <li className="detail">{this.props.due_date}</li>
-        <li className="detail">{this.props.charge_name}</li>
-        <li className="detail">{this.props.amount}</li>
-      </ul>
+      <div className="charge">
+        <span className="detail">{this.props.due_date}</span>
+        <span className="detail">{this.props.charge_name}</span>
+        <span className="detail">{this.props.amount}</span>
+      </div>
     );
   }
 }

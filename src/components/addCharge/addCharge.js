@@ -51,7 +51,6 @@ class AddCharge extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
     let newCharge = this.state;
 
     newCharge.month_name = this.props.month_name;

@@ -41,7 +41,6 @@ class App extends Component {
 
   // Responsible for adding new charge to current array
   addNewCharge = charge => {
-    console.log(charge);
     this.setState({ charges: [...this.state.charges, charge] });
   };
 
