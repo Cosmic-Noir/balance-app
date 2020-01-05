@@ -9,6 +9,7 @@ const balanceContext = React.createContext({
   setUserInfo: () => {},
   addNewCharge: () => {},
   deleteCharge: () => {},
+  updateCharge: () => {},
 
   // Values
   charges: [],

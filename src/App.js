@@ -45,13 +45,21 @@ class App extends Component {
   };
 
   // Responsible for deleting charge
-  deleteCharge = chargeId => {
+  deleteCharge = charge_id => {
     const newCharges = this.state.charges.filter(
-      charge => charge.charge_id !== chargeId
+      charge => charge.charge_id !== charge_id
     );
     this.setState({ charges: newCharges });
 
     console.log(`deleteCharge is called`);
+  };
+
+  updateCharge = updatedCharge => {
+    this.setState({
+      charges: this.state.charges.map(charge =>
+        charge.charge_id !== updatedCharge ? charge : updatedCharge
+      )
+    });
   };
 
   // Temp function for when user logs in.
@@ -115,6 +123,7 @@ class App extends Component {
       onSignOut: this.onSignOut,
       setUserInfo: this.setUserInfo,
       deleteCharge: this.deleteCharge,
+      updateCharge: this.updateCharge,
 
       // Values
       charges: this.state.charges,
