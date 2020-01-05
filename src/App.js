@@ -57,9 +57,10 @@ class App extends Component {
   updateCharge = updatedCharge => {
     this.setState({
       charges: this.state.charges.map(charge =>
-        charge.charge_id !== updatedCharge ? charge : updatedCharge
+        charge.charge_id !== updatedCharge.charge_id ? charge : updatedCharge
       )
     });
+    console.log(`updateCharge ran`);
   };
 
   // Temp function for when user logs in.

@@ -13,13 +13,12 @@ import balanceContext from "../../balanceContext";
 class AddCharge extends Component {
   state = {
     // Will randomly create charge_id for now
-    charge_id: this.props.charge_id || "",
+    charge_id: "",
     charge_name: "",
     category: "Auto",
     due_date: "",
     amount: "",
-    occurance: "monthly",
-    user_id: ""
+    occurance: "monthly"
   };
 
   static contextType = balanceContext;
@@ -51,18 +50,30 @@ class AddCharge extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    let newCharge = this.state;
 
-    newCharge.month_name = this.props.month_name;
-    newCharge.user_id = this.context.userInfo.user_id;
-    newCharge.charge_id = Math.floor(Math.random() * 1000);
-    // console.log(newCharge);
-    this.context.addNewCharge(newCharge);
-    setTimeout(() => {
-      this.props.setCharges();
-    }, 1000);
-    // this.props.setCharges();
-    this.resetCharge();
+    if (this.props.editing === true) {
+      let updatedCharge = this.state;
+      updatedCharge.charge_id = this.props.charge_id;
+      console.log(updatedCharge);
+      this.context.updateCharge(updatedCharge);
+      // setTimeout(() => {
+      //   this.props.setCharges();
+      // }, 1000);
+      this.props.handleClickSave();
+    } else {
+      let newCharge = this.state;
+
+      newCharge.month_name = this.props.month_name;
+      newCharge.user_id = this.context.userInfo.user_id;
+      newCharge.charge_id = Math.floor(Math.random() * 1000);
+      // console.log(newCharge);
+      this.context.addNewCharge(newCharge);
+      setTimeout(() => {
+        this.props.setCharges();
+      }, 1000);
+      // this.props.setCharges();
+      this.resetCharge();
+    }
   };
 
   // Responsible for changing fields to empty
@@ -104,6 +115,11 @@ class AddCharge extends Component {
     if (this.props.occurance) {
       this.updateOccurance(this.props.occurance);
     }
+  };
+
+  // Responsible for if user hits cancel, simply hiding form info and revelaing existing line
+  handleHideEdit = () => {
+    this.props.handleClickSave();
   };
 
   componentDidMount() {
@@ -200,10 +216,21 @@ class AddCharge extends Component {
           ) : (
             ""
           )}
-          <button type="submit">Add</button>
-          <button onClick={this.handleCancel} type="button">
-            Cancel
-          </button>
+          {this.props.editing === true ? (
+            <div>
+              <button type="submit">Update</button>
+              <button onClick={this.handleHideEdit} type="button">
+                Cancel
+              </button>
+            </div>
+          ) : (
+            <div>
+              <button type="submit">Add</button>
+              <button onClick={this.handleCancel} type="button">
+                Cancel
+              </button>
+            </div>
+          )}
         </form>
       </div>
     );
