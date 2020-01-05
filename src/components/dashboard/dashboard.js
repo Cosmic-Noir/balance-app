@@ -10,14 +10,22 @@ import "./dashboard.css";
 class Dashboard extends Component {
   static contextType = balanceContext;
 
+  componentDidMount() {
+    console.log(this.context.charges[0]);
+  }
+
   render() {
     return (
       <div className="dashboard flex-column">
         <h2>Welcome {this.context.userInfo.username}</h2>
         <div className="lGrey grid-container list">
-          <Link to="budgets" className="block">
-            View Budgets
-          </Link>
+          {this.context.charges[0] === undefined ? (
+            ""
+          ) : (
+            <Link to="budgets" className="block">
+              View Budgets
+            </Link>
+          )}
           <Link to="createBudget" className="block">
             Create Budget
           </Link>
