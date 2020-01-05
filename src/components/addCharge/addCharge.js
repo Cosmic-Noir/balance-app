@@ -81,13 +81,21 @@ class AddCharge extends Component {
   addAdditionalCharge = newCharge => {
     let { occurance, charge_name } = newCharge;
     if (occurance === "One Time") {
-      console.log(`${charge_name} is a One Time occurance`);
+      console.log(
+        `${charge_name} is a One Time occurance and will not be re-created in the next budget`
+      );
     } else if (occurance === "Monthly") {
-      console.log(`${charge_name} is a Monthly occurance`);
+      console.log(
+        `${charge_name} is a Monthly occurance, will not be adding an aditional charge, but will be on the next budget`
+      );
     } else if (occurance === "Biweekly") {
-      console.log(`${charge_name} is a Biweekly occurance`);
+      console.log(
+        `${charge_name} is a Biweekly occurance, must add charge every 14 days UNTIL month changes`
+      );
     } else if (occurance === "Weekly") {
-      console.log(`${charge_name} is a Weekly occurance`);
+      console.log(
+        `${charge_name} is a Weekly occurance, must add charge every 7 days UNTIL month changes`
+      );
     }
     console.log(`addAdditionalCharge has run`);
   };
