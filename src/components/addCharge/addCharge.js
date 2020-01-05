@@ -92,6 +92,18 @@ class AddCharge extends Component {
     if (this.props.charge_name) {
       this.updateChargeName(this.props.charge_name);
     }
+    if (this.props.due_date) {
+      this.updateDueDate(this.props.due_date);
+    }
+    if (this.props.amount) {
+      this.updateAmount(this.props.amount);
+    }
+    if (this.props.category) {
+      this.updateCategory(this.props.category);
+    }
+    if (this.props.occurance) {
+      this.updateOccurance(this.props.occurance);
+    }
   };
 
   componentDidMount() {
@@ -117,17 +129,6 @@ class AddCharge extends Component {
         >
           <input
             className="chargeInput"
-            id="charge_name"
-            onChange={e => this.updateChargeName(e.target.value)}
-            placeholder="charge name"
-            name="charge_name"
-            ref={this.charge_name}
-            required
-            type="text"
-            value={this.state.charge_name}
-          />
-          <input
-            className="chargeInput"
             id="due_date"
             onChange={e => this.updateDueDate(e.target.value)}
             placeholder="due date"
@@ -137,6 +138,18 @@ class AddCharge extends Component {
             type="text"
             value={this.state.due_date}
           />
+          <input
+            className="chargeInput"
+            id="charge_name"
+            onChange={e => this.updateChargeName(e.target.value)}
+            placeholder="charge name"
+            name="charge_name"
+            ref={this.charge_name}
+            required
+            type="text"
+            value={this.state.charge_name}
+          />
+
           <input
             className="chargeInput"
             id="amount"
