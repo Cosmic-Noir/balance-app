@@ -23,7 +23,8 @@ const Data = {
       due_date: 1,
       amount: 1200,
       month_name: "December 2019",
-      user_id: 1
+      user_id: 1,
+      occurance: "Biweekly"
     },
     {
       charge_id: 1,
@@ -32,7 +33,8 @@ const Data = {
       due_date: 1,
       amount: 600,
       month_name: "December 2019",
-      user_id: 1
+      user_id: 1,
+      occurance: "Monthly"
     },
     {
       charge_id: 2,
@@ -41,7 +43,8 @@ const Data = {
       due_date: 1,
       amount: 150,
       month_name: "December 2019",
-      user_id: 1
+      user_id: 1,
+      occurance: "Weekly"
     },
     {
       charge_id: 3,
@@ -50,7 +53,8 @@ const Data = {
       due_date: 4,
       amount: 100,
       month_name: "December 2019",
-      user_id: 1
+      user_id: 1,
+      occurance: "Monthly"
     },
     {
       charge_id: 4,
@@ -59,7 +63,8 @@ const Data = {
       due_date: 6,
       amount: 1200,
       month_name: "December 2019",
-      user_id: 1
+      user_id: 1,
+      occurance: "Biweekly"
     },
     {
       charge_id: 5,
@@ -68,7 +73,8 @@ const Data = {
       due_date: 7,
       amount: 60,
       month_name: "December 2019",
-      user_id: 1
+      user_id: 1,
+      occurance: "Monthly"
     },
     {
       charge_id: 6,
@@ -77,7 +83,8 @@ const Data = {
       due_date: 9,
       amount: 150,
       month_name: "December 2018",
-      user_id: 1
+      user_id: 1,
+      occurance: "Weekly"
     },
     {
       charge_id: 7,
@@ -86,7 +93,8 @@ const Data = {
       due_date: 20,
       amount: 1200,
       month_name: "January 2020",
-      user_id: 1
+      user_id: 1,
+      occurance: "Biweekly"
     },
     {
       charge_id: 9,
@@ -95,7 +103,8 @@ const Data = {
       due_date: 9,
       amount: 150,
       month_name: "January 2020",
-      user_id: 1
+      user_id: 1,
+      occurance: "Weekly"
     },
     {
       charge_id: 10,
@@ -104,7 +113,8 @@ const Data = {
       due_date: 7,
       amount: 60,
       month_name: "January 2020",
-      user_id: 1
+      user_id: 1,
+      occurance: "Monthly"
     }
   ]
 };

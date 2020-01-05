@@ -185,6 +185,7 @@ class AddCharge extends Component {
             placeholder="category"
             name="category"
             ref={this.category}
+            value={this.state.category}
             required
           >
             <option value="Auto">Auto</option>
@@ -208,10 +209,13 @@ class AddCharge extends Component {
             name="occurance"
             ref={this.occurance}
             required
+            value={this.state.occurance}
           >
-            <option value="Income">Monthly</option>
-            <option value="Income">Weekly</option>
-            <option value="Income">Biweekly</option>
+            <option value="One Time">One Time</option>
+
+            <option value="Monthly">Monthly</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Biweekly">Biweekly</option>
           </select>
           {this.state.error !== null ? (
             <h5 className="error">{this.state.error}</h5>

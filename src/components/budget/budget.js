@@ -107,10 +107,17 @@ class Budget extends Component {
     // let arr = this.state.charges;
 
     let allCharges = this.state.charges.map(charge => {
-      const { charge_id, charge_name, due_date, amount, category } = charge;
+      const {
+        charge_id,
+        charge_name,
+        due_date,
+        amount,
+        category,
+        occurance
+      } = charge;
 
       if (category === "Income" && charge === this.state.charges[0]) {
-        console.log(`${charge_name} is income for ${amount}`);
+        // console.log(`${charge_name} is income for ${amount}`);
         currentPaycheck = amount;
         return (
           <Charge
@@ -122,14 +129,15 @@ class Budget extends Component {
             editingBudget={this.state.editingBudget}
             key={charge_id}
             month_name={this.state.month_name}
+            occurance={occurance}
             setCharges={this.setCharges}
           />
         );
       } else if (category !== "Income") {
         expenses -= amount;
-        console.log(
-          `${charge_name} is an expense for $${amount}, current expenses are ${expenses}`
-        );
+        // console.log(
+        //   `${charge_name} is an expense for $${amount}, current expenses are ${expenses}`
+        // );
         return (
           <Charge
             amount={amount}
@@ -140,20 +148,21 @@ class Budget extends Component {
             editingBudget={this.state.editingBudget}
             key={charge_id}
             month_name={this.state.month_name}
+            occurance={occurance}
             setCharges={this.setCharges}
           />
         );
       } else {
         // IF category IS income and it's NOT the first charge
         let remainder = Math.round((currentPaycheck + expenses) * 100) / 100;
-        console.log(
-          `Paycheck detected, currentPaycheck is ${currentPaycheck} and expenses are ${expenses} so the remainder is ${currentPaycheck +
-            expenses}`
-        );
+        // console.log(
+        //   `Paycheck detected, currentPaycheck is ${currentPaycheck} and expenses are ${expenses} so the remainder is ${currentPaycheck +
+        //     expenses}`
+        // );
         let pastPaycheck = currentPaycheck;
-        console.log(
-          `Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`
-        );
+        // console.log(
+        //   `Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`
+        // );
 
         // Then set the current paycheck to the selected one
         currentPaycheck = amount;
@@ -175,6 +184,7 @@ class Budget extends Component {
               editingBudget={this.state.editingBudget}
               key={charge_id}
               month_name={this.state.month_name}
+              occurance={occurance}
               setCharges={this.setCharges}
             />
           </div>
