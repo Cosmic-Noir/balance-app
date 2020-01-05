@@ -70,7 +70,7 @@ class AddCharge extends Component {
   resetCharge = () => {
     this.setState({
       charge_id: "",
-      charge_name: this.props.charge_name || "",
+      charge_name: "",
       category: "Auto",
       due_date: "",
       amount: "",
@@ -87,7 +87,16 @@ class AddCharge extends Component {
     addButton.classList.remove("hidden");
   };
 
-  componentDidMount() {}
+  // Responsible for setting state IF props were passed
+  setProps = () => {
+    if (this.props.charge_name) {
+      this.updateChargeName(this.props.charge_name);
+    }
+  };
+
+  componentDidMount() {
+    this.setProps();
+  }
 
   render() {
     return (
