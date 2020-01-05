@@ -14,6 +14,7 @@ import balanceContext from "../../balanceContext";
 class Budget extends Component {
   state = {
     charges: [],
+    editingTable: false,
     month_name: ""
   };
 
@@ -106,14 +107,7 @@ class Budget extends Component {
     // let arr = this.state.charges;
 
     let allCharges = this.state.charges.map(charge => {
-      const {
-        charge_id,
-        charge_name,
-        due_date,
-        amount,
-        category,
-        month_name
-      } = charge;
+      const { charge_id, charge_name, due_date, amount, category } = charge;
 
       if (category === "Income" && charge === this.state.charges[0]) {
         currentPaycheck = amount;
