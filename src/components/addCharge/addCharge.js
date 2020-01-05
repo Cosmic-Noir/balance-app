@@ -29,7 +29,7 @@ class AddCharge extends Component {
   }
 
   updateOccurance(occurance) {
-    this.setState({ occurance });
+    this.setState({ occurance: occurance });
   }
 
   updateAmount(amount) {
@@ -37,7 +37,7 @@ class AddCharge extends Component {
   }
 
   updateCategory(category) {
-    this.setState({ category });
+    this.setState({ category: category });
   }
 
   updateDueDate(due_date) {

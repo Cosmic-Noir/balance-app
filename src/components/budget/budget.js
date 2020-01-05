@@ -110,10 +110,12 @@ class Budget extends Component {
       const { charge_id, charge_name, due_date, amount, category } = charge;
 
       if (category === "Income" && charge === this.state.charges[0]) {
+        console.log(`${charge_name} is income for ${amount}`);
         currentPaycheck = amount;
         return (
           <Charge
             amount={amount}
+            category={category}
             charge_id={charge_id}
             charge_name={charge_name}
             due_date={due_date}
@@ -125,12 +127,13 @@ class Budget extends Component {
         );
       } else if (category !== "Income") {
         expenses -= amount;
-        // console.log(
-        //   `${charge_name} is an expense for $${amount}, current expenses are ${expenses}`
-        // );
+        console.log(
+          `${charge_name} is an expense for $${amount}, current expenses are ${expenses}`
+        );
         return (
           <Charge
             amount={amount}
+            category={category}
             charge_id={charge_id}
             charge_name={charge_name}
             due_date={due_date}
@@ -143,14 +146,14 @@ class Budget extends Component {
       } else {
         // IF category IS income and it's NOT the first charge
         let remainder = Math.round((currentPaycheck + expenses) * 100) / 100;
-        // console.log(
-        //   `Paycheck detected, currentPaycheck is ${currentPaycheck} and expenses are ${expenses} so the remainder is ${currentPaycheck +
-        //     expenses}`
-        // );
+        console.log(
+          `Paycheck detected, currentPaycheck is ${currentPaycheck} and expenses are ${expenses} so the remainder is ${currentPaycheck +
+            expenses}`
+        );
         let pastPaycheck = currentPaycheck;
-        // console.log(
-        //   `Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`
-        // );
+        console.log(
+          `Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`
+        );
 
         // Then set the current paycheck to the selected one
         currentPaycheck = amount;
@@ -165,6 +168,7 @@ class Budget extends Component {
             </p>
             <Charge
               amount={amount}
+              category={category}
               charge_id={charge_id}
               charge_name={charge_name}
               due_date={due_date}
@@ -244,6 +248,12 @@ class Budget extends Component {
     let month_name = document.getElementById("month_name").value;
     this.setMonth(month_name);
   }
+
+  handleTimeOut = () => {
+    setTimeout(() => {
+      this.displayCharges();
+    }, 2000);
+  };
 
   render() {
     // const { month_name } = this.state.month_name;

@@ -9,10 +9,10 @@ import AddCharge from "../addCharge/addCharge";
 
 class Charge extends Component {
   state = {
-    charge_name: "",
-    category: "Auto",
-    due_date: "",
     amount: "",
+    charge_name: "",
+    category: "",
+    due_date: "",
     occurance: "monthly"
   };
 
