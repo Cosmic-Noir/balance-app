@@ -122,6 +122,7 @@ class AddCharge extends Component {
   // Responsible for if user hits cancel, simply hiding form info and revelaing existing line
   handleHideEdit = () => {
     this.props.handleClickSave();
+    this.setProps();
   };
 
   componentDidMount() {

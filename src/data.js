@@ -27,16 +27,7 @@ const Data = {
       user_id: 1,
       occurance: "Monthly"
     },
-    {
-      charge_id: 8,
-      charge_name: "Paycheck",
-      category: "Income",
-      due_date: 1,
-      amount: 1200,
-      month_name: "December 2019",
-      user_id: 1,
-      occurance: "Biweekly"
-    },
+
     {
       charge_id: 2,
       charge_name: "Groceries",
@@ -46,6 +37,16 @@ const Data = {
       month_name: "December 2019",
       user_id: 1,
       occurance: "Weekly"
+    },
+    {
+      charge_id: 8,
+      charge_name: "Paycheck",
+      category: "Income",
+      due_date: 1,
+      amount: 1200,
+      month_name: "December 2019",
+      user_id: 1,
+      occurance: "Biweekly"
     },
     {
       charge_id: 3,
