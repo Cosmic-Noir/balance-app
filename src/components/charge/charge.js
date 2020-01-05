@@ -74,6 +74,7 @@ class Charge extends Component {
             occurance={this.props.occurance}
             month_name={this.props.month_name}
             handleClickSave={this.handleClickSave}
+            setCharges={this.props.setCharges}
           />
         ) : (
           <div className="charge" id={"charge" + this.props.charge_id}>

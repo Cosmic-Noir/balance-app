@@ -58,9 +58,9 @@ class AddCharge extends Component {
       console.log(this.props);
       console.log(updatedCharge);
       this.context.updateCharge(updatedCharge);
-      // setTimeout(() => {
-      //   this.props.setCharges();
-      // }, 1000);
+      setTimeout(() => {
+        this.props.setCharges();
+      }, 1000);
       this.props.handleClickSave();
     } else {
       let newCharge = this.state;
