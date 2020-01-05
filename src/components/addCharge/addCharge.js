@@ -55,8 +55,8 @@ class AddCharge extends Component {
       let updatedCharge = this.state;
       updatedCharge.charge_id = this.props.charge_id;
       updatedCharge.month_name = this.props.month_name;
-      console.log(this.props);
-      console.log(updatedCharge);
+      // console.log(this.props);
+      // console.log(updatedCharge);
       this.context.updateCharge(updatedCharge);
       setTimeout(() => {
         this.props.setCharges();
