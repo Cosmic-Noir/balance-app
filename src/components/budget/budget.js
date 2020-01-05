@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 /* Custom Components */
 import Charge from "../charge/charge";
@@ -303,6 +303,7 @@ class Budget extends Component {
         ) : (
           <button onClick={this.handleEditBudgetClick}>Edit Budget</button>
         )}
+        <Link to="createBudget">Create Budget</Link>
 
         <button onClick={this.handleBack} type="button">
           Back
