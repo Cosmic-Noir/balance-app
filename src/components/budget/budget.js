@@ -155,14 +155,14 @@ class Budget extends Component {
       } else {
         // IF category IS income and it's NOT the first charge
         let remainder = Math.round((currentPaycheck + expenses) * 100) / 100;
-        // console.log(
-        //   `Paycheck detected, currentPaycheck is ${currentPaycheck} and expenses are ${expenses} so the remainder is ${currentPaycheck +
-        //     expenses}`
-        // );
+        console.log(
+          `Paycheck detected, currentPaycheck is ${currentPaycheck} and expenses are ${expenses} so the remainder is ${currentPaycheck +
+            expenses}`
+        );
         let pastPaycheck = currentPaycheck;
-        // console.log(
-        //   `Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`
-        // );
+        console.log(
+          `Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`
+        );
 
         // Then set the current paycheck to the selected one
         currentPaycheck = amount;
@@ -172,8 +172,10 @@ class Budget extends Component {
         return (
           <div className="remainder">
             <p>
-              Current Paycheck: {pastPaycheck} means {remainder} left over from
-              paycheck{" "}
+              Current Paycheck: {pastPaycheck} means {remainder}{" "}
+              {remainder < 0
+                ? "needed to cover expenses"
+                : "leftover from paycheck"}
             </p>
             <Charge
               amount={amount}
@@ -199,8 +201,10 @@ class Budget extends Component {
       ...allCharges,
       <div className="remainder">
         <p>
-          Current Paycheck: {pastPaycheck} means {remainder} left over from
-          paycheck{" "}
+          Current Paycheck: {pastPaycheck} means {remainder}{" "}
+          {remainder < 0
+            ? "needed to cover expenses"
+            : "leftover from paycheck"}
         </p>
       </div>
     ];
@@ -214,16 +218,7 @@ class Budget extends Component {
 
   // Responsible for showing edit/delete buttons on each charge
   handleEditBudgetClick = () => {
-    // let buttons = document.getElementsByClassName("editType");
-    // // console.log(buttons);
-
-    // for (let i = 0; i < buttons.length; i++) {
-    //   buttons[i].classList.remove("hidden");
-    // }
-
     this.setState({ editingBudget: true });
-
-    // console.log(`showsEdits button hit`);
   };
 
   // Responsible for hiding edit/delet buttons on each charge
