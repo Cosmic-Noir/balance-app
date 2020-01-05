@@ -10,10 +10,6 @@ import "./dashboard.css";
 class Dashboard extends Component {
   static contextType = balanceContext;
 
-  componentDidMount() {
-    console.log(this.context.charges[0]);
-  }
-
   render() {
     return (
       <div className="dashboard flex-column">

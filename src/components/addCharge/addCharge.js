@@ -56,6 +56,7 @@ class AddCharge extends Component {
 
     newCharge.month_name = this.props.month_name;
     newCharge.user_id = this.context.userInfo.user_id;
+    newCharge.charge_id = Math.floor(Math.random() * 1000);
     // console.log(newCharge);
     this.context.addNewCharge(newCharge);
     setTimeout(() => {
