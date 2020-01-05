@@ -17,14 +17,21 @@ class Charge extends Component {
     }, 1000);
   };
 
+  handleClickEdit = () => {
+    let charge = document.getElementById("charge" + this.props.charge_id);
+    console.log(charge);
+    charge.innerHTML = `<span>{this.props.charge_name} HAS BEEN EDITED</span>`;
+    console.log("edit hit");
+  };
+
   render() {
     return (
-      <div className="charge">
+      <div className="charge" id={"charge" + this.props.charge_id}>
         <span className="detail">{this.props.due_date}</span>
         <span className="detail">{this.props.charge_name}</span>
         <span className="detail">{this.props.amount}</span>
         <div className="hidden editType">
-          <button>Edit</button>
+          <button onClick={this.handleClickEdit}>Edit</button>
           <button onClick={this.handleClickDelete} type="button">
             Delete
           </button>
