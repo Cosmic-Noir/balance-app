@@ -195,7 +195,29 @@ class Budget extends Component {
       buttons[i].classList.remove("hidden");
     }
 
-    console.log(`showsEdits button hit`);
+    let editTableButton = document.getElementById("editTable");
+    editTableButton.classList.add("hidden");
+
+    let doneEditingButton = document.getElementById("saveTable");
+    doneEditingButton.classList.remove("hidden");
+
+    // console.log(`showsEdits button hit`);
+  };
+
+  // Responsible for hiding edit/delet buttons on each charge
+  hideEdits = () => {
+    let buttons = document.getElementsByClassName("editType");
+    // console.log(buttons);
+
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].classList.add("hidden");
+    }
+
+    let doneEditingButton = document.getElementById("saveTable");
+    doneEditingButton.classList.add("hidden");
+
+    let editTableButton = document.getElementById("editTable");
+    editTableButton.classList.remove("hidden");
   };
 
   // Responsible for showing Add Charge
@@ -262,8 +284,11 @@ class Budget extends Component {
         <button onClick={this.showAddCharge} type="button" id="showAdd">
           Add Charge
         </button>
-        <button className="editTable" onClick={this.showsEdits}>
+        <button id="editTable" onClick={this.showsEdits}>
           Edit Budget
+        </button>
+        <button id="saveTable" className="hidden" onClick={this.hideEdits}>
+          Done Editing
         </button>
 
         <button onClick={this.handleBack} type="button">
