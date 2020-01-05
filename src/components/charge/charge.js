@@ -49,13 +49,22 @@ class Charge extends Component {
     }, 1000);
   };
 
+  // Responsible for setting editing to true, thus revealing form with values instead of charge line
   handleClickEdit = () => {
     this.setState({ editing: true });
   };
 
+  // Responsible for changing editing to false, thus revleaing charge line instead of form
+  handleClickSave = () => {
+    this.setState({ editing: false });
+  };
+
+  // Responsible for if user hits cancel, simply hiding form info and revelaing existing line
+  handleHideEdit = () => {};
+
   render() {
     return (
-      <div>
+      <div className="flex-column width-80">
         {this.state.editing === true ? (
           <AddCharge editing={this.state.editing} />
         ) : (
