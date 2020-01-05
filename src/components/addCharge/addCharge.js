@@ -13,11 +13,11 @@ import balanceContext from "../../balanceContext";
 class AddCharge extends Component {
   state = {
     // Will randomly create charge_id for now
+    amount: "",
+    category: "Auto",
     charge_id: "",
     charge_name: "",
-    category: "Auto",
     due_date: "",
-    amount: "",
     occurance: "monthly"
   };
 
@@ -54,6 +54,8 @@ class AddCharge extends Component {
     if (this.props.editing === true) {
       let updatedCharge = this.state;
       updatedCharge.charge_id = this.props.charge_id;
+      updatedCharge.month_name = this.props.month_name;
+      console.log(this.props);
       console.log(updatedCharge);
       this.context.updateCharge(updatedCharge);
       // setTimeout(() => {

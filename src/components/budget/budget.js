@@ -106,7 +106,14 @@ class Budget extends Component {
     // let arr = this.state.charges;
 
     let allCharges = this.state.charges.map(charge => {
-      const { charge_id, charge_name, due_date, amount, category } = charge;
+      const {
+        charge_id,
+        charge_name,
+        due_date,
+        amount,
+        category,
+        month_name
+      } = charge;
 
       if (category === "Income" && charge === this.state.charges[0]) {
         currentPaycheck = amount;
@@ -114,9 +121,10 @@ class Budget extends Component {
           <Charge
             amount={amount}
             charge_id={charge_id}
-            due_date={due_date}
             charge_name={charge_name}
+            due_date={due_date}
             key={charge_id}
+            month_name={this.state.month_name}
             setCharges={this.setCharges}
           />
         );
@@ -132,6 +140,7 @@ class Budget extends Component {
             due_date={due_date}
             charge_name={charge_name}
             key={charge_id}
+            month_name={this.state.month_name}
             setCharges={this.setCharges}
           />
         );
