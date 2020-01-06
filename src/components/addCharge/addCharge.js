@@ -73,8 +73,10 @@ class AddCharge extends Component {
 
       setTimeout(() => {
         this.props.setCharges();
-        this.addAdditionalCharge(newCharge);
       }, 1000);
+      setTimeout(() => {
+        this.addAdditionalCharge(newCharge);
+      }, 2000);
       // this.props.setCharges();
       this.resetCharge();
     }
@@ -160,7 +162,7 @@ class AddCharge extends Component {
         let newestCharge = newCharge;
         newestCharge.due_date = day;
         console.log(newestCharge);
-        // this.context.addNewCharge(newestCharge);
+        this.context.addNewCharge(newestCharge);
       } else {
         console.log("it is a new month! Do not add new charge ");
       }
