@@ -86,7 +86,7 @@ class AddCharge extends Component {
   };
 
   addAdditionalCharge = newCharge => {
-    let { occurance, charge_name, month_name } = newCharge;
+    let { occurance, charge_name, month_name, due_date } = newCharge;
 
     const monthArray = [
       "January",
@@ -106,6 +106,25 @@ class AddCharge extends Component {
     console.log(stringArray);
 
     let dateString = stringArray[1] + "-";
+    console.log(dateString);
+
+    let monthString = stringArray[0];
+
+    for (let i = 0; i < monthArray.length; i++) {
+      if (monthString === monthArray[i]) {
+        monthString = i;
+      }
+    }
+
+    let dayString = due_date.toString();
+
+    console.log(typeof dayString);
+
+    if (dayString.length === 1) {
+      dayString = "0" + dayString;
+    }
+
+    dateString += dayString;
     console.log(dateString);
 
     if (occurance === "One Time") {
