@@ -64,14 +64,16 @@ class AddCharge extends Component {
       // Adding unique new charge
       let newCharge = this.state;
       console.log(newCharge);
+
       newCharge.month_name = this.props.month_name;
       newCharge.user_id = this.context.userInfo.user_id;
       newCharge.charge_id = Math.floor(Math.random() * 1000);
 
       this.context.addNewCharge(newCharge);
-      this.addAdditionalCharge(newCharge);
+
       setTimeout(() => {
         this.props.setCharges();
+        this.addAdditionalCharge(newCharge);
       }, 1000);
       // this.props.setCharges();
       this.resetCharge();
@@ -145,16 +147,20 @@ class AddCharge extends Component {
       //   `Next calculated due_date is ${this.addDays(dateString, 14)}`
       // );
       let nextDueDate = this.addDays(dateString, 14).toString();
+      console.log(nextDueDate);
 
       let month = nextDueDate.substring(4, 7);
-      console.log(month);
+      // console.log(month);
 
       let day = parseInt(nextDueDate.substring(8, 10));
-      console.log(day);
+      // console.log(day);
 
-      console.log(stringArray[0]);
       if (month === stringArray[0]) {
         console.log("it is the same month, add new bill");
+        let newestCharge = newCharge;
+        newestCharge.due_date = day;
+        console.log(newestCharge);
+        // this.context.addNewCharge(newestCharge);
       } else {
         console.log("it is a new month! Do not add new charge ");
       }
