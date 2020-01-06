@@ -23,7 +23,7 @@ const Data = {
       category: "Housing",
       due_date: 1,
       amount: 600,
-      month_name: "December 2019",
+      month_name: "Dec 2019",
       user_id: 1,
       occurance: "Monthly"
     },
@@ -34,7 +34,7 @@ const Data = {
       category: "Food/Drink",
       due_date: 1,
       amount: 150,
-      month_name: "December 2019",
+      month_name: "Dec 2019",
       user_id: 1,
       occurance: "Weekly"
     },
@@ -44,7 +44,7 @@ const Data = {
       category: "Income",
       due_date: 1,
       amount: 1200,
-      month_name: "December 2019",
+      month_name: "Dec 2019",
       user_id: 1,
       occurance: "Biweekly"
     },
@@ -54,7 +54,7 @@ const Data = {
       category: "Insurance/Financial",
       due_date: 4,
       amount: 100,
-      month_name: "December 2019",
+      month_name: "Dec 2019",
       user_id: 1,
       occurance: "Monthly"
     },
@@ -64,7 +64,7 @@ const Data = {
       category: "Income",
       due_date: 6,
       amount: 1200,
-      month_name: "December 2019",
+      month_name: "Dec 2019",
       user_id: 1,
       occurance: "Biweekly"
     },
@@ -74,7 +74,7 @@ const Data = {
       category: "Insurance/Financial",
       due_date: 7,
       amount: 60,
-      month_name: "December 2019",
+      month_name: "Dec 2019",
       user_id: 1,
       occurance: "Monthly"
     },
@@ -84,7 +84,7 @@ const Data = {
       category: "Food/Drink",
       due_date: 9,
       amount: 150,
-      month_name: "December 2018",
+      month_name: "Dec 2018",
       user_id: 1,
       occurance: "Weekly"
     },
@@ -94,7 +94,7 @@ const Data = {
       category: "Income",
       due_date: 20,
       amount: 1200,
-      month_name: "January 2020",
+      month_name: "Jan 2020",
       user_id: 1,
       occurance: "Biweekly"
     },
@@ -104,7 +104,7 @@ const Data = {
       category: "Food/Drink",
       due_date: 9,
       amount: 150,
-      month_name: "January 2020",
+      month_name: "Jan 2020",
       user_id: 1,
       occurance: "Weekly"
     },
@@ -114,7 +114,7 @@ const Data = {
       category: "Insurance/Financial",
       due_date: 7,
       amount: 60,
-      month_name: "January 2020",
+      month_name: "Jan 2020",
       user_id: 1,
       occurance: "Monthly"
     }

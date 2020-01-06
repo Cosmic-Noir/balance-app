@@ -90,24 +90,22 @@ class AddCharge extends Component {
     let { occurance, charge_name, month_name, due_date } = newCharge;
 
     const monthArray = [
-      "January",
-      "February",
-      "March",
-      "April",
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
       "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
     ];
     let stringArray = month_name.split(" ");
-    console.log(stringArray);
 
     let dateString = stringArray[1] + "-";
-    console.log(dateString);
 
     let monthString = stringArray[0];
 
@@ -130,7 +128,6 @@ class AddCharge extends Component {
     }
 
     dateString += "-" + dayString;
-    console.log(dateString);
 
     if (occurance === "One Time") {
       console.log(
@@ -144,16 +141,14 @@ class AddCharge extends Component {
       // console.log(
       //   `${charge_name} is a Biweekly occurance, must add charge every 14 days UNTIL month changes`
       // );
-      console.log(
-        `Next calculated due_date is ${this.addDays(dateString, 14)}`
-      );
-      let today = new Date();
-      let newDate = this.addDays(dateString, 14);
-      let monthChange =
-        today.getMonth() < newDate.getMonth() ||
-        (today.getMonth() === 12 && newDate.getMonth() === 1);
-
-      console.log(monthChange);
+      // console.log(
+      //   `Next calculated due_date is ${this.addDays(dateString, 14)}`
+      // );
+      let nextDueDate = this.addDays(dateString, 14).toString();
+      let month = nextDueDate.substring(4, 7);
+      console.log(month);
+      let day = parseInt(nextDueDate.substring(8, 10));
+      console.log(nextDueDate);
     } else if (occurance === "Weekly") {
       console.log(
         `${charge_name} is a Weekly occurance, must add charge every 7 days UNTIL month changes`
