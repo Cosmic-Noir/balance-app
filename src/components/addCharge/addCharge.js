@@ -78,8 +78,36 @@ class AddCharge extends Component {
     }
   };
 
+  // Responsible for adding days to current date to return a new date
+  addDays = (date, days) => {
+    let result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  };
+
   addAdditionalCharge = newCharge => {
-    let { occurance, charge_name } = newCharge;
+    let { occurance, charge_name, month_name } = newCharge;
+
+    const monthArray = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+    let stringArray = month_name.split(" ");
+    console.log(stringArray);
+
+    let dateString = stringArray[1] + "-";
+    console.log(dateString);
+
     if (occurance === "One Time") {
       console.log(
         `${charge_name} is a One Time occurance and will not be re-created in the next budget`
@@ -92,6 +120,9 @@ class AddCharge extends Component {
       console.log(
         `${charge_name} is a Biweekly occurance, must add charge every 14 days UNTIL month changes`
       );
+      console.log(
+        `Next calculated due_date is ${this.addDays("2020-01-05", 14)}`
+      );
     } else if (occurance === "Weekly") {
       console.log(
         `${charge_name} is a Weekly occurance, must add charge every 7 days UNTIL month changes`
@@ -101,7 +132,7 @@ class AddCharge extends Component {
   };
 
   // Responsible for changing fields to empty
-  // Not working properly
+
   resetCharge = () => {
     this.setState({
       charge_id: "",
@@ -109,7 +140,7 @@ class AddCharge extends Component {
       category: "Auto",
       due_date: "",
       amount: "",
-      occurance: "monthly",
+      occurance: "One Time",
       user_id: ""
     });
   };
@@ -176,7 +207,9 @@ class AddCharge extends Component {
             name="due_date"
             ref={this.due_date}
             required
-            type="text"
+            type="number"
+            min="1"
+            max="31"
             value={this.state.due_date}
           />
           <input
