@@ -145,10 +145,19 @@ class AddCharge extends Component {
       //   `Next calculated due_date is ${this.addDays(dateString, 14)}`
       // );
       let nextDueDate = this.addDays(dateString, 14).toString();
+
       let month = nextDueDate.substring(4, 7);
       console.log(month);
+
       let day = parseInt(nextDueDate.substring(8, 10));
-      console.log(nextDueDate);
+      console.log(day);
+
+      console.log(stringArray[0]);
+      if (month === stringArray[0]) {
+        console.log("it is the same month, add new bill");
+      } else {
+        console.log("it is a new month! Do not add new charge ");
+      }
     } else if (occurance === "Weekly") {
       console.log(
         `${charge_name} is a Weekly occurance, must add charge every 7 days UNTIL month changes`
