@@ -112,19 +112,23 @@ class AddCharge extends Component {
 
     for (let i = 0; i < monthArray.length; i++) {
       if (monthString === monthArray[i]) {
-        monthString = i;
+        monthString = i + 1;
       }
     }
 
-    let dayString = due_date.toString();
+    if (monthString.length === 1) {
+      monthString = "0" + monthString;
+    }
 
-    console.log(typeof dayString);
+    dateString += monthString.toString();
+
+    let dayString = due_date.toString();
 
     if (dayString.length === 1) {
       dayString = "0" + dayString;
     }
 
-    dateString += dayString;
+    dateString += "-" + dayString;
     console.log(dateString);
 
     if (occurance === "One Time") {
@@ -140,12 +144,13 @@ class AddCharge extends Component {
         `${charge_name} is a Biweekly occurance, must add charge every 14 days UNTIL month changes`
       );
       console.log(
-        `Next calculated due_date is ${this.addDays("2020-01-05", 14)}`
+        `Next calculated due_date is ${this.addDays(dateString, 14)}`
       );
     } else if (occurance === "Weekly") {
       console.log(
         `${charge_name} is a Weekly occurance, must add charge every 7 days UNTIL month changes`
       );
+      console.log(`Next calculated due_date is ${this.addDays(dateString, 7)}`);
     }
     console.log(`addAdditionalCharge has run`);
   };
