@@ -85,6 +85,7 @@ class AddCharge extends Component {
     return result;
   };
 
+  // Should split into two functions, one to calculate date string, and the other to check if an additional charge must be added
   addAdditionalCharge = newCharge => {
     let { occurance, charge_name, month_name, due_date } = newCharge;
 
@@ -140,12 +141,19 @@ class AddCharge extends Component {
         `${charge_name} is a Monthly occurance, will not be adding an aditional charge, but will be on the next budget`
       );
     } else if (occurance === "Biweekly") {
-      console.log(
-        `${charge_name} is a Biweekly occurance, must add charge every 14 days UNTIL month changes`
-      );
+      // console.log(
+      //   `${charge_name} is a Biweekly occurance, must add charge every 14 days UNTIL month changes`
+      // );
       console.log(
         `Next calculated due_date is ${this.addDays(dateString, 14)}`
       );
+      let today = new Date();
+      let newDate = this.addDays(dateString, 14);
+      let monthChange =
+        today.getMonth() < newDate.getMonth() ||
+        (today.getMonth() === 12 && newDate.getMonth() === 1);
+
+      console.log(monthChange);
     } else if (occurance === "Weekly") {
       console.log(
         `${charge_name} is a Weekly occurance, must add charge every 7 days UNTIL month changes`
