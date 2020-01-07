@@ -81,11 +81,12 @@ class App extends Component {
   // Temp func to set charges matching user_id AND month_name
   setCharges = user_id => {
     // eslint-disable-next-line
+
     let matchingCharges = Data.charges.filter(charge => {
       if (
-        (charge.user_id === user_id &&
-          charge.month_name === this.state.month_name) ||
-        this.state.month_name === ""
+        charge.user_id === user_id &&
+        (charge.month_name === this.state.month_name ||
+          this.state.month_name === "")
       ) {
         return charge;
       }
@@ -103,7 +104,8 @@ class App extends Component {
   onSignOut = () => {
     this.setState({
       signedIn: false,
-      userInfo: []
+      userInfo: [],
+      charges: []
     });
   };
 
@@ -224,10 +226,11 @@ class App extends Component {
       addNewUser: this.addNewUser,
       addNewCharge: this.addNewCharge,
       checkLoginStatus: this.checkLoginStatus,
+      deleteCharge: this.deleteCharge,
       onSignIn: this.onSignIn,
       onSignOut: this.onSignOut,
+      setMonth: this.setMonth,
       setUserInfo: this.setUserInfo,
-      deleteCharge: this.deleteCharge,
       updateCharge: this.updateCharge,
 
       // Values

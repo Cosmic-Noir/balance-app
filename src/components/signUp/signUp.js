@@ -8,7 +8,6 @@ import balanceContext from "../../balanceContext";
 class SignUp extends Component {
   state = {
     error: null,
-    id: "",
     username: "",
     email: "",
     pass: "",
@@ -72,7 +71,8 @@ class SignUp extends Component {
     } else {
       this.updateId();
       let newUser = this.state;
-      newUser.id = Math.floor(Math.random() * 1000);
+      newUser.user_id = Math.floor(Math.random() * 1000);
+      console.log(newUser.id);
       this.context.onSignIn();
       this.context.addNewUser(newUser);
       this.context.setUserInfo(newUser);

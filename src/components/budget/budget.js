@@ -21,10 +21,10 @@ class Budget extends Component {
   static contextType = balanceContext;
 
   /* State Setting Methods */
-  setMonth = month_name => {
-    this.setState({ month_name: month_name });
-    this.setCharges();
-  };
+  // setMonth = month_name => {
+  //   this.setState({ month_name: month_name });
+  //   this.setCharges();
+  // };
 
   updateMonth = month_name => {
     this.setState({ month_name: month_name });
@@ -291,7 +291,7 @@ class Budget extends Component {
       this.updateNewMonth();
     } else {
       let month_name = document.getElementById("month_name").value;
-      this.setMonth(month_name);
+      // this.setMonth(month_name);
     }
   }
 
