@@ -44,7 +44,7 @@ class Budget extends Component {
       }
     });
     this.setState({ charges: charges }, function() {
-      this.sortCharges();
+      // this.sortCharges();
     });
     // console.log(`setCharges has run and setState`);
   };
