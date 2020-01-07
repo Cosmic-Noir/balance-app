@@ -31,6 +31,7 @@ class App extends Component {
     // Initially set to seed data
     charges: [],
     month_name: "",
+    month_name_list: [],
     users: Data.users,
     userInfo: []
   };
@@ -53,6 +54,12 @@ class App extends Component {
     this.setState({ charges: newCharges });
 
     // console.log(`deleteCharge is called`);
+  };
+
+  // Resposible for setting month_name
+  setMonth = month_name => {
+    this.setState({ month_name: month_name });
+    this.setCharges();
   };
 
   updateCharge = updatedCharge => {
