@@ -71,21 +71,24 @@ class App extends Component {
     this.setState({
       signedIn: true
     });
-    // console.log("User has logged in successfully");
   };
 
   // Temp func to set charges matching user_id AND month_name
   setCharges = user_id => {
     // eslint-disable-next-line
     let matchingCharges = Data.charges.filter(charge => {
+      console.log(typeof charge.month_name);
+      console.log(typeof this.state.month_name);
       if (
         (charge.user_id === user_id &&
-          charge.month_name === this.state.month) ||
+          charge.month_name === this.state.month_name) ||
         this.state.month_name === ""
       ) {
+        console.log("matchign");
         return charge;
       }
     });
+    console.log(matchingCharges);
 
     this.setState({ charges: matchingCharges });
   };
@@ -93,8 +96,6 @@ class App extends Component {
   // Temp function to set fake user data
   setUserInfo = user => {
     this.setState({ userInfo: user }, this.setCharges(user.user_id));
-
-    // console.log(`User info set as ${user}`);
   };
 
   // Temp function to log user out
@@ -103,7 +104,6 @@ class App extends Component {
       signedIn: false,
       userInfo: []
     });
-    // console.log("User has logged out");
   };
 
   /* State Setting Methods */
