@@ -42,9 +42,7 @@ class App extends Component {
 
   // Responsible for adding new charge to current array
   addNewCharge = charge => {
-    this.setState({ charges: [...this.state.charges, charge] }, function() {
-      console.log(`addNewCharge has run`);
-    });
+    this.setState({ charges: [...this.state.charges, charge] }, function() {});
   };
 
   // Responsible for deleting charge
@@ -54,7 +52,7 @@ class App extends Component {
     );
     this.setState({ charges: newCharges });
 
-    console.log(`deleteCharge is called`);
+    // console.log(`deleteCharge is called`);
   };
 
   updateCharge = updatedCharge => {
@@ -63,7 +61,7 @@ class App extends Component {
         charge.charge_id !== updatedCharge.charge_id ? charge : updatedCharge
       )
     });
-    console.log(`updateCharge ran`);
+    // console.log(`updateCharge ran`);
   };
 
   // Temp function for when user logs in.
@@ -77,18 +75,14 @@ class App extends Component {
   setCharges = user_id => {
     // eslint-disable-next-line
     let matchingCharges = Data.charges.filter(charge => {
-      console.log(typeof charge.month_name);
-      console.log(typeof this.state.month_name);
       if (
         (charge.user_id === user_id &&
           charge.month_name === this.state.month_name) ||
         this.state.month_name === ""
       ) {
-        console.log("matchign");
         return charge;
       }
     });
-    console.log(matchingCharges);
 
     this.setState({ charges: matchingCharges });
   };
@@ -126,9 +120,9 @@ class App extends Component {
   // Should split into two functions, one to calculate date string, and the other to check if an additional charge must be added
   addAdditionalCharge = newCharge => {
     let { occurance, charge_name, month_name, due_date } = newCharge;
-    console.log(
-      `A charge was added, checking to see if we need to add additional charges...`
-    );
+    // console.log(
+    //   `A charge was added, checking to see if we need to add additional charges...`
+    // );
 
     const monthArray = [
       "Jan",
