@@ -246,8 +246,8 @@ class Budget extends Component {
       let aDay = parseInt(a.due_date.substring(8, 10));
 
       let bDay = parseInt(b.due_date.substring(8, 10));
-      console.log(aDay);
-      if (aDay === bDay && aDay === "Income") {
+      console.log(aDay + " " + bDay);
+      if (aDay === bDay && bDay.category === "Income") {
         // console.log(`Due date matches, ${a.charge_name} is of income `);
         return -1;
       } else if (aDay > bDay || aDay === bDay) {
