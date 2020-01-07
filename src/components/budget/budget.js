@@ -78,10 +78,6 @@ class Budget extends Component {
   // Responsible for providing options of monthly budgets
   displayMonths = () => {
     const months = {};
-    if (this.props.new === true) {
-      console.log(`New budget, setting month to next...`);
-      console.log(months);
-    }
     if (this.context.charges === null) {
       return null;
     } else {
@@ -265,11 +261,31 @@ class Budget extends Component {
   };
 
   // Responsible for updating the month_name value if this.props.new === true
-  updateNewMonth = () => {};
+  updateNewMonth = () => {
+    const months = {};
+    let monthList = this.context.charges.map(charge => {
+      const { month_name } = charge;
+
+      if (months[month_name] === true) {
+        return null;
+      } else {
+        months[month_name] = true;
+      }
+    });
+
+    let names = Object.keys(months);
+
+    for (let i = 0; i < names.length; i++) {
+      let last = names[i];
+      let year = names[i + 1].substring(4, 8);
+    }
+    console.log(`New table month required, setting...`);
+    console.log(names);
+  };
 
   componentDidMount() {
-    if (this.props.new) {
-      this.displayMonths();
+    if (this.props.new === true) {
+      this.updateNewMonth();
     } else {
       let month_name = document.getElementById("month_name").value;
       this.setMonth(month_name);
