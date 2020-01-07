@@ -18,7 +18,8 @@ class AddCharge extends Component {
     charge_id: "",
     charge_name: "",
     due_date: "",
-    occurance: "One Time"
+    occurance: "One Time",
+    first_of_month: "2020-02-01"
   };
 
   static contextType = balanceContext;
@@ -153,6 +154,7 @@ class AddCharge extends Component {
             id="due_date"
             onChange={e => this.updateDueDate(e.target.value)}
             name="due_date"
+            min={this.state.first_of_month}
             ref={this.due_date}
             required
             type="date"
