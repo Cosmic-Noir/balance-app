@@ -74,10 +74,7 @@ class AddCharge extends Component {
       setTimeout(() => {
         this.props.setCharges();
       }, 1000);
-      setTimeout(() => {
-        this.addAdditionalCharge(newCharge);
-      }, 2000);
-      // this.props.setCharges();
+
       this.resetCharge();
     }
   };
