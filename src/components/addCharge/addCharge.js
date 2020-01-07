@@ -79,99 +79,6 @@ class AddCharge extends Component {
     }
   };
 
-  // Responsible for adding days to current date to return a new date
-  addDays = (date, days) => {
-    let result = new Date(date);
-    result.setDate(result.getDate() + days);
-    return result;
-  };
-
-  // Should split into two functions, one to calculate date string, and the other to check if an additional charge must be added
-  addAdditionalCharge = newCharge => {
-    let { occurance, charge_name, month_name, due_date } = newCharge;
-
-    const monthArray = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
-    ];
-    let stringArray = month_name.split(" ");
-
-    let dateString = stringArray[1] + "-";
-
-    let monthString = stringArray[0];
-
-    for (let i = 0; i < monthArray.length; i++) {
-      if (monthString === monthArray[i]) {
-        monthString = i + 1;
-      }
-    }
-
-    if (monthString.length === 1) {
-      monthString = "0" + monthString;
-    }
-
-    dateString += monthString.toString();
-
-    let dayString = due_date.toString();
-
-    if (dayString.length === 1) {
-      dayString = "0" + dayString;
-    }
-
-    dateString += "-" + dayString;
-
-    if (occurance === "One Time") {
-      console.log(
-        `${charge_name} is a One Time occurance and will not be re-created in the next budget`
-      );
-    } else if (occurance === "Monthly") {
-      console.log(
-        `${charge_name} is a Monthly occurance, will not be adding an aditional charge, but will be on the next budget`
-      );
-    } else if (occurance === "Biweekly") {
-      // console.log(
-      //   `${charge_name} is a Biweekly occurance, must add charge every 14 days UNTIL month changes`
-      // );
-      // console.log(
-      //   `Next calculated due_date is ${this.addDays(dateString, 14)}`
-      // );
-      let nextDueDate = this.addDays(dateString, 14).toString();
-      console.log(nextDueDate);
-
-      let month = nextDueDate.substring(4, 7);
-      // console.log(month);
-
-      let day = parseInt(nextDueDate.substring(8, 10));
-      // console.log(day);
-
-      if (month === stringArray[0]) {
-        console.log("it is the same month, add new bill");
-        let newestCharge = newCharge;
-        newestCharge.due_date = day;
-        console.log(newestCharge);
-        this.context.addNewCharge(newestCharge);
-      } else {
-        console.log("it is a new month! Do not add new charge ");
-      }
-    } else if (occurance === "Weekly") {
-      console.log(
-        `${charge_name} is a Weekly occurance, must add charge every 7 days UNTIL month changes`
-      );
-      console.log(`Next calculated due_date is ${this.addDays(dateString, 7)}`);
-    }
-    console.log(`addAdditionalCharge has run`);
-  };
-
   // Responsible for changing fields to empty
 
   resetCharge = () => {
@@ -273,7 +180,7 @@ class AddCharge extends Component {
             name="amount"
             ref={this.amount}
             required
-            type="text"
+            type="number"
             value={this.state.amount}
           />
           <select
