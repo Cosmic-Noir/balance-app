@@ -79,8 +79,9 @@ class App extends Component {
     // eslint-disable-next-line
     let matchingCharges = Data.charges.filter(charge => {
       if (
-        charge.user_id === user_id &&
-        (charge.month_name === this.state.month || this.state.month_name === "")
+        (charge.user_id === user_id &&
+          charge.month_name === this.state.month) ||
+        this.state.month_name === ""
       ) {
         return charge;
       }
@@ -91,8 +92,7 @@ class App extends Component {
 
   // Temp function to set fake user data
   setUserInfo = user => {
-    this.setState({ userInfo: user });
-    this.setCharges(user.user_id);
+    this.setState({ userInfo: user }, this.setCharges(user.user_id));
 
     // console.log(`User info set as ${user}`);
   };
