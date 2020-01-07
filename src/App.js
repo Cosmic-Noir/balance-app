@@ -30,6 +30,7 @@ class App extends Component {
     signedIn: "",
     // Initially set to seed data
     charges: [],
+    month_name: "",
     users: Data.users,
     userInfo: []
   };
@@ -73,11 +74,14 @@ class App extends Component {
     // console.log("User has logged in successfully");
   };
 
-  // Temp func to set charges
+  // Temp func to set charges matching user_id AND month_name
   setCharges = user_id => {
     // eslint-disable-next-line
     let matchingCharges = Data.charges.filter(charge => {
-      if (charge.user_id === user_id) {
+      if (
+        charge.user_id === user_id &&
+        (charge.month_name === this.state.month || this.state.month_name === "")
+      ) {
         return charge;
       }
     });
