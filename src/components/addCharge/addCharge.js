@@ -41,7 +41,8 @@ class AddCharge extends Component {
   }
 
   updateDueDate(due_date) {
-    this.setState({ due_date: parseInt(due_date) });
+    this.setState({ due_date: due_date });
+    console.log(due_date);
   }
 
   /* Custom Methods */
@@ -151,13 +152,10 @@ class AddCharge extends Component {
             className="chargeInput"
             id="due_date"
             onChange={e => this.updateDueDate(e.target.value)}
-            placeholder="due date"
             name="due_date"
             ref={this.due_date}
             required
-            type="number"
-            min="1"
-            max="31"
+            type="date"
             value={this.state.due_date}
           />
           <input
