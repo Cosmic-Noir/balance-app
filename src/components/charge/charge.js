@@ -57,6 +57,7 @@ class Charge extends Component {
   // Responsible for changing editing to false, thus revleaing charge line instead of form
   handleClickSave = () => {
     this.setState({ editing: false });
+    // IF new === true, then call addCharge function for each listed charge.
   };
 
   render() {

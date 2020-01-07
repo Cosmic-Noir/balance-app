@@ -38,7 +38,11 @@ class CreateBudget extends Component {
         <button>No, Start Fresh</button>
         <br />
         {this.state.new === true ? (
-          <Budget imported={this.state.imported} new={this.state.new} />
+          <Budget
+            imported={this.state.imported}
+            new={this.state.new}
+            history={this.props.history}
+          />
         ) : (
           ""
         )}

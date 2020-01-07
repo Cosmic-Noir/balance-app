@@ -78,7 +78,10 @@ class Budget extends Component {
   // Responsible for providing options of monthly budgets
   displayMonths = () => {
     const months = {};
-
+    if (this.props.new === true) {
+      console.log(`New budget, setting month to next...`);
+      console.log(months);
+    }
     if (this.context.charges === null) {
       return null;
     } else {
@@ -213,7 +216,11 @@ class Budget extends Component {
 
   // Responsible for when user clicks cancel button
   handleBack = () => {
-    this.props.history.goBack();
+    if (this.props.new === true) {
+      this.props.history.push("/dashboard");
+    } else {
+      this.props.history.goBack();
+    }
   };
 
   // Responsible for showing edit/delete buttons on each charge
@@ -252,9 +259,21 @@ class Budget extends Component {
     this.setState({ charges: charges });
   };
 
+  // Responsible for if state is set to new, turn editingTable to true, filter charges for occurance !== One Time, then update the month_name of the charge, then for each charge, add to all charges
+  updateRecurrantCharges = () => {
+    this.setState({ editingTable: true });
+  };
+
+  // Responsible for updating the month_name value if this.props.new === true
+  updateNewMonth = () => {};
+
   componentDidMount() {
-    let month_name = document.getElementById("month_name").value;
-    this.setMonth(month_name);
+    if (this.props.new) {
+      this.displayMonths();
+    } else {
+      let month_name = document.getElementById("month_name").value;
+      this.setMonth(month_name);
+    }
   }
 
   handleTimeOut = () => {
@@ -268,18 +287,22 @@ class Budget extends Component {
     return (
       <div className="budgetReport flex-column">
         <h2 className="title">Budget Report</h2>
-        <form className="siteList">
-          <h3>Select Budget:</h3>
-          <select
-            id="month_name"
-            name="month_name"
-            onChange={e => this.updateMonth(e.target.value)}
-            ref={this.state.month_name}
-            value={this.state.month_name}
-          >
-            {this.displayMonths()}
-          </select>
-        </form>
+        {this.props.new === true ? (
+          ""
+        ) : (
+          <form className="siteList">
+            <h3>Select Budget:</h3>
+            <select
+              id="month_name"
+              name="month_name"
+              onChange={e => this.updateMonth(e.target.value)}
+              ref={this.state.month_name}
+              value={this.state.month_name}
+            >
+              {this.displayMonths()}
+            </select>
+          </form>
+        )}
         <h3 className="title">{this.state.month_name}</h3>
         <div className="flex-column report">{this.displayCharges()}</div>
         <div className="month_totals">
