@@ -58,7 +58,6 @@ class App extends Component {
 
   // Responsible for creating month_name_list and then setting month to last entered into array
   getMonthList = () => {
-    console.log(`getMonthlist ran`);
     // console.log(Data.charges);
     let month_list = {};
     for (let i = 0; i < Data.charges.length; i++) {
@@ -69,18 +68,17 @@ class App extends Component {
       }
     }
     let month_name_list = Object.keys(month_list);
+    console.log(`getMonthlist ran`);
     this.setMonthList(month_name_list);
-    this.setMonth(month_name_list[month_name_list.length - 1]);
   };
 
   setMonthList = month_name_list => {
-    this.setState({ month_name_list: month_name_list });
+    this.setState({ month_name_list: month_name_list }, this.setMonth());
   };
 
   // Resposible for setting month_name
-  setMonth = month_name => {
-    this.setState({ month_name: month_name });
-    this.setCharges();
+  setMonth = () => {
+    this.setState({ month_name: "Jan 2020" });
   };
 
   updateCharge = updatedCharge => {
@@ -97,18 +95,20 @@ class App extends Component {
     this.setState({
       signedIn: true
     });
-    this.getMonthList();
   };
 
   // Temp func to set charges matching user_id AND month_name
-  setCharges = user_id => {
+  setCharges = () => {
     // eslint-disable-next-line
 
     let matchingCharges = Data.charges.filter(charge => {
+      console.log(charge.user_id + " " + this.state.userInfo.user_id);
+      console.log(this.state.month_name);
+      console.log(charge.month_name);
+
       if (
-        charge.user_id === user_id &&
-        (charge.month_name === this.state.month_name ||
-          this.state.month_name === "")
+        charge.user_id === this.state.userInfo.user_id &&
+        charge.month_name === this.state.month_name
       ) {
         return charge;
       }
@@ -120,7 +120,7 @@ class App extends Component {
 
   // Temp function to set fake user data
   setUserInfo = user => {
-    this.setState({ userInfo: user }, this.setCharges(user.user_id));
+    this.setState({ userInfo: user }, this.getMonthList());
   };
 
   // Temp function to log user out
@@ -254,6 +254,7 @@ class App extends Component {
       deleteCharge: this.deleteCharge,
       onSignIn: this.onSignIn,
       onSignOut: this.onSignOut,
+      setCharges: this.setCharges,
       setMonth: this.setMonth,
       setUserInfo: this.setUserInfo,
       updateCharge: this.updateCharge,

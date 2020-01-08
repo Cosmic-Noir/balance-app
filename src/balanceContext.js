@@ -5,10 +5,11 @@ const balanceContext = React.createContext({
   addNewUser: () => {},
   addNewCharge: () => {},
   checkLoginStatus: () => {},
+  deleteCharge: () => {},
   onSingIn: () => {},
   onSignOut: () => {},
+  setCharges: () => {},
   setUserInfo: () => {},
-  deleteCharge: () => {},
   updateCharge: () => {},
 
   // Values

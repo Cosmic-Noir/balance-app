@@ -273,7 +273,7 @@ class Budget extends Component {
   };
 
   componentDidMount() {
-    this.setCharges();
+    this.context.setCharges();
   }
 
   handleTimeOut = () => {
