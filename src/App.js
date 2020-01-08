@@ -56,20 +56,25 @@ class App extends Component {
     // console.log(`deleteCharge is called`);
   };
 
-  // Responsible for creating month_name_list
+  // Responsible for creating month_name_list and then setting month to last entered into array
   getMonthList = () => {
     console.log(`getMonthlist ran`);
     // console.log(Data.charges);
     let month_list = {};
     for (let i = 0; i < Data.charges.length; i++) {
-      console.log(Data.charges[i].month_name);
+      // console.log(Data.charges[i].month_name);
       if (month_list[Data.charges[i].month_name] === true) {
       } else {
         month_list[Data.charges[i].month_name] = true;
       }
     }
     let month_name_list = Object.keys(month_list);
-    console.log(month_name_list);
+    this.setMonthList(month_name_list);
+    this.setMonth(month_name_list[month_name_list.length - 1]);
+  };
+
+  setMonthList = month_name_list => {
+    this.setState({ month_name_list: month_name_list });
   };
 
   // Resposible for setting month_name
