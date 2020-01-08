@@ -243,10 +243,13 @@ class Budget extends Component {
     // console.log(this.state.charges);
 
     charges.sort((a, b) => {
-      if (a.due_date === b.due_date && a.category === "Income") {
+      let aDay = parseInt(a.due_date.substring(8, 10));
+      let bDay = parseInt(b.due_date.substring(8, 10));
+
+      if (aDay === bDay && a.category === "Income") {
         // console.log(`Due date matches, ${a.charge_name} is of income `);
         return -1;
-      } else if (a.due_date > b.due_date || a.due_date === b.due_date) {
+      } else if (aDay > bDay || aDay === bDay) {
         return 1;
       } else {
         return -1;
