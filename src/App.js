@@ -64,12 +64,12 @@ class App extends Component {
     for (let i = 0; i < Data.charges.length; i++) {
       console.log(Data.charges[i].month_name);
       if (month_list[Data.charges[i].month_name] === true) {
-        console.log("blah");
       } else {
         month_list[Data.charges[i].month_name] = true;
       }
     }
-    console.log(month_list);
+    let month_name_list = Object.keys(month_list);
+    console.log(month_name_list);
   };
 
   // Resposible for setting month_name
