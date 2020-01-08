@@ -33,20 +33,11 @@ class Budget extends Component {
 
   // Responsible for sorting charges in context and updating state to match selected month_name
   setCharges = () => {
-    let month_name = document.getElementById("month_name").value;
-
-    let charges = this.context.charges.filter(charge => {
-      if (charge.month_name === month_name) {
-        // console.log("matching charge found");
-        return charge;
-      } else {
-        return "";
-      }
-    });
-    this.setState({ charges: charges }, function() {
+    console.log(this.context.charges);
+    this.setState({ charges: this.context.charges }, function() {
       this.sortCharges();
     });
-    // console.log(`setCharges has run and setState`);
+    console.log(`setCharges has run and setState`);
   };
 
   /* Custom Methods */
@@ -287,6 +278,7 @@ class Budget extends Component {
   };
 
   componentDidMount() {
+    this.setCharges();
     if (this.props.new === true) {
       this.updateNewMonth();
     } else {
