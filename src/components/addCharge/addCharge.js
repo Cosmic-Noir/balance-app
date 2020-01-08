@@ -151,13 +151,11 @@ class AddCharge extends Component {
             className="chargeInput"
             id="due_date"
             onChange={e => this.updateDueDate(e.target.value)}
-            placeholder="due date"
+            min={this.state.first_of_month}
             name="due_date"
             ref={this.due_date}
             required
-            type="number"
-            min="1"
-            max="31"
+            type="date"
             value={this.state.due_date}
           />
           <input
