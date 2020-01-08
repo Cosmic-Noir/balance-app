@@ -41,7 +41,7 @@ class AddCharge extends Component {
   }
 
   updateDueDate(due_date) {
-    this.setState({ due_date: parseInt(due_date) });
+    this.setState({ due_date: due_date });
   }
 
   /* Custom Methods */
