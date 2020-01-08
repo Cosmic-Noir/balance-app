@@ -72,7 +72,7 @@ class SignUp extends Component {
       this.updateId();
       let newUser = this.state;
       newUser.user_id = Math.floor(Math.random() * 1000);
-      console.log(newUser.id);
+      // console.log(newUser.id);
       this.context.onSignIn();
       this.context.addNewUser(newUser);
       this.context.setUserInfo(newUser);

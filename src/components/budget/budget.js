@@ -21,10 +21,6 @@ class Budget extends Component {
   static contextType = balanceContext;
 
   /* State Setting Methods */
-  // setMonth = month_name => {
-  //   this.setState({ month_name: month_name });
-  //   this.setCharges();
-  // };
 
   updateMonth = month_name => {
     this.setState({ month_name: month_name });
@@ -279,12 +275,6 @@ class Budget extends Component {
 
   componentDidMount() {
     this.setCharges();
-    if (this.props.new === true) {
-      this.updateNewMonth();
-    } else {
-      let month_name = document.getElementById("month_name").value;
-      // this.setMonth(month_name);
-    }
   }
 
   handleTimeOut = () => {
@@ -312,6 +302,7 @@ class Budget extends Component {
             >
               {this.displayMonths()}
             </select>
+            <button type="submit">Fetch Report</button>
           </form>
         )}
         <h3 className="title">{this.state.month_name}</h3>

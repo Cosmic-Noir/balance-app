@@ -56,6 +56,20 @@ class App extends Component {
     // console.log(`deleteCharge is called`);
   };
 
+  // Responsible for creating month_name_list
+  getMonthList = () => {
+    let months = {};
+    for (let charge in Data.charges) {
+      const { month_name } = charge;
+      if (months[month_name] === true) {
+        return null;
+      } else {
+        months[month_name] = true;
+      }
+    }
+    console.log(months);
+  };
+
   // Resposible for setting month_name
   setMonth = month_name => {
     this.setState({ month_name: month_name });
@@ -93,6 +107,7 @@ class App extends Component {
     });
 
     this.setState({ charges: matchingCharges });
+    console.log(`setCharges ran`);
   };
 
   // Temp function to set fake user data
@@ -111,13 +126,13 @@ class App extends Component {
 
   /* State Setting Methods */
   // Responsible for setting user's signedIn status to true or false if JWT present
-  checkLoginStatus = () => {
-    if (window.sessionStorage.getItem(config.TOKEN_KEY)) {
-      this.setState({ signedIn: true });
-    } else {
-      this.setState({ signedIn: false });
-    }
-  };
+  // checkLoginStatus = () => {
+  //   if (window.sessionStorage.getItem(config.TOKEN_KEY)) {
+  //     this.setState({ signedIn: true });
+  //   } else {
+  //     this.setState({ signedIn: false });
+  //   }
+  // };
 
   // Responsible for adding days to current date to return a new date
   addDays = (date, days) => {
@@ -217,7 +232,8 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.checkLoginStatus();
+    // this.checkLoginStatus();
+    this.getMonthList();
   }
 
   render() {
@@ -235,6 +251,8 @@ class App extends Component {
 
       // Values
       charges: this.state.charges,
+      month_name: this.state.month_name,
+      month_name_list: this.state.month_name_list,
       signedIn: this.state.signedIn,
       userInfo: this.state.userInfo,
       users: this.state.users
