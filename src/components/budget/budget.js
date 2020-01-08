@@ -24,16 +24,15 @@ class Budget extends Component {
 
   updateMonth = month_name => {
     this.setState({ month_name: month_name });
-    this.setCharges();
   };
 
   // Responsible for sorting charges in context and updating state to match selected month_name
   setCharges = () => {
-    console.log(this.context.charges);
+    // console.log(this.context.charges);
     this.setState({ charges: this.context.charges }, function() {
       this.sortCharges();
     });
-    console.log(`setCharges has run and setState`);
+    // console.log(`setCharges has run and setState`);
   };
 
   /* Custom Methods */

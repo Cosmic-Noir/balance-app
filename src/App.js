@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 // import { Link } from "react-router-dom";
-import config from "./config";
+// import config from "./config";
 
 /* Custom Components */
 import Budget from "./components/budget/budget";
@@ -58,16 +58,18 @@ class App extends Component {
 
   // Responsible for creating month_name_list
   getMonthList = () => {
-    let months = {};
-    for (let charge in Data.charges) {
-      const { month_name } = charge;
-      if (months[month_name] === true) {
-        return null;
+    console.log(`getMonthlist ran`);
+    // console.log(Data.charges);
+    let month_list = {};
+    for (let i = 0; i < Data.charges.length; i++) {
+      console.log(Data.charges[i].month_name);
+      if (month_list[Data.charges[i].month_name] === true) {
+        console.log("blah");
       } else {
-        months[month_name] = true;
+        month_list[Data.charges[i].month_name] = true;
       }
     }
-    console.log(months);
+    console.log(month_list);
   };
 
   // Resposible for setting month_name
@@ -90,6 +92,7 @@ class App extends Component {
     this.setState({
       signedIn: true
     });
+    this.getMonthList();
   };
 
   // Temp func to set charges matching user_id AND month_name
@@ -233,7 +236,8 @@ class App extends Component {
 
   componentDidMount() {
     // this.checkLoginStatus();
-    this.getMonthList();
+    console.log("App running...");
+    // this.getMonthList();
   }
 
   render() {
