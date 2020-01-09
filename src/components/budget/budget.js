@@ -26,11 +26,6 @@ class Budget extends Component {
     this.setCharges();
   };
 
-  updateMonth = month_name => {
-    this.setState({ month_name: month_name });
-    this.setCharges();
-  };
-
   // Responsible for sorting charges in context and updating state to match selected month_name
   setCharges = () => {
     let month_name = document.getElementById("month_name").value;
@@ -314,7 +309,7 @@ class Budget extends Component {
             <select
               id="month_name"
               name="month_name"
-              onChange={e => this.updateMonth(e.target.value)}
+              onChange={e => this.setMonth(e.target.value)}
               ref={this.state.month_name}
               value={this.state.month_name}
             >
