@@ -266,12 +266,6 @@ class Budget extends Component {
     }
   }
 
-  handleTimeOut = () => {
-    setTimeout(() => {
-      this.displayCharges();
-    }, 2000);
-  };
-
   render() {
     // const { month_name } = this.state.month_name;
     return (
