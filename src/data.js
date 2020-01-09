@@ -113,7 +113,7 @@ const Data = {
       charge_id: 10,
       charge_name: "Pet Insurance",
       category: "Insurance/Financial",
-      due_date: "2020-02-05",
+      due_date: "2020-01-05",
       amount: 60,
       month_name: "Jan 2020",
       user_id: 1,
