@@ -167,10 +167,10 @@ class Budget extends Component {
         return (
           <div className="remainder">
             <p>
-              Current Paycheck: {pastPaycheck} means {remainder}{" "}
+              Current Income: {pastPaycheck} means {remainder}{" "}
               {remainder < 0
                 ? "needed to cover expenses"
-                : "leftover from paycheck"}
+                : "leftover from income"}
             </p>
             <Charge
               amount={amount}
@@ -196,10 +196,8 @@ class Budget extends Component {
       ...allCharges,
       <div className="remainder" key="rem">
         <p>
-          Current Paycheck: {pastPaycheck} means {remainder}{" "}
-          {remainder < 0
-            ? "needed to cover expenses"
-            : "leftover from paycheck"}
+          Current Income: {pastPaycheck} means {remainder}{" "}
+          {remainder < 0 ? "needed to cover expenses" : "leftover from income"}
         </p>
       </div>
     ];
