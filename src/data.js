@@ -15,18 +15,6 @@ const Data = {
   ],
 
   charges: [
-    // dudest charges
-    {
-      charge_id: 7,
-      charge_name: "Paycheck",
-      category: "Income",
-      due_date: "2020-01-03",
-      amount: 1200,
-      month_name: "Jan 2020",
-      user_id: 1,
-      occurance: "Biweekly"
-    },
-
     {
       charge_id: 1,
       charge_name: "Rent",
@@ -36,6 +24,16 @@ const Data = {
       month_name: "Feb 2020",
       user_id: 1,
       occurance: "Monthly"
+    },
+    {
+      charge_id: 7,
+      charge_name: "Paycheck",
+      category: "Income",
+      due_date: "2020-01-03",
+      amount: 1200,
+      month_name: "Jan 2020",
+      user_id: 1,
+      occurance: "Biweekly"
     },
 
     {

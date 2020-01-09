@@ -258,32 +258,8 @@ class Budget extends Component {
     this.setState({ editingTable: true });
   };
 
-  // Responsible for updating the month_name value if this.props.new === true
-  updateNewMonth = () => {
-    const months = {};
-    let monthList = this.context.charges.map(charge => {
-      const { month_name } = charge;
-
-      if (months[month_name] === true) {
-        return null;
-      } else {
-        months[month_name] = true;
-      }
-    });
-
-    let names = Object.keys(months);
-
-    for (let i = 0; i < names.length; i++) {
-      let last = names[i];
-      let year = names[i + 1].substring(4, 8);
-    }
-    console.log(`New table month required, setting...`);
-    console.log(names);
-  };
-
   componentDidMount() {
     if (this.props.new === true) {
-      this.updateNewMonth();
     } else {
       let month_name = document.getElementById("month_name").value;
       this.setMonth(month_name);
@@ -340,7 +316,11 @@ class Budget extends Component {
         ) : (
           <button onClick={this.handleEditBudgetClick}>Edit Budget</button>
         )}
-        <Link to="createBudget">Create Budget</Link>
+        {this.props.new === true ? (
+          ""
+        ) : (
+          <Link to="createBudget">Create Budget</Link>
+        )}
 
         <button onClick={this.handleBack} type="button">
           Back

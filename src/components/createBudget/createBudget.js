@@ -21,21 +21,29 @@ class CreateBudget extends Component {
 
   handleClickYes = () => {
     this.setState({ imported: true, new: true });
+    this.hideCreate();
   };
 
   handleClickNo = () => {
     this.setState({ new: true });
+    this.hideCreate();
+  };
+
+  hideCreate = () => {
+    let option = document.getElementById("createNew");
+    option.classList.add("hidden");
   };
 
   render() {
     return (
       <div className="createBudget">
         <h2>Create New Budget:</h2>
-        {/* Budget Form here */}
-        <h3>Import last month's charges?</h3>
-        <h5>Note this will not include one-time categorized charges</h5>
-        <button onClick={this.handleClickYes}>Yes, Import Charges</button>
-        <button>No, Start Fresh</button>
+        <div id="createNew">
+          <h3>Import last month's charges?</h3>
+          <h5>Note this will not include one-time categorized charges</h5>
+          <button onClick={this.handleClickYes}>Yes, Import Charges</button>
+          <button onClick={this.handleClickNo}>No, Start Fresh</button>
+        </div>
         <br />
         {this.state.new === true ? (
           <Budget
