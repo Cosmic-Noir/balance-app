@@ -28,7 +28,8 @@ class Budget extends Component {
 
   // Responsible for sorting charges in context and updating state to match selected month_name
   setCharges = () => {
-    let month_name = document.getElementById("month_name").value;
+    let month_name =
+      this.props.month_name || document.getElementById("month_name").value;
 
     let charges = this.context.charges.filter(charge => {
       if (charge.month_name === month_name) {
@@ -260,6 +261,7 @@ class Budget extends Component {
 
   componentDidMount() {
     if (this.props.new === true) {
+      this.setMonth(this.props.month_name);
     } else {
       let month_name = document.getElementById("month_name").value;
       this.setMonth(month_name);
