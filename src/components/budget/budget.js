@@ -198,7 +198,7 @@ class Budget extends Component {
 
     allCharges = [
       ...allCharges,
-      <div className="remainder">
+      <div className="remainder" key="rem">
         <p>
           Current Paycheck: {pastPaycheck} means {remainder}{" "}
           {remainder < 0

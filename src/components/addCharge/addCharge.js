@@ -63,7 +63,6 @@ class AddCharge extends Component {
     } else {
       // Adding unique new charge
       let newCharge = this.state;
-      console.log(newCharge);
 
       newCharge.month_name = this.props.month_name;
       newCharge.user_id = this.context.userInfo.user_id;
