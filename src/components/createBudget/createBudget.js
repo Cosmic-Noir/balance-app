@@ -14,6 +14,13 @@ class CreateBudget extends Component {
 
   /* Custom Methods */
 
+  handleSubmit = e => {
+    e.preventDefault();
+    let newMonthName = document.getElementById("newMonthName").value;
+    console.log(newMonthName);
+    this.setState({ month_name: newMonthName });
+  };
+
   // Responsible for when user clicks cancel button
   handleBack = () => {
     this.props.history.goBack();
@@ -44,9 +51,25 @@ class CreateBudget extends Component {
           <button onClick={this.handleClickYes}>Yes, Import Charges</button>
           <button onClick={this.handleClickNo}>No, Start Fresh</button>
         </div>
-        <br />
         {this.state.new === true ? (
+          <div id="selectName">
+            <form
+              onSubmit={e => {
+                this.handleSubmit(e);
+              }}
+            >
+              <label>Name Budget in month year format:</label>
+              <input type="text" id="newMonthName"></input>
+              <button type="submit">Name Budget</button>
+            </form>
+          </div>
+        ) : (
+          ""
+        )}
+        <br />
+        {this.state.month_name ? (
           <Budget
+            month_name={this.state.month_name}
             imported={this.state.imported}
             new={this.state.new}
             history={this.props.history}
