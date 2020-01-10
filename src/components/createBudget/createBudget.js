@@ -17,7 +17,7 @@ class CreateBudget extends Component {
   handleSubmit = e => {
     e.preventDefault();
     let newMonthName = document.getElementById("newMonthName").value;
-    console.log(newMonthName);
+    // console.log(newMonthName);
     this.setState({ month_name: newMonthName });
   };
 
