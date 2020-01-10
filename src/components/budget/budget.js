@@ -266,7 +266,7 @@ class Budget extends Component {
 
   // Responsible for if state is set to new, turn editingTable to true, filter charges for occurance !== One Time, then update the month_name of the charge, then for each charge, add to all charges
   updateRecurrantCharges = () => {
-    this.setState({ editingTable: true });
+    this.setState({ editingBudget: true });
   };
 
   componentDidMount() {
@@ -274,7 +274,7 @@ class Budget extends Component {
       this.setMonth(this.props.month_name);
     } else if (this.props.new === true && this.props.imported === true) {
       let month_name = document.getElementById("month_name").value;
-
+      this.updateRecurrantCharges();
       this.setMonthDelay(month_name);
     } else {
       let month_name = document.getElementById("month_name").value;
