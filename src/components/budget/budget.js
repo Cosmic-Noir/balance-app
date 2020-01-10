@@ -136,6 +136,7 @@ class Budget extends Component {
             editingBudget={this.state.editingBudget}
             key={charge_id}
             month_name={this.state.month_name}
+            new={this.props.new}
             occurance={occurance}
             setCharges={this.setCharges}
           />
@@ -155,6 +156,7 @@ class Budget extends Component {
             editingBudget={this.state.editingBudget}
             key={charge_id}
             month_name={this.state.month_name}
+            new={this.props.new}
             occurance={occurance}
             setCharges={this.setCharges}
           />
@@ -193,6 +195,7 @@ class Budget extends Component {
               editingBudget={this.state.editingBudget}
               key={charge_id}
               month_name={this.state.month_name}
+              new={this.props.new}
               occurance={occurance}
               setCharges={this.setCharges}
             />
