@@ -78,7 +78,12 @@ class CreateBudget extends Component {
                 <option value="Nov">Nov</option>
                 <option value="Dec">Dec</option>
               </select>
-              <input type="text" id="newYear" placeholder="2020"></input>
+              <input
+                type="text"
+                id="newYear"
+                placeholder="2020"
+                required
+              ></input>
               <button type="submit">Name Budget</button>
             </form>
           </div>
