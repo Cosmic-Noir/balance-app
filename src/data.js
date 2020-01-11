@@ -33,7 +33,7 @@ const Data = {
       amount: 1200,
       month_name: "Jan 2020",
       user_id: 1,
-      occurance: "Biweekly"
+      occurance: "Monthly"
     },
 
     {
@@ -44,7 +44,7 @@ const Data = {
       amount: 150,
       month_name: "Feb 2020",
       user_id: 1,
-      occurance: "Weekly"
+      occurance: "Monthly"
     },
     {
       charge_id: 8,
@@ -54,7 +54,7 @@ const Data = {
       amount: 1200,
       month_name: "Feb 2020",
       user_id: 1,
-      occurance: "Biweekly"
+      occurance: "Monthly"
     },
     {
       charge_id: 3,
@@ -74,7 +74,7 @@ const Data = {
       amount: 1200,
       month_name: "Feb 2020",
       user_id: 1,
-      occurance: "Biweekly"
+      occurance: "Monthly"
     },
     {
       charge_id: 5,
@@ -87,6 +87,16 @@ const Data = {
       occurance: "Monthly"
     },
     {
+      charge_id: 12,
+      charge_name: "Birthday Supplies",
+      category: "Entertainment",
+      due_date: "2020-02-13",
+      amount: 200,
+      month_name: "Feb 2020",
+      user_id: 1,
+      occurance: "One Time"
+    },
+    {
       charge_id: 6,
       charge_name: "Groceries",
       category: "Food/Drink",
@@ -94,7 +104,7 @@ const Data = {
       amount: 150,
       month_name: "Feb 2020",
       user_id: 1,
-      occurance: "Weekly"
+      occurance: "Monthly"
     },
 
     {
@@ -105,7 +115,7 @@ const Data = {
       amount: 150,
       month_name: "Jan 2020",
       user_id: 1,
-      occurance: "Weekly"
+      occurance: "Monthly"
     },
     {
       charge_id: 10,
