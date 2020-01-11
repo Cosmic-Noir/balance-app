@@ -44,42 +44,6 @@ class AddCharge extends Component {
     this.setState({ due_date: due_date });
   }
 
-  setFirstofMonth = () => {
-    console.log(this.props.month_name.substring(0, 3));
-    let months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
-    ];
-    let digit;
-    let year = this.props.month_name.substring(4, 9);
-
-    for (let i = 0; i < months.length; i++) {
-      if (months[i] === this.props.month_name.substring(0, 3)) {
-        digit = i + 1;
-        console.log(i + 1);
-      }
-    }
-    let stringDig = digit.toString();
-    if (stringDig.length === 1) {
-      stringDig = "0" + stringDig;
-    }
-
-    console.log(stringDig);
-    let fullFirst = year + "-" + stringDig + "-01";
-    console.log(fullFirst);
-    this.setState({ first_of_month: fullFirst });
-  };
-
   /* Custom Methods */
 
   handleSubmit = e => {
@@ -163,9 +127,6 @@ class AddCharge extends Component {
 
   componentDidMount() {
     this.setProps();
-    setTimeout(() => {
-      this.setFirstofMonth();
-    }, 1000);
   }
 
   render() {
@@ -189,7 +150,7 @@ class AddCharge extends Component {
             className="chargeInput"
             id="due_date"
             onChange={e => this.updateDueDate(e.target.value)}
-            min={this.state.first_of_month}
+            min={this.props.first_of_month}
             name="due_date"
             ref={this.due_date}
             required

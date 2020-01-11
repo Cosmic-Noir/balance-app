@@ -24,13 +24,53 @@ class Budget extends Component {
   setMonth = month_name => {
     this.setState({ month_name: month_name });
     this.setCharges();
+    setTimeout(() => {
+      this.setFirstofMonth();
+    }, 1000);
   };
 
   setMonthDelay = month_name => {
     this.setState({ month_name: month_name });
     setTimeout(() => {
       this.setCharges();
+      this.setFirstofMonth();
     }, 1000);
+  };
+
+  setFirstofMonth = () => {
+    console.log(this.state.month_name.substring(0, 3));
+    let months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ];
+    let digit;
+    let year = this.state.month_name.substring(4, 9);
+
+    for (let i = 0; i < months.length; i++) {
+      if (months[i] === this.state.month_name.substring(0, 3)) {
+        digit = i + 1;
+        console.log(i + 1);
+      }
+    }
+    let stringDig = digit.toString();
+    if (stringDig.length === 1) {
+      stringDig = "0" + stringDig;
+    }
+
+    console.log(stringDig);
+    let fullFirst = year + "-" + stringDig + "-01";
+    console.log(fullFirst);
+    this.setState({ first_of_month: fullFirst });
   };
 
   // Responsible for sorting charges in context and updating state to match selected month_name
@@ -317,6 +357,7 @@ class Budget extends Component {
           </h4>
         </div>
         <AddCharge
+          first_of_month={this.state.first_of_month}
           month_name={this.state.month_name}
           setCharges={this.setCharges}
         />
