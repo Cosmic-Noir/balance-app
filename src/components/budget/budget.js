@@ -72,7 +72,7 @@ class Budget extends Component {
   // Responsible for sorting charges in context and updating state to match selected month_name
   setCharges = () => {
     let month_name;
-    console.log(this.state.month_name);
+    // console.log(this.state.month_name);
     if (this.props.new === true) {
       month_name = this.state.month_name;
     } else {
@@ -123,12 +123,11 @@ class Budget extends Component {
           }
 
           let newDueDate = year + "-" + stringDig + day;
-          console.log(newDueDate);
 
           charge.due_date = newDueDate;
           return charge;
         } else {
-          console.log(`${charge.charge_name} a one time occurence, excluding`);
+          // console.log(`${charge.charge_name} a one time occurence, excluding`);
           return "";
         }
       });
@@ -137,9 +136,9 @@ class Budget extends Component {
     this.setState({ charges: charges }, function() {
       this.sortCharges();
     });
-    console.log(`setCharges has run and setState`);
+    // console.log(`setCharges has run and setState`);
     if (this.props.new === true) {
-      console.log("New budget detected, chaning month_name");
+      // console.log("New budget detected, chaning month_name");
       this.setState({ month_name: this.props.month_name });
     }
   };
