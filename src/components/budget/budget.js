@@ -38,7 +38,6 @@ class Budget extends Component {
   };
 
   setFirstofMonth = () => {
-    console.log(this.state.month_name.substring(0, 3));
     let months = [
       "Jan",
       "Feb",
@@ -59,7 +58,6 @@ class Budget extends Component {
     for (let i = 0; i < months.length; i++) {
       if (months[i] === this.state.month_name.substring(0, 3)) {
         digit = i + 1;
-        console.log(i + 1);
       }
     }
     let stringDig = digit.toString();
@@ -67,9 +65,7 @@ class Budget extends Component {
       stringDig = "0" + stringDig;
     }
 
-    console.log(stringDig);
     let fullFirst = year + "-" + stringDig + "-01";
-    console.log(fullFirst);
     this.setState({ first_of_month: fullFirst });
   };
 
@@ -91,6 +87,19 @@ class Budget extends Component {
         return "";
       }
     });
+
+    if (this.props.new === true) {
+      console.log("filtering charges for monthly");
+      charges = charges.filter(charge => {
+        if (charge.occurance === "Monthly") {
+          return charge;
+        } else {
+          console.log(`${charge.charge_name} a one time occurence, excluding`);
+          return "";
+        }
+      });
+    }
+
     this.setState({ charges: charges }, function() {
       this.sortCharges();
     });
