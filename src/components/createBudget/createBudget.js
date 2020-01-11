@@ -16,9 +16,11 @@ class CreateBudget extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    let newYear = document.getElementById("newYear").value;
     let newMonthName = document.getElementById("newMonthName").value;
-    // console.log(newMonthName);
-    this.setState({ month_name: newMonthName });
+    let newBudgetName = newMonthName + " " + newYear;
+    console.log(newBudgetName);
+    this.setState({ month_name: newBudgetName });
   };
 
   // Responsible for when user clicks cancel button
