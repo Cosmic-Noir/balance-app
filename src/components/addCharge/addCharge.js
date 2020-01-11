@@ -215,8 +215,8 @@ class AddCharge extends Component {
             <option value="One Time">One Time</option>
 
             <option value="Monthly">Monthly</option>
-            <option value="Weekly">Weekly</option>
-            <option value="Biweekly">Biweekly</option>
+            {/* <option value="Weekly">Weekly</option>
+            <option value="Biweekly">Biweekly</option> */}
           </select>
           {this.state.error !== null ? (
             <h5 className="error">{this.state.error}</h5>
