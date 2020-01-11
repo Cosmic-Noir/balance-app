@@ -60,6 +60,12 @@ class Charge extends Component {
     // IF new === true, then call addCharge function for each listed charge.
   };
 
+  componentDidMount() {
+    if (this.props.new === true) {
+      this.handleClickEdit();
+    }
+  }
+
   render() {
     return (
       <div className="flex-column width-80">
@@ -73,6 +79,7 @@ class Charge extends Component {
             due_date={this.props.due_date}
             category={this.props.category}
             occurance={this.props.occurance}
+            new={this.props.new}
             month_name={this.props.month_name}
             handleClickSave={this.handleClickSave}
             setCharges={this.props.setCharges}

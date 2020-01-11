@@ -33,6 +33,7 @@ class Budget extends Component {
     this.setState({ month_name: month_name });
     setTimeout(() => {
       this.setCharges();
+      this.setImportedCharges();
       this.setFirstofMonth();
     }, 1000);
   };
@@ -88,9 +89,24 @@ class Budget extends Component {
       }
     });
 
+    console.log(`setCharges has run and setState`);
+
+    this.setState({ charges: charges }, function() {
+      this.sortCharges();
+    });
+  };
+
+  setImportedCharges = () => {
+    let oldCharges = this.state.charges;
+    let newCharges = oldCharges.filter(charge => {
+      if (charge.occurance === "Monthly") {
+        return charge;
+      }
+    });
+
     if (this.props.new === true) {
       console.log("filtering charges for monthly");
-      charges = charges.filter(charge => {
+      newCharges = newCharges.map(charge => {
         if (charge.occurance === "Monthly") {
           // Must update charge month value
           let months = [
@@ -125,22 +141,16 @@ class Budget extends Component {
           let newDueDate = year + "-" + stringDig + day;
 
           charge.due_date = newDueDate;
+          charge.charge_id = Math.floor(Math.random() * 1000);
           return charge;
-        } else {
-          // console.log(`${charge.charge_name} a one time occurence, excluding`);
-          return "";
         }
       });
     }
-
-    this.setState({ charges: charges }, function() {
+    // console.log("New budget detected, chaning month_name");
+    this.setState({ charges: newCharges }, function() {
       this.sortCharges();
     });
-    // console.log(`setCharges has run and setState`);
-    if (this.props.new === true) {
-      // console.log("New budget detected, chaning month_name");
-      this.setState({ month_name: this.props.month_name });
-    }
+    this.setState({ month_name: this.props.month_name });
   };
 
   /* Custom Methods */
