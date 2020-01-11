@@ -92,6 +92,19 @@ class Budget extends Component {
       console.log("filtering charges for monthly");
       charges = charges.filter(charge => {
         if (charge.occurance === "Monthly") {
+          // Must update charge month value
+          let yearSnip = charge.due_date.substring(0, 5);
+          let numMon = parseInt(charge.due_date.substring(6, 7));
+          let daySnip = charge.due_date.substring(7, 10);
+
+          numMon = numMon + 1;
+          numMon = numMon.toString();
+          if (numMon.length === 1) {
+            numMon = "0" + numMon;
+          }
+          let newDueDate = yearSnip + numMon + daySnip;
+
+          charge.due_date = newDueDate;
           return charge;
         } else {
           console.log(`${charge.charge_name} a one time occurence, excluding`);
