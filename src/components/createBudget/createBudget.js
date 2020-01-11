@@ -19,8 +19,10 @@ class CreateBudget extends Component {
     let newYear = document.getElementById("newYear").value;
     let newMonthName = document.getElementById("newMonthName").value;
     let newBudgetName = newMonthName + " " + newYear;
-    console.log(newBudgetName);
+    // console.log(newBudgetName);
     this.setState({ month_name: newBudgetName });
+    const nameBudget = document.getElementById("selectName");
+    nameBudget.classList.add("hidden");
   };
 
   // Responsible for when user clicks cancel button
