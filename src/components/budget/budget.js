@@ -93,16 +93,37 @@ class Budget extends Component {
       charges = charges.filter(charge => {
         if (charge.occurance === "Monthly") {
           // Must update charge month value
-          let yearSnip = charge.due_date.substring(0, 5);
-          let numMon = parseInt(charge.due_date.substring(6, 7));
-          let daySnip = charge.due_date.substring(7, 10);
+          let months = [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ];
+          let digit;
+          let year = this.props.month_name.substring(4, 9);
+          let day = charge.due_date.substring(7, 10);
 
-          numMon = numMon + 1;
-          numMon = numMon.toString();
-          if (numMon.length === 1) {
-            numMon = "0" + numMon;
+          for (let i = 0; i < months.length; i++) {
+            if (months[i] === this.props.month_name.substring(0, 3)) {
+              digit = i + 1;
+            }
           }
-          let newDueDate = yearSnip + numMon + daySnip;
+
+          let stringDig = digit.toString();
+          if (stringDig.length === 1) {
+            stringDig = "0" + stringDig;
+          }
+
+          let newDueDate = year + "-" + stringDig + day;
+          console.log(newDueDate);
 
           charge.due_date = newDueDate;
           return charge;
@@ -117,6 +138,10 @@ class Budget extends Component {
       this.sortCharges();
     });
     console.log(`setCharges has run and setState`);
+    if (this.props.new === true) {
+      console.log("New budget detected, chaning month_name");
+      this.setState({ month_name: this.props.month_name });
+    }
   };
 
   /* Custom Methods */
