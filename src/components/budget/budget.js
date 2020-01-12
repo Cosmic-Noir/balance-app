@@ -139,7 +139,8 @@ class Budget extends Component {
         charge_name: charge.charge_name,
         charge_id: Math.floor(Math.random() * 1000),
         due_date: newDueDate,
-        occurance: charge.occurance
+        occurance: charge.occurance,
+        month_name: this.props.month_name
       };
     });
 
@@ -347,6 +348,15 @@ class Budget extends Component {
     console.log(`removeFromNew is called`);
   };
 
+  // Responsible for going through state of charges and adding each to original data
+  saveAllCharges = () => {
+    console.log(`saveallcharges called`);
+    for (let i = 0; i < this.state.charges.length; i++) {
+      console.log(this.state.charges[i]);
+      this.context.addNewCharge(this.state.charges[i]);
+    }
+  };
+
   // Responsible for showing Add Charge
   showAddCharge = () => {
     let addCharge = document.getElementById("addCharge");
@@ -432,7 +442,7 @@ class Budget extends Component {
         />
         {this.props.new === true && this.props.imported === true ? (
           <button type="button" onClick={this.saveAllCharges}>
-            Save New Budget
+            Save Imported Charges
           </button>
         ) : (
           <button onClick={this.showAddCharge} type="button" id="showAdd">
