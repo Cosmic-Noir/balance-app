@@ -362,7 +362,8 @@ class Budget extends Component {
         this.context.addNewCharge(this.state.charges[i]);
       }, 500);
     }
-    this.props.history.push("/budgets");
+    this.props.doneCreating();
+    // this.props.history.push("/budgets");
   };
 
   // Responsible for showing Add Charge

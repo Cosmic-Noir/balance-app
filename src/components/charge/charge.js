@@ -66,6 +66,12 @@ class Charge extends Component {
     }
   }
 
+  componentWillReceiveProps() {
+    if (this.props.new === false) {
+      this.setState({ editing: false });
+    }
+  }
+
   render() {
     return (
       <div className="flex-column width-80">
