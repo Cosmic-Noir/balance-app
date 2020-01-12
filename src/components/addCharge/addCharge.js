@@ -125,6 +125,11 @@ class AddCharge extends Component {
     this.setProps();
   };
 
+  handleClickRemoveFromNew = () => {
+    console.log("handleClickRemoveFromNew activated...");
+    this.props.removeFromNew(this.props.charge_id);
+  };
+
   componentDidMount() {
     this.setProps();
   }
@@ -220,13 +225,20 @@ class AddCharge extends Component {
           ) : (
             ""
           )}
-          {this.props.editing === true ? (
+          {this.props.editing === true && this.props.new !== true ? (
             <div>
               <button type="submit">Update</button>
               <button onClick={this.handleHideEdit} type="button">
                 Cancel
               </button>
             </div>
+          ) : (
+            ""
+          )}
+          {this.props.new === true ? (
+            <button onClick={this.handleClickRemoveFromNew} type="button">
+              Remove from New Budget
+            </button>
           ) : (
             <div>
               <button type="submit">Add</button>

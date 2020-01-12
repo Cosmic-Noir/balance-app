@@ -82,6 +82,7 @@ class Charge extends Component {
             new={this.props.new}
             month_name={this.props.month_name}
             handleClickSave={this.handleClickSave}
+            removeFromNew={this.props.removeFromNew}
             setCharges={this.props.setCharges}
           />
         ) : (

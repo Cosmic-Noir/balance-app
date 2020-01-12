@@ -99,7 +99,6 @@ class Budget extends Component {
   setImportedCharges = () => {
     let newCharges = this.state.charges.map(charge => {
       // Must update charge month value
-      console.log(charge);
 
       let months = [
         "Jan",
@@ -232,6 +231,7 @@ class Budget extends Component {
             month_name={this.state.month_name}
             new={this.props.new}
             occurance={occurance}
+            removeFromNew={this.removeFromNew}
             setCharges={this.setCharges}
           />
         );
@@ -252,6 +252,7 @@ class Budget extends Component {
             month_name={this.state.month_name}
             new={this.props.new}
             occurance={occurance}
+            removeFromNew={this.removeFromNew}
             setCharges={this.setCharges}
           />
         );
@@ -291,6 +292,7 @@ class Budget extends Component {
               month_name={this.state.month_name}
               new={this.props.new}
               occurance={occurance}
+              removeFromNew={this.removeFromNew}
               setCharges={this.setCharges}
             />
           </div>
@@ -330,6 +332,16 @@ class Budget extends Component {
   // Responsible for hiding edit/delet buttons on each charge
   handleDoneEditingClick = () => {
     this.setState({ editingBudget: false });
+  };
+
+  // Responsible for removing a charge from budget state
+  removeFromNew = charge_id => {
+    const newCharges = this.state.charges.filter(
+      charge => charge.charge_id !== charge_id
+    );
+    this.setState({ charges: newCharges });
+
+    console.log(`removeFromNew is called`);
   };
 
   // Responsible for showing Add Charge
