@@ -52,6 +52,7 @@ class CreateBudget extends Component {
     this.setState({ month_name: newBudgetName });
     const nameBudget = document.getElementById("selectName");
     nameBudget.classList.add("hidden");
+    this.hideImportMonth();
   };
 
   // Responsible for when user clicks cancel button
@@ -78,6 +79,11 @@ class CreateBudget extends Component {
   hideCreate = () => {
     let option = document.getElementById("createNew");
     option.classList.add("hidden");
+  };
+
+  hideImportMonth = () => {
+    let importOption = document.getElementById("selectImportMonth");
+    importOption.classList.add("hidden");
   };
 
   componentDidMount() {}
@@ -128,9 +134,7 @@ class CreateBudget extends Component {
           ""
         )}
         {this.state.imported === true ? (
-          <form
-            className={this.props.new === true ? "hidden siteList" : "siteList"}
-          >
+          <form className="siteList" id="selectImportMonth">
             <h3>Select Budget to Import From:</h3>
             <select
               id="imported_month_name"
