@@ -22,8 +22,11 @@ class CreateBudget extends Component {
 
   checkMonthName = month_name => {
     for (let i = 0; i < this.context.charges.length; i++) {
+      console.log(month_name);
+      console.log(this.context.charges[i].month_name);
       if (month_name === this.context.charges[i].month_name) {
-        this.setState({
+        console.log("matching table already exists");
+        return this.setState({
           error: `Month name already taken, please select a different month/year`
         });
       } else {
@@ -112,7 +115,7 @@ class CreateBudget extends Component {
       this.handleClickNo();
       console.log("should be no");
     }
-    console.log(this.context.charges);
+    // console.log(this.context.charges);
   }
 
   render() {
@@ -155,7 +158,7 @@ class CreateBudget extends Component {
                 required
               ></input>
               <button type="submit">Name Budget</button>
-              {this.state.error}
+              <h5 className="error">{this.state.error}</h5>
             </form>
           </div>
         ) : (
