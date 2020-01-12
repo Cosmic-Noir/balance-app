@@ -97,55 +97,45 @@ class Budget extends Component {
   };
 
   setImportedCharges = () => {
-    let oldCharges = this.state.charges;
-    let newCharges = oldCharges.filter(charge => {
-      if (charge.occurance === "Monthly") {
-        return charge;
+    let newCharges = this.state.charges.map(charge => {
+      // Must update charge month value
+      console.log(charge);
+      let months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ];
+      let digit;
+      let year = this.props.month_name.substring(4, 9);
+      let day = charge.due_date.substring(7, 10);
+
+      for (let i = 0; i < months.length; i++) {
+        if (months[i] === this.props.month_name.substring(0, 3)) {
+          digit = i + 1;
+        }
       }
+
+      let stringDig = digit.toString();
+      if (stringDig.length === 1) {
+        stringDig = "0" + stringDig;
+      }
+
+      let newDueDate = year + "-" + stringDig + day;
+
+      charge.due_date = newDueDate;
+      charge.charge_id = Math.floor(Math.random() * 1000);
+      return charge;
     });
 
-    if (this.props.new === true) {
-      console.log("filtering charges for monthly");
-      newCharges = newCharges.map(charge => {
-        if (charge.occurance === "Monthly") {
-          // Must update charge month value
-          let months = [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec"
-          ];
-          let digit;
-          let year = this.props.month_name.substring(4, 9);
-          let day = charge.due_date.substring(7, 10);
-
-          for (let i = 0; i < months.length; i++) {
-            if (months[i] === this.props.month_name.substring(0, 3)) {
-              digit = i + 1;
-            }
-          }
-
-          let stringDig = digit.toString();
-          if (stringDig.length === 1) {
-            stringDig = "0" + stringDig;
-          }
-
-          let newDueDate = year + "-" + stringDig + day;
-
-          charge.due_date = newDueDate;
-          charge.charge_id = Math.floor(Math.random() * 1000);
-          return charge;
-        }
-      });
-    }
     // console.log("New budget detected, chaning month_name");
     this.setState({ charges: newCharges }, function() {
       this.sortCharges();
