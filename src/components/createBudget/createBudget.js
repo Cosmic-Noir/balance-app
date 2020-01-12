@@ -90,7 +90,13 @@ class CreateBudget extends Component {
     importOption.classList.add("hidden");
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    if (this.context.charges[0] === undefined) {
+      this.handleClickNo();
+      console.log("should be no");
+    }
+    console.log(this.context.charges);
+  }
 
   render() {
     return (
