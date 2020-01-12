@@ -78,6 +78,7 @@ class Charge extends Component {
             charge_amount={this.props.amount}
             due_date={this.props.due_date}
             category={this.props.category}
+            imported={this.props.imported}
             occurance={this.props.occurance}
             new={this.props.new}
             month_name={this.props.month_name}
