@@ -240,6 +240,11 @@ class AddCharge extends Component {
               Remove from New Budget
             </button>
           ) : (
+            ""
+          )}
+          {this.props.charge_id ? (
+            ""
+          ) : (
             <div>
               <button type="submit">Add</button>
               <button onClick={this.handleCancel} type="button">
