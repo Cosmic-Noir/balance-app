@@ -457,6 +457,11 @@ class Budget extends Component {
             Add Charge
           </button>
         )}
+        {this.props.new === true && this.props.imported === true ? (
+          <h5>Save imported charges before adding new charges</h5>
+        ) : (
+          ""
+        )}
 
         {this.state.editingBudget === true && this.props.imported !== true ? (
           <button onClick={this.handleDoneEditingClick}>Done Editing</button>
