@@ -12,7 +12,36 @@ class CreateBudget extends Component {
 
   static contextType = balanceContext;
 
+  /* State Setting Methods */
+
+  setImportedMonth = month_name => {
+    this.setState({ imported_month_name: month_name });
+  };
+
   /* Custom Methods */
+
+  // Responsible for providing options of monthly budgets
+  displayMonths = () => {
+    const months = {};
+    if (this.context.charges === null) {
+      return null;
+    } else {
+      return this.context.charges.map(charge => {
+        const { month_name } = charge;
+
+        if (months[month_name] === true) {
+          return null;
+        }
+        months[month_name] = true;
+
+        return (
+          <option value={month_name} key={month_name}>
+            {month_name}
+          </option>
+        );
+      });
+    }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -33,6 +62,12 @@ class CreateBudget extends Component {
   handleClickYes = () => {
     this.setState({ imported: true, new: true });
     this.hideCreate();
+    setTimeout(() => {
+      let imported_month_name = document.getElementById("imported_month_name")
+        .value;
+      // console.log(imported_month_name);
+      this.setImportedMonth(imported_month_name);
+    });
   };
 
   handleClickNo = () => {
@@ -44,6 +79,8 @@ class CreateBudget extends Component {
     let option = document.getElementById("createNew");
     option.classList.add("hidden");
   };
+
+  componentDidMount() {}
 
   render() {
     return (
@@ -90,9 +127,28 @@ class CreateBudget extends Component {
         ) : (
           ""
         )}
+        {this.state.imported === true ? (
+          <form
+            className={this.props.new === true ? "hidden siteList" : "siteList"}
+          >
+            <h3>Select Budget to Import From:</h3>
+            <select
+              id="imported_month_name"
+              name="imported_month_name"
+              onChange={e => this.setImportedMonth(e.target.value)}
+              ref={this.state.imported_month_name}
+              value={this.state.imported_month_name}
+            >
+              {this.displayMonths()}
+            </select>
+          </form>
+        ) : (
+          ""
+        )}
         <br />
         {this.state.month_name ? (
           <Budget
+            imported_month_name={this.state.imported_month_name}
             month_name={this.state.month_name}
             imported={this.state.imported}
             new={this.state.new}

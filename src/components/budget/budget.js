@@ -382,9 +382,9 @@ class Budget extends Component {
     if (this.props.new === true && this.props.imported !== true) {
       this.setMonth(this.props.month_name);
     } else if (this.props.new === true && this.props.imported === true) {
-      let month_name = document.getElementById("month_name").value;
+      // let month_name = document.getElementById("month_name").value;
       this.updateRecurrantCharges();
-      this.setMonthDelay(month_name);
+      this.setMonthDelay(this.props.imported_month_name);
     } else {
       let month_name = document.getElementById("month_name").value;
       this.setMonth(month_name);
