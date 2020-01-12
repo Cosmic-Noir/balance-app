@@ -89,7 +89,7 @@ class Budget extends Component {
       }
     });
 
-    console.log(`setCharges has run and setState`);
+    // console.log(`setCharges has run and setState`);
 
     this.setState({ charges: charges }, function() {
       this.sortCharges();
@@ -350,12 +350,12 @@ class Budget extends Component {
     );
     this.setState({ charges: newCharges });
 
-    console.log(`removeFromNew is called`);
+    // console.log(`removeFromNew is called`);
   };
 
   // Responsible for going through state of charges and adding each to original data
   saveAllCharges = () => {
-    console.log(`saveallcharges called`);
+    // console.log(`saveallcharges called`);
     for (let i = 0; i < this.state.charges.length; i++) {
       // console.log(this.state.charges[i]);
       setTimeout(() => {
