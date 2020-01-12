@@ -52,7 +52,9 @@ class CreateBudget extends Component {
     this.setState({ month_name: newBudgetName });
     const nameBudget = document.getElementById("selectName");
     nameBudget.classList.add("hidden");
-    this.hideImportMonth();
+    if (this.state.imported === true) {
+      this.hideImportMonth();
+    }
   };
 
   // Responsible for when user clicks cancel button
@@ -64,10 +66,12 @@ class CreateBudget extends Component {
     this.setState({ imported: true, new: true });
     this.hideCreate();
     setTimeout(() => {
-      let imported_month_name = document.getElementById("imported_month_name")
-        .value;
-      // console.log(imported_month_name);
-      this.setImportedMonth(imported_month_name);
+      if (this.state.imported === true) {
+        let imported_month_name = document.getElementById("imported_month_name")
+          .value;
+        // console.log(imported_month_name);
+        this.setImportedMonth(imported_month_name);
+      }
     });
   };
 

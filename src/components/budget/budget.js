@@ -427,9 +427,16 @@ class Budget extends Component {
           month_name={this.state.month_name}
           setCharges={this.setCharges}
         />
-        <button onClick={this.showAddCharge} type="button" id="showAdd">
-          Add Charge
-        </button>
+        {this.props.new === true && this.props.imported === true ? (
+          <button type="button" onClick={this.saveAllCharges}>
+            Save New Budget
+          </button>
+        ) : (
+          <button onClick={this.showAddCharge} type="button" id="showAdd">
+            Add Charge
+          </button>
+        )}
+
         {this.state.editingBudget === true ? (
           <button onClick={this.handleDoneEditingClick}>Done Editing</button>
         ) : (

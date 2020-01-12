@@ -61,7 +61,7 @@ class Charge extends Component {
   };
 
   componentDidMount() {
-    if (this.props.new === true) {
+    if (this.props.new === true && this.props.imported === true) {
       this.handleClickEdit();
     }
   }
