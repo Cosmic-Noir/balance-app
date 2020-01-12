@@ -363,6 +363,7 @@ class Budget extends Component {
       }, 500);
     }
     this.props.doneCreating();
+    this.setState({ editingBudget: false });
     // this.props.history.push("/budgets");
   };
 
