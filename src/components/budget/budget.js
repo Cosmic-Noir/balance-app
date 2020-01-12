@@ -100,6 +100,7 @@ class Budget extends Component {
     let newCharges = this.state.charges.map(charge => {
       // Must update charge month value
       console.log(charge);
+
       let months = [
         "Jan",
         "Feb",
@@ -131,9 +132,16 @@ class Budget extends Component {
 
       let newDueDate = year + "-" + stringDig + day;
 
-      charge.due_date = newDueDate;
-      charge.charge_id = Math.floor(Math.random() * 1000);
-      return charge;
+      // charge.due_date = newDueDate;
+      // charge.charge_id = Math.floor(Math.random() * 1000);
+      return {
+        amount: charge.amount,
+        category: charge.category,
+        charge_name: charge.charge_name,
+        charge_id: Math.floor(Math.random() * 1000),
+        due_date: newDueDate,
+        occurance: charge.occurance
+      };
     });
 
     // console.log("New budget detected, chaning month_name");
