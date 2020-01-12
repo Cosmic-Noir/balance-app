@@ -20,6 +20,18 @@ class CreateBudget extends Component {
 
   /* Custom Methods */
 
+  checkMonthName = month_name => {
+    for (let i = 0; i < this.context.charges.length; i++) {
+      if (month_name === this.context.charges[i].month_name) {
+        this.setState({
+          error: `Month name already taken, please select a different month/year`
+        });
+      } else {
+        this.setState({ error: null });
+      }
+    }
+  };
+
   // Responsible for providing options of monthly budgets
   displayMonths = () => {
     const months = {};
@@ -49,11 +61,16 @@ class CreateBudget extends Component {
     let newMonthName = document.getElementById("newMonthName").value;
     let newBudgetName = newMonthName + " " + newYear;
     // console.log(newBudgetName);
-    this.setState({ month_name: newBudgetName });
-    const nameBudget = document.getElementById("selectName");
-    nameBudget.classList.add("hidden");
-    if (this.state.imported === true) {
-      this.hideImportMonth();
+
+    // Need to check if budget name is already taken
+    this.checkMonthName(newBudgetName);
+    if (this.state.error === null) {
+      this.setState({ month_name: newBudgetName });
+      const nameBudget = document.getElementById("selectName");
+      nameBudget.classList.add("hidden");
+      if (this.state.imported === true) {
+        this.hideImportMonth();
+      }
     }
   };
 
@@ -138,6 +155,7 @@ class CreateBudget extends Component {
                 required
               ></input>
               <button type="submit">Name Budget</button>
+              {this.state.error}
             </form>
           </div>
         ) : (
