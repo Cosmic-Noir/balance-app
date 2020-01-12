@@ -97,7 +97,12 @@ class Budget extends Component {
   };
 
   setImportedCharges = () => {
-    let newCharges = this.state.charges.map(charge => {
+    let filteredCharges = this.state.charges.filter(charge => {
+      if (charge.occurance === "Monthly") {
+        return charge;
+      }
+    });
+    let newCharges = filteredCharges.map(charge => {
       // Must update charge month value
 
       let months = [
