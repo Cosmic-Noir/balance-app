@@ -440,10 +440,15 @@ class Budget extends Component {
           </button>
         )}
 
-        {this.state.editingBudget === true ? (
+        {this.state.editingBudget === true && this.props.imported !== true ? (
           <button onClick={this.handleDoneEditingClick}>Done Editing</button>
         ) : (
+          ""
+        )}
+        {this.state.editingBudget !== true && this.props.imported !== true ? (
           <button onClick={this.handleEditBudgetClick}>Edit Budget</button>
+        ) : (
+          ""
         )}
         {this.props.new === true ? (
           ""
