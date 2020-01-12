@@ -352,8 +352,11 @@ class Budget extends Component {
   saveAllCharges = () => {
     console.log(`saveallcharges called`);
     for (let i = 0; i < this.state.charges.length; i++) {
-      console.log(this.state.charges[i]);
-      this.context.addNewCharge(this.state.charges[i]);
+      // console.log(this.state.charges[i]);
+      setTimeout(()=> {
+
+        this.context.addNewCharge(this.state.charges[i]);
+      }, 500)
     }
   };
 

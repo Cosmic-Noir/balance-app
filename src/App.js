@@ -42,7 +42,7 @@ class App extends Component {
   // Responsible for adding new charge to current array
   addNewCharge = charge => {
     this.setState({ charges: [...this.state.charges, charge] }, function() {
-      console.log(`addNewCharge has run`);
+      console.log(`addNewCharge has run and added ${charge}`);
     });
   };
 
