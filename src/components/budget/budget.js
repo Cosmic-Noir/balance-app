@@ -353,11 +353,11 @@ class Budget extends Component {
     console.log(`saveallcharges called`);
     for (let i = 0; i < this.state.charges.length; i++) {
       // console.log(this.state.charges[i]);
-      setTimeout(()=> {
-
+      setTimeout(() => {
         this.context.addNewCharge(this.state.charges[i]);
-      }, 500)
+      }, 500);
     }
+    this.props.history.push("/dashboard");
   };
 
   // Responsible for showing Add Charge
