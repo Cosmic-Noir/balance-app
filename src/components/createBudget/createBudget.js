@@ -64,7 +64,7 @@ class CreateBudget extends Component {
 
     // Need to check if budget name is already taken
     this.checkMonthName(newBudgetName);
-    if (this.state.error === null) {
+    if (this.state.error === null || !this.state.error) {
       this.setState({ month_name: newBudgetName });
       const nameBudget = document.getElementById("selectName");
       nameBudget.classList.add("hidden");
