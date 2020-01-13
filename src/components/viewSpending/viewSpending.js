@@ -16,10 +16,52 @@ class viewSpending extends Component {
     this.props.history.goBack();
   };
 
+  // Responsible for providing options of monthly budgets
+  displayMonths = () => {
+    const months = {};
+    if (this.context.charges === null) {
+      return null;
+    } else {
+      return this.context.charges.map(charge => {
+        const { month_name } = charge;
+
+        if (months[month_name] === true) {
+          return null;
+        }
+        months[month_name] = true;
+
+        return (
+          <option value={month_name} key={month_name}>
+            {month_name}
+          </option>
+        );
+      });
+    }
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    console.log("Fetching spending report...");
+    console.log(e.value);
+  };
+
   render() {
     return (
       <div className="viewSpending">
         <h2>Spending Report:</h2>
+        <form
+          onSubmit={e => {
+            this.handleSubmit(e);
+          }}
+        >
+          <select>
+            <option value="all">All</option>
+            {this.displayMonths()}
+          </select>
+          <button type="submit">Fetch Spending Report</button>
+        </form>
+
         {/* Spending report with pie graph */}
         <button onClick={this.handleBack} type="button">
           Back
