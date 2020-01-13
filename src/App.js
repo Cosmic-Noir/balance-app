@@ -83,6 +83,22 @@ class App extends Component {
     });
 
     this.setState({ charges: matchingCharges });
+    setTimeout(() => {
+      this.setMonths();
+    }, 1000);
+  };
+
+  // Temp function to create list of month_names user has created
+  setMonths = () => {
+    console.log(this.state.charges);
+    let months = [];
+    for (let i = 0; i < this.state.charges.length; i++) {
+      if (!months.includes(this.state.charges[i].month_name)) {
+        months.push(this.state.charges[i].month_name);
+      }
+    }
+    this.setState({ month_list: months });
+    console.log(months);
   };
 
   // Temp function to set fake user data
