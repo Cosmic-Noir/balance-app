@@ -153,6 +153,7 @@ class App extends Component {
 
       // Values
       charges: this.state.charges,
+      month_list: this.state.month_list,
       signedIn: this.state.signedIn,
       userInfo: this.state.userInfo,
       users: this.state.users

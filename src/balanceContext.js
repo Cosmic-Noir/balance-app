@@ -13,6 +13,7 @@ const balanceContext = React.createContext({
 
   // Values
   charges: [],
+  month_list: "",
   signedIn: "",
   userInfo: "",
   users: []
