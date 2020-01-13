@@ -60,17 +60,7 @@ class Charge extends Component {
     // IF new === true, then call addCharge function for each listed charge.
   };
 
-  componentDidMount() {
-    if (this.props.new === true && this.props.imported === true) {
-      this.handleClickEdit();
-    }
-  }
-
-  componentWillReceiveProps() {
-    if (this.props.new === false) {
-      this.setState({ editing: false });
-    }
-  }
+  componentDidMount() {}
 
   render() {
     return (

@@ -233,7 +233,7 @@ class AddCharge extends Component {
           ) : (
             ""
           )}
-          {this.props.editing === true && this.props.imported !== true ? (
+          {this.props.editing === true ? (
             <div>
               <button type="submit">Update</button>
               <button onClick={this.handleHideEdit} type="button">
@@ -243,18 +243,7 @@ class AddCharge extends Component {
           ) : (
             ""
           )}
-          {this.props.new === true && this.props.imported === true ? (
-            <div>
-              <button onClick={this.handleClickUpdate} type="button">
-                Update Charge
-              </button>
-              <button onClick={this.handleClickRemoveFromNew} type="button">
-                Remove from New Budget
-              </button>
-            </div>
-          ) : (
-            ""
-          )}
+
           {this.props.charge_id ? (
             ""
           ) : (

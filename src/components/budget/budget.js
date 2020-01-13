@@ -418,7 +418,6 @@ class Budget extends Component {
       this.setMonth(this.props.month_name);
     } else if (this.props.new === true && this.props.imported === true) {
       // let month_name = document.getElementById("month_name").value;
-      this.updateRecurrantCharges();
       this.setMonthDelay(this.props.imported_month_name);
     } else {
       let month_name = document.getElementById("month_name").value;
@@ -462,27 +461,17 @@ class Budget extends Component {
           month_name={this.state.month_name}
           setCharges={this.setCharges}
         />
-        {this.props.new === true && this.props.imported === true ? (
-          <button type="button" onClick={this.saveAllCharges}>
-            Save Imported Charges
-          </button>
-        ) : (
-          <button onClick={this.showAddCharge} type="button" id="showAdd">
-            Add Charge
-          </button>
-        )}
-        {this.props.new === true && this.props.imported === true ? (
-          <h5>Save imported charges before adding new charges</h5>
-        ) : (
-          ""
-        )}
 
-        {this.state.editingBudget === true && this.props.imported !== true ? (
+        <button onClick={this.showAddCharge} type="button" id="showAdd">
+          Add Charge
+        </button>
+
+        {this.state.editingBudget === true ? (
           <button onClick={this.handleDoneEditingClick}>Done Editing</button>
         ) : (
           ""
         )}
-        {this.state.editingBudget !== true && this.props.imported !== true ? (
+        {this.state.editingBudget !== true ? (
           <button onClick={this.handleEditBudgetClick}>Edit Budget</button>
         ) : (
           ""
