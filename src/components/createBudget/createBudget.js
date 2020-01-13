@@ -157,7 +157,7 @@ class CreateBudget extends Component {
                 placeholder="2020"
                 required
               ></input>
-              <button type="submit">Name Budget</button>
+              <button type="submit">Create Budget</button>
               <h5 className="error">{this.state.error}</h5>
             </form>
           </div>
