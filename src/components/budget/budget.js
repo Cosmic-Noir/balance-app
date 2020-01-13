@@ -154,7 +154,7 @@ class Budget extends Component {
     this.setState({ charges: newCharges }, function() {
       this.sortCharges();
     });
-    this.setState({ month_name: this.props.month_name });
+    this.setState({ month_name: this.props.month_name }, this.saveAllCharges());
   };
 
   /* Custom Methods */
@@ -375,8 +375,6 @@ class Budget extends Component {
       }, 500);
     }
     this.props.doneCreating();
-    this.setState({ editingBudget: false });
-    // this.props.history.push("/budgets");
   };
 
   // Responsible for showing Add Charge
