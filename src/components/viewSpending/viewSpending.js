@@ -45,6 +45,10 @@ class viewSpending extends Component {
     console.log("Fetching spending report...");
   };
 
+  componentDidMount() {
+    console.log(this.context.month_list);
+  }
+
   render() {
     return (
       <div className="viewSpending">

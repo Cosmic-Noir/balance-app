@@ -30,6 +30,7 @@ class App extends Component {
     signedIn: "",
     // Initially set to seed data
     charges: [],
+    month_list: [],
     users: Data.users,
     userInfo: []
   };
@@ -90,12 +91,16 @@ class App extends Component {
 
   // Temp function to create list of month_names user has created
   setMonths = () => {
-    let months = [];
-    for (let i = 0; i < this.state.charges.length; i++) {
-      if (!months.includes(this.state.charges[i].month_name)) {
-        months.push(this.state.charges[i].month_name);
+    let months = {};
+    let charges = this.state.charges;
+
+    for (let i = 0; i < charges.length; i++) {
+      console.log(charges[i].month_name);
+      if (!months[charges[i].month_name]) {
+        months[charges[i].month_name] = true;
       }
     }
+    console.log(months);
     this.setState({ month_list: months });
   };
 
