@@ -130,6 +130,14 @@ class AddCharge extends Component {
     this.props.removeFromNew(this.props.charge_id);
   };
 
+  handleClickUpdate = () => {
+    let updatedCharge = this.state;
+    updatedCharge.charge_id = this.props.charge_id;
+    updatedCharge.month_name = this.props.month_name;
+    console.log("handleClickUpdate pressed, updating charge in charges");
+    this.props.updateNewCharge(updatedCharge);
+  };
+
   componentDidMount() {
     this.setProps();
   }
@@ -236,9 +244,14 @@ class AddCharge extends Component {
             ""
           )}
           {this.props.new === true && this.props.imported === true ? (
-            <button onClick={this.handleClickRemoveFromNew} type="button">
-              Remove from New Budget
-            </button>
+            <div>
+              <button onClick={this.handleClickUpdate} type="button">
+                Update Charge
+              </button>
+              <button onClick={this.handleClickRemoveFromNew} type="button">
+                Remove from New Budget
+              </button>
+            </div>
           ) : (
             ""
           )}

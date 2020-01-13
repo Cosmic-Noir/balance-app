@@ -97,6 +97,7 @@ class Budget extends Component {
   };
 
   setImportedCharges = () => {
+    // eslint-disable-next-line
     let filteredCharges = this.state.charges.filter(charge => {
       if (charge.occurance === "Monthly") {
         return charge;
@@ -239,6 +240,7 @@ class Budget extends Component {
             new={this.props.new}
             occurance={occurance}
             removeFromNew={this.removeFromNew}
+            updateNewCharge={this.updateNewCharge}
             setCharges={this.setCharges}
           />
         );
@@ -261,6 +263,7 @@ class Budget extends Component {
             new={this.props.new}
             occurance={occurance}
             removeFromNew={this.removeFromNew}
+            updateNewCharge={this.updateNewCharge}
             setCharges={this.setCharges}
           />
         );
@@ -302,6 +305,7 @@ class Budget extends Component {
               new={this.props.new}
               occurance={occurance}
               removeFromNew={this.removeFromNew}
+              updateNewCharge={this.updateNewCharge}
               setCharges={this.setCharges}
             />
           </div>
@@ -351,6 +355,14 @@ class Budget extends Component {
     this.setState({ charges: newCharges });
 
     // console.log(`removeFromNew is called`);
+  };
+
+  updateNewCharge = updatedCharge => {
+    this.setState({
+      charges: this.state.charges.map(charge =>
+        charge.charge_id !== updatedCharge.charge_id ? charge : updatedCharge
+      )
+    });
   };
 
   // Responsible for going through state of charges and adding each to original data
