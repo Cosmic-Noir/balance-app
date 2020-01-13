@@ -43,7 +43,6 @@ class viewSpending extends Component {
     e.preventDefault();
 
     console.log("Fetching spending report...");
-    console.log(e.value);
   };
 
   render() {
