@@ -52,7 +52,11 @@ class viewSpending extends Component {
   displayCategories = () => {
     for (let category in this.state.categories) {
       console.log(`${category}: ${this.state.categories[category]}`);
+      document.getElementById(
+        "categories"
+      ).innerHTML += `<h2>${category}: ${this.state.categories[category]}<h2>`;
     }
+
     console.log("displayCategories ran");
   };
 
@@ -128,7 +132,7 @@ class viewSpending extends Component {
           </form>
         )}
 
-        {/* Spending report with pie graph */}
+        <div id="categories"></div>
         <button onClick={this.handleBack} type="button">
           Back
         </button>
