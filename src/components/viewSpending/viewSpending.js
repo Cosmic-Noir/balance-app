@@ -50,6 +50,7 @@ class viewSpending extends Component {
 
   // Responsible for returning categories with correct spending amounts
   displayCategories = () => {
+    document.getElementById("categories").innerHTML = "";
     for (let category in this.state.categories) {
       console.log(`${category}: ${this.state.categories[category]}`);
       document.getElementById(
