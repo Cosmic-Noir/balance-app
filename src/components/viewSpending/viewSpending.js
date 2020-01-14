@@ -6,7 +6,8 @@ import balanceContext from "../../balanceContext";
 
 class viewSpending extends Component {
   state = {
-    selected: "all"
+    selected: "all",
+    categories: {}
   };
 
   static contextType = balanceContext;
@@ -47,6 +48,14 @@ class viewSpending extends Component {
     }
   };
 
+  // Responsible for returning categories with correct spending amounts
+  displayCategories = () => {
+    for (let category in this.state.categories) {
+      console.log(`${category}: ${this.state.categories[category]}`);
+    }
+    console.log("displayCategories ran");
+  };
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -84,6 +93,9 @@ class viewSpending extends Component {
     }
     console.log(categories);
     this.setState({ categories: categories });
+    setTimeout(() => {
+      this.displayCategories();
+    });
   };
 
   componentDidMount() {
