@@ -51,10 +51,29 @@ class viewSpending extends Component {
     e.preventDefault();
 
     console.log("Fetching spending report...");
+    this.setSpending();
   };
 
   // Responsible for creating an object with totals for each detected categories
-  setSpending = () => {};
+  setSpending = () => {
+    let categories = {};
+    let charges = this.context.charges;
+    if (this.state.selected === "all") {
+      for (let i = 0; i < charges.length; i++) {
+        console.log(charges[i]);
+        /* charge not in categories, add and set to amoutn*/
+
+        if (!categories[charges[i].category]) {
+          console.log("Category not yet tracked, adding...");
+          categories[charges[i].category] = charges[i].amount;
+        } else {
+          console.log("Category being tracked, adding amount to existing...");
+          categories[charges[i].category] += charges[i].amount;
+        }
+      }
+    }
+    console.log(categories);
+  };
 
   componentDidMount() {
     console.log(this.context.month_list);

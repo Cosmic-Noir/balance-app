@@ -95,12 +95,10 @@ class App extends Component {
     let charges = this.state.charges;
 
     for (let i = 0; i < charges.length; i++) {
-      console.log(charges[i].month_name);
       if (!months[charges[i].month_name]) {
         months[charges[i].month_name] = true;
       }
     }
-    console.log(months);
     this.setState({ month_list: months });
   };
 
