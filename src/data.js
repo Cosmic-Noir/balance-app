@@ -97,6 +97,26 @@ const Data = {
       occurance: "One Time"
     },
     {
+      charge_id: 15,
+      charge_name: "Emergency Savings",
+      category: "Savings",
+      due_date: "2020-02-18",
+      amount: 100,
+      month_name: "Feb 2020",
+      user_id: 1,
+      occurance: "One Time"
+    },
+    {
+      charge_id: 16,
+      charge_name: "Vacation Savings",
+      category: "Savings",
+      due_date: "2020-02-20",
+      amount: 100,
+      month_name: "Feb 2020",
+      user_id: 1,
+      occurance: "One Time"
+    },
+    {
       charge_id: 6,
       charge_name: "Groceries",
       category: "Food/Drink",
