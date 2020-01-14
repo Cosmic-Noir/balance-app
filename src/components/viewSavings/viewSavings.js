@@ -5,9 +5,7 @@ import React, { Component } from "react";
 import balanceContext from "../../balanceContext";
 
 class ViewSavings extends Component {
-  state = {
-    savings: {}
-  };
+  state = {};
 
   static contextType = balanceContext;
 
@@ -31,6 +29,9 @@ class ViewSavings extends Component {
         return charge;
       }
     });
+    if (savingCharges[0] !== undefined) {
+      this.setState({ save: true });
+    }
 
     for (let i = 0; i < savingCharges.length; i++) {
       if (!savings[savingCharges[i].charge_name]) {
@@ -41,7 +42,9 @@ class ViewSavings extends Component {
     console.log(savings);
     this.setState({ savings: savings });
     setTimeout(() => {
-      this.displaySavingPools();
+      if (this.state.save === true) {
+        this.displaySavingPools();
+      }
     });
   };
 
@@ -51,15 +54,24 @@ class ViewSavings extends Component {
   };
 
   componentDidMount() {
-    this.setSavings();
+    if (this.context.charges[0] !== undefined) {
+      this.setSavings();
+    }
   }
 
   render() {
     return (
       <div className="viewSavings">
         <h2>Savings Report:</h2>
-        <div id="uniqueSavings"></div>
-        {/* Savings report with graph */}
+        {this.state.save === true ? (
+          <div>
+            <h2>Current Saving Pools:</h2>
+            <div id="uniqueSavings"></div>
+          </div>
+        ) : (
+          <h2>Create a savings charge to view your savings reports</h2>
+        )}
+
         <button onClick={this.handleBack} type="button">
           Back
         </button>
