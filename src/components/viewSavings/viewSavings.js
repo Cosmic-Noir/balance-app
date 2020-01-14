@@ -39,7 +39,6 @@ class ViewSavings extends Component {
       }
     }
 
-    console.log(savings);
     this.setState({ savings: savings });
     setTimeout(() => {
       if (this.state.save === true) {

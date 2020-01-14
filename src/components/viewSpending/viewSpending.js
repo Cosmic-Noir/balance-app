@@ -55,19 +55,17 @@ class viewSpending extends Component {
   displayCategories = () => {
     document.getElementById("categories").innerHTML = "";
     for (let category in this.state.categories) {
-      console.log(`${category}: ${this.state.categories[category]}`);
       document.getElementById(
         "categories"
       ).innerHTML += `<h4 class="cat">${category}: ${this.state.categories[category]}<h4>`;
     }
 
-    console.log("displayCategories ran");
+    // console.log("displayCategories ran");
   };
 
   handleSubmit = e => {
     e.preventDefault();
 
-    console.log("Fetching spending report...");
     this.setSpending();
   };
 
@@ -85,6 +83,8 @@ class viewSpending extends Component {
       }
     } else {
       let selectedMonth = this.state.selected;
+
+      // eslint-disable-next-line
       let charges = this.context.charges.filter(charge => {
         if (charge.month_name === selectedMonth) {
           return charge;
@@ -99,7 +99,6 @@ class viewSpending extends Component {
         }
       }
     }
-    console.log(categories);
     this.setState({ categories: categories });
     setTimeout(() => {
       this.displayCategories();
@@ -107,7 +106,7 @@ class viewSpending extends Component {
   };
 
   componentDidMount() {
-    console.log(this.context.month_list);
+    // console.log(this.context.month_list);
   }
 
   render() {
