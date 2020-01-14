@@ -5,9 +5,17 @@ import React, { Component } from "react";
 import balanceContext from "../../balanceContext";
 
 class viewSpending extends Component {
-  state = {};
+  state = {
+    selected: "all"
+  };
 
   static contextType = balanceContext;
+
+  /* State Setting Methods */
+
+  updateSelected = selected => {
+    this.setState({ selected });
+  };
 
   /* Custom Methods */
 
@@ -45,6 +53,9 @@ class viewSpending extends Component {
     console.log("Fetching spending report...");
   };
 
+  // Responsible for creating an object with totals for each detected categories
+  setSpending = () => {};
+
   componentDidMount() {
     console.log(this.context.month_list);
   }
@@ -53,17 +64,27 @@ class viewSpending extends Component {
     return (
       <div className="viewSpending">
         <h2>Spending Report:</h2>
-        <form
-          onSubmit={e => {
-            this.handleSubmit(e);
-          }}
-        >
-          <select>
-            <option value="all">All</option>
-            {this.displayMonths()}
-          </select>
-          <button type="submit">Fetch Spending Report</button>
-        </form>
+        {this.context.charges[0] === undefined ? (
+          <h3>Please create a new budget to view your spending reports</h3>
+        ) : (
+          <form
+            onSubmit={e => {
+              this.handleSubmit(e);
+            }}
+          >
+            <select
+              id="select"
+              onChange={e => this.updateSelected(e.target.value)}
+              name="selected"
+              ref={this.selected}
+              value={this.state.selected}
+            >
+              <option value="all">All</option>
+              {this.displayMonths()}
+            </select>
+            <button type="submit">Fetch Spending Report</button>
+          </form>
+        )}
 
         {/* Spending report with pie graph */}
         <button onClick={this.handleBack} type="button">
