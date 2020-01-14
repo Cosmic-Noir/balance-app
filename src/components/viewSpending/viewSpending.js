@@ -4,6 +4,9 @@ import React, { Component } from "react";
 /* Context */
 import balanceContext from "../../balanceContext";
 
+/* Styling and Images */
+import "./viewSpending.css";
+
 class viewSpending extends Component {
   state = {
     selected: "all",
@@ -55,7 +58,7 @@ class viewSpending extends Component {
       console.log(`${category}: ${this.state.categories[category]}`);
       document.getElementById(
         "categories"
-      ).innerHTML += `<h2>${category}: ${this.state.categories[category]}<h2>`;
+      ).innerHTML += `<h4 class="cat">${category}: ${this.state.categories[category]}<h4>`;
     }
 
     console.log("displayCategories ran");
