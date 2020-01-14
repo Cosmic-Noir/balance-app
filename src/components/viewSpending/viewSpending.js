@@ -57,17 +57,37 @@ class viewSpending extends Component {
   // Responsible for creating an object with totals for each detected categories
   setSpending = () => {
     let categories = {};
-    let charges = this.context.charges;
     if (this.state.selected === "all") {
+      let charges = this.context.charges;
       for (let i = 0; i < charges.length; i++) {
-        console.log(charges[i]);
+        // console.log(charges[i]);
         /* charge not in categories, add and set to amoutn*/
 
         if (!categories[charges[i].category]) {
-          console.log("Category not yet tracked, adding...");
+          // console.log("Category not yet tracked, adding...");
           categories[charges[i].category] = charges[i].amount;
         } else {
-          console.log("Category being tracked, adding amount to existing...");
+          // console.log("Category being tracked, adding amount to existing...");
+          categories[charges[i].category] += charges[i].amount;
+        }
+      }
+    } else {
+      let selectedMonth = this.state.selected;
+      let charges = this.context.charges.filter(charge => {
+        if (charge.month_name === selectedMonth) {
+          return charge;
+        }
+      });
+      console.log(charges);
+      for (let i = 0; i < charges.length; i++) {
+        // console.log(charges[i]);
+        /* charge not in categories, add and set to amoutn*/
+
+        if (!categories[charges[i].category]) {
+          // console.log("Category not yet tracked, adding...");
+          categories[charges[i].category] = charges[i].amount;
+        } else {
+          // console.log("Category being tracked, adding amount to existing...");
           categories[charges[i].category] += charges[i].amount;
         }
       }
