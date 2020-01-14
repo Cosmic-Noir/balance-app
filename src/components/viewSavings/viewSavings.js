@@ -13,7 +13,18 @@ class ViewSavings extends Component {
 
   /* Custom Methods */
 
-  checkSavings = () => {
+  // Responsible for displaying all savings pools
+  displaySavingPools = () => {
+    document.getElementById("uniqueSavings").innerHTML = "";
+    for (let savingsPool in this.state.savings) {
+      document.getElementById(
+        "uniqueSavings"
+      ).innerHTML += `<h4 class="sav">${savingsPool}: ${this.state.savings[savingsPool]}</h4>`;
+    }
+  };
+
+  // Responsible for checking charges for unique saving pools and storing their monthly contributions - NOTE would not work if someone is doing two savings pools with the same name in the same month
+  setSavings = () => {
     let savings = {};
     let savingCharges = this.context.charges.filter(charge => {
       if (charge.category === "Savings") {
@@ -24,12 +35,14 @@ class ViewSavings extends Component {
     for (let i = 0; i < savingCharges.length; i++) {
       if (!savings[savingCharges[i].charge_name]) {
         savings[savingCharges[i].charge_name] = savingCharges[i].amount;
-      } else {
-        savings[savingCharges[i].charge_name] += savingCharges[i].amount;
       }
     }
 
     console.log(savings);
+    this.setState({ savings: savings });
+    setTimeout(() => {
+      this.displaySavingPools();
+    });
   };
 
   // Responsible for when user clicks cancel button
@@ -38,13 +51,14 @@ class ViewSavings extends Component {
   };
 
   componentDidMount() {
-    this.checkSavings();
+    this.setSavings();
   }
 
   render() {
     return (
       <div className="viewSavings">
         <h2>Savings Report:</h2>
+        <div id="uniqueSavings"></div>
         {/* Savings report with graph */}
         <button onClick={this.handleBack} type="button">
           Back
