@@ -24,6 +24,8 @@ class ViewSavings extends Component {
   // Responsible for checking charges for unique saving pools and storing their monthly contributions - NOTE would not work if someone is doing two savings pools with the same name in the same month
   setSavings = () => {
     let savings = {};
+
+    // eslint-disable-next-line
     let savingCharges = this.context.charges.filter(charge => {
       if (charge.category === "Savings") {
         return charge;
