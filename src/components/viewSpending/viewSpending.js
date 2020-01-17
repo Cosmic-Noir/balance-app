@@ -108,6 +108,7 @@ class viewSpending extends Component {
     this.setState({ categories: categories });
     setTimeout(() => {
       this.displayCategories();
+      this.createPieCharge();
     });
   };
 
@@ -118,14 +119,14 @@ class viewSpending extends Component {
     const radius = Math.min(width, height) / 2 - margin;
 
     let svg = d3
-      .select("#charg")
+      .select("#chart")
       .append("svg")
       .attr("width", width)
       .attr("height", height)
       .append("g")
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-    const data = { a: 9, b: 20, c: 30, d: 8, e: 12 };
+    const data = this.state.categories;
 
     const color = d3
       .scaleOrdinal()
@@ -159,7 +160,6 @@ class viewSpending extends Component {
 
   componentDidMount() {
     // console.log(this.context.month_list);
-    this.createPieCharge();
   }
 
   render() {
