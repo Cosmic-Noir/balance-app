@@ -113,6 +113,8 @@ class viewSpending extends Component {
   };
 
   createPieCharge = () => {
+    let chartDiv = document.getElementById("chart");
+    chartDiv.innerHTML = "";
     const width = 450;
     const height = 450;
     const margin = 50;
