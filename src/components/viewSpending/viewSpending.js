@@ -146,7 +146,7 @@ class viewSpending extends Component {
     var arcGenerator = d3
       .arc()
       .innerRadius(0)
-      .outerRadius(radius + 110);
+      .outerRadius(radius + 30);
 
     svg
       .selectAll("#chart")
