@@ -133,13 +133,20 @@ class viewSpending extends Component {
     const color = d3
       .scaleOrdinal()
       .domain(data)
-      .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56"]);
+      .range(["#90abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56"]);
 
     const pie = d3.pie().value(function(d) {
       return d.value;
     });
 
     const data_ready = pie(d3.entries(data));
+
+    svg.attr("class", "chart-svg");
+
+    var arcGenerator = d3
+      .arc()
+      .innerRadius(0)
+      .outerRadius(radius + 50);
 
     svg
       .selectAll("#chart")
@@ -158,6 +165,20 @@ class viewSpending extends Component {
       })
       .attr("stroke", "black")
       .style("stroke-width", "2px");
+
+    svg
+      .selectAll("#chart")
+      .data(data_ready)
+      .enter()
+      .append("text")
+      .text(function(d) {
+        return d.data.key;
+      })
+      .attr("transform", function(d) {
+        return "translate(" + arcGenerator.centroid(d) + ")";
+      })
+      .style("text-anchor", "middle")
+      .style("font-size", 17);
   };
 
   componentDidMount() {
