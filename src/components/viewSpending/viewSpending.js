@@ -133,7 +133,7 @@ class viewSpending extends Component {
     const color = d3
       .scaleOrdinal()
       .domain(data)
-      .range(["#90abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56"]);
+      .range(["#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#90abc5"]);
 
     const pie = d3.pie().value(function(d) {
       return d.value;
@@ -146,7 +146,7 @@ class viewSpending extends Component {
     var arcGenerator = d3
       .arc()
       .innerRadius(0)
-      .outerRadius(radius + 50);
+      .outerRadius(radius + 110);
 
     svg
       .selectAll("#chart")
