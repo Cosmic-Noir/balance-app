@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 
+import * as d3 from "d3";
+
 /* Context */
 import balanceContext from "../../balanceContext";
 
@@ -72,8 +74,12 @@ class viewSpending extends Component {
   // Responsible for creating an object with totals for each detected categories
   setSpending = () => {
     let categories = {};
+    let charges = this.context.charges.filter(charge => {
+      if (charge.category !== "Income") {
+        return charge;
+      }
+    });
     if (this.state.selected === "all") {
-      let charges = this.context.charges;
       for (let i = 0; i < charges.length; i++) {
         if (!categories[charges[i].category]) {
           categories[charges[i].category] = charges[i].amount;
@@ -85,7 +91,7 @@ class viewSpending extends Component {
       let selectedMonth = this.state.selected;
 
       // eslint-disable-next-line
-      let charges = this.context.charges.filter(charge => {
+      charges = charges.filter(charge => {
         if (charge.month_name === selectedMonth) {
           return charge;
         }
@@ -105,8 +111,55 @@ class viewSpending extends Component {
     });
   };
 
+  createPieCharge = () => {
+    const width = 450;
+    const height = 450;
+    const margin = 50;
+    const radius = Math.min(width, height) / 2 - margin;
+
+    let svg = d3
+      .select("#charg")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .append("g")
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    const data = { a: 9, b: 20, c: 30, d: 8, e: 12 };
+
+    const color = d3
+      .scaleOrdinal()
+      .domain(data)
+      .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56"]);
+
+    const pie = d3.pie().value(function(d) {
+      return d.value;
+    });
+
+    const data_ready = pie(d3.entries(data));
+
+    svg
+      .selectAll("#chart")
+      .data(data_ready)
+      .enter()
+      .append("path")
+      .attr(
+        "d",
+        d3
+          .arc()
+          .innerRadius(0)
+          .outerRadius(radius)
+      )
+      .attr("fill", function(d) {
+        return color(d.data.key);
+      })
+      .attr("stroke", "black")
+      .style("stroke-width", "2px");
+  };
+
   componentDidMount() {
     // console.log(this.context.month_list);
+    this.createPieCharge();
   }
 
   render() {
@@ -136,6 +189,7 @@ class viewSpending extends Component {
         )}
 
         <div id="categories"></div>
+        <div id="chart"></div>
         <button onClick={this.handleBack} type="button">
           Back
         </button>
