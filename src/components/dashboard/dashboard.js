@@ -26,9 +26,9 @@ class Dashboard extends Component {
             Create Budget
           </Link>
 
-          <Link to="viewSavings" className="block">
+          {/* <Link to="viewSavings" className="block">
             View Savings
-          </Link>
+          </Link> */}
           <Link to="viewSpending" className="block">
             View Spending
           </Link>
