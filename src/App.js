@@ -168,9 +168,6 @@ class App extends Component {
           <main role="main">
             <Route exact path="/budgets" component={Budget} />
             <Route path="/createBudget" component={CreateBudget} />
-            <Route path="/viewSavings" component={ViewSavings} />
-            <Route path="/viewSpending" component={ViewSpending} />
-
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/signIn" component={SignIn} />
             <Route path="/signOut" component={SignOut} />
