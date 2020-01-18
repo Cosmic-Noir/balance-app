@@ -25,11 +25,6 @@ class viewSpending extends Component {
 
   /* Custom Methods */
 
-  // Responsible for when user clicks cancel button
-  handleBack = () => {
-    this.props.history.goBack();
-  };
-
   // Responsible for providing options of monthly budgets
   displayMonths = () => {
     const months = {};
@@ -215,9 +210,6 @@ class viewSpending extends Component {
 
         <div id="categories"></div>
         <div id="chart"></div>
-        <button onClick={this.handleBack} type="button">
-          Back
-        </button>
       </div>
     );
   }

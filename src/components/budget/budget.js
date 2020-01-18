@@ -328,15 +328,6 @@ class Budget extends Component {
     return allCharges;
   };
 
-  // Responsible for when user clicks cancel button
-  handleBack = () => {
-    if (this.props.new === true) {
-      this.props.history.push("/dashboard");
-    } else {
-      this.props.history.goBack();
-    }
-  };
-
   // Responsible for showing edit/delete buttons on each charge
   handleEditBudgetClick = () => {
     this.setState({ editingBudget: true });
@@ -476,14 +467,14 @@ class Budget extends Component {
           ) : (
             ""
           )}
-
-          <button onClick={this.handleBack} type="button">
-            Back
-          </button>
         </div>
-        <div className="">
-          <ViewSpending />
-        </div>
+        {this.props.new !== true ? (
+          <div className="">
+            <ViewSpending />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     );
   }
