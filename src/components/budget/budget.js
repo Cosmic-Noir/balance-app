@@ -474,11 +474,6 @@ class Budget extends Component {
         ) : (
           ""
         )}
-        {this.props.new === true ? (
-          ""
-        ) : (
-          <Link to="createBudget">Create Budget</Link>
-        )}
 
         <button onClick={this.handleBack} type="button">
           Back
