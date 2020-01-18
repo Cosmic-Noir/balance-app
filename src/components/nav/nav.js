@@ -60,6 +60,28 @@ class Nav extends Component {
                 Demo
               </Link>
             )}
+
+            {this.context.signedIn === true ? (
+              <Link to="createBudget" className="nav">
+                Create New Budget
+              </Link>
+            ) : (
+              ""
+            )}
+            {this.context.signedIn === true ? (
+              <Link to="budgets" className="nav">
+                View Budgets
+              </Link>
+            ) : (
+              ""
+            )}
+            {this.context.signedIn === true ? (
+              <Link to="viewSpending" className="nav">
+                View Spending Report
+              </Link>
+            ) : (
+              ""
+            )}
             {this.context.signedIn === false ? (
               <Link id="signUp" to="/signUp">
                 Sign Up

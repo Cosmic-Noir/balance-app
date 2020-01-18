@@ -30,7 +30,7 @@ class Dashboard extends Component {
             View Savings
           </Link> */}
           <Link to="viewSpending" className="block">
-            View Spending
+            View Spending Report
           </Link>
         </div>
       </div>
