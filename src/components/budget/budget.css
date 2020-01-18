@@ -1,10 +1,5 @@
-tr.remaining td {
-  border-top: 1px solid black;
-  width: 200px;
-}
-
-tr.remaining {
-  width: 100px;
+.budgetReport {
+  min-width: 80%;
 }
 
 .charges_table {
@@ -44,4 +39,21 @@ tr.remaining {
 
 .title {
   margin: 10px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (min-width: 900px) {
+  .budgetReport {
+    min-width: 50%;
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 }

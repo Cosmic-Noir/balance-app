@@ -426,58 +426,61 @@ class Budget extends Component {
   render() {
     // const { month_name } = this.state.month_name;
     return (
-      <div className="budgetReport flex-column">
-        <h2 className="title">Budget Report</h2>
+      <div className="wrapper">
+        <div className="budgetReport flex-column">
+          <h2 className="title">Budget Report</h2>
 
-        <form
-          className={this.props.new === true ? "hidden siteList" : "siteList"}
-        >
-          <h3>Select Budget:</h3>
-          <select
-            id="month_name"
-            name="month_name"
-            onChange={e => this.setMonth(e.target.value)}
-            ref={this.state.month_name}
-            value={this.state.month_name}
+          <form
+            className={this.props.new === true ? "hidden siteList" : "siteList"}
           >
-            {this.displayMonths()}
-          </select>
-        </form>
-        <h3 className="title">{this.state.month_name}</h3>
-        <div className="flex-column report">{this.displayCharges()}</div>
-        <div className="month_totals">
-          <h4>Monthly total Income: {this.displayIncome()} </h4>
-          <h4>Monthly total Expenses: {this.displayExpenses()}</h4>
-          <h4>
-            Monthly leftover:{" "}
-            {Math.round((this.displayIncome() + this.displayExpenses()) * 100) /
-              100}
-          </h4>
+            <h3>Select Budget:</h3>
+            <select
+              id="month_name"
+              name="month_name"
+              onChange={e => this.setMonth(e.target.value)}
+              ref={this.state.month_name}
+              value={this.state.month_name}
+            >
+              {this.displayMonths()}
+            </select>
+          </form>
+          <h3 className="title">{this.state.month_name}</h3>
+          <div className="flex-column report">{this.displayCharges()}</div>
+          <div className="month_totals">
+            <h4>Monthly total Income: {this.displayIncome()} </h4>
+            <h4>Monthly total Expenses: {this.displayExpenses()}</h4>
+            <h4>
+              Monthly leftover:{" "}
+              {Math.round(
+                (this.displayIncome() + this.displayExpenses()) * 100
+              ) / 100}
+            </h4>
+          </div>
+          <AddCharge
+            first_of_month={this.state.first_of_month}
+            month_name={this.state.month_name}
+            setCharges={this.setCharges}
+          />
+
+          <button onClick={this.showAddCharge} type="button" id="showAdd">
+            Add Charge
+          </button>
+
+          {this.state.editingBudget === true ? (
+            <button onClick={this.handleDoneEditingClick}>Done Editing</button>
+          ) : (
+            ""
+          )}
+          {this.state.editingBudget !== true ? (
+            <button onClick={this.handleEditBudgetClick}>Edit Budget</button>
+          ) : (
+            ""
+          )}
+
+          <button onClick={this.handleBack} type="button">
+            Back
+          </button>
         </div>
-        <AddCharge
-          first_of_month={this.state.first_of_month}
-          month_name={this.state.month_name}
-          setCharges={this.setCharges}
-        />
-
-        <button onClick={this.showAddCharge} type="button" id="showAdd">
-          Add Charge
-        </button>
-
-        {this.state.editingBudget === true ? (
-          <button onClick={this.handleDoneEditingClick}>Done Editing</button>
-        ) : (
-          ""
-        )}
-        {this.state.editingBudget !== true ? (
-          <button onClick={this.handleEditBudgetClick}>Edit Budget</button>
-        ) : (
-          ""
-        )}
-
-        <button onClick={this.handleBack} type="button">
-          Back
-        </button>
         <div className="">
           <ViewSpending />
         </div>
