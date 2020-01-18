@@ -210,6 +210,9 @@ class viewSpending extends Component {
 
         <div id="categories"></div>
         <div id="chart"></div>
+        <button type="button" onClick={this.props.hideSpendingReport}>
+          Hide Spending Report
+        </button>
       </div>
     );
   }

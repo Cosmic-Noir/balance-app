@@ -402,6 +402,20 @@ class Budget extends Component {
     this.setState({ editingBudget: true });
   };
 
+  showSpendingReport = () => {
+    const spendingReport = document.getElementById("spendingRepo");
+    spendingReport.classList.remove("hidden");
+    const viewSpendButton = document.getElementById("spendButton");
+    viewSpendButton.classList.add("hidden");
+  };
+
+  hideSpendingReport = () => {
+    const spendingReport = document.getElementById("spendingRepo");
+    spendingReport.classList.add("hidden");
+    const viewSpendButton = document.getElementById("spendButton");
+    viewSpendButton.classList.remove("hidden");
+  };
+
   componentDidMount() {
     if (this.props.new === true && this.props.imported !== true) {
       this.setMonth(this.props.month_name);
@@ -467,10 +481,21 @@ class Budget extends Component {
           ) : (
             ""
           )}
+          {this.props.new !== true ? (
+            <button
+              type="button"
+              onClick={this.showSpendingReport}
+              id="spendButton"
+            >
+              View Spending Reports
+            </button>
+          ) : (
+            ""
+          )}
         </div>
         {this.props.new !== true ? (
-          <div className="">
-            <ViewSpending />
+          <div className="hidden" id="spendingRepo">
+            <ViewSpending hideSpendingReport={this.hideSpendingReport} />
           </div>
         ) : (
           ""
