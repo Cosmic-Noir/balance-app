@@ -6,9 +6,6 @@ import config from "./config";
 /* Custom Components */
 import Budget from "./components/budget/budget";
 import CreateBudget from "./components/createBudget/createBudget";
-import ViewSavings from "./components/viewSavings/viewSavings";
-import ViewSpending from "./components/viewSpending/viewSpending";
-
 import Dashboard from "./components/dashboard/dashboard";
 import Landing from "./components/landing/landing";
 import Nav from "./components/nav/nav";

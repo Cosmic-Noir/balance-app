@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 
 /* Custom Components */
-import Charge from "../charge/charge";
 import AddCharge from "../addCharge/addCharge";
+import Charge from "../charge/charge";
+import ViewSpending from "../viewSpending/viewSpending";
 
 /* Styling & Images */
 import "./budget.css";
@@ -477,6 +478,9 @@ class Budget extends Component {
         <button onClick={this.handleBack} type="button">
           Back
         </button>
+        <div className="">
+          <ViewSpending />
+        </div>
       </div>
     );
   }
