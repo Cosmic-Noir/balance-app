@@ -74,6 +74,8 @@ class viewSpending extends Component {
   // Responsible for creating an object with totals for each detected categories
   setSpending = () => {
     let categories = {};
+
+    // eslint-disable-next-line
     let charges = this.context.charges.filter(charge => {
       if (charge.category !== "Income") {
         return charge;
