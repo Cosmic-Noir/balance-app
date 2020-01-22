@@ -178,10 +178,6 @@ class viewSpending extends Component {
       .style("font-size", 17);
   };
 
-  componentDidMount() {
-    // console.log(this.context.month_list);
-  }
-
   render() {
     return (
       <div className="viewSpending">

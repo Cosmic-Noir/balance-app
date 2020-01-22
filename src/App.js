@@ -28,7 +28,6 @@ class App extends Component {
     signedIn: "",
     // Initially set to seed data
     charges: [],
-    month_list: [],
     users: Data.users,
     userInfo: []
   };
@@ -74,7 +73,6 @@ class App extends Component {
 
   // Temp func to set charges
   setCharges = responseCharges => {
-    console.log(responseCharges);
     // Keeping to add to demo info
     // eslint-disable-next-line
     // let matchingCharges = Data.charges.filter(charge => {
@@ -84,13 +82,9 @@ class App extends Component {
     // });
 
     this.setState({ charges: responseCharges });
-    setTimeout(() => {
-      this.setMonths();
-    }, 1000);
   };
 
   getMatchingCharges = user_id => {
-    // const url = config.API_ENDPOINT + "charges" + "/" + user_id;
     const url = `${config.API_ENDPOINT}charges/${user_id}`;
     console.log(`Fetching matching charges...`);
     console.log(url);
@@ -108,19 +102,6 @@ class App extends Component {
         return res.json();
       })
       .then(this.setCharges);
-  };
-
-  // Temp function to create list of month_names user has created
-  setMonths = () => {
-    let months = {};
-    let charges = this.state.charges;
-
-    for (let i = 0; i < charges.length; i++) {
-      if (!months[charges[i].month_name]) {
-        months[charges[i].month_name] = true;
-      }
-    }
-    this.setState({ month_list: months });
   };
 
   // Temp function to set fake user data
@@ -175,7 +156,6 @@ class App extends Component {
 
       // Values
       charges: this.state.charges,
-      month_list: this.state.month_list,
       signedIn: this.state.signedIn,
       userInfo: this.state.userInfo,
       users: this.state.users
