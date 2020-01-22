@@ -77,19 +77,6 @@ class SignIn extends Component {
       });
     } else {
       this.login();
-      // eslint-disable-next-line
-      // this.context.users.find(user => {
-      //   if (
-      //     user.username === this.state.username &&
-      //     user.pass === this.state.pass
-      //   ) {
-      //     this.context.onSignIn();
-      //     this.props.history.push("/dashboard");
-      //     return user;
-      //   } else {
-      //     this.setState({ error: `User and email match not found` });
-      //   }
-      // });
     }
   };
 

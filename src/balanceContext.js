@@ -14,8 +14,7 @@ const balanceContext = React.createContext({
   // Values
   charges: [],
   signedIn: "",
-  userInfo: "",
-  users: []
+  userInfo: ""
 });
 
 export default balanceContext;

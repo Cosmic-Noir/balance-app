@@ -41,16 +41,6 @@ class SignUp extends Component {
   handlSubmit = e => {
     e.preventDefault();
     console.log("Create Account pressed, checking user info...");
-    // Check if username or email already taken
-    // eslint-disable-next-line
-    this.context.users.find(user => {
-      if (
-        user.email === this.state.email ||
-        user.username === this.state.username
-      ) {
-        return `Error,  ${this.state.email} or ${this.state.username} already taken`;
-      }
-    });
 
     // Check if info is not valid
     if (this.state.username.length < 6) {
