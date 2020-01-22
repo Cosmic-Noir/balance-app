@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import config from "../../config";
+import config from "../../config";
 
 /* Custom Components */
 // import TokenService from "../../auth/token-service";
@@ -46,6 +46,30 @@ class AddCharge extends Component {
 
   /* Custom Methods */
 
+  // Responsible for POST req for adding new charge to server DB
+  postNewCharge = newCharge => {
+    const url = config.API_ENDPOINT + "charges";
+
+    fetch(url, {
+      method: "POST"
+    }).then(res => {
+      if (!res.ok) {
+        return res.json().then(error => {
+          this.setState({ error: error.message });
+          throw error;
+        });
+      }
+      console.log(res);
+      this.context.addNewCharge(newCharge);
+
+      setTimeout(() => {
+        this.props.setCharges();
+      }, 1000);
+
+      this.resetCharge();
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -66,15 +90,8 @@ class AddCharge extends Component {
 
       newCharge.month_name = this.props.month_name;
       newCharge.user_id = this.context.userInfo.user_id;
-      newCharge.charge_id = Math.floor(Math.random() * 1000);
 
-      this.context.addNewCharge(newCharge);
-
-      setTimeout(() => {
-        this.props.setCharges();
-      }, 1000);
-
-      this.resetCharge();
+      this.postNewCharge(newCharge);
     }
   };
 
