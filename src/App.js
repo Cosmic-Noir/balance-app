@@ -12,6 +12,7 @@ import Nav from "./components/nav/nav";
 import SignIn from "./components/signIn/signIn";
 import SignOut from "./components/signOut/signOut";
 import SignUp from "./components/signUp/signUp";
+import TokenService from "./auth/token-service";
 
 /* Styling & Images */
 import "./App.css";
@@ -74,6 +75,7 @@ class App extends Component {
   // Temp func to set charges
   setCharges = responseCharges => {
     console.log(responseCharges);
+    // Keeping to add to demo info
     // eslint-disable-next-line
     // let matchingCharges = Data.charges.filter(charge => {
     //   if (charge.user_id === user_id) {
@@ -81,21 +83,22 @@ class App extends Component {
     //   }
     // });
 
-    // this.setState({ charges: matchingCharges });
-    // setTimeout(() => {
-    //   this.setMonths();
-    // }, 1000);
+    this.setState({ charges: responseCharges });
+    setTimeout(() => {
+      this.setMonths();
+    }, 1000);
   };
 
   getMatchingCharges = user_id => {
-    const url = config.API_ENDPOINT + "charges";
+    // const url = config.API_ENDPOINT + "charges" + "/" + user_id;
+    const url = `${config.API_ENDPOINT}charges/${user_id}`;
     console.log(`Fetching matching charges...`);
-    let info = { user_id: user_id };
+    console.log(url);
 
     fetch(url, {
       method: "GET",
       headers: {
-        "content-type": "application/json"
+        Authorization: `bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res => {
