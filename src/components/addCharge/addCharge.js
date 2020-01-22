@@ -72,14 +72,11 @@ class AddCharge extends Component {
   };
 
   addNewCharge = response => {
-    console.log(response);
-    setTimeout(() => {
-      // Currently not working, unable to figure out a way to get true res of charge added.....
+    // console.log(response);
 
-      this.context.addNewCharge(response);
-      this.props.setCharges();
-      this.resetCharge();
-    }, 1000);
+    this.context.addNewCharge(response);
+    this.props.setCharges();
+    this.resetCharge();
   };
 
   handleSubmit = e => {
