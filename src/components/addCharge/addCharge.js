@@ -84,22 +84,18 @@ class AddCharge extends Component {
     })
       .then(res => {
         if (!res.ok) {
-          return res.json().then(error => {
-            this.setState({ error: error.message });
-            throw error;
-          });
+          return res.json().then(error => Promise.reject(error));
         }
-        return res.json();
       })
       .then(this.updateCurrCharge);
   };
 
   updateCurrCharge = response => {
-    this.context.updateCharge(response);
-    setTimeout(() => {
-      this.props.setCharges();
-    }, 1000);
-    this.props.handleClickSave();
+    // this.context.updateCharge(response);
+    // setTimeout(() => {
+    //   this.props.setCharges();
+    // }, 1000);
+    // this.props.handleClickSave();
   };
 
   addNewCharge = response => {
