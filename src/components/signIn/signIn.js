@@ -54,7 +54,7 @@ class SignIn extends Component {
         return res.json();
       })
       .then(res => {
-        this.context.setUserInfo(res.user_id);
+        this.context.setUserInfo(res.username, res.user_id);
 
         TokenService.saveAuthToken(res.authToken);
         this.context.checkLoginStatus();
