@@ -54,6 +54,8 @@ class SignIn extends Component {
         return res.json();
       })
       .then(res => {
+        this.context.setUserInfo(res.user_id);
+
         TokenService.saveAuthToken(res.authToken);
         this.context.checkLoginStatus();
         this.props.history.push("/dashboard");
@@ -82,7 +84,6 @@ class SignIn extends Component {
       //     user.pass === this.state.pass
       //   ) {
       //     this.context.onSignIn();
-      //     this.context.setUserInfo(user);
       //     this.props.history.push("/dashboard");
       //     return user;
       //   } else {
