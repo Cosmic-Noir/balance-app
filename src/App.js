@@ -72,18 +72,39 @@ class App extends Component {
   };
 
   // Temp func to set charges
-  setCharges = user_id => {
+  setCharges = responseCharges => {
+    console.log(responseCharges);
     // eslint-disable-next-line
-    let matchingCharges = Data.charges.filter(charge => {
-      if (charge.user_id === user_id) {
-        return charge;
-      }
-    });
+    // let matchingCharges = Data.charges.filter(charge => {
+    //   if (charge.user_id === user_id) {
+    //     return charge;
+    //   }
+    // });
 
-    this.setState({ charges: matchingCharges });
-    setTimeout(() => {
-      this.setMonths();
-    }, 1000);
+    // this.setState({ charges: matchingCharges });
+    // setTimeout(() => {
+    //   this.setMonths();
+    // }, 1000);
+  };
+
+  getMatchingCharges = user_id => {
+    const url = config.API_ENDPOINT + "charges";
+    console.log(`Fetching matching charges...`);
+    let info = { user_id: user_id };
+
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(res.status);
+        }
+        return res.json();
+      })
+      .then(this.setCharges);
   };
 
   // Temp function to create list of month_names user has created
@@ -102,7 +123,7 @@ class App extends Component {
   // Temp function to set fake user data
   setUserInfo = (username, user_id) => {
     this.setState({ userInfo: { username: username, user_id: user_id } });
-    this.setCharges(user_id);
+    this.getMatchingCharges(user_id);
 
     // console.log(`User info set as ${user}`);
   };
