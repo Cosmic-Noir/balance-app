@@ -2,7 +2,7 @@ import React from "react";
 
 const balanceContext = React.createContext({
   // Methods
-  addNewuser: () => {},
+  // addNewuser: () => {},
   checkLoginStatus: () => {},
   onSingIn: () => {},
   onSignOut: () => {},

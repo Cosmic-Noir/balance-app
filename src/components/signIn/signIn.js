@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import config from "../../config";
+import config from "../../config";
 
 /* Custom Components */
-// import TokenService from "../../auth/token-service";
+import TokenService from "../../auth/token-service";
 
 /* Context */
 import balanceContext from "../../balanceContext";
@@ -28,6 +28,41 @@ class SignIn extends Component {
 
   /* Custom Methods */
 
+  // Responsible for POST request for user login from state
+  login = () => {
+    const url = config.API_ENDPOINT + "login";
+
+    const credentials = {
+      pass: this.state.pass,
+      username: this.state.username
+    };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(credentials)
+    })
+      .then(res => {
+        if (!res.ok) {
+          res.json().then(error => {
+            this.setState({ error: error.error });
+            throw error;
+          });
+        }
+        return res.json();
+      })
+      .then(res => {
+        TokenService.saveAuthToken(res.authToken);
+        this.context.checkLoginStatus();
+        this.props.history.push("/dashboard");
+      })
+      .catch(res => {
+        this.setState({ error: res.error });
+      });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.username.length < 6) {
@@ -39,21 +74,21 @@ class SignIn extends Component {
         error: "Error, valid password is at least 6 characters"
       });
     } else {
-      // this.login();
+      this.login();
       // eslint-disable-next-line
-      this.context.users.find(user => {
-        if (
-          user.username === this.state.username &&
-          user.pass === this.state.pass
-        ) {
-          this.context.onSignIn();
-          this.context.setUserInfo(user);
-          this.props.history.push("/dashboard");
-          return user;
-        } else {
-          this.setState({ error: `User and email match not found` });
-        }
-      });
+      // this.context.users.find(user => {
+      //   if (
+      //     user.username === this.state.username &&
+      //     user.pass === this.state.pass
+      //   ) {
+      //     this.context.onSignIn();
+      //     this.context.setUserInfo(user);
+      //     this.props.history.push("/dashboard");
+      //     return user;
+      //   } else {
+      //     this.setState({ error: `User and email match not found` });
+      //   }
+      // });
     }
   };
 

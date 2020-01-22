@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import config from "../../config";
+import config from "../../config";
 
 /* Context */
 import balanceContext from "../../balanceContext";
@@ -30,9 +30,9 @@ class SignUp extends Component {
     this.setState({ pass: pass });
   };
 
-  updateId = () => {
-    this.setState({ id: Math.floor(Math.random() * 1000), error: null });
-  };
+  // updateId = () => {
+  //   this.setState({ id: Math.floor(Math.random() * 1000), error: null });
+  // };
 
   updatePassTwo = passTwo => {
     this.setState({ passTwo: passTwo });
@@ -70,14 +70,43 @@ class SignUp extends Component {
         error: `Password fields must match`
       });
     } else {
-      this.updateId();
-      let newUser = this.state;
-      newUser.id = Math.floor(Math.random() * 1000);
-      this.context.onSignIn();
-      this.context.addNewUser(newUser);
-      this.context.setUserInfo(newUser);
-      this.props.history.push("/dashboard");
+      this.postNewUser();
+
+      // this.updateId();
+      // let newUser = this.state;
+      // newUser.id = Math.floor(Math.random() * 1000);
+      // this.context.addNewUser(newUser);
+      // this.context.setUserInfo(newUser);
     }
+  };
+
+  // Responsible for POST request with user info from state
+  postNewUser = () => {
+    const url = config.API_ENDPOINT + "users";
+
+    const newUser = {
+      username: this.state.username,
+      email: this.state.email,
+      pass: this.state.pass
+    };
+
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(newUser),
+      headers: {
+        "content-type": "application/json"
+      }
+    }).then(res => {
+      if (!res.ok) {
+        return res.json().then(error => {
+          this.setState({ error: error.error });
+          throw error;
+        });
+      }
+      this.context.onSignIn();
+      this.props.history.push("/signIn");
+      return res.json();
+    });
   };
 
   render() {

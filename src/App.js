@@ -33,9 +33,9 @@ class App extends Component {
   };
 
   // Temp function to add user to data state
-  addNewUser = newUser => {
-    this.setState({ users: [...this.state.users, newUser] });
-  };
+  // addNewUser = newUser => {
+  //   this.setState({ users: [...this.state.users, newUser] });
+  // };
 
   // Responsible for adding new charge to current array
   addNewCharge = charge => {
@@ -140,7 +140,7 @@ class App extends Component {
   render() {
     const contextValue = {
       // Methods
-      addNewUser: this.addNewUser,
+      // addNewUser: this.addNewUser,
       addNewCharge: this.addNewCharge,
       checkLoginStatus: this.checkLoginStatus,
       onSignIn: this.onSignIn,
