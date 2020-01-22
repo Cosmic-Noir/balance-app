@@ -49,25 +49,37 @@ class AddCharge extends Component {
   // Responsible for POST req for adding new charge to server DB
   postNewCharge = newCharge => {
     const url = config.API_ENDPOINT + "charges";
+    console.log(url);
 
     fetch(url, {
-      method: "POST"
-    }).then(res => {
-      if (!res.ok) {
-        return res.json().then(error => {
-          this.setState({ error: error.message });
-          throw error;
-        });
+      method: "POST",
+      body: JSON.stringify(newCharge),
+      headers: {
+        "content-type": "application/json"
       }
-      console.log(res);
-      this.context.addNewCharge(newCharge);
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => {
+            console.log(error.message);
+            this.setState({ error: error.message });
+            throw error;
+          });
+        }
+        return res.json();
+      })
+      .then(this.addNewCharge);
+  };
 
-      setTimeout(() => {
-        this.props.setCharges();
-      }, 1000);
+  addNewCharge = response => {
+    console.log(response);
+    setTimeout(() => {
+      // Currently not working, unable to figure out a way to get true res of charge added.....
 
+      this.context.addNewCharge(response);
+      this.props.setCharges();
       this.resetCharge();
-    });
+    }, 1000);
   };
 
   handleSubmit = e => {
