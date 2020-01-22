@@ -101,7 +101,7 @@ class App extends Component {
 
   // Temp function to set fake user data
   setUserInfo = (username, user_id) => {
-    this.setState({ userInfo: [username, user_id] });
+    this.setState({ userInfo: { username: username, user_id: user_id } });
     this.setCharges(user_id);
 
     // console.log(`User info set as ${user}`);
