@@ -49,7 +49,6 @@ class AddCharge extends Component {
   // Responsible for POST req for adding new charge to server DB
   postNewCharge = newCharge => {
     const url = config.API_ENDPOINT + "charges";
-    console.log(url);
 
     fetch(url, {
       method: "POST",
@@ -71,6 +70,38 @@ class AddCharge extends Component {
       .then(this.addNewCharge);
   };
 
+  patchCharge = updatedCharge => {
+    const url = `${config.API_ENDPOINT}charges/${updatedCharge.charge_id}`;
+    console.log(updatedCharge);
+    console.log(url);
+
+    fetch(url, {
+      method: "PATCH",
+      body: JSON.stringify(updatedCharge),
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => {
+            this.setState({ error: error.message });
+            throw error;
+          });
+        }
+        return res.json();
+      })
+      .then(this.updateCurrCharge);
+  };
+
+  updateCurrCharge = response => {
+    this.context.updateCharge(response);
+    setTimeout(() => {
+      this.props.setCharges();
+    }, 1000);
+    this.props.handleClickSave();
+  };
+
   addNewCharge = response => {
     // console.log(response);
 
@@ -88,11 +119,7 @@ class AddCharge extends Component {
       updatedCharge.charge_id = this.props.charge_id;
       updatedCharge.month_name = this.props.month_name;
 
-      this.context.updateCharge(updatedCharge);
-      setTimeout(() => {
-        this.props.setCharges();
-      }, 1000);
-      this.props.handleClickSave();
+      this.patchCharge(updatedCharge);
     } else {
       // Adding unique new charge
       let newCharge = this.state;

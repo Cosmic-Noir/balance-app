@@ -20,7 +20,7 @@ import "./App.css";
 /* Context */
 import balanceContext from "./balanceContext";
 
-// Seed Data
+// Seed Data - Could be used for demo data
 // import Data from "./data.js";
 
 class App extends Component {
