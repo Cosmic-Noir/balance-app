@@ -72,8 +72,6 @@ class AddCharge extends Component {
 
   patchCharge = updatedCharge => {
     const url = `${config.API_ENDPOINT}charges/${updatedCharge.charge_id}`;
-    console.log(updatedCharge);
-    console.log(url);
 
     fetch(url, {
       method: "PATCH",
@@ -87,20 +85,18 @@ class AddCharge extends Component {
           return res.json().then(error => Promise.reject(error));
         }
       })
-      .then(this.updateCurrCharge);
+      .then(this.updateCurrCharge(updatedCharge));
   };
 
-  updateCurrCharge = response => {
-    // this.context.updateCharge(response);
-    // setTimeout(() => {
-    //   this.props.setCharges();
-    // }, 1000);
-    // this.props.handleClickSave();
+  updateCurrCharge = updatedCharge => {
+    this.context.updateCharge(updatedCharge);
+    setTimeout(() => {
+      this.props.setCharges();
+    }, 1000);
+    this.props.handleClickSave();
   };
 
   addNewCharge = response => {
-    // console.log(response);
-
     this.context.addNewCharge(response);
     this.props.setCharges();
     this.resetCharge();

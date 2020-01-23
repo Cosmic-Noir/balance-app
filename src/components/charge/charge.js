@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import config from "../../config";
 
 /* Styling & Images */
 import "./charge.css";
@@ -42,7 +43,32 @@ class Charge extends Component {
   /* Custom Methods */
 
   handleClickDelete = () => {
+    this.remoteDelete();
     // console.log(this.props.charge_id);
+  };
+
+  // Responsible for DELETE request to server
+  remoteDelete = () => {
+    const url = `${config.API_ENDPOINT}charges/${this.props.charge_id}`;
+
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => {
+            this.setState({ error: error.message });
+            throw error;
+          });
+        }
+      })
+      .then(this.succesfulRemoteDelete);
+  };
+
+  succesfulRemoteDelete = () => {
     this.context.deleteCharge(this.props.charge_id);
     setTimeout(() => {
       this.props.setCharges();
