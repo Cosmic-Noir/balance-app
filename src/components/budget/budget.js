@@ -397,11 +397,6 @@ class Budget extends Component {
     this.setState({ charges: charges });
   };
 
-  // Responsible for if state is set to new, turn editingTable to true, filter charges for occurance !== One Time, then update the month_name of the charge, then for each charge, add to all charges
-  updateRecurrantCharges = () => {
-    this.setState({ editingBudget: true });
-  };
-
   showSpendingReport = () => {
     const spendingReport = document.getElementById("spendingRepo");
     spendingReport.classList.remove("hidden");
