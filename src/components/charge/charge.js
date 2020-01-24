@@ -72,7 +72,7 @@ class Charge extends Component {
     this.context.deleteCharge(this.props.charge_id);
     setTimeout(() => {
       this.props.setCharges();
-    }, 1000);
+    }, 500);
   };
 
   // Responsible for setting editing to true, thus revealing form with values instead of charge line

@@ -92,7 +92,7 @@ class AddCharge extends Component {
     this.context.updateCharge(updatedCharge);
     setTimeout(() => {
       this.props.setCharges();
-    }, 1000);
+    }, 500);
     this.props.handleClickSave();
   };
 

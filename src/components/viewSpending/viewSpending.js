@@ -93,7 +93,6 @@ class viewSpending extends Component {
           return charge;
         }
       });
-      console.log(charges);
       for (let i = 0; i < charges.length; i++) {
         if (!categories[charges[i].category]) {
           categories[charges[i].category] = charges[i].amount;

@@ -397,6 +397,7 @@ class Budget extends Component {
     this.setState({ charges: charges });
   };
 
+  // Responsible for showing spending report when user clicks button - can probably consolidate this and below function and show via state
   showSpendingReport = () => {
     const spendingReport = document.getElementById("spendingRepo");
     spendingReport.classList.remove("hidden");
@@ -404,6 +405,7 @@ class Budget extends Component {
     viewSpendButton.classList.add("hidden");
   };
 
+  // Responsible for hiding spending reprot when user clicks button
   hideSpendingReport = () => {
     const spendingReport = document.getElementById("spendingRepo");
     spendingReport.classList.add("hidden");
@@ -415,7 +417,6 @@ class Budget extends Component {
     if (this.props.new === true && this.props.imported !== true) {
       this.setMonth(this.props.month_name);
     } else if (this.props.new === true && this.props.imported === true) {
-      // let month_name = document.getElementById("month_name").value;
       this.setMonthDelay(this.props.imported_month_name);
     } else {
       let month_name = document.getElementById("month_name").value;
@@ -424,7 +425,6 @@ class Budget extends Component {
   }
 
   render() {
-    // const { month_name } = this.state.month_name;
     return (
       <div className="wrapper">
         <div className="budgetReport flex-column">
