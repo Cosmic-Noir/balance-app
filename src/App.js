@@ -27,8 +27,7 @@ class App extends Component {
   state = {
     signedIn: "",
     // Initially set to seed data
-    charges: [],
-    userInfo: []
+    charges: []
   };
 
   /* State Setting/Updating Methods */
@@ -73,12 +72,6 @@ class App extends Component {
     this.setState({ charges: responseCharges });
   };
 
-  // Temp function to set user_info in state from login
-  setUserInfo = (username, user_id) => {
-    this.setState({ userInfo: { username: username, user_id: user_id } });
-    this.getMatchingCharges(user_id);
-  };
-
   // Temp function to log user out
   onSignOut = () => {
     this.setState({
@@ -91,14 +84,14 @@ class App extends Component {
   /* Custom Methods */
 
   // Responsible for requesting all charges matching user_id upon login
-  getMatchingCharges = user_id => {
-    const url = `${config.API_ENDPOINT}charges/${user_id}`;
+  getMatchingCharges = () => {
+    const url = `${config.API_ENDPOINT}charges/`;
     // console.log(`Fetching matching charges...`);
 
     fetch(url, {
       method: "GET",
       headers: {
-        Authorization: `bearer ${TokenService.getAuthToken()}`
+        Authorization: `Bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res => {
@@ -114,6 +107,7 @@ class App extends Component {
   checkLoginStatus = () => {
     if (window.sessionStorage.getItem(config.TOKEN_KEY)) {
       this.setState({ signedIn: true });
+      this.getMatchingCharges();
     } else {
       this.setState({ signedIn: false });
     }
@@ -128,10 +122,10 @@ class App extends Component {
       // Methods
       addNewCharge: this.addNewCharge,
       checkLoginStatus: this.checkLoginStatus,
+      deleteCharge: this.deleteCharge,
+      getMatchingCharges: this.getMatchingCharges,
       onSignIn: this.onSignIn,
       onSignOut: this.onSignOut,
-      setUserInfo: this.setUserInfo,
-      deleteCharge: this.deleteCharge,
       updateCharge: this.updateCharge,
 
       // Values
