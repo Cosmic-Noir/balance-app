@@ -21,7 +21,7 @@ import "./App.css";
 import balanceContext from "./balanceContext";
 
 // Seed Data - Could be used for demo data
-// import Data from "./data.js";
+import Data from "./data.js";
 
 class App extends Component {
   state = {
@@ -78,6 +78,7 @@ class App extends Component {
       signedIn: false,
       userInfo: []
     });
+
     // console.log("User has logged out");
   };
 
@@ -110,6 +111,7 @@ class App extends Component {
       this.getMatchingCharges();
     } else {
       this.setState({ signedIn: false });
+      this.setCharges(Data.charges);
     }
   };
 

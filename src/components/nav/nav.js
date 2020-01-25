@@ -19,11 +19,11 @@ class Nav extends Component {
   // Responsible for when user clicks Sign Out button
   handleSignOut = () => {
     TokenService.clearAuthToken();
-    this.context.checkLoginStatus();
     if (window.innerWidth < 600) {
       this.toggleMobileMenu();
     }
     this.context.onSignOut();
+    this.context.checkLoginStatus();
   };
 
   // Responsible for toggling display of mobile nav menu
