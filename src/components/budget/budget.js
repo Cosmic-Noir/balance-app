@@ -169,14 +169,7 @@ class Budget extends Component {
   // Responsible for taking returned response from db and adding it to current array/state
   addReturnedCharges = returnedCharge => {
     this.context.addNewCharge(returnedCharge);
-    this.setState(
-      { charges: [...this.state.charges, returnedCharge] },
-      function() {
-        console.log(
-          `addReturnedCharge has run and added ${returnedCharge} from the server`
-        );
-      }
-    );
+    this.setState({ charges: [...this.state.charges, returnedCharge] });
   };
 
   // Responsible for POST req for adding new charge to server DB
@@ -427,6 +420,14 @@ class Budget extends Component {
     addButton.classList.add("hidden");
   };
 
+  // Responsible for showing Add Income
+  showAddIncome = () => {
+    let addIncome = document.getElementById("addIncome");
+    addIncome.classList.remove("hidden");
+    let addIncomeButton = document.getElementById("showAddIncome");
+    addIncomeButton.classList.add("hidden");
+  };
+
   // Responsible for sorting the charges by due date
   sortCharges = () => {
     let charges = this.state.charges;
@@ -516,6 +517,12 @@ class Budget extends Component {
           <button onClick={this.showAddCharge} type="button" id="showAdd">
             Add Charge
           </button>
+          <button onClick={this.showAddIncome} type="button" id="showAddIncome">
+            Add Income
+          </button>
+          <div id="addIncome" className="hidden">
+            <p>Add Income form here</p>
+          </div>
 
           {this.state.editingBudget === true ? (
             <button onClick={this.handleDoneEditingClick}>Done Editing</button>

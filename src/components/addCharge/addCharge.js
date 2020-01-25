@@ -12,10 +12,8 @@ import balanceContext from "../../balanceContext";
 
 class AddCharge extends Component {
   state = {
-    // Will randomly create charge_id for now
     amount: "",
     category: "Auto",
-    charge_id: "",
     charge_name: "",
     due_date: "",
     occurance: "One Time"
@@ -128,13 +126,11 @@ class AddCharge extends Component {
 
   resetCharge = () => {
     this.setState({
-      charge_id: "",
       charge_name: "",
       category: "Auto",
       due_date: "",
       amount: "",
-      occurance: "One Time",
-      user_id: ""
+      occurance: "One Time"
     });
   };
 
@@ -169,11 +165,6 @@ class AddCharge extends Component {
   handleHideEdit = () => {
     this.props.handleClickSave();
     this.setProps();
-  };
-
-  handleClickRemoveFromNew = () => {
-    console.log("handleClickRemoveFromNew activated...");
-    this.props.removeFromNew(this.props.charge_id);
   };
 
   handleClickUpdate = () => {
@@ -254,13 +245,18 @@ class AddCharge extends Component {
             <option value="Food/Drink">Food/Drink</option>
             <option value="Health">Health</option>
             <option value="Housing">Housing</option>
-            <option value="Income">Income</option>
             <option value="Insurance/Financial">Insurance/Financial</option>
             <option value="Other">Other</option>
             <option value="Pets">Pets</option>
             <option value="Savings">Savings</option>
             <option value="Shopping">Shopping</option>
             <option value="Travel">Travel</option>
+
+            {this.props.editing === true ? (
+              <option value="Income">Income</option>
+            ) : (
+              ""
+            )}
           </select>
           <select
             id="occurance"

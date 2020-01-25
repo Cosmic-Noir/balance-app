@@ -34,9 +34,7 @@ class App extends Component {
 
   // Responsible for adding new charge to state
   addNewCharge = charge => {
-    this.setState({ charges: [...this.state.charges, charge] }, function() {
-      // console.log(`addNewCharge has run and added ${charge}`);
-    });
+    this.setState({ charges: [...this.state.charges, charge] });
   };
 
   // Responsible for deleting charge from state
@@ -45,8 +43,6 @@ class App extends Component {
       charge => charge.charge_id !== charge_id
     );
     this.setState({ charges: newCharges });
-
-    // console.log(`deleteCharge is called`);
   };
 
   // Responsible for updating a charge in state
@@ -56,7 +52,6 @@ class App extends Component {
         charge.charge_id !== updatedCharge.charge_id ? charge : updatedCharge
       )
     });
-    // console.log(`updateCharge ran`);
   };
 
   // Temp function for when user logs in.
@@ -65,12 +60,10 @@ class App extends Component {
       signedIn: true
     });
     this.checkLoginStatus();
-    // console.log("User has logged in successfully");
   };
 
   // Responsible for taking GET response and setting state to recieved charges
   setCharges = responseCharges => {
-    console.log(responseCharges);
     this.setState({ charges: responseCharges });
   };
 
@@ -80,17 +73,13 @@ class App extends Component {
       signedIn: false,
       userInfo: []
     });
-
-    // console.log("User has logged out");
   };
 
   /* Custom Methods */
 
   // Responsible for requesting all charges matching user_id upon login
   getMatchingCharges = () => {
-    console.log("User signed in, checking database for matching charges...");
     const url = `${config.API_ENDPOINT}charges/`;
-    // console.log(`Fetching matching charges...`);
 
     fetch(url, {
       method: "GET",
@@ -109,12 +98,10 @@ class App extends Component {
 
   // Responsible for setting user's signedIn status to true or false if JWT present
   checkLoginStatus = () => {
-    console.log("Checking login status...");
     if (window.sessionStorage.getItem(config.TOKEN_KEY)) {
       this.setState({ signedIn: true });
       this.getMatchingCharges();
     } else {
-      console.log("User not signed in, setting charges to demo data...");
       this.setState({ signedIn: false });
       this.setCharges(Data.charges);
     }
