@@ -3,6 +3,7 @@ import config from "../../config";
 
 /* Custom Components */
 import AddCharge from "../addCharge/addCharge";
+import AddIncome from "../addIncome/addIncome";
 import Charge from "../charge/charge";
 import TokenService from "../../auth/token-service";
 import ViewSpending from "../viewSpending/viewSpending";
@@ -520,9 +521,11 @@ class Budget extends Component {
           <button onClick={this.showAddIncome} type="button" id="showAddIncome">
             Add Income
           </button>
-          <div id="addIncome" className="hidden">
-            <p>Add Income form here</p>
-          </div>
+          <AddIncome
+            first_of_month={this.state.first_of_month}
+            month_name={this.state.month_name}
+            setCharges={this.setCharges}
+          />
 
           {this.state.editingBudget === true ? (
             <button onClick={this.handleDoneEditingClick}>Done Editing</button>

@@ -71,8 +71,7 @@ class AddIncome extends Component {
     this.resetCharge();
   };
 
-  // Responsible for changing fields to empty
-
+  // Responsible for resting state
   resetCharge = () => {
     this.setState({
       charge_name: "",
@@ -82,11 +81,19 @@ class AddIncome extends Component {
     });
   };
 
-  handleSubmite = e => {
+  handleSubmit = e => {
     e.preventDefault();
     let newCharge = this.state;
     newCharge.month_name = this.props.month_name;
     this.postNewCharge(newCharge);
+  };
+
+  // Responsible for when user clicks cancel button
+  handleCancel = () => {
+    let addCharge = document.getElementById("addIncome");
+    addCharge.classList.add("hidden");
+    let addButton = document.getElementById("showAddIncome");
+    addButton.classList.remove("hidden");
   };
 
   render() {
@@ -112,7 +119,7 @@ class AddIncome extends Component {
             className="chargeInput"
             id="income_charge_name"
             onChange={e => this.updateChargeName(e.target.value)}
-            placeholder="charge name"
+            placeholder="Income name"
             name="charge_name"
             ref={this.charge_name}
             required
@@ -160,3 +167,5 @@ class AddIncome extends Component {
     );
   }
 }
+
+export default AddIncome;
