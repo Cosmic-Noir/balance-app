@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import config from "../../config";
 
 /* Custom Components */
-// import TokenService from "../../auth/token-service";
+import TokenService from "../../auth/token-service";
 
 /* Styling & Images */
 import "./addCharge.css";
@@ -54,7 +54,8 @@ class AddCharge extends Component {
       method: "POST",
       body: JSON.stringify(newCharge),
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res => {
@@ -117,7 +118,6 @@ class AddCharge extends Component {
       let newCharge = this.state;
 
       newCharge.month_name = this.props.month_name;
-      newCharge.user_id = this.context.userInfo.user_id;
 
       this.postNewCharge(newCharge);
     }
