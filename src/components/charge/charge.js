@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import config from "../../config";
 
+/* Custom Components */
+import TokenService from "../../auth/token-service";
+
 /* Styling & Images */
 import "./charge.css";
 
@@ -54,7 +57,8 @@ class Charge extends Component {
     fetch(url, {
       method: "DELETE",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res => {
