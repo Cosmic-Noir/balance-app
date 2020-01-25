@@ -168,6 +168,7 @@ class Budget extends Component {
 
   // Responsible for taking returned response from db and adding it to current array/state
   addReturnedCharges = returnedCharge => {
+    this.context.addNewCharge(returnedCharge);
     this.setState(
       { charges: [...this.state.charges, returnedCharge] },
       function() {
