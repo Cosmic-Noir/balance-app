@@ -152,6 +152,7 @@ class Budget extends Component {
         month_name: this.props.month_name
       };
     });
+    this.setState({ charges: [] });
 
     for (let i = 0; i < newCharges.length; i++) {
       console.log("attempting post of new charge");
@@ -160,9 +161,21 @@ class Budget extends Component {
 
     // console.log("New budget detected, chaning month_name");
     // this.setState({ charges: newCharges }, function() {
-    //   this.sortCharges();
     // });
-    // this.setState({ month_name: this.props.month_name }, this.saveAllCharges());
+    this.sortCharges();
+    this.setState({ month_name: this.props.month_name }, this.saveAllCharges());
+  };
+
+  // Responsible for taking returned response from db and adding it to current array/state
+  addReturnedCharges = returnedCharge => {
+    this.setState(
+      { charges: [...this.state.charges, returnedCharge] },
+      function() {
+        console.log(
+          `addReturnedCharge has run and added ${returnedCharge} from the server`
+        );
+      }
+    );
   };
 
   // Responsible for POST req for adding new charge to server DB
@@ -189,7 +202,7 @@ class Budget extends Component {
         }
         return res.json();
       })
-      .then(returnedCharges.push());
+      .then(this.addReturnedCharges);
 
     console.log(returnedCharges);
   };
