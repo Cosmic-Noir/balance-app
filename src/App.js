@@ -130,7 +130,6 @@ class App extends Component {
       addNewCharge: this.addNewCharge,
       checkLoginStatus: this.checkLoginStatus,
       deleteCharge: this.deleteCharge,
-      getMatchingCharges: this.getMatchingCharges,
       onSignIn: this.onSignIn,
       onSignOut: this.onSignOut,
       updateCharge: this.updateCharge,

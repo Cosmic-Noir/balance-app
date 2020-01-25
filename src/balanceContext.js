@@ -6,7 +6,6 @@ const balanceContext = React.createContext({
   checkLoginStatus: () => {},
   onSingIn: () => {},
   onSignOut: () => {},
-  getMatchingCharges: () => {},
   addNewCharge: () => {},
   deleteCharge: () => {},
   updateCharge: () => {},

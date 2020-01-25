@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import config from "../../config";
 
 /* Custom Components */
 import AddCharge from "../addCharge/addCharge";
 import Charge from "../charge/charge";
+import TokenService from "../../auth/token-service";
 import ViewSpending from "../viewSpending/viewSpending";
 
 /* Styling & Images */
@@ -103,6 +105,7 @@ class Budget extends Component {
         return charge;
       }
     });
+
     let newCharges = filteredCharges.map(charge => {
       // Must update charge month value
 
@@ -143,18 +146,52 @@ class Budget extends Component {
         amount: charge.amount,
         category: charge.category,
         charge_name: charge.charge_name,
-        charge_id: Math.floor(Math.random() * 1000),
+        charge_id: null,
         due_date: newDueDate,
         occurance: charge.occurance,
         month_name: this.props.month_name
       };
     });
 
+    for (let i = 0; i < newCharges.length; i++) {
+      console.log("attempting post of new charge");
+      this.postNewCharge(newCharges[i]);
+    }
+
     // console.log("New budget detected, chaning month_name");
-    this.setState({ charges: newCharges }, function() {
-      this.sortCharges();
-    });
-    this.setState({ month_name: this.props.month_name }, this.saveAllCharges());
+    // this.setState({ charges: newCharges }, function() {
+    //   this.sortCharges();
+    // });
+    // this.setState({ month_name: this.props.month_name }, this.saveAllCharges());
+  };
+
+  // Responsible for POST req for adding new charge to server DB
+  postNewCharge = newCharge => {
+    let returnedCharges = [];
+
+    const url = config.API_ENDPOINT + "charges";
+
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(newCharge),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => {
+            console.log(error.message);
+            this.setState({ error: error.message });
+            throw error;
+          });
+        }
+        return res.json();
+      })
+      .then(returnedCharges.push());
+
+    console.log(returnedCharges);
   };
 
   /* Custom Methods */
