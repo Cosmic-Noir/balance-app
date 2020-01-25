@@ -61,12 +61,6 @@ class SignUp extends Component {
       });
     } else {
       this.postNewUser();
-
-      // this.updateId();
-      // let newUser = this.state;
-      // newUser.id = Math.floor(Math.random() * 1000);
-      // this.context.addNewUser(newUser);
-      // this.context.setUserInfo(newUser);
     }
   };
 
@@ -102,10 +96,6 @@ class SignUp extends Component {
   render() {
     return (
       <div className="flex-column" data-aos="fade-in" data-aos-duration="1000">
-        <p className="error">
-          {" "}
-          This is a demo site, please do not use a real password
-        </p>
         <form
           className="flex-column formBorder"
           onSubmit={e => {

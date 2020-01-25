@@ -73,7 +73,9 @@ class Nav extends Component {
                 View Budgets
               </Link>
             ) : (
-              ""
+              <Link to="/signIn" className="nav">
+                Sign In
+              </Link>
             )}
 
             {this.context.signedIn === false ? (
