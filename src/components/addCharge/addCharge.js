@@ -78,7 +78,8 @@ class AddCharge extends Component {
       method: "PATCH",
       body: JSON.stringify(updatedCharge),
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`
       }
     })
       .then(res => {
