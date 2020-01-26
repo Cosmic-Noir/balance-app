@@ -111,7 +111,6 @@ class Charge extends Component {
             occurance={this.props.occurance}
             month_name={this.props.month_name}
             handleClickSave={this.handleClickSave}
-            removeFromNew={this.props.removeFromNew}
             updateNewCharge={this.props.updateNewCharge}
             setCharges={this.props.setCharges}
           />

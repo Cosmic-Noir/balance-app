@@ -297,7 +297,6 @@ class Budget extends Component {
             key={charge_id}
             month_name={this.state.month_name}
             occurance={occurance}
-            removeFromNew={this.removeFromNew}
             updateNewCharge={this.updateNewCharge}
             setCharges={this.setCharges}
           />
@@ -318,7 +317,6 @@ class Budget extends Component {
             key={charge_id}
             month_name={this.state.month_name}
             occurance={occurance}
-            removeFromNew={this.removeFromNew}
             updateNewCharge={this.updateNewCharge}
             setCharges={this.setCharges}
           />
@@ -358,7 +356,6 @@ class Budget extends Component {
               key={charge_id}
               month_name={this.state.month_name}
               occurance={occurance}
-              removeFromNew={this.removeFromNew}
               updateNewCharge={this.updateNewCharge}
               setCharges={this.setCharges}
             />
@@ -390,16 +387,6 @@ class Budget extends Component {
   // Responsible for hiding edit/delet buttons on each charge
   handleDoneEditingClick = () => {
     this.setState({ editingBudget: false });
-  };
-
-  // Responsible for removing a charge from budget state
-  removeFromNew = charge_id => {
-    const newCharges = this.state.charges.filter(
-      charge => charge.charge_id !== charge_id
-    );
-    this.setState({ charges: newCharges });
-
-    // console.log(`removeFromNew is called`);
   };
 
   updateNewCharge = updatedCharge => {
