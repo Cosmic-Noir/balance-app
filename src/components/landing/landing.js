@@ -14,7 +14,7 @@ class Landing extends Component {
       <div className="flex-column">
         <h1>Balance</h1>
         <h2>
-          Personal budgeting made <span>simple</span>
+          Personal Budgeting Made <span>Simple</span>
         </h2>
 
         <p className="explanation">
