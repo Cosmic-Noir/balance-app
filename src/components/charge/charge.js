@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import config from "../../config";
+import PropTypes from "prop-types";
 
 /* Custom Components */
 import TokenService from "../../auth/token-service";
@@ -137,3 +138,14 @@ class Charge extends Component {
 }
 
 export default Charge;
+
+Charge.propTypes = {
+  amount: PropTypes.number,
+  category: PropTypes.string,
+  charge_id: PropTypes.number,
+  charge_name: PropTypes.string,
+  due_date: PropTypes.string,
+  editingBudget: PropTypes.bool,
+  month_name: PropTypes.string.isRequired,
+  occurance: PropTypes.string
+};

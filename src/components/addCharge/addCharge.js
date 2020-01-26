@@ -323,5 +323,6 @@ AddCharge.propTypes = {
   due_date: PropTypes.string,
   editingBudget: PropTypes.bool,
   first_of_month: PropTypes.string,
-  month_name: PropTypes.string.isRequired
+  month_name: PropTypes.string.isRequired,
+  occurance: PropTypes.string
 };
