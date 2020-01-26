@@ -560,6 +560,7 @@ class Budget extends Component {
 export default Budget;
 
 Budget.propTypes = {
+  doneCreating: PropTypes.func,
   imported: PropTypes.bool,
   imported_month_name: PropTypes.string,
   month_name: PropTypes.string,
