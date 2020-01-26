@@ -318,7 +318,10 @@ export default AddCharge;
 AddCharge.propTypes = {
   amount: PropTypes.number,
   category: PropTypes.string,
-
+  charge_id: PropTypes.number,
+  charge_name: PropTypes.string,
+  due_date: PropTypes.string,
+  editingBudget: PropTypes.bool,
   first_of_month: PropTypes.string.isRequired,
   month_name: PropTypes.string.isRequired
 };
