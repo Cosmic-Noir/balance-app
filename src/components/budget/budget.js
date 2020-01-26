@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import config from "../../config";
+import PropTypes from "prop-types";
 
 /* Custom Components */
 import AddCharge from "../addCharge/addCharge";
@@ -570,3 +571,10 @@ class Budget extends Component {
 }
 
 export default Budget;
+
+Budget.propTypes = {
+  imported: PropTypes.bool,
+  imported_month_name: PropTypes.string,
+  month_name: PropTypes.string,
+  new: PropTypes.bool
+};
