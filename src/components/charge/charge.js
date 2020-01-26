@@ -107,9 +107,7 @@ class Charge extends Component {
             charge_name={this.props.charge_name}
             due_date={this.props.due_date}
             category={this.props.category}
-            imported={this.props.imported}
             occurance={this.props.occurance}
-            new={this.props.new}
             month_name={this.props.month_name}
             handleClickSave={this.handleClickSave}
             removeFromNew={this.props.removeFromNew}
