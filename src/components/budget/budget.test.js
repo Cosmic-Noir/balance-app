@@ -5,15 +5,15 @@ import Budget from "./budget";
 
 // Unclear how to write these tests with a DOM element registering as null
 
-describe.skip(`Budget Component`, () => {
+describe(`Budget Component`, () => {
   it(`Renders without crashing`, () => {
     const div = document.createElement("div");
-    ReactDom.render(<Budget />, div);
+    ReactDom.render(<Budget testingVal="Feb 2020" />, div);
     ReactDom.unmountComponentAtNode(div);
   });
 
   it(`Renders the UI as expected`, () => {
-    const tree = renderer.create(<Budget />).toJSON;
+    const tree = renderer.create(<Budget testingVal="Feb 2020" />).toJSON;
     expect(tree).toMatchSnapshot();
   });
 });

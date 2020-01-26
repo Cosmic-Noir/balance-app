@@ -81,7 +81,8 @@ class Budget extends Component {
     if (this.props.new === true) {
       month_name = this.state.month_name;
     } else {
-      month_name = document.getElementById("month_name").value;
+      month_name =
+        this.props.testingVal || document.getElementById("month_name").value;
     }
 
     let charges = this.context.charges.filter(charge => {
@@ -468,7 +469,8 @@ class Budget extends Component {
     } else if (this.props.new === true && this.props.imported === true) {
       this.setMonthDelay(this.props.imported_month_name);
     } else {
-      let month_name = document.getElementById("month_name").value;
+      let month_name =
+        this.props.testingVal || document.getElementById("month_name").value;
       this.setMonth(month_name);
     }
   }
