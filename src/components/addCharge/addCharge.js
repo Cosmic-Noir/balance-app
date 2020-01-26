@@ -322,10 +322,10 @@ AddCharge.propTypes = {
   charge_name: PropTypes.string,
   due_date: PropTypes.string,
   editingBudget: PropTypes.bool,
-  handleClickUpdate: PropTypes.func.isRequired,
+  handleClickUpdate: PropTypes.func,
   first_of_month: PropTypes.string,
-  month_name: PropTypes.string.isRequired,
+  month_name: PropTypes.string,
   occurance: PropTypes.string,
-  setCharges: PropTypes.func.isRequired,
-  updateNewCharge: PropTypes.func.isRequired
+  setCharges: PropTypes.func,
+  updateNewCharge: PropTypes.func
 };
