@@ -111,9 +111,9 @@ class ViewSpending extends Component {
   createPieCharge = () => {
     let chartDiv = document.getElementById("chart");
     chartDiv.innerHTML = "";
-    const width = 400;
-    const height = 400;
-    const margin = 50;
+    const width = 500;
+    const height = 500;
+    const margin = 80;
     const radius = Math.min(width, height) / 2 - margin;
 
     let svg = d3
@@ -156,7 +156,7 @@ class ViewSpending extends Component {
     var arcGenerator = d3
       .arc()
       .innerRadius(0)
-      .outerRadius(radius + 30);
+      .outerRadius(radius + 10);
 
     svg
       .selectAll("#chart")
