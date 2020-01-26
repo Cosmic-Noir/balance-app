@@ -153,16 +153,24 @@ class Budget extends Component {
         month_name: this.props.month_name
       };
     });
-    this.setState({ charges: [] });
 
-    for (let i = 0; i < newCharges.length; i++) {
-      this.postNewCharge(newCharges[i]);
+    if (this.context.signedIn === true) {
+      this.setState({ charges: [] });
+
+      for (let i = 0; i < newCharges.length; i++) {
+        this.postNewCharge(newCharges[i]);
+      }
+
+      setTimeout(() => {
+        this.sortCharges();
+      }, 500);
+      this.setState(
+        { month_name: this.props.month_name },
+        this.saveAllCharges()
+      );
+    } else {
+      console.log("demo stuff");
     }
-
-    setTimeout(() => {
-      this.sortCharges();
-    }, 500);
-    this.setState({ month_name: this.props.month_name }, this.saveAllCharges());
   };
 
   // Responsible for taking returned response from db and adding it to current array/state
