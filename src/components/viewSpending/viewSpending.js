@@ -230,5 +230,5 @@ class ViewSpending extends Component {
 export default ViewSpending;
 
 ViewSpending.propTypes = {
-  hideSpendingReport: PropTypes.func.isRequired
+  hideSpendingReport: PropTypes.func
 };
