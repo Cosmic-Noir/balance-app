@@ -9,4 +9,9 @@ describe(`AddCharge Component`, () => {
     ReactDom.render(<AddCharge />, div);
     ReactDom.unmountComponentAtNode(div);
   });
+
+  it(`Renders the UI as expected`, () => {
+    const tree = renderer.create(<AddCharge />).toJSON;
+    expect(tree).toMatchSnapshot();
+  });
 });
