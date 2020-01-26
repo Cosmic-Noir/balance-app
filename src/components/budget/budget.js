@@ -33,6 +33,7 @@ class Budget extends Component {
     }, 1000);
   };
 
+  // For importing charges in new budget
   setMonthDelay = month_name => {
     this.setState({ month_name: month_name });
     setTimeout(() => {
@@ -42,6 +43,7 @@ class Budget extends Component {
     }, 1000);
   };
 
+  // Responsible for calculating first of the month from state to pass to calender as min value
   setFirstofMonth = () => {
     let months = [
       "Jan",
@@ -74,10 +76,9 @@ class Budget extends Component {
     this.setState({ first_of_month: fullFirst });
   };
 
-  // Responsible for sorting charges in context and updating state to match selected month_name
+  // Responsible for aquriing correct month_name depending on props, then setting matching charges in state
   setCharges = () => {
     let month_name;
-    // console.log(this.state.month_name);
     if (this.props.new === true) {
       month_name = this.state.month_name;
     } else {
@@ -87,20 +88,18 @@ class Budget extends Component {
 
     let charges = this.context.charges.filter(charge => {
       if (charge.month_name === month_name) {
-        // console.log("matching charge found");
         return charge;
       } else {
         return "";
       }
     });
 
-    // console.log(`setCharges has run and setState`);
-
     this.setState({ charges: charges }, function() {
       this.sortCharges();
     });
   };
 
+  // Responsible for filtering charges for "monthly" occurance and updating due_date to selected month_name
   setImportedCharges = () => {
     // eslint-disable-next-line
     let filteredCharges = this.state.charges.filter(charge => {
@@ -143,8 +142,6 @@ class Budget extends Component {
 
       let newDueDate = year + "-" + stringDig + day;
 
-      // charge.due_date = newDueDate;
-      // charge.charge_id = Math.floor(Math.random() * 1000);
       return {
         amount: charge.amount,
         category: charge.category,
@@ -156,30 +153,31 @@ class Budget extends Component {
       };
     });
 
+    // SignedIn user vs Demo user
     if (this.context.signedIn === true) {
       this.setState({ charges: [] });
 
       for (let i = 0; i < newCharges.length; i++) {
         this.postNewCharge(newCharges[i]);
       }
-
       setTimeout(() => {
         this.sortCharges();
       }, 500);
+
+      // Charges from selected month created, can now update current state to selected month_name from createBudget
       this.setState(
         { month_name: this.props.month_name },
         this.saveAllCharges()
       );
     } else {
-      console.log(
-        "Demo user detected, asigning demo id to charges before local insertion..."
-      );
       for (let i = 0; i < newCharges.length; i++) {
         newCharges[i].charge_id = Math.floor(Math.random() * 1000);
       }
+
       this.setState({ charges: newCharges }, function() {
         this.sortCharges();
       });
+
       this.setState(
         { month_name: this.props.month_name },
         this.saveAllCharges()
@@ -187,11 +185,13 @@ class Budget extends Component {
     }
   };
 
-  // Responsible for taking returned response from db and adding it to current array/state
+  // Responsible for taking returned response from server and adding it to current array of charges
   addReturnedCharges = returnedCharge => {
     this.context.addNewCharge(returnedCharge);
     this.setState({ charges: [...this.state.charges, returnedCharge] });
   };
+
+  /* Custom Methods */
 
   // Responsible for POST req for adding new charge to server DB
   postNewCharge = newCharge => {
@@ -217,8 +217,6 @@ class Budget extends Component {
       })
       .then(this.addReturnedCharges);
   };
-
-  /* Custom Methods */
 
   // Responsible for displaying total monthly income
   displayIncome = () => {
@@ -272,8 +270,6 @@ class Budget extends Component {
     let currentPaycheck = 0;
     let expenses = 0;
 
-    // let arr = this.state.charges;
-
     let allCharges = this.state.charges.map(charge => {
       const {
         charge_id,
@@ -285,8 +281,8 @@ class Budget extends Component {
       } = charge;
 
       if (category === "Income" && charge === this.state.charges[0]) {
-        // console.log(`${charge_name} is income for ${amount}`);
         currentPaycheck = amount;
+
         return (
           <Charge
             amount={amount}
@@ -304,9 +300,7 @@ class Budget extends Component {
         );
       } else if (category !== "Income") {
         expenses -= amount;
-        // console.log(
-        //   `${charge_name} is an expense for $${amount}, current expenses are ${expenses}`
-        // );
+
         return (
           <Charge
             amount={amount}
@@ -325,14 +319,8 @@ class Budget extends Component {
       } else {
         // IF category IS income and it's NOT the first charge
         let remainder = Math.round((currentPaycheck + expenses) * 100) / 100;
-        // console.log(
-        //   `Paycheck detected, currentPaycheck is ${currentPaycheck} and expenses are ${expenses} so the remainder is ${currentPaycheck +
-        //     expenses}`
-        // );
+
         let pastPaycheck = currentPaycheck;
-        // console.log(
-        //   `Current paycheck: ${currentPaycheck} means ${remainder} left over from paycheck`
-        // );
 
         // Then set the current paycheck to the selected one
         currentPaycheck = amount;
@@ -385,11 +373,12 @@ class Budget extends Component {
     this.setState({ editingBudget: true });
   };
 
-  // Responsible for hiding edit/delet buttons on each charge
+  // Responsible for hiding edit/delete buttons on each charge
   handleDoneEditingClick = () => {
     this.setState({ editingBudget: false });
   };
 
+  // Responsible for updating a charge in current charge state in budget
   updateNewCharge = updatedCharge => {
     this.setState({
       charges: this.state.charges.map(charge =>
@@ -398,15 +387,14 @@ class Budget extends Component {
     });
   };
 
-  // Responsible for going through state of charges and adding each to original data
+  // Responsible for going through state of charges and adding each to App layer charges array
   saveAllCharges = () => {
-    // console.log(`saveallcharges called`);
     for (let i = 0; i < this.state.charges.length; i++) {
-      // console.log(this.state.charges[i]);
       setTimeout(() => {
         this.context.addNewCharge(this.state.charges[i]);
       }, 500);
     }
+
     this.props.doneCreating();
   };
 
@@ -426,17 +414,15 @@ class Budget extends Component {
     addIncomeButton.classList.add("hidden");
   };
 
-  // Responsible for sorting the charges by due date
+  // Responsible for sorting the charges by due_date, if due_date matches and income category detected, income returned first
   sortCharges = () => {
     let charges = this.state.charges;
-    // console.log(this.state.charges);
 
     charges.sort((a, b) => {
       let aDay = parseInt(a.due_date.substring(8, 10));
       let bDay = parseInt(b.due_date.substring(8, 10));
 
       if (aDay === bDay && a.category === "Income") {
-        // console.log(`Due date matches, ${a.charge_name} is of income `);
         return -1;
       } else if (aDay > bDay || aDay === bDay) {
         return 1;
@@ -481,9 +467,7 @@ class Budget extends Component {
         <div className="budgetReport flex-column">
           <h2 className="title">Budget Report</h2>
 
-          <form
-            className={this.props.new === true ? "hidden siteList" : "siteList"}
-          >
+          <form>
             <h3>Select Budget:</h3>
             <select
               id="month_name"
