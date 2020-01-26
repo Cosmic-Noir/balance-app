@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import config from "../../config";
+import PropTypes from "prop-types";
 
 /* Custom Components */
 import TokenService from "../../auth/token-service";
@@ -176,3 +177,8 @@ class AddIncome extends Component {
 }
 
 export default AddIncome;
+
+AddIncome.propTypes = {
+  first_of_month: PropTypes.string,
+  month_name: PropTypes.string.isRequired
+};
