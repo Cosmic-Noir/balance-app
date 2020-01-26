@@ -18,8 +18,6 @@ class CreateBudget extends Component {
     this.setState({ imported_month_name: month_name });
   };
 
-  /* Custom Methods */
-
   checkMonthName = month_name => {
     for (let i = 0; i < this.context.charges.length; i++) {
       if (month_name === this.context.charges[i].month_name) {
@@ -32,7 +30,9 @@ class CreateBudget extends Component {
     }
   };
 
-  // Responsible for providing options of monthly budgets
+  /* Custom Methods */
+
+  // Responsible for providing options of monthly budgets to import charges from
   displayMonths = () => {
     const months = {};
     if (this.context.charges === null) {
@@ -55,27 +55,31 @@ class CreateBudget extends Component {
     }
   };
 
+  // Responsible for handling form data
   handleSubmit = e => {
     e.preventDefault();
+
     let newYear = document.getElementById("newYear").value;
     let newMonthName = document.getElementById("newMonthName").value;
     let newBudgetName = newMonthName + " " + newYear;
-    // console.log(newBudgetName);
+
     if (newYear.length !== 4) {
       this.setState({ error: `Please choose valid 4-digit year` });
     } else {
       this.checkMonthName(newBudgetName);
+
       if (this.state.error === null || this.context.charges[0] === undefined) {
         this.setState({ month_name: newBudgetName });
+
         const nameBudget = document.getElementById("selectName");
+
         nameBudget.classList.add("hidden");
+
         if (this.state.imported === true) {
           this.hideImportMonth();
         }
       }
     }
-
-    // Need to check if budget name is already taken
   };
 
   // Responsible for when user clicks cancel button
@@ -83,6 +87,7 @@ class CreateBudget extends Component {
     this.props.history.goBack();
   };
 
+  // Responsible for setting imported and new state to true
   handleClickYes = () => {
     this.setState({ imported: true, new: true });
     if (this.props.testing !== "true") {
@@ -92,12 +97,12 @@ class CreateBudget extends Component {
       if (this.state.imported === true) {
         let imported_month_name = document.getElementById("imported_month_name")
           .value;
-        // console.log(imported_month_name);
         this.setImportedMonth(imported_month_name);
       }
     });
   };
 
+  // Responsible for setting new state to true with non-imported status
   handleClickNo = () => {
     this.setState({ new: true });
     if (this.props.testing !== "true") {
@@ -105,16 +110,19 @@ class CreateBudget extends Component {
     }
   };
 
+  // Responsible for hiding import question once option selected
   hideCreate = () => {
     let option = document.getElementById("createNew");
     option.classList.add("hidden");
   };
 
+  // Responsible for hiding budget selection once option selected
   hideImportMonth = () => {
     let importOption = document.getElementById("selectImportMonth");
     importOption.classList.add("hidden");
   };
 
+  // Responsible for resetting values to false
   doneCreating = () => {
     this.setState({ new: false, imported: false });
   };
@@ -123,7 +131,6 @@ class CreateBudget extends Component {
     if (this.context.charges[0] === undefined) {
       this.handleClickNo();
     }
-    // console.log(this.context.charges);
   }
 
   render() {
