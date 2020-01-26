@@ -111,8 +111,8 @@ class viewSpending extends Component {
   createPieCharge = () => {
     let chartDiv = document.getElementById("chart");
     chartDiv.innerHTML = "";
-    const width = 450;
-    const height = 450;
+    const width = 400;
+    const height = 400;
     const margin = 50;
     const radius = Math.min(width, height) / 2 - margin;
 
@@ -129,7 +129,21 @@ class viewSpending extends Component {
     const color = d3
       .scaleOrdinal()
       .domain(data)
-      .range(["#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#90abc5"]);
+      .range([
+        "#C2847A",
+        "#5B6D7A",
+        "#4686DC",
+        "#ADF4F7",
+        "#A05C7B",
+        "#C187C3",
+        "#FFFDE8",
+        "#20abc5",
+        "#8a89a6",
+        "#7b6888",
+        "#6b486b",
+        "#a05d56",
+        "#90abc5"
+      ]);
 
     const pie = d3.pie().value(function(d) {
       return d.value;
