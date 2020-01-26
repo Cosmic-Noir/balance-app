@@ -12,16 +12,19 @@ class Landing extends Component {
   render() {
     return (
       <div className="flex-column">
-        <header>
-          <h1>Balance</h1>
-          <h2>
-            Personal budgeting made <span>simplified.</span>
-          </h2>
+        <h1>Balance</h1>
+        <h2>
+          Personal budgeting made <span>simplified.</span>
+        </h2>
 
-          {/* <a href="https://www.freepik.com/free-photos-vectors/background">
-          Background vector created by s.salvador - www.freepik.com
-        </a> */}
-        </header>
+        <p className="explanation">
+          Balance is a free, montly budgeting app that allows users to easily
+          calculate their expenses per paycheck and per month. The Spending
+          Report feature allows users to track their spending habits by
+          category. See our <Link to="/dashboard">Demo</Link> to explore the app
+          before signing up.
+        </p>
+
         {this.context.signedIn === false ? (
           <Link to="/signUp" id="">
             Sign Up
