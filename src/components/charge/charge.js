@@ -46,7 +46,11 @@ class Charge extends Component {
   /* Custom Methods */
 
   handleClickDelete = () => {
-    this.remoteDelete();
+    if (this.context.signedIn === true) {
+      this.remoteDelete();
+    } else {
+      this.localChargeDelete();
+    }
     // console.log(this.props.charge_id);
   };
 
@@ -69,10 +73,10 @@ class Charge extends Component {
           });
         }
       })
-      .then(this.succesfulRemoteDelete);
+      .then(this.localChargeDelete);
   };
 
-  succesfulRemoteDelete = () => {
+  localChargeDelete = () => {
     this.context.deleteCharge(this.props.charge_id);
     setTimeout(() => {
       this.props.setCharges();
