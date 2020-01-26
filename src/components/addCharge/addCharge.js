@@ -95,7 +95,7 @@ class AddCharge extends Component {
     setTimeout(() => {
       this.props.setCharges();
     }, 500);
-    this.props.handleClickSave();
+    this.props.handleClickUpdate();
   };
 
   addNewCharge = response => {
@@ -175,7 +175,7 @@ class AddCharge extends Component {
 
   // Responsible for if user hits cancel, simply hiding form info and revelaing existing line
   handleHideEdit = () => {
-    this.props.handleClickSave();
+    this.props.handleClickUpdate();
     this.setProps();
   };
 
@@ -322,7 +322,10 @@ AddCharge.propTypes = {
   charge_name: PropTypes.string,
   due_date: PropTypes.string,
   editingBudget: PropTypes.bool,
+  handleClickUpdate: PropTypes.func.isRequired,
   first_of_month: PropTypes.string,
   month_name: PropTypes.string.isRequired,
-  occurance: PropTypes.string
+  occurance: PropTypes.string,
+  setCharges: PropTypes.func.isRequired,
+  updateNewCharge: PropTypes.func.isRequired
 };
