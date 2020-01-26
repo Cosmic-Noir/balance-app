@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import * as d3 from "d3";
 
@@ -9,7 +9,7 @@ import balanceContext from "../../balanceContext";
 /* Styling and Images */
 import "./viewSpending.css";
 
-class viewSpending extends Component {
+class ViewSpending extends Component {
   state = {
     selected: "all",
     categories: {}
@@ -227,4 +227,8 @@ class viewSpending extends Component {
   }
 }
 
-export default viewSpending;
+export default ViewSpending;
+
+ViewSpending.propTypes = {
+  hideSpendingReport: PropTypes.func.isRequired
+};
