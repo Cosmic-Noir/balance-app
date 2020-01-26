@@ -18,7 +18,7 @@ class Landing extends Component {
         </h2>
 
         <p className="explanation">
-          Balance is a free, montly budgeting app that allows users to easily
+          Balance is a free, monthly budgeting app that allows users to easily
           calculate their expenses per paycheck and per month. The Spending
           Report feature allows users to track their spending habits by
           category. See our <Link to="/dashboard">Demo</Link> to explore the app
