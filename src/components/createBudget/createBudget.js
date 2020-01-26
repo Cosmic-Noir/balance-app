@@ -85,7 +85,9 @@ class CreateBudget extends Component {
 
   handleClickYes = () => {
     this.setState({ imported: true, new: true });
-    this.hideCreate();
+    if (this.props.testing !== "true") {
+      this.hideCreate();
+    }
     setTimeout(() => {
       if (this.state.imported === true) {
         let imported_month_name = document.getElementById("imported_month_name")
@@ -98,7 +100,9 @@ class CreateBudget extends Component {
 
   handleClickNo = () => {
     this.setState({ new: true });
-    this.hideCreate();
+    if (this.props.testing !== "true") {
+      this.hideCreate();
+    }
   };
 
   hideCreate = () => {
