@@ -98,8 +98,6 @@ class AddCharge extends Component {
   };
 
   addNewCharge = response => {
-    console.log("Adding new charge to local data...");
-    console.log(response);
     this.context.addNewCharge(response);
     setTimeout(() => {
       this.props.setCharges();
@@ -111,33 +109,24 @@ class AddCharge extends Component {
     e.preventDefault();
 
     if (this.props.editing === true) {
-      console.log("Updating existing charge...");
-      // Editing existing charge
       let updatedCharge = this.state;
       updatedCharge.charge_id = this.props.charge_id;
       updatedCharge.month_name = this.props.month_name;
 
       if (this.context.signedIn === true) {
-        console.log("Real user signed in, updating to database...");
         this.patchCharge(updatedCharge);
       } else {
-        console.log("Demo user detected, updating charge in local data...");
         this.updateCurrCharge(updatedCharge);
       }
     } else {
-      console.log("Adding new charge...");
       // Adding unique new charge
       let newCharge = this.state;
 
       newCharge.month_name = this.props.month_name;
 
       if (this.context.signedIn === true) {
-        console.log("User signed In, adding to data base...");
         this.postNewCharge(newCharge);
       } else {
-        console.log(
-          "Demo user detected, creating fake id for charge, updating local data..."
-        );
         newCharge.charge_id = Math.floor(Math.random() * 1000);
         this.addNewCharge(newCharge);
       }
@@ -193,7 +182,6 @@ class AddCharge extends Component {
     let updatedCharge = this.state;
     updatedCharge.charge_id = this.props.charge_id;
     updatedCharge.month_name = this.props.month_name;
-    console.log("handleClickUpdate pressed, updating charge in charges");
     this.props.updateNewCharge(updatedCharge);
   };
 
