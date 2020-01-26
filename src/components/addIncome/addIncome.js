@@ -180,6 +180,6 @@ export default AddIncome;
 
 AddIncome.propTypes = {
   first_of_month: PropTypes.string,
-  month_name: PropTypes.string.isRequired,
-  setCharges: PropTypes.func.isRequired
+  month_name: PropTypes.string,
+  setCharges: PropTypes.func
 };
