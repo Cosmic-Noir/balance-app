@@ -61,17 +61,21 @@ class CreateBudget extends Component {
     let newMonthName = document.getElementById("newMonthName").value;
     let newBudgetName = newMonthName + " " + newYear;
     // console.log(newBudgetName);
-
-    // Need to check if budget name is already taken
-    this.checkMonthName(newBudgetName);
-    if (this.state.error === null || this.context.charges[0] === undefined) {
-      this.setState({ month_name: newBudgetName });
-      const nameBudget = document.getElementById("selectName");
-      nameBudget.classList.add("hidden");
-      if (this.state.imported === true) {
-        this.hideImportMonth();
+    if (newYear.length !== 4) {
+      this.setState({ error: `Please choose valid 4-digit year` });
+    } else {
+      this.checkMonthName(newBudgetName);
+      if (this.state.error === null || this.context.charges[0] === undefined) {
+        this.setState({ month_name: newBudgetName });
+        const nameBudget = document.getElementById("selectName");
+        nameBudget.classList.add("hidden");
+        if (this.state.imported === true) {
+          this.hideImportMonth();
+        }
       }
     }
+
+    // Need to check if budget name is already taken
   };
 
   // Responsible for when user clicks cancel button
@@ -152,7 +156,7 @@ class CreateBudget extends Component {
                 <option value="Dec">Dec</option>
               </select>
               <input
-                type="text"
+                type="number"
                 id="newYear"
                 placeholder="2020"
                 required
