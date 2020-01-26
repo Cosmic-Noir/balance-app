@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import config from "../../config";
+import PropTypes from "prop-types";
 
 /* Custom Components */
 import TokenService from "../../auth/token-service";
@@ -313,3 +314,9 @@ class AddCharge extends Component {
 }
 
 export default AddCharge;
+
+AddCharge.propTypes = {
+  amount: PropTypes.number,
+  first_of_month: PropTypes.string.isRequired,
+  month_name: PropTypes.string.isRequired
+};

@@ -105,7 +105,6 @@ class Charge extends Component {
             editing={this.state.editing}
             charge_id={this.props.charge_id}
             charge_name={this.props.charge_name}
-            charge_amount={this.props.amount}
             due_date={this.props.due_date}
             category={this.props.category}
             imported={this.props.imported}
