@@ -293,10 +293,8 @@ class Budget extends Component {
             charge_name={charge_name}
             due_date={due_date}
             editingBudget={this.state.editingBudget}
-            // imported={this.props.imported}
             key={charge_id}
             month_name={this.state.month_name}
-            // new={this.props.new}
             occurance={occurance}
             removeFromNew={this.removeFromNew}
             updateNewCharge={this.updateNewCharge}
@@ -316,10 +314,8 @@ class Budget extends Component {
             charge_name={charge_name}
             due_date={due_date}
             editingBudget={this.state.editingBudget}
-            // imported={this.props.imported}
             key={charge_id}
             month_name={this.state.month_name}
-            // new={this.props.new}
             occurance={occurance}
             removeFromNew={this.removeFromNew}
             updateNewCharge={this.updateNewCharge}
@@ -358,10 +354,8 @@ class Budget extends Component {
               charge_name={charge_name}
               due_date={due_date}
               editingBudget={this.state.editingBudget}
-              // imported={this.props.imported}
               key={charge_id}
               month_name={this.state.month_name}
-              // new={this.props.new}
               occurance={occurance}
               removeFromNew={this.removeFromNew}
               updateNewCharge={this.updateNewCharge}
