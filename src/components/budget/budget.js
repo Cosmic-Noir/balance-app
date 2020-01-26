@@ -169,7 +169,19 @@ class Budget extends Component {
         this.saveAllCharges()
       );
     } else {
-      console.log("demo stuff");
+      console.log(
+        "Demo user detected, asigning demo id to charges before local insertion..."
+      );
+      for (let i = 0; i < newCharges.length; i++) {
+        newCharges[i].charge_id = Math.floor(Math.random() * 1000);
+      }
+      this.setState({ charges: newCharges }, function() {
+        this.sortCharges();
+      });
+      this.setState(
+        { month_name: this.props.month_name },
+        this.saveAllCharges()
+      );
     }
   };
 

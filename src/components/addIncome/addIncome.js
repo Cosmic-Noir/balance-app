@@ -67,7 +67,9 @@ class AddIncome extends Component {
 
   addNewCharge = response => {
     this.context.addNewCharge(response);
-    this.props.setCharges();
+    setTimeout(() => {
+      this.props.setCharges();
+    }, 500);
     this.resetCharge();
   };
 
@@ -85,7 +87,12 @@ class AddIncome extends Component {
     e.preventDefault();
     let newCharge = this.state;
     newCharge.month_name = this.props.month_name;
-    this.postNewCharge(newCharge);
+    if (this.context.signedIn === true) {
+      this.postNewCharge(newCharge);
+    } else {
+      newCharge.charge_id = Math.floor(Math.random() * 1000);
+      this.addNewCharge(newCharge);
+    }
   };
 
   // Responsible for when user clicks cancel button
