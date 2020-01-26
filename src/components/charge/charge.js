@@ -146,5 +146,7 @@ Charge.propTypes = {
   due_date: PropTypes.string,
   editingBudget: PropTypes.bool,
   month_name: PropTypes.string.isRequired,
-  occurance: PropTypes.string
+  occurance: PropTypes.string,
+  setCharges: PropTypes.func.isRequired,
+  updateNewCharge: PropTypes.func.isRequired
 };
