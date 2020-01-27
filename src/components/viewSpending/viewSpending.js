@@ -130,15 +130,15 @@ class ViewSpending extends Component {
       .scaleOrdinal()
       .domain(data)
       .range([
-        "#C2847A",
-        "#5B6D7A",
-        "#4686DC",
-        "#ADF4F7",
-        "#A05C7B",
+        "#5F1773",
+        "#0477BF",
+        "#04B2D9",
+        "#04BFBF",
+        "#04D9B2",
         "#C187C3",
         "#FFFDE8",
-        "#20abc5",
-        "#8a89a6",
+        "#A836D9",
+        "#D90D6C",
         "#7b6888",
         "#6b486b",
         "#a05d56",
