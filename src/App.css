@@ -18,14 +18,31 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+footer {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  bottom: 0px;
+  width: 100%;
+}
+
 main {
   padding-top: 60px;
+  flex: 1 0 auto;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Global class sytles */
 
 .App {
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .error {

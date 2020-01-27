@@ -7,11 +7,11 @@ nav {
 
 .balance {
   display: none;
-  /* color: black;
-  font-size: 25px;
-  padding: 0px;
-  height: 10px;
-  margin: 0 auto; */
+  color: #0569a7;
+  font-family: Pacifico;
+  font-weight: 900;
+
+  text-shadow: 2px 2px rgba(251, 251, 251, 0.466);
 }
 
 .logo,
@@ -107,6 +107,13 @@ nav {
 /* Responsive Adjustments */
 
 @media screen and (min-width: 600px) {
+  .balance {
+    display: inline-block;
+    font-size: 25px;
+    padding: 0px;
+    height: 10px;
+    margin: 0 auto;
+  }
   .logo {
     display: inline-block;
   }
