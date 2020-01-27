@@ -106,7 +106,12 @@ class AddIncome extends Component {
 
   render() {
     return (
-      <div className="hidden" id="addIncome">
+      <div
+        className="hidden"
+        id="addIncome"
+        data-aos="fade-in"
+        data-aos-duration="2000"
+      >
         <form
           onSubmit={e => {
             this.handleSubmit(e);

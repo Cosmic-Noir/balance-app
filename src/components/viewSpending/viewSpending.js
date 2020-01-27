@@ -193,7 +193,7 @@ class ViewSpending extends Component {
 
   render() {
     return (
-      <div className="viewSpending">
+      <div className="viewSpending" data-aos="fade-in" data-aos-duration="2000">
         <h2>Spending Report:</h2>
         {this.context.charges[0] === undefined ? (
           <h3>Please create a new budget to view your spending reports</h3>

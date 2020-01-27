@@ -135,7 +135,7 @@ class CreateBudget extends Component {
 
   render() {
     return (
-      <div className="createBudget">
+      <div className="createBudget" data-aos="fade-in" data-aos-duration="2000">
         <h2>Create New Budget:</h2>
         <div id="createNew">
           <h3>Import last month's charges?</h3>

@@ -201,6 +201,8 @@ class AddCharge extends Component {
             ? "addCharge" + this.props.charge_id
             : "addCharge"
         }
+        data-aos="fade-in"
+        data-aos-duration="2000"
       >
         <form
           onSubmit={e => {

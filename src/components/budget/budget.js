@@ -464,7 +464,11 @@ class Budget extends Component {
   render() {
     return (
       <div className="wrapper">
-        <div className="budgetReport flex-column">
+        <div
+          className="budgetReport flex-column"
+          data-aos="fade-in"
+          data-aos-duration="2000"
+        >
           <h2 className="title">Budget Report</h2>
 
           <form>
