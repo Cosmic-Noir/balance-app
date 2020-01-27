@@ -10,7 +10,6 @@ a {
   text-decoration: none;
 }
 body {
-  /* background-color: #012e40; */
   background: url(./App_Backs/back1.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
