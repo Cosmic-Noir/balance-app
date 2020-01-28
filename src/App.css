@@ -18,6 +18,21 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+button {
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px 15px;
+  transition: 1s;
+}
+
+button:hover {
+  color: rgba(221, 221, 221, 0.884);
+  background-color: rgb(117, 8, 160);
+}
+
 footer {
   display: flex;
   flex-direction: column;
@@ -26,6 +41,23 @@ footer {
   align-items: center;
   bottom: 0px;
   width: 100%;
+}
+
+::placeholder {
+  color: black;
+}
+input:focus {
+  background-color: transparent;
+}
+
+input,
+select,
+option {
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  padding: 5px 15px;
 }
 
 main {

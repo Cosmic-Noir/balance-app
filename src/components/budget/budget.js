@@ -328,7 +328,11 @@ class Budget extends Component {
         // Then reset expenses
         expenses = 0;
         return (
-          <div className="remainder">
+          <div
+            className="remainder"
+            data-aos="fade-in"
+            data-aos-duration="2000"
+          >
             <p>
               Current Income: {pastPaycheck} means {remainder}{" "}
               {remainder < 0
