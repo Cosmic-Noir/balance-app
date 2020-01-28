@@ -29,8 +29,9 @@ button {
 }
 
 button:hover {
-  color: rgba(221, 221, 221, 0.884);
-  background-color: rgb(117, 8, 160);
+  /* color: rgba(221, 221, 221, 0.884); */
+  background-color: rgba(117, 8, 160, 0.212);
+  box-shadow: 5px 3px 4px rgba(0, 0, 0, 0.712);
 }
 
 footer {

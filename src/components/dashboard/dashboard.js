@@ -12,13 +12,9 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div
-        className="dashboard flex-column"
-        data-aos="fade-in"
-        data-aos-duration="2000"
-      >
+      <div className="flex-column" data-aos="fade-in" data-aos-duration="2000">
         <h2>Welcome To Your Budget Planner</h2>
-        <div className="lGrey grid-container list">
+        <div className="dashboard">
           {this.context.charges[0] === undefined ? (
             ""
           ) : (
