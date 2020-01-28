@@ -91,12 +91,9 @@ class Nav extends Component {
             )}
           </div>
         </div>
-        <img
-          alt="menu icon"
-          id="menuIcon"
-          onClick={this.toggleMobileMenu}
-          src={logo}
-        />
+        <p onClick={this.toggleMobileMenu} className="balanceMobile">
+          B
+        </p>
         <div id="mobileNav">
           <Link className="mobile" onClick={this.toggleMobileMenu} to="/">
             Home
