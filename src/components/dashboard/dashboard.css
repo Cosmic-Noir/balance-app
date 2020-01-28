@@ -1,14 +1,26 @@
 .block {
+  background-color: rgba(251, 251, 251, 0.534);
+  color: #0569a7;
+  font-family: Pacifico;
+  font-weight: 900;
+  font-size: 28px;
+  text-shadow: 2px 2px rgba(251, 251, 251, 0.466);
   display: flex;
   align-items: center;
   border-radius: 5px;
   justify-content: center;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.192);
   padding: 0px 20px;
   text-align: center;
   width: 90%;
   height: 200px;
   margin: 20px;
+  transition: 1s;
+}
+
+.block:hover {
+  background-color: rgba(245, 245, 245, 0.788);
+  box-shadow: 5px 3px 4px rgba(0, 0, 0, 0.712);
 }
 
 .dashboard {
