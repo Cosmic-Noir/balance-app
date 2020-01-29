@@ -6,8 +6,12 @@
 .legend {
   border: 1px solid black;
   position: relative;
-  right: 110px;
+  right: 135px;
   top: 25px;
   height: 20px;
   width: 20px;
+}
+
+.viewSpending {
+  margin-top: 30px;
 }

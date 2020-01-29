@@ -131,9 +131,9 @@ class ViewSpending extends Component {
   createPieCharge = () => {
     let chartDiv = document.getElementById("chart");
     chartDiv.innerHTML = "";
-    const width = 500;
-    const height = 500;
-    const margin = 80;
+    const width = 410;
+    const height = 410;
+    const margin = 40;
     const radius = Math.min(width, height) / 2 - margin;
 
     let svg = d3
@@ -208,7 +208,7 @@ class ViewSpending extends Component {
         return "translate(" + arcGenerator.centroid(d) + ")";
       })
       .style("text-anchor", "middle")
-      .style("font-size", 17);
+      .style("font-size", 14);
   };
 
   render() {
