@@ -51,10 +51,30 @@ class ViewSpending extends Component {
   // Responsible for returning categories with correct spending amounts
   displayCategories = () => {
     document.getElementById("categories").innerHTML = "";
+
+    let colors = [
+      "#5F1773",
+      "#0477BF",
+      "#04B2D9",
+      "#04BFBF",
+      "#04D9B2",
+      "#C187C3",
+      "#FFFDE8",
+      "#A836D9",
+      "#D90D6C",
+      "#7b6888",
+      "#6b486b",
+      "#a05d56",
+      "#90abc5"
+    ];
+
+    let count = 0;
     for (let category in this.state.categories) {
+      let color = colors[count];
       document.getElementById(
         "categories"
-      ).innerHTML += `<div class="flex-column"><div class="legend" ></div><h4 class="cat">${category}: ${this.state.categories[category]}<h4></div>`;
+      ).innerHTML += `<div class="flex-column"><div class="legend" style="background-color:${color}" ></div><h4 class="cat">${category}: ${this.state.categories[category]}<h4></div>`;
+      count++;
     }
 
     // console.log("displayCategories ran");
