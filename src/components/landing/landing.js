@@ -28,7 +28,7 @@ class Landing extends Component {
         </p>
 
         {this.context.signedIn === false ? (
-          <Link to="/signUp" id="">
+          <Link to="/signUp" className="link">
             Sign Up
           </Link>
         ) : (

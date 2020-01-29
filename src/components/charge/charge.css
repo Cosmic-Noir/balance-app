@@ -5,7 +5,11 @@
   align-items: center;
   list-style-type: none;
   margin: 5px;
-  width: 80%;
+  width: 90%;
+}
+
+.date_detail {
+  min-width: 130px;
 }
 
 .detail {

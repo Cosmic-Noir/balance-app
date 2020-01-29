@@ -54,7 +54,7 @@ class ViewSpending extends Component {
     for (let category in this.state.categories) {
       document.getElementById(
         "categories"
-      ).innerHTML += `<div class="red" ></div><h4 class="cat">${category}: ${this.state.categories[category]}<h4>`;
+      ).innerHTML += `<div class="flex-column"><div class="legend" ></div><h4 class="cat">${category}: ${this.state.categories[category]}<h4></div>`;
     }
 
     // console.log("displayCategories ran");

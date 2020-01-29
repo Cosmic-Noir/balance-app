@@ -28,16 +28,6 @@ button {
   transition: 1s;
 }
 
-/* Chart div legend testing */
-/* .red {
-  position: relative;
-  left: 270px;
-  top: 25px;
-  height: 20px;
-  width: 20px;
-  background-color: red;
-} */
-
 button:hover {
   /* color: rgba(221, 221, 221, 0.884); */
   background-color: rgba(245, 245, 245, 0.788);

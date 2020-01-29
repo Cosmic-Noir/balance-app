@@ -1,3 +1,13 @@
 .cat {
   margin: 5px;
 }
+
+/* Chart div legend testing */
+.legend {
+  position: relative;
+  right: 110px;
+  top: 25px;
+  height: 20px;
+  width: 20px;
+  background-color: red;
+}
