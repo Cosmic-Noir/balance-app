@@ -81,7 +81,7 @@ class Nav extends Component {
             )}
 
             {this.context.signedIn === false ? (
-              <Link id="signUp" to="/signUp">
+              <Link className="nav" to="/signUp">
                 Sign Up
               </Link>
             ) : (
@@ -94,11 +94,12 @@ class Nav extends Component {
         <p onClick={this.toggleMobileMenu} className="balanceMobile">
           B
         </p>
-        <div id="mobileNav">
-          <Link className="mobile" onClick={this.toggleMobileMenu} to="/">
-            Home
-          </Link>
-          {this.context.loggedIn === true ? (
+
+        {this.context.signedIn === true ? (
+          <div id="mobileNav">
+            <Link className="mobile" onClick={this.toggleMobileMenu} to="/">
+              Home
+            </Link>{" "}
             <Link
               className="mobile"
               onClick={this.toggleMobileMenu}
@@ -106,10 +107,30 @@ class Nav extends Component {
             >
               Dashboard
             </Link>
-          ) : (
-            ""
-          )}
-          {this.context.loggedIn === false ? (
+            <Link className="mobile" onClick={this.handleSignOut} to="/signOut">
+              Sign Out
+            </Link>
+          </div>
+        ) : (
+          <div id="mobileNav">
+            {" "}
+            <Link className="mobile" onClick={this.toggleMobileMenu} to="/">
+              Home
+            </Link>
+            <Link
+              className="mobile"
+              onClick={this.toggleMobileMenu}
+              to="/dashboard"
+            >
+              Demo
+            </Link>{" "}
+            <Link
+              className="mobile"
+              onClick={this.toggleMobileMenu}
+              to="/signIn"
+            >
+              Sign In
+            </Link>{" "}
             <Link
               className="mobile"
               onClick={this.toggleMobileMenu}
@@ -117,12 +138,8 @@ class Nav extends Component {
             >
               Sign Up
             </Link>
-          ) : (
-            <Link className="mobile" onClick={this.handleSignOut} to="/signOut">
-              Sign Out
-            </Link>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
   }
