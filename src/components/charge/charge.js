@@ -121,7 +121,7 @@ class Charge extends Component {
         ) : (
           <div className="charge" id={"charge" + this.props.charge_id}>
             <span className="date_detail">{this.props.due_date}</span>
-            <span className="detail">{this.props.charge_name}</span>
+            <span className="name_detail">{this.props.charge_name}</span>
             <span className="detail">{this.props.amount}</span>
             {this.props.editingBudget === true ? (
               <div className="editType">
