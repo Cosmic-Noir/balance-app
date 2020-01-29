@@ -58,7 +58,7 @@ footer {
   color: rgba(0, 0, 0, 0.575);
 }
 input:focus {
-  background-color: rgba(224, 224, 224, 0.212);
+  /* background-color: rgba(224, 224, 224, 0.212); */
   box-shadow: 5px 3px 4px rgba(0, 0, 0, 0.842);
 }
 
@@ -126,6 +126,18 @@ main {
 
 .light {
   color: #bde8f2;
+}
+
+.link {
+  color: black;
+}
+
+.link:visited {
+  color: black;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 
 .red {

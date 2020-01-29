@@ -119,7 +119,9 @@ class SignIn extends Component {
           )}
           <button type="submit">Log In</button>
         </form>
-        <Link to="/signUp">Sign Up</Link>
+        <Link to="/signUp" className="link">
+          Sign Up
+        </Link>
       </div>
     );
   }
