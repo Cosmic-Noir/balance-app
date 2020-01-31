@@ -71,13 +71,14 @@
 }
 
 nav {
+  border: 1px solid rgba(0, 0, 0, 0.192);
   position: fixed;
   top: 0;
   width: 100%;
 }
 
 .navBar {
-  background-color: rgb(225, 225, 225, 0.6);
+  background-color: rgb(225, 225, 225, 0.7);
   display: flex;
   justify-content: space-between;
   padding: 5px;
