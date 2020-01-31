@@ -81,6 +81,7 @@ class CreateBudget extends Component {
         if (this.state.imported === true) {
           this.hideImportMonth();
         }
+        this.showCreateNew();
       }
     }
   };
@@ -123,6 +124,11 @@ class CreateBudget extends Component {
   hideImportMonth = () => {
     let importOption = document.getElementById("selectImportMonth");
     importOption.classList.add("hidden");
+  };
+
+  showCreateNew = () => {
+    let createNewButton = document.getElementById("createNewButton");
+    createNewButton.classList.remove("hidden");
   };
 
   componentDidMount() {
@@ -205,6 +211,13 @@ class CreateBudget extends Component {
         ) : (
           ""
         )}
+        <button
+          className="hidden"
+          onClick={this.newCreate}
+          id="createNewButton"
+        >
+          Create New Budget
+        </button>
       </div>
     );
   }
