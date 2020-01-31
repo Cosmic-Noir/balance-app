@@ -99,7 +99,11 @@ class Charge extends Component {
 
   render() {
     return (
-      <div className="flex-column width-80">
+      <div
+        className="flex-column width-80"
+        data-aos="fade-in"
+        data-aos-duration="2000"
+      >
         {this.state.editing === true ? (
           <AddCharge
             amount={this.props.amount}
@@ -116,8 +120,8 @@ class Charge extends Component {
           />
         ) : (
           <div className="charge" id={"charge" + this.props.charge_id}>
-            <span className="detail">{this.props.due_date}</span>
-            <span className="detail">{this.props.charge_name}</span>
+            <span className="date_detail">{this.props.due_date}</span>
+            <span className="name_detail">{this.props.charge_name}</span>
             <span className="detail">{this.props.amount}</span>
             {this.props.editingBudget === true ? (
               <div className="editType">

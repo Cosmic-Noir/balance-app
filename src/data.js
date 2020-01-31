@@ -16,6 +16,16 @@ const Data = {
 
   charges: [
     {
+      charge_id: 19,
+      charge_name: "Cell Phone Bill",
+      category: "Bills/Utilities",
+      due_date: "2020-02-07",
+      amount: 200,
+      month_name: "Feb 2020",
+      user_id: 1,
+      occurance: "Monthly"
+    },
+    {
       charge_id: 1,
       charge_name: "Rent",
       category: "Housing",

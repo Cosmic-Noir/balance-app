@@ -41,8 +41,10 @@ class Nav extends Component {
 
   render() {
     return (
-      <div className="navBar">
-        <h1 className="balance">Balance</h1>
+      <div className="navBar" data-aos="fade-in" data-aos-duration="2000">
+        <Link to="/" className="balance" id="navLogo">
+          Balance
+        </Link>
         <Link id="navLogo" to="/">
           <img alt="Logo" className="hidden logo" src={logo} />
         </Link>
@@ -79,7 +81,7 @@ class Nav extends Component {
             )}
 
             {this.context.signedIn === false ? (
-              <Link id="signUp" to="/signUp">
+              <Link className="nav" to="/signUp">
                 Sign Up
               </Link>
             ) : (
@@ -89,17 +91,15 @@ class Nav extends Component {
             )}
           </div>
         </div>
-        <img
-          alt="menu icon"
-          id="menuIcon"
-          onClick={this.toggleMobileMenu}
-          src={logo}
-        />
-        <div id="mobileNav">
-          <Link className="mobile" onClick={this.toggleMobileMenu} to="/">
-            Home
-          </Link>
-          {this.context.loggedIn === true ? (
+        <p onClick={this.toggleMobileMenu} className="balanceMobile">
+          B
+        </p>
+
+        {this.context.signedIn === true ? (
+          <div id="mobileNav">
+            <Link className="mobile" onClick={this.toggleMobileMenu} to="/">
+              Home
+            </Link>{" "}
             <Link
               className="mobile"
               onClick={this.toggleMobileMenu}
@@ -107,10 +107,30 @@ class Nav extends Component {
             >
               Dashboard
             </Link>
-          ) : (
-            ""
-          )}
-          {this.context.loggedIn === false ? (
+            <Link className="mobile" onClick={this.handleSignOut} to="/signOut">
+              Sign Out
+            </Link>
+          </div>
+        ) : (
+          <div id="mobileNav">
+            {" "}
+            <Link className="mobile" onClick={this.toggleMobileMenu} to="/">
+              Home
+            </Link>
+            <Link
+              className="mobile"
+              onClick={this.toggleMobileMenu}
+              to="/dashboard"
+            >
+              Demo
+            </Link>{" "}
+            <Link
+              className="mobile"
+              onClick={this.toggleMobileMenu}
+              to="/signIn"
+            >
+              Sign In
+            </Link>{" "}
             <Link
               className="mobile"
               onClick={this.toggleMobileMenu}
@@ -118,12 +138,8 @@ class Nav extends Component {
             >
               Sign Up
             </Link>
-          ) : (
-            <Link className="mobile" onClick={this.handleSignOut} to="/signOut">
-              Sign Out
-            </Link>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
   }

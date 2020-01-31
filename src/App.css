@@ -10,17 +10,84 @@ a {
   text-decoration: none;
 }
 body {
-  /* background-color: #012e40; */
+  background: url(./App_Backs/back1.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Open Sans", sans-serif;
+}
+
+button {
+  background-color: rgba(251, 251, 251, 0.534);
+  border: 1px solid rgba(0, 0, 0, 0.192);
+  color: black;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px 15px;
+  transition: 1s;
+}
+
+button:hover {
+  /* color: rgba(221, 221, 221, 0.884); */
+  background-color: rgba(245, 245, 245, 0.788);
+  box-shadow: 5px 3px 4px rgba(0, 0, 0, 0.712);
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  bottom: 0px;
+  width: 100%;
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, 0.575);
+}
+
+h2,
+h3 {
+  font-family: Quicksand;
+}
+
+input:focus {
+  /* background-color: rgba(224, 224, 224, 0.212); */
+  box-shadow: 5px 3px 4px rgba(0, 0, 0, 0.842);
+}
+
+input,
+select,
+option {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.192);
+  border-radius: 5px;
+  color: black;
+  padding: 5px 15px;
+  margin: 5px;
 }
 
 main {
   padding-top: 60px;
+  flex: 1 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.opaqueBack {
+  border-radius: 5px;
+  background-color: rgba(251, 251, 251, 0.534);
 }
 
 /* Global class sytles */
 
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .error {
@@ -35,7 +102,6 @@ main {
 }
 
 .formBorder {
-  border: 1px solid hsla(0, 0%, 78%, 0.747);
   border-radius: 5px;
   margin: 30px 0px;
   max-width: 350px;
@@ -59,6 +125,18 @@ main {
 
 .light {
   color: #bde8f2;
+}
+
+.link {
+  color: black;
+}
+
+.link:visited {
+  color: black;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 
 .red {

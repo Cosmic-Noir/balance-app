@@ -394,8 +394,6 @@ class Budget extends Component {
         this.context.addNewCharge(this.state.charges[i]);
       }, 500);
     }
-
-    this.props.doneCreating();
   };
 
   // Responsible for showing Add Charge
@@ -464,10 +462,14 @@ class Budget extends Component {
   render() {
     return (
       <div className="wrapper">
-        <div className="budgetReport flex-column">
+        <div
+          className="budgetReport flex-column"
+          data-aos="fade-in"
+          data-aos-duration="2000"
+        >
           <h2 className="title">Budget Report</h2>
 
-          <form>
+          <form className={this.props.new === true ? "hidden" : ""}>
             <h3>Select Budget:</h3>
             <select
               id="month_name"
@@ -546,7 +548,6 @@ class Budget extends Component {
 export default Budget;
 
 Budget.propTypes = {
-  doneCreating: PropTypes.func,
   imported: PropTypes.bool,
   imported_month_name: PropTypes.string,
   month_name: PropTypes.string,

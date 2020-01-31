@@ -1,16 +1,23 @@
-nav {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
 /* Class styling */
 
 .balance {
-  color: black;
-  font-size: 25px;
-  padding: 0px;
-  height: 10px;
-  margin: 0 auto;
+  display: none;
+  color: #0569a7;
+  font-family: Pacifico;
+  font-weight: 900;
+  text-shadow: 2px 2px rgba(251, 251, 251, 0.466);
+}
+
+.balanceMobile {
+  color: #0569a7;
+  font-family: Pacifico;
+  font-size: 30px;
+  font-weight: 900;
+  margin: 0px 15px;
+  position: relative;
+  top: -11px;
+  right: -10px;
+  text-shadow: 2px 2px rgba(251, 251, 251, 0.466);
 }
 
 .logo,
@@ -22,28 +29,38 @@ nav {
   height: 25px;
   margin: 0px;
   width: 25px;
-  /* -webkit-transition: -webkit-transform 0.8s ease-in-out; */
-  /* transition: transform 0.8s ease-in-out; */
 }
 
-/* .logo:hover {
-  -webkit-transform: rotate(270deg);
-  transform: rotate(270deg);
-} */
-
 .mobile {
-  border: 1px solid black;
-  color: black;
-  display: block;
+  background-color: rgba(251, 251, 251, 0.534);
+  color: #0569a7;
+  font-family: Pacifico;
+  font-weight: 900;
+  font-size: 20px;
+  background-color: rgba(251, 251, 251, 0.89);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.192);
+  border-radius: 5px;
   padding: 10px;
-  text-align: right;
   transition-duration: 1s;
-  width: 100%;
+  margin: 15px;
+  height: 50px;
+  width: 100px;
+  text-align: center;
+  transition: 1s;
+}
+
+.mobile:hover {
+  box-shadow: 5px 3px 4px rgba(0, 0, 0, 0.712);
+}
+
+.nav:visited {
+  color: #045d94;
 }
 
 .nav {
-  border-radius: 4px;
-  /* color: white; */
   font-size: 12px;
   margin: 0px 5px;
   padding: 0px;
@@ -53,28 +70,23 @@ nav {
   text-decoration: underline;
 }
 
+nav {
+  border: 1px solid rgba(0, 0, 0, 0.192);
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 .navBar {
-  /* background: url(background3.jpg); */
-  /* background: url(background4.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: 3px 3px 3px #5faad9;
-  margin: 2px;
+  background-color: rgb(225, 225, 225, 0.7);
   display: flex;
   justify-content: space-between;
   padding: 5px;
+  position: fixed;
   height: 40px;
+  top: 0;
   width: 100%;
   z-index: 10;
-}
-
-.mobile:hover,
-#signUp:hover {
-  color: black;
-  /* background-color: rgb(97, 188, 231); */
-  background-color: white;
 }
 
 /* ID styling */
@@ -86,26 +98,33 @@ nav {
 
 #mobileNav {
   display: none;
-  background-color: white;
   position: fixed;
   top: 50px;
-  left: 0px;
-  width: 100%;
+  right: 20px;
+  width: 100px;
+  z-index: 10;
 }
 
-#signUp {
-  border: 1px solid light;
-  border-radius: 4px;
-  /* color: white; */
-  min-width: 77px;
-  padding: 5px;
-  transition-duration: 1s;
-  /* width: 77px; */
+#navLogo {
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  top: -5px;
 }
 
 /* Responsive Adjustments */
 
 @media screen and (min-width: 600px) {
+  .balance {
+    display: inline-block;
+    font-size: 25px;
+    padding: 0px;
+    height: 10px;
+    margin: 0 auto;
+  }
+  .balanceMobile {
+    display: none;
+  }
   .logo {
     display: inline-block;
   }

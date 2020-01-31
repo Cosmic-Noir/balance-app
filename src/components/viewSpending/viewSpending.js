@@ -51,10 +51,30 @@ class ViewSpending extends Component {
   // Responsible for returning categories with correct spending amounts
   displayCategories = () => {
     document.getElementById("categories").innerHTML = "";
+
+    let colors = [
+      "#5F1773",
+      "#0477BF",
+      "#04B2D9",
+      "#04BFBF",
+      "#04D9B2",
+      "#C187C3",
+      "#FFFDE8",
+      "#A836D9",
+      "#D90D6C",
+      "#7b6888",
+      "#6b486b",
+      "#a05d56",
+      "#90abc5"
+    ];
+
+    let count = 0;
     for (let category in this.state.categories) {
+      let color = colors[count];
       document.getElementById(
         "categories"
-      ).innerHTML += `<h4 class="cat">${category}: ${this.state.categories[category]}<h4>`;
+      ).innerHTML += `<div class="flex-column"><div class="legend" style="background-color:${color}" ></div><h4 class="cat">${category}: ${this.state.categories[category]}<h4></div>`;
+      count++;
     }
 
     // console.log("displayCategories ran");
@@ -111,9 +131,9 @@ class ViewSpending extends Component {
   createPieCharge = () => {
     let chartDiv = document.getElementById("chart");
     chartDiv.innerHTML = "";
-    const width = 500;
-    const height = 500;
-    const margin = 80;
+    const width = 410;
+    const height = 410;
+    const margin = 40;
     const radius = Math.min(width, height) / 2 - margin;
 
     let svg = d3
@@ -130,15 +150,15 @@ class ViewSpending extends Component {
       .scaleOrdinal()
       .domain(data)
       .range([
-        "#C2847A",
-        "#5B6D7A",
-        "#4686DC",
-        "#ADF4F7",
-        "#A05C7B",
+        "#5F1773",
+        "#0477BF",
+        "#04B2D9",
+        "#04BFBF",
+        "#04D9B2",
         "#C187C3",
         "#FFFDE8",
-        "#20abc5",
-        "#8a89a6",
+        "#A836D9",
+        "#D90D6C",
         "#7b6888",
         "#6b486b",
         "#a05d56",
@@ -156,7 +176,7 @@ class ViewSpending extends Component {
     var arcGenerator = d3
       .arc()
       .innerRadius(0)
-      .outerRadius(radius + 10);
+      .outerRadius(radius + 45);
 
     svg
       .selectAll("#chart")
@@ -188,12 +208,12 @@ class ViewSpending extends Component {
         return "translate(" + arcGenerator.centroid(d) + ")";
       })
       .style("text-anchor", "middle")
-      .style("font-size", 17);
+      .style("font-size", 14);
   };
 
   render() {
     return (
-      <div className="viewSpending">
+      <div className="viewSpending" data-aos="fade-in" data-aos-duration="2000">
         <h2>Spending Report:</h2>
         {this.context.charges[0] === undefined ? (
           <h3>Please create a new budget to view your spending reports</h3>

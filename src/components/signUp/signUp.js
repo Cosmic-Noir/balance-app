@@ -97,7 +97,7 @@ class SignUp extends Component {
     return (
       <div className="flex-column" data-aos="fade-in" data-aos-duration="1000">
         <form
-          className="flex-column formBorder"
+          className="flex-column formBorder opaqueBack"
           onSubmit={e => {
             this.handlSubmit(e);
           }}
@@ -150,7 +150,9 @@ class SignUp extends Component {
           )}
           <button type="submit">Create Account</button>
         </form>
-        <Link to="/signIn">Sign In</Link>
+        <Link to="/signIn" className="link">
+          Sign In
+        </Link>
       </div>
     );
   }

@@ -11,22 +11,24 @@ class Landing extends Component {
   static contextType = balanceContext;
   render() {
     return (
-      <div className="flex-column">
-        <h1>Balance</h1>
+      <div className="flex-column" data-aos="fade-in" data-aos-duration="2000">
+        <h1 id="logo">Balance</h1>
         <h2>
           Personal Budgeting Made <span>Simple</span>
         </h2>
 
         <p className="explanation">
-          Balance is a free, monthly budgeting app that allows users to easily
-          calculate their expenses per paycheck and per month. The Spending
-          Report feature allows users to track their spending habits by
-          category. See our <Link to="/dashboard">Demo</Link> to explore the app
-          before signing up.
+          <em>
+            Balance is a free, monthly budgeting app that allows users to easily
+            calculate their expenses per paycheck and per month. The Spending
+            Report feature allows users to track their spending habits by
+            category. See our <Link to="/dashboard">Demo</Link> to explore the
+            app before signing up.
+          </em>
         </p>
 
         {this.context.signedIn === false ? (
-          <Link to="/signUp" id="">
+          <Link to="/signUp" className="link">
             Sign Up
           </Link>
         ) : (

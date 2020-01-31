@@ -4,6 +4,9 @@ import React, { Component } from "react";
 /* Custom Components */
 import Budget from "../budget/budget";
 
+/* Styling & Images */
+import "./createBudget.css";
+
 /* Context */
 import balanceContext from "../../balanceContext";
 
@@ -122,11 +125,6 @@ class CreateBudget extends Component {
     importOption.classList.add("hidden");
   };
 
-  // Responsible for resetting values to false
-  doneCreating = () => {
-    this.setState({ new: false, imported: false });
-  };
-
   componentDidMount() {
     if (this.context.charges[0] === undefined) {
       this.handleClickNo();
@@ -135,7 +133,7 @@ class CreateBudget extends Component {
 
   render() {
     return (
-      <div className="createBudget">
+      <div className="createBudget" data-aos="fade-in" data-aos-duration="2000">
         <h2>Create New Budget:</h2>
         <div id="createNew">
           <h3>Import last month's charges?</h3>
@@ -198,7 +196,6 @@ class CreateBudget extends Component {
         <br />
         {this.state.month_name ? (
           <Budget
-            doneCreating={this.doneCreating}
             imported_month_name={this.state.imported_month_name}
             month_name={this.state.month_name}
             imported={this.state.imported}

@@ -10,7 +10,7 @@ class SignOut extends Component {
 
   render() {
     return (
-      <div className="flex-column">
+      <div className="flex-column" data-aos="fade-in" data-aos-duration="2000">
         <h2 className="title">You have signed out!</h2>
         <Link to="/signIn">Sign In</Link>
       </div>
