@@ -42,7 +42,7 @@ class Nav extends Component {
   render() {
     return (
       <div className="navBar" data-aos="fade-in" data-aos-duration="2000">
-        <Link to="/" className="balance">
+        <Link to="/" className="balance" id="navLogo">
           Balance
         </Link>
         <Link id="navLogo" to="/">
