@@ -70,7 +70,7 @@ option {
 }
 
 main {
-  padding-top: 10px;
+  padding-top: 60px;
   flex: 1 0 auto;
   justify-content: center;
   align-items: center;
@@ -80,7 +80,6 @@ main {
 
 .App {
   text-align: center;
-
   display: flex;
   flex-direction: column;
   height: 100vh;

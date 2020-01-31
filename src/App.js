@@ -127,7 +127,7 @@ class App extends Component {
       userInfo: this.state.userInfo
     };
     return (
-      <div className="App" data-aos="fade-in" data-aos-duration="2000">
+      <div className="App">
         <balanceContext.Provider value={contextValue}>
           <nav role="navigation">
             <Nav />
