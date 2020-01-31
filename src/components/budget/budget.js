@@ -328,11 +328,7 @@ class Budget extends Component {
         // Then reset expenses
         expenses = 0;
         return (
-          <div
-            className="remainder"
-            data-aos="fade-in"
-            data-aos-duration="2000"
-          >
+          <div className="remainder">
             <p>
               Current Income: {pastPaycheck} means {remainder}{" "}
               {remainder < 0
@@ -398,8 +394,6 @@ class Budget extends Component {
         this.context.addNewCharge(this.state.charges[i]);
       }, 500);
     }
-
-    this.props.doneCreating();
   };
 
   // Responsible for showing Add Charge
@@ -475,7 +469,7 @@ class Budget extends Component {
         >
           <h2 className="title">Budget Report</h2>
 
-          <form>
+          <form className={this.props.new === true ? "hidden" : ""}>
             <h3>Select Budget:</h3>
             <select
               id="month_name"
@@ -554,7 +548,6 @@ class Budget extends Component {
 export default Budget;
 
 Budget.propTypes = {
-  doneCreating: PropTypes.func,
   imported: PropTypes.bool,
   imported_month_name: PropTypes.string,
   month_name: PropTypes.string,

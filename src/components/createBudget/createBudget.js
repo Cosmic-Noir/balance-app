@@ -125,11 +125,6 @@ class CreateBudget extends Component {
     importOption.classList.add("hidden");
   };
 
-  // Responsible for resetting values to false
-  doneCreating = () => {
-    this.setState({ new: false, imported: false });
-  };
-
   componentDidMount() {
     if (this.context.charges[0] === undefined) {
       this.handleClickNo();
@@ -201,7 +196,6 @@ class CreateBudget extends Component {
         <br />
         {this.state.month_name ? (
           <Budget
-            doneCreating={this.doneCreating}
             imported_month_name={this.state.imported_month_name}
             month_name={this.state.month_name}
             imported={this.state.imported}
