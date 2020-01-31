@@ -61,7 +61,7 @@ input:focus {
 input,
 select,
 option {
-  background-color: rgba(224, 224, 224, 0.788);
+  background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.192);
   border-radius: 5px;
   color: black;
@@ -74,6 +74,11 @@ main {
   flex: 1 0 auto;
   justify-content: center;
   align-items: center;
+}
+
+.opaqueBack {
+  border-radius: 5px;
+  background-color: rgba(251, 251, 251, 0.534);
 }
 
 /* Global class sytles */
@@ -97,7 +102,6 @@ main {
 }
 
 .formBorder {
-  border: 1px solid rgba(0, 0, 0, 0.192);
   border-radius: 5px;
   margin: 30px 0px;
   max-width: 350px;

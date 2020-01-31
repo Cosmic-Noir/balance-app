@@ -4,6 +4,9 @@ import React, { Component } from "react";
 /* Custom Components */
 import Budget from "../budget/budget";
 
+/* Styling & Images */
+import "./createBudget.css";
+
 /* Context */
 import balanceContext from "../../balanceContext";
 

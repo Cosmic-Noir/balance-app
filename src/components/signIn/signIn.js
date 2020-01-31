@@ -81,12 +81,12 @@ class SignIn extends Component {
   render() {
     return (
       <div
-        className="flex-column signIn"
+        className="flex-column signIn "
         data-aos="fade-in"
         data-aos-duration="1000"
       >
         <form
-          className="flex-column formBorder"
+          className="flex-column formBorder opaqueBack"
           onSubmit={e => {
             this.handleSubmit(e);
           }}
