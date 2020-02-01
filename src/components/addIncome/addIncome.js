@@ -23,23 +23,32 @@ class AddIncome extends Component {
   static contextType = balanceContext;
 
   /* State updating methods */
-  updateChargeName(charge_name) {
-    this.setState({ charge_name });
-  }
-
-  updateOccurance(occurance) {
-    this.setState({ occurance: occurance });
-  }
-
   updateAmount(amount) {
     this.setState({ amount: parseFloat(amount) });
+  }
+
+  updateChargeName(charge_name) {
+    this.setState({ charge_name });
   }
 
   updateDueDate(due_date) {
     this.setState({ due_date: due_date });
   }
 
+  updateOccurance(occurance) {
+    this.setState({ occurance: occurance });
+  }
+
   /* Custom Methods */
+
+  // Responsible for adding new charge locally
+  addNewCharge = response => {
+    this.context.addNewCharge(response);
+    setTimeout(() => {
+      this.props.setCharges();
+    }, 500);
+    this.resetCharge();
+  };
 
   // Responsible for POST req for adding new charge to server DB
   postNewCharge = newCharge => {
@@ -66,14 +75,6 @@ class AddIncome extends Component {
       .then(this.addNewCharge);
   };
 
-  addNewCharge = response => {
-    this.context.addNewCharge(response);
-    setTimeout(() => {
-      this.props.setCharges();
-    }, 500);
-    this.resetCharge();
-  };
-
   // Responsible for resting state
   resetCharge = () => {
     this.setState({
@@ -82,6 +83,16 @@ class AddIncome extends Component {
       amount: "",
       occurance: "One Time"
     });
+  };
+
+  /* Event Handling */
+
+  // Responsible for when user clicks cancel button
+  handleCancel = () => {
+    let addCharge = document.getElementById("addIncome");
+    addCharge.classList.add("hidden");
+    let addButton = document.getElementById("showAddIncome");
+    addButton.classList.remove("hidden");
   };
 
   handleSubmit = e => {
@@ -96,21 +107,13 @@ class AddIncome extends Component {
     }
   };
 
-  // Responsible for when user clicks cancel button
-  handleCancel = () => {
-    let addCharge = document.getElementById("addIncome");
-    addCharge.classList.add("hidden");
-    let addButton = document.getElementById("showAddIncome");
-    addButton.classList.remove("hidden");
-  };
-
   render() {
     return (
       <div
         className="hidden"
-        id="addIncome"
         data-aos="fade-in"
         data-aos-duration="2000"
+        id="addIncome"
       >
         <form
           onSubmit={e => {
@@ -120,9 +123,9 @@ class AddIncome extends Component {
           <input
             className="chargeInput"
             id="income_due_date"
-            onChange={e => this.updateDueDate(e.target.value)}
             min={this.props.first_of_month}
             name="due_date"
+            onChange={e => this.updateDueDate(e.target.value)}
             ref={this.due_date}
             required
             type="date"
@@ -131,9 +134,9 @@ class AddIncome extends Component {
           <input
             className="chargeInput"
             id="income_charge_name"
+            name="charge_name"
             onChange={e => this.updateChargeName(e.target.value)}
             placeholder="Income name"
-            name="charge_name"
             ref={this.charge_name}
             required
             type="text"
@@ -143,9 +146,9 @@ class AddIncome extends Component {
           <input
             className="chargeInput"
             id="income_amount"
+            name="amount"
             onChange={e => this.updateAmount(e.target.value)}
             placeholder="Amount"
-            name="amount"
             ref={this.amount}
             required
             type="number"
@@ -153,9 +156,9 @@ class AddIncome extends Component {
           />
           <select
             id="income_occurance"
+            name="occurance"
             onChange={e => this.updateOccurance(e.target.value)}
             placeholder="occurance"
-            name="occurance"
             ref={this.occurance}
             required
             value={this.state.occurance}
