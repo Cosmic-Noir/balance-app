@@ -91,10 +91,8 @@ class Charge extends Component {
     this.setState({ editing: true });
   };
 
-  // Responsible for changing editing to false, thus revleaing charge line instead of form
-  handleClickUpdate = () => {
+  doneEditing = () => {
     this.setState({ editing: false });
-    // IF new === true, then call addCharge function for each listed charge.
   };
 
   clipDate = () => {
@@ -117,7 +115,7 @@ class Charge extends Component {
             category={this.props.category}
             occurance={this.props.occurance}
             month_name={this.props.month_name}
-            handleClickUpdate={this.handleClickUpdate}
+            doneEditing={this.doneEditing}
             updateNewCharge={this.props.updateNewCharge}
             setCharges={this.props.setCharges}
           />

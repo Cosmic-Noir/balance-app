@@ -45,6 +45,26 @@ class AddCharge extends Component {
 
   /* Custom Methods */
 
+  // Responsible for PATCH req for updating charge to server DB
+  patchCharge = updatedCharge => {
+    const url = `${config.API_ENDPOINT}charges/${updatedCharge.charge_id}`;
+
+    fetch(url, {
+      method: "PATCH",
+      body: JSON.stringify(updatedCharge),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => Promise.reject(error));
+        }
+      })
+      .then(this.updateCurrCharge(updatedCharge));
+  };
+
   // Responsible for POST req for adding new charge to server DB
   postNewCharge = newCharge => {
     const url = config.API_ENDPOINT + "charges";
@@ -70,34 +90,7 @@ class AddCharge extends Component {
       .then(this.addNewCharge);
   };
 
-  // Will still allow demo user to update demo data without auth Token
-  patchCharge = updatedCharge => {
-    const url = `${config.API_ENDPOINT}charges/${updatedCharge.charge_id}`;
-
-    fetch(url, {
-      method: "PATCH",
-      body: JSON.stringify(updatedCharge),
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${TokenService.getAuthToken()}`
-      }
-    })
-      .then(res => {
-        if (!res.ok) {
-          return res.json().then(error => Promise.reject(error));
-        }
-      })
-      .then(this.updateCurrCharge(updatedCharge));
-  };
-
-  updateCurrCharge = updatedCharge => {
-    this.context.updateCharge(updatedCharge);
-    setTimeout(() => {
-      this.props.setCharges();
-    }, 500);
-    this.props.handleClickUpdate();
-  };
-
+  // Responsible for adding the charge in local storage
   addNewCharge = response => {
     this.context.addNewCharge(response);
     setTimeout(() => {
@@ -106,36 +99,16 @@ class AddCharge extends Component {
     this.resetCharge();
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-
-    if (this.props.editing === true) {
-      let updatedCharge = this.state;
-      updatedCharge.charge_id = this.props.charge_id;
-      updatedCharge.month_name = this.props.month_name;
-
-      if (this.context.signedIn === true) {
-        this.patchCharge(updatedCharge);
-      } else {
-        this.updateCurrCharge(updatedCharge);
-      }
-    } else {
-      // Adding unique new charge
-      let newCharge = this.state;
-
-      newCharge.month_name = this.props.month_name;
-
-      if (this.context.signedIn === true) {
-        this.postNewCharge(newCharge);
-      } else {
-        newCharge.charge_id = Math.floor(Math.random() * 1000);
-        this.addNewCharge(newCharge);
-      }
-    }
+  // Responsible for updating the charge in local storage
+  updateCurrCharge = updatedCharge => {
+    this.context.updateCharge(updatedCharge);
+    setTimeout(() => {
+      this.props.setCharges();
+    }, 500);
+    this.props.doneEditing();
   };
 
-  // Responsible for changing fields to empty
-
+  // Responsible for reseting form/state fields
   resetCharge = () => {
     this.setState({
       charge_name: "",
@@ -173,10 +146,9 @@ class AddCharge extends Component {
     }
   };
 
-  // Responsible for if user hits cancel, simply hiding form info and revelaing existing line
-  handleHideEdit = () => {
-    this.props.handleClickUpdate();
-    this.setProps();
+  // Responsible for calling function that changes parent charge-state of editing to false, hiding edit form
+  handleEditCancel = () => {
+    this.props.doneEditing();
   };
 
   handleClickUpdate = () => {
@@ -184,6 +156,34 @@ class AddCharge extends Component {
     updatedCharge.charge_id = this.props.charge_id;
     updatedCharge.month_name = this.props.month_name;
     this.props.updateNewCharge(updatedCharge);
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    if (this.props.editing === true) {
+      let updatedCharge = this.state;
+      updatedCharge.charge_id = this.props.charge_id;
+      updatedCharge.month_name = this.props.month_name;
+
+      if (this.context.signedIn === true) {
+        this.patchCharge(updatedCharge);
+      } else {
+        this.updateCurrCharge(updatedCharge);
+      }
+    } else {
+      // Adding unique new charge
+      let newCharge = this.state;
+
+      newCharge.month_name = this.props.month_name;
+
+      if (this.context.signedIn === true) {
+        this.postNewCharge(newCharge);
+      } else {
+        newCharge.charge_id = Math.floor(Math.random() * 1000);
+        this.addNewCharge(newCharge);
+      }
+    }
   };
 
   componentDidMount() {
@@ -299,7 +299,7 @@ class AddCharge extends Component {
               </button>
               <button
                 className="main_button"
-                onClick={this.handleHideEdit}
+                onClick={this.handleEditCancel}
                 type="button"
               >
                 Cancel
@@ -340,7 +340,7 @@ AddCharge.propTypes = {
   charge_name: PropTypes.string,
   due_date: PropTypes.string,
   editingBudget: PropTypes.bool,
-  handleClickUpdate: PropTypes.func,
+  doneEditing: PropTypes.func,
   first_of_month: PropTypes.string,
   month_name: PropTypes.string,
   occurance: PropTypes.string,
