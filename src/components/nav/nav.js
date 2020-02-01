@@ -49,49 +49,41 @@ class Nav extends Component {
           Balance
         </Link>
 
-        <div className="deskNav">
-          <div>
+        {this.context.signedIn === true ? (
+          <div className="deskNav">
             <Link className="nav" to="/">
               Home
             </Link>
-            {this.context.signedIn === true ? (
-              <Link className="nav" to="/dashboard">
-                Dashboard
-              </Link>
-            ) : (
-              <Link className="nav" to="/budgets">
-                Demo
-              </Link>
-            )}
-
-            {this.context.signedIn === true ? (
-              <Link to="createBudget" className="nav">
-                Create New Budget
-              </Link>
-            ) : (
-              ""
-            )}
-            {this.context.signedIn === true ? (
-              <Link to="budgets" className="nav">
-                View Budgets
-              </Link>
-            ) : (
-              <Link to="/signIn" className="nav">
-                Sign In
-              </Link>
-            )}
-
-            {this.context.signedIn === false ? (
-              <Link className="nav" to="/signUp">
-                Sign Up
-              </Link>
-            ) : (
-              <Link className="nav" onClick={this.handleSignOut} to="/signOut">
-                Sign Out
-              </Link>
-            )}
+            <Link className="nav" to="/dashboard">
+              Dashboard
+            </Link>
+            <Link to="createBudget" className="nav">
+              Create New Budget
+            </Link>
+            <Link to="budgets" className="nav">
+              View Budgets
+            </Link>
+            <Link className="nav" onClick={this.handleSignOut} to="/signOut">
+              Sign Out
+            </Link>
           </div>
-        </div>
+        ) : (
+          <div className="deskNav">
+            <Link className="nav" to="/">
+              Home
+            </Link>
+            <Link className="nav" to="/budgets">
+              Demo
+            </Link>
+            <Link to="/signIn" className="nav">
+              Sign In
+            </Link>
+            <Link className="nav" to="/signUp">
+              Sign Up
+            </Link>
+          </div>
+        )}
+
         <p onClick={this.toggleMobileMenu} className="balanceMobile">
           B
         </p>
