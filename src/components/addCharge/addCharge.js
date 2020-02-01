@@ -265,6 +265,8 @@ class AddCharge extends Component {
             <option value="Pets">Pets</option>
             <option value="Savings">Savings</option>
             <option value="Shopping">Shopping</option>
+            <option value="Student Loans">Student Loans</option>
+
             <option value="Travel">Travel</option>
 
             {this.props.editing === true ? (
