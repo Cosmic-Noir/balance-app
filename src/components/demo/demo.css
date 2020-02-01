@@ -42,10 +42,10 @@
 
 .phase_five {
   left: 50%;
-  margin-left: -100px;
+  margin-left: -110px;
   height: 100px;
   width: 270px;
-  top: 785px;
+  top: 830px;
 }
 
 .tip {
@@ -72,6 +72,11 @@
   z-index: 30;
 }
 
+#phase_five {
+  top: 55px;
+  right: 5px;
+}
+
 #phase_six {
   top: 150px;
   left: 70px;
@@ -89,10 +94,16 @@
   .phase_four {
     top: 775px;
   }
+  .phase_five {
+    top: 810px;
+  }
 }
 
 @media screen and (min-width: 460px) {
   .phase_four {
     top: 753px;
+  }
+  .phase_five {
+    top: 790px;
   }
 }

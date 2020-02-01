@@ -88,6 +88,7 @@ class Demo extends Component {
             <button
               className="demo_button main_button"
               onClick={this.increasePhase}
+              id="phase_five"
               type="button"
             >
               Next
