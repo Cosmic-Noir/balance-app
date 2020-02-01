@@ -45,6 +45,15 @@ class AddCharge extends Component {
 
   /* Custom Methods */
 
+  // Responsible for adding the charge in local storage
+  addNewCharge = response => {
+    this.context.addNewCharge(response);
+    setTimeout(() => {
+      this.props.setCharges();
+    }, 500);
+    this.resetCharge();
+  };
+
   // Responsible for PATCH req for updating charge to server DB
   patchCharge = updatedCharge => {
     const url = `${config.API_ENDPOINT}charges/${updatedCharge.charge_id}`;
@@ -90,24 +99,6 @@ class AddCharge extends Component {
       .then(this.addNewCharge);
   };
 
-  // Responsible for adding the charge in local storage
-  addNewCharge = response => {
-    this.context.addNewCharge(response);
-    setTimeout(() => {
-      this.props.setCharges();
-    }, 500);
-    this.resetCharge();
-  };
-
-  // Responsible for updating the charge in local storage
-  updateCurrCharge = updatedCharge => {
-    this.context.updateCharge(updatedCharge);
-    setTimeout(() => {
-      this.props.setCharges();
-    }, 500);
-    this.props.doneEditing();
-  };
-
   // Responsible for reseting form/state fields
   resetCharge = () => {
     this.setState({
@@ -117,14 +108,6 @@ class AddCharge extends Component {
       amount: "",
       occurance: "One Time"
     });
-  };
-
-  // Responsible for when user clicks cancel button
-  handleCancel = () => {
-    let addCharge = document.getElementById("addCharge");
-    addCharge.classList.add("hidden");
-    let addButton = document.getElementById("showAdd");
-    addButton.classList.remove("hidden");
   };
 
   // Responsible for setting state IF props were passed
@@ -146,17 +129,35 @@ class AddCharge extends Component {
     }
   };
 
-  // Responsible for calling function that changes parent charge-state of editing to false, hiding edit form
-  handleEditCancel = () => {
+  // Responsible for updating the charge in local storage
+  updateCurrCharge = updatedCharge => {
+    this.context.updateCharge(updatedCharge);
+    setTimeout(() => {
+      this.props.setCharges();
+    }, 500);
     this.props.doneEditing();
   };
 
-  // Responsible for when user clicks update,
+  /* Event handling */
+
+  // Responsible for when user clicks cancel button
+  handleCancel = () => {
+    let addCharge = document.getElementById("addCharge");
+    addCharge.classList.add("hidden");
+    let addButton = document.getElementById("showAdd");
+    addButton.classList.remove("hidden");
+  };
+
+  // Responsible for when user clicks update
   handleClickUpdate = () => {
     let updatedCharge = this.state;
     updatedCharge.charge_id = this.props.charge_id;
-    // updatedCharge.month_name = this.props.month_name;
     this.props.updateNewCharge(updatedCharge);
+  };
+
+  // Responsible for when user clicks cancel
+  handleEditCancel = () => {
+    this.props.doneEditing();
   };
 
   handleSubmit = e => {
@@ -267,7 +268,6 @@ class AddCharge extends Component {
             <option value="Savings">Savings</option>
             <option value="Shopping">Shopping</option>
             <option value="Student Loans">Student Loans</option>
-
             <option value="Travel">Travel</option>
 
             {this.props.editing === true ? (
