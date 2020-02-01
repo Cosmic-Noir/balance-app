@@ -1,5 +1,12 @@
 .createBudget {
-  margin: 30px auto 0px;
+  margin: 0px auto 10px;
+  max-width: 700px;
   padding: 10px;
-  width: 80%;
+  width: 95%;
+}
+
+@media screen and (min-width: 500px) {
+  .createBudget {
+    width: 80%;
+  }
 }

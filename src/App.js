@@ -132,7 +132,7 @@ class App extends Component {
           <nav role="navigation">
             <Nav />
           </nav>
-          <main role="main flex-column">
+          <main role="main">
             <Route exact path="/budgets" component={Budget} />
             <Route path="/createBudget" component={CreateBudget} />
             <Route path="/dashboard" component={Dashboard} />
