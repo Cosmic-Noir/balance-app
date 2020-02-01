@@ -18,12 +18,12 @@ class SignIn extends Component {
   static contextType = balanceContext;
 
   /* State Updating Methods */
-  updateUsername(username) {
-    this.setState({ username: username });
-  }
-
   updatePass(pass) {
     this.setState({ pass: pass });
+  }
+
+  updateUsername(username) {
+    this.setState({ username: username });
   }
 
   /* Custom Methods */
@@ -86,7 +86,7 @@ class SignIn extends Component {
         data-aos-duration="1000"
       >
         <form
-          className="flex-column formBorder opaqueBack"
+          className="back_style flex-column formBorder "
           onSubmit={e => {
             this.handleSubmit(e);
           }}
