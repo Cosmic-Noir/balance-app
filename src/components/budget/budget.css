@@ -1,5 +1,5 @@
 .budgetReport {
-  width: 80%;
+  width: 95%;
   border-radius: 5px;
   background-color: rgba(251, 251, 251, 0.534);
   margin: 0 auto;
@@ -50,9 +50,21 @@
   justify-content: center;
 }
 
-@media screen and (min-width: 900px) {
+#newBudget {
+  width: 100%;
+}
+
+@media screen and (min-width: 500px) {
+  .budgetReport {
+    width: 90%;
+    max-width: 480px;
+  }
+}
+
+@media screen and (min-width: 1050px) {
   .budgetReport {
     width: 50%;
+    max-width: 600px;
   }
   .wrapper {
     display: flex;

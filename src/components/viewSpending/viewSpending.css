@@ -24,10 +24,12 @@
   width: 80%;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1050px) {
   #spendingRepo {
     margin-top: 0px;
     margin-left: 0px;
+    max-width: 600px;
+
     width: 40%;
   }
 }

@@ -95,6 +95,11 @@ class Charge extends Component {
     // IF new === true, then call addCharge function for each listed charge.
   };
 
+  clipDate = () => {
+    let smaller = this.props.due_date.substring(5, 10);
+    return smaller;
+  };
+
   componentDidMount() {}
 
   render() {
@@ -120,7 +125,7 @@ class Charge extends Component {
           />
         ) : (
           <div className="charge" id={"charge" + this.props.charge_id}>
-            <span className="date_detail">{this.props.due_date}</span>
+            <span className="date_detail">{this.clipDate()}</span>
             <span className="name_detail">{this.props.charge_name}</span>
             <span className="detail">{this.props.amount}</span>
             {this.props.editingBudget === true ? (

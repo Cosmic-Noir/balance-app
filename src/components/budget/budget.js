@@ -466,6 +466,7 @@ class Budget extends Component {
           className="budgetReport flex-column"
           data-aos="fade-in"
           data-aos-duration="2000"
+          id={this.props.new === true ? "newBudget" : ""}
         >
           <h2 className="title">Budget Report</h2>
 
