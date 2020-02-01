@@ -133,14 +133,17 @@ class ViewSpending extends Component {
     let width;
     let height;
     let margin;
+    let fontSize;
     if (window.screen.width < 500) {
       width = 310;
       height = 310;
       margin = 30;
+      fontSize = 10;
     } else {
       width = 410;
       height = 410;
       margin = 40;
+      fontSize = 14;
     }
 
     let chartDiv = document.getElementById("chart");
@@ -220,7 +223,7 @@ class ViewSpending extends Component {
         return "translate(" + arcGenerator.centroid(d) + ")";
       })
       .style("text-anchor", "middle")
-      .style("font-size", 14);
+      .style("font-size", fontSize);
   };
 
   render() {
