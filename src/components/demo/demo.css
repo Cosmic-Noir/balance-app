@@ -28,16 +28,16 @@
   left: 50%;
   height: 175px;
   width: 300px;
-  top: 630px;
+  top: 675px;
   margin-left: -150px;
 }
 
 .phase_four {
   left: 50%;
   margin-left: -100px;
-  height: 100px;
+  height: 90px;
   width: 250px;
-  top: 750px;
+  top: 798px;
 }
 
 .phase_five {
@@ -67,7 +67,7 @@
 
 #phase_three {
   position: absolute;
-  top: 100px;
+  top: 120px;
   right: 10px;
   z-index: 30;
 }
@@ -83,4 +83,16 @@
   top: 50px;
   right: 10px;
   z-index: 30;
+}
+
+@media screen and (min-width: 430px) {
+  .phase_four {
+    top: 775px;
+  }
+}
+
+@media screen and (min-width: 460px) {
+  .phase_four {
+    top: 753px;
+  }
 }
