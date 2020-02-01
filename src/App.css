@@ -9,6 +9,7 @@
 a {
   text-decoration: none;
 }
+
 body {
   background: url(./App_Backs/back1.png) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -27,12 +28,12 @@ button {
 }
 
 button:hover {
-  /* color: rgba(221, 221, 221, 0.884); */
   background-color: rgba(245, 245, 245, 0.788);
   box-shadow: 5px 3px 4px rgba(0, 0, 0, 0.712);
 }
 
 footer {
+  color: rgba(255, 255, 255, 0.788);
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -43,17 +44,12 @@ footer {
   width: 100%;
 }
 
-::placeholder {
-  color: rgba(0, 0, 0, 0.575);
-}
-
 h2,
 h3 {
   font-family: Quicksand;
 }
 
 input:focus {
-  /* background-color: rgba(224, 224, 224, 0.212); */
   box-shadow: 5px 3px 4px rgba(0, 0, 0, 0.842);
 }
 
@@ -73,6 +69,10 @@ main {
   flex: 1 0 auto;
   justify-content: center;
   align-items: center;
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, 0.575);
 }
 
 .opaqueBack {
@@ -119,16 +119,8 @@ main {
   width: 80%;
 }
 
-.green {
-  color: green;
-}
-
 .hidden {
   display: none;
-}
-
-.light {
-  color: #bde8f2;
 }
 
 .link {
@@ -147,19 +139,3 @@ main {
   margin: 5px;
   padding: 5px 15px;
 }
-
-.red {
-  color: red;
-}
-
-.width-80 {
-  width: 80%;
-}
-
-.width-100 {
-  width: 80%;
-}
-
-/* App component ID styles */
-
-/* Responsive Adjustments */

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-// import { Link } from "react-router-dom";
 import config from "./config";
 
 /* Custom Components */
@@ -20,13 +19,12 @@ import "./App.css";
 /* Context */
 import balanceContext from "./balanceContext";
 
-// Seed Data - Could be used for demo data
+// Seed Data for Demo
 import Data from "./data.js";
 
 class App extends Component {
   state = {
     signedIn: "",
-    // Initially set to seed data
     charges: []
   };
 
@@ -37,6 +35,17 @@ class App extends Component {
     this.setState({ charges: [...this.state.charges, charge] });
   };
 
+  // Responsible for setting user's signedIn status to true or false if JWT present
+  checkLoginStatus = () => {
+    if (window.sessionStorage.getItem(config.TOKEN_KEY)) {
+      this.setState({ signedIn: true });
+      this.getMatchingCharges();
+    } else {
+      this.setState({ signedIn: false });
+      this.setCharges(Data.charges);
+    }
+  };
+
   // Responsible for deleting charge from state
   deleteCharge = charge_id => {
     const newCharges = this.state.charges.filter(
@@ -45,16 +54,7 @@ class App extends Component {
     this.setState({ charges: newCharges });
   };
 
-  // Responsible for updating a charge in state
-  updateCharge = updatedCharge => {
-    this.setState({
-      charges: this.state.charges.map(charge =>
-        charge.charge_id !== updatedCharge.charge_id ? charge : updatedCharge
-      )
-    });
-  };
-
-  // Temp function for when user logs in.
+  // Responsible for updating signedIn state
   onSignIn = () => {
     this.setState({
       signedIn: true
@@ -62,16 +62,25 @@ class App extends Component {
     this.checkLoginStatus();
   };
 
-  // Responsible for taking GET response and setting state to recieved charges
-  setCharges = responseCharges => {
-    this.setState({ charges: responseCharges });
-  };
-
   // Temp function to log user out
   onSignOut = () => {
     this.setState({
       signedIn: false,
       userInfo: []
+    });
+  };
+
+  // Responsible for taking GET response and setting state to recieved charges
+  setCharges = responseCharges => {
+    this.setState({ charges: responseCharges });
+  };
+
+  // Responsible for updating a charge in state
+  updateCharge = updatedCharge => {
+    this.setState({
+      charges: this.state.charges.map(charge =>
+        charge.charge_id !== updatedCharge.charge_id ? charge : updatedCharge
+      )
     });
   };
 
@@ -94,17 +103,6 @@ class App extends Component {
         return res.json();
       })
       .then(this.setCharges);
-  };
-
-  // Responsible for setting user's signedIn status to true or false if JWT present
-  checkLoginStatus = () => {
-    if (window.sessionStorage.getItem(config.TOKEN_KEY)) {
-      this.setState({ signedIn: true });
-      this.getMatchingCharges();
-    } else {
-      this.setState({ signedIn: false });
-      this.setCharges(Data.charges);
-    }
   };
 
   componentDidMount() {
