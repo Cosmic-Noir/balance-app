@@ -290,8 +290,14 @@ class AddCharge extends Component {
           )}
           {this.props.editing === true ? (
             <div>
-              <button type="submit">Update</button>
-              <button onClick={this.handleHideEdit} type="button">
+              <button className="main_button" type="submit">
+                Update
+              </button>
+              <button
+                className="main_button"
+                onClick={this.handleHideEdit}
+                type="button"
+              >
                 Cancel
               </button>
             </div>
@@ -303,8 +309,14 @@ class AddCharge extends Component {
             ""
           ) : (
             <div>
-              <button type="submit">Add</button>
-              <button onClick={this.handleCancel} type="button">
+              <button className="main_button" type="submit">
+                Add
+              </button>
+              <button
+                className="main_button"
+                onClick={this.handleCancel}
+                type="button"
+              >
                 Cancel
               </button>
             </div>

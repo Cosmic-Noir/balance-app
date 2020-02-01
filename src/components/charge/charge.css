@@ -21,11 +21,14 @@
   padding: 0px 5px;
 }
 
+.editingImg {
+  height: 15px;
+  width: 15px;
+  margin: 0px 2px;
+}
+
 .name_detail {
   min-width: 130px;
-}
-.editType {
-  min-width: 200px;
 }
 
 .Income {

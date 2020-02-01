@@ -170,8 +170,14 @@ class AddIncome extends Component {
           )}
 
           <div>
-            <button type="submit">Add</button>
-            <button onClick={this.handleCancel} type="button">
+            <button className="main_button" type="submit">
+              Add
+            </button>
+            <button
+              className="main_button"
+              onClick={this.handleCancel}
+              type="button"
+            >
               Cancel
             </button>
           </div>
