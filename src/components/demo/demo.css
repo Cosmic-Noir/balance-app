@@ -65,11 +65,21 @@
   left: 70px;
 }
 
+#phase_two {
+  top: 75px;
+  right: 10px;
+}
+
 #phase_three {
   position: absolute;
   top: 120px;
   right: 10px;
   z-index: 30;
+}
+
+#phase_four {
+  top: 50px;
+  right: 10px;
 }
 
 #phase_five {
@@ -85,8 +95,6 @@
 .demo_button {
   border: 1px solid red;
   position: absolute;
-  top: 50px;
-  right: 10px;
   z-index: 30;
 }
 
