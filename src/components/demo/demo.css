@@ -1,9 +1,24 @@
 .demo {
-  position: fixed;
-  width: 200px;
+  /* position: relative; */
+  border-radius: 5px;
+  box-shadow: 0 0 0 100vmax rgb(0, 0, 0, 0.5);
+  z-index: 15;
+}
+
+.phase_one {
+  left: 50%;
   height: 200px;
-  top: 50px;
-  left: 50px;
-  box-shadow: 0 0 0 100vmax rgb(0, 0, 0, 0.3);
-  pointer-events: none;
+  margin-left: -100px;
+  padding: 5px;
+  width: 200px;
+}
+
+.tip {
+  background-color: white;
+  border-radius: 5px;
+  position: absolute;
+}
+
+#phase_one {
+  z-index: 20;
 }
