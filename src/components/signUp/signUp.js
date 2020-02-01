@@ -7,42 +7,41 @@ import balanceContext from "../../balanceContext";
 
 class SignUp extends Component {
   state = {
+    email: "",
     error: null,
     id: "",
-    username: "",
-    email: "",
     pass: "",
-    passTwo: ""
+    passTwo: "",
+    username: ""
   };
 
   static contextType = balanceContext;
 
   /* State updating methods */
-  updateUsername = username => {
-    this.setState({ username: username });
-  };
 
   updateEmail = email => {
     this.setState({ email: email });
+  };
+
+  updateUsername = username => {
+    this.setState({ username: username });
   };
 
   updatePass = pass => {
     this.setState({ pass: pass });
   };
 
-  // updateId = () => {
-  //   this.setState({ id: Math.floor(Math.random() * 1000), error: null });
-  // };
-
   updatePassTwo = passTwo => {
     this.setState({ passTwo: passTwo });
   };
+
+  /* Custom/Event Handling */
 
   handlSubmit = e => {
     e.preventDefault();
     console.log("Create Account pressed, checking user info...");
 
-    // Check if info is not valid
+    // Check if info is valid
     if (this.state.username.length < 6) {
       this.setState({
         error: `Username length must be greater than 5 characters`
@@ -97,10 +96,11 @@ class SignUp extends Component {
     return (
       <div className="flex-column" data-aos="fade-in" data-aos-duration="1000">
         <form
-          className="flex-column formBorder opaqueBack"
+          className="back_style flex-column formBorder"
           onSubmit={e => {
             this.handlSubmit(e);
           }}
+          id="signUp"
         >
           <h2 className="title">Sign Up:</h2>
           <input
