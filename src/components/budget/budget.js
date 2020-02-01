@@ -25,245 +25,12 @@ class Budget extends Component {
 
   static contextType = balanceContext;
 
-  /* State Setting Methods */
-  setMonth = month_name => {
-    this.setState({ month_name: month_name });
-    this.setCharges();
-    setTimeout(() => {
-      this.setFirstofMonth();
-    }, 1000);
-  };
-
-  // For importing charges in new budget
-  setMonthDelay = month_name => {
-    this.setState({ month_name: month_name });
-    setTimeout(() => {
-      this.setCharges();
-      this.setImportedCharges();
-      this.setFirstofMonth();
-    }, 1000);
-  };
-
-  // Responsible for calculating first of the month from state to pass to calender as min value
-  setFirstofMonth = () => {
-    let months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
-    ];
-    let digit;
-    let year = this.state.month_name.substring(4, 9);
-
-    for (let i = 0; i < months.length; i++) {
-      if (months[i] === this.state.month_name.substring(0, 3)) {
-        digit = i + 1;
-      }
-    }
-    let stringDig = digit.toString();
-    if (stringDig.length === 1) {
-      stringDig = "0" + stringDig;
-    }
-
-    let fullFirst = year + "-" + stringDig + "-01";
-    this.setState({ first_of_month: fullFirst });
-  };
-
-  // Responsible for aquriing correct month_name depending on props, then setting matching charges in state
-  setCharges = () => {
-    let month_name;
-    if (this.props.new === true) {
-      month_name = this.state.month_name;
-    } else {
-      month_name =
-        this.props.testingVal || document.getElementById("month_name").value;
-    }
-
-    let charges = this.context.charges.filter(charge => {
-      if (charge.month_name === month_name) {
-        return charge;
-      } else {
-        return "";
-      }
-    });
-
-    this.setState({ charges: charges }, function() {
-      this.sortCharges();
-    });
-  };
-
-  // Responsible for filtering charges for "monthly" occurance and updating due_date to selected month_name
-  setImportedCharges = () => {
-    // eslint-disable-next-line
-    let filteredCharges = this.state.charges.filter(charge => {
-      if (charge.occurance === "Monthly") {
-        return charge;
-      }
-    });
-
-    let newCharges = filteredCharges.map(charge => {
-      // Must update charge month value
-
-      let months = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
-      ];
-      let digit;
-      let year = this.props.month_name.substring(4, 9);
-      let day = charge.due_date.substring(7, 10);
-
-      for (let i = 0; i < months.length; i++) {
-        if (months[i] === this.props.month_name.substring(0, 3)) {
-          digit = i + 1;
-        }
-      }
-
-      let stringDig = digit.toString();
-      if (stringDig.length === 1) {
-        stringDig = "0" + stringDig;
-      }
-
-      let newDueDate = year + "-" + stringDig + day;
-
-      return {
-        amount: charge.amount,
-        category: charge.category,
-        charge_name: charge.charge_name,
-        charge_id: null,
-        due_date: newDueDate,
-        occurance: charge.occurance,
-        month_name: this.props.month_name
-      };
-    });
-
-    // SignedIn user vs Demo user
-    if (this.context.signedIn === true) {
-      this.setState({ charges: [] });
-
-      for (let i = 0; i < newCharges.length; i++) {
-        this.postNewCharge(newCharges[i]);
-      }
-      setTimeout(() => {
-        this.sortCharges();
-      }, 500);
-
-      // Charges from selected month created, can now update current state to selected month_name from createBudget
-      this.setState(
-        { month_name: this.props.month_name },
-        this.saveAllCharges()
-      );
-    } else {
-      for (let i = 0; i < newCharges.length; i++) {
-        newCharges[i].charge_id = Math.floor(Math.random() * 1000);
-      }
-
-      this.setState({ charges: newCharges }, function() {
-        this.sortCharges();
-      });
-
-      this.setState(
-        { month_name: this.props.month_name },
-        this.saveAllCharges()
-      );
-    }
-  };
+  /* Custom Methods */
 
   // Responsible for taking returned response from server and adding it to current array of charges
   addReturnedCharges = returnedCharge => {
     this.context.addNewCharge(returnedCharge);
     this.setState({ charges: [...this.state.charges, returnedCharge] });
-  };
-
-  /* Custom Methods */
-
-  // Responsible for POST req for adding new charge to server DB
-  postNewCharge = newCharge => {
-    const url = config.API_ENDPOINT + "charges";
-
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify(newCharge),
-      headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${TokenService.getAuthToken()}`
-      }
-    })
-      .then(res => {
-        if (!res.ok) {
-          return res.json().then(error => {
-            console.log(error.message);
-            this.setState({ error: error.message });
-            throw error;
-          });
-        }
-        return res.json();
-      })
-      .then(this.addReturnedCharges);
-  };
-
-  // Responsible for displaying total monthly income
-  displayIncome = () => {
-    let totalIncome = 0;
-    let charges = this.state.charges;
-    for (let i = 0; i < charges.length; i++) {
-      if (charges[i].category === "Income") {
-        totalIncome += charges[i].amount;
-      }
-    }
-    return Math.round(totalIncome * 100) / 100;
-  };
-
-  // Responsible for displaying total monthly expenses
-  displayExpenses = () => {
-    let totalExpenses = 0;
-    let charges = this.state.charges;
-    for (let i = 0; i < charges.length; i++) {
-      if (charges[i].category !== "Income") {
-        totalExpenses -= charges[i].amount;
-      }
-    }
-    return Math.round(totalExpenses * 100) / 100;
-  };
-
-  // Responsible for providing options of monthly budgets
-  displayMonths = () => {
-    const months = {};
-    if (this.context.charges === null) {
-      return null;
-    } else {
-      return this.context.charges.map(charge => {
-        const { month_name } = charge;
-
-        if (months[month_name] === true) {
-          return null;
-        }
-        months[month_name] = true;
-
-        return (
-          <option value={month_name} key={month_name}>
-            {month_name}
-          </option>
-        );
-      });
-    }
   };
 
   // Responsible for displaying correct charge line depending on charge category
@@ -369,23 +136,76 @@ class Budget extends Component {
     return allCharges;
   };
 
-  // Responsible for showing edit/delete buttons on each charge
-  handleEditBudgetClick = () => {
-    this.setState({ editingBudget: true });
+  // Responsible for displaying total monthly expenses
+  displayExpenses = () => {
+    let totalExpenses = 0;
+    let charges = this.state.charges;
+    for (let i = 0; i < charges.length; i++) {
+      if (charges[i].category !== "Income") {
+        totalExpenses -= charges[i].amount;
+      }
+    }
+    return Math.round(totalExpenses * 100) / 100;
   };
 
-  // Responsible for hiding edit/delete buttons on each charge
-  handleDoneEditingClick = () => {
-    this.setState({ editingBudget: false });
+  // Responsible for displaying total monthly income
+  displayIncome = () => {
+    let totalIncome = 0;
+    let charges = this.state.charges;
+    for (let i = 0; i < charges.length; i++) {
+      if (charges[i].category === "Income") {
+        totalIncome += charges[i].amount;
+      }
+    }
+    return Math.round(totalIncome * 100) / 100;
   };
 
-  // Responsible for updating a charge in current charge state in budget
-  updateNewCharge = updatedCharge => {
-    this.setState({
-      charges: this.state.charges.map(charge =>
-        charge.charge_id !== updatedCharge.charge_id ? charge : updatedCharge
-      )
-    });
+  // Responsible for providing options of monthly budgets
+  displayMonths = () => {
+    const months = {};
+    if (this.context.charges === null) {
+      return null;
+    } else {
+      return this.context.charges.map(charge => {
+        const { month_name } = charge;
+
+        if (months[month_name] === true) {
+          return null;
+        }
+        months[month_name] = true;
+
+        return (
+          <option value={month_name} key={month_name}>
+            {month_name}
+          </option>
+        );
+      });
+    }
+  };
+
+  // Responsible for POST req for adding new charge to server DB
+  postNewCharge = newCharge => {
+    const url = config.API_ENDPOINT + "charges";
+
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(newCharge),
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => {
+            console.log(error.message);
+            this.setState({ error: error.message });
+            throw error;
+          });
+        }
+        return res.json();
+      })
+      .then(this.addReturnedCharges);
   };
 
   // Responsible for going through state of charges and adding each to App layer charges array
@@ -395,6 +215,167 @@ class Budget extends Component {
         this.context.addNewCharge(this.state.charges[i]);
       }, 500);
     }
+  };
+
+  // Responsible for for aquiring correct month_name and setting matching charges
+  setCharges = () => {
+    let month_name;
+    if (this.props.new === true) {
+      month_name = this.state.month_name;
+    } else {
+      month_name =
+        this.props.testingVal || document.getElementById("month_name").value;
+    }
+
+    let charges = this.context.charges.filter(charge => {
+      if (charge.month_name === month_name) {
+        return charge;
+      } else {
+        return "";
+      }
+    });
+
+    this.setState({ charges: charges }, function() {
+      this.sortCharges();
+    });
+  };
+
+  // Responsible for calculating first of the month from state to pass to calender as min value
+  setFirstofMonth = () => {
+    let months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ];
+    let digit;
+    let year = this.state.month_name.substring(4, 9);
+
+    for (let i = 0; i < months.length; i++) {
+      if (months[i] === this.state.month_name.substring(0, 3)) {
+        digit = i + 1;
+      }
+    }
+    let stringDig = digit.toString();
+    if (stringDig.length === 1) {
+      stringDig = "0" + stringDig;
+    }
+
+    let fullFirst = year + "-" + stringDig + "-01";
+    this.setState({ first_of_month: fullFirst });
+  };
+
+  // Responsible for filtering charges for "monthly" occurance and updating due_date to selected month_name
+  setImportedCharges = () => {
+    // eslint-disable-next-line
+    let filteredCharges = this.state.charges.filter(charge => {
+      if (charge.occurance === "Monthly") {
+        return charge;
+      }
+    });
+
+    let newCharges = filteredCharges.map(charge => {
+      // Must update charge month value
+
+      let months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ];
+      let digit;
+      let year = this.props.month_name.substring(4, 9);
+      let day = charge.due_date.substring(7, 10);
+
+      for (let i = 0; i < months.length; i++) {
+        if (months[i] === this.props.month_name.substring(0, 3)) {
+          digit = i + 1;
+        }
+      }
+
+      let stringDig = digit.toString();
+      if (stringDig.length === 1) {
+        stringDig = "0" + stringDig;
+      }
+
+      let newDueDate = year + "-" + stringDig + day;
+
+      return {
+        amount: charge.amount,
+        category: charge.category,
+        charge_name: charge.charge_name,
+        charge_id: null,
+        due_date: newDueDate,
+        occurance: charge.occurance,
+        month_name: this.props.month_name
+      };
+    });
+
+    // SignedIn user vs Demo user
+    if (this.context.signedIn === true) {
+      this.setState({ charges: [] });
+
+      for (let i = 0; i < newCharges.length; i++) {
+        this.postNewCharge(newCharges[i]);
+      }
+      setTimeout(() => {
+        this.sortCharges();
+      }, 500);
+
+      // Charges from selected month created, can now update current state to selected month_name from createBudget
+      this.setState(
+        { month_name: this.props.month_name },
+        this.saveAllCharges()
+      );
+    } else {
+      for (let i = 0; i < newCharges.length; i++) {
+        newCharges[i].charge_id = Math.floor(Math.random() * 1000);
+      }
+
+      this.setState({ charges: newCharges }, function() {
+        this.sortCharges();
+      });
+
+      this.setState(
+        { month_name: this.props.month_name },
+        this.saveAllCharges()
+      );
+    }
+  };
+
+  // Responsible for setting month_name in state
+  setMonth = month_name => {
+    this.setState({ month_name: month_name });
+    this.setCharges();
+    setTimeout(() => {
+      this.setFirstofMonth();
+    }, 1000);
+  };
+
+  // Responsible for setting month_name when user is importing charges
+  setMonthDelay = month_name => {
+    this.setState({ month_name: month_name });
+    setTimeout(() => {
+      this.setCharges();
+      this.setImportedCharges();
+      this.setFirstofMonth();
+    }, 1000);
   };
 
   // Responsible for showing Add Charge
@@ -432,20 +413,41 @@ class Budget extends Component {
     this.setState({ charges: charges });
   };
 
-  // Responsible for showing spending report when user clicks button - can probably consolidate this and below function and show via state
-  showSpendingReport = () => {
+  // Responsible for updating a charge in current charge state in budget
+  updateNewCharge = updatedCharge => {
+    this.setState({
+      charges: this.state.charges.map(charge =>
+        charge.charge_id !== updatedCharge.charge_id ? charge : updatedCharge
+      )
+    });
+  };
+
+  /* Event Handling */
+
+  // Responsible for when user clicks Hide Spending Report
+  handleClickHideReport = () => {
+    const spendingReport = document.getElementById("spendingRepo");
+    spendingReport.classList.add("hidden");
+    const viewSpendButton = document.getElementById("spendButton");
+    viewSpendButton.classList.remove("hidden");
+  };
+
+  // Responsible for when user clicks Show Spending Report
+  handleClickShowReport = () => {
     const spendingReport = document.getElementById("spendingRepo");
     spendingReport.classList.remove("hidden");
     const viewSpendButton = document.getElementById("spendButton");
     viewSpendButton.classList.add("hidden");
   };
 
-  // Responsible for hiding spending reprot when user clicks button
-  hideSpendingReport = () => {
-    const spendingReport = document.getElementById("spendingRepo");
-    spendingReport.classList.add("hidden");
-    const viewSpendButton = document.getElementById("spendButton");
-    viewSpendButton.classList.remove("hidden");
+  // Responsible for hiding edit/delete buttons on each charge
+  handleDoneEditingClick = () => {
+    this.setState({ editingBudget: false });
+  };
+
+  // Responsible for showing edit/delete buttons on each charge
+  handleEditBudgetClick = () => {
+    this.setState({ editingBudget: true });
   };
 
   componentDidMount() {
@@ -504,17 +506,17 @@ class Budget extends Component {
 
           <button
             className="main_button"
+            id="showAdd"
             onClick={this.showAddCharge}
             type="button"
-            id="showAdd"
           >
             Add Charge
           </button>
           <button
             className="main_button"
+            id="showAddIncome"
             onClick={this.showAddIncome}
             type="button"
-            id="showAddIncome"
           >
             Add Income
           </button>
@@ -547,9 +549,9 @@ class Budget extends Component {
           {this.props.new !== true ? (
             <button
               className="main_button"
-              type="button"
-              onClick={this.showSpendingReport}
               id="spendButton"
+              onClick={this.handleClickShowReport}
+              type="button"
             >
               View Spending Reports
             </button>
@@ -559,7 +561,7 @@ class Budget extends Component {
         </div>
         {this.props.new !== true ? (
           <div className="hidden" id="spendingRepo">
-            <ViewSpending hideSpendingReport={this.hideSpendingReport} />
+            <ViewSpending handleClickHideReport={this.handleClickHideReport} />
           </div>
         ) : (
           ""

@@ -273,7 +273,7 @@ class ViewSpending extends Component {
         <button
           className="main_button"
           type="button"
-          onClick={this.props.hideSpendingReport}
+          onClick={this.props.handleClickHideReport}
         >
           Hide Spending Report
         </button>
@@ -285,5 +285,5 @@ class ViewSpending extends Component {
 export default ViewSpending;
 
 ViewSpending.propTypes = {
-  hideSpendingReport: PropTypes.func
+  handleClickHideReport: PropTypes.func
 };
