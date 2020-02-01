@@ -3,6 +3,7 @@ import config from "../../config";
 import PropTypes from "prop-types";
 
 /* Custom Components */
+import AddCharge from "../addCharge/addCharge";
 import TokenService from "../../auth/token-service";
 
 /* Styling & Images */
@@ -12,13 +13,12 @@ import deleteImg from "./images/delete.png";
 
 /* Context */
 import balanceContext from "../../balanceContext";
-import AddCharge from "../addCharge/addCharge";
 
 class Charge extends Component {
   state = {
     amount: "",
-    charge_name: "",
     category: "",
+    charge_name: "",
     due_date: "",
     occurance: ""
   };
@@ -26,13 +26,6 @@ class Charge extends Component {
   static contextType = balanceContext;
 
   /* State updating methods */
-  updateChargeName(charge_name) {
-    this.setState({ charge_name });
-  }
-
-  updateOccurance(occurance) {
-    this.setState({ occurance });
-  }
 
   updateAmount(amount) {
     this.setState({ amount: parseFloat(amount) });
@@ -42,19 +35,32 @@ class Charge extends Component {
     this.setState({ category });
   }
 
+  updateChargeName(charge_name) {
+    this.setState({ charge_name });
+  }
+
   updateDueDate(due_date) {
     this.setState({ due_date: parseInt(due_date) });
   }
 
+  updateOccurance(occurance) {
+    this.setState({ occurance });
+  }
+
   /* Custom Methods */
 
-  handleClickDelete = () => {
-    if (this.context.signedIn === true) {
-      this.remoteDelete();
-    } else {
-      this.localChargeDelete();
-    }
-    // console.log(this.props.charge_id);
+  // Responsible for making due_date smaller
+  clipDate = () => {
+    let smaller = this.props.due_date.substring(5, 10);
+    return smaller;
+  };
+
+  // Responsible for deleting selected charge in local data
+  localChargeDelete = () => {
+    this.context.deleteCharge(this.props.charge_id);
+    setTimeout(() => {
+      this.props.setCharges();
+    }, 500);
   };
 
   // Responsible for DELETE request to server
@@ -79,28 +85,26 @@ class Charge extends Component {
       .then(this.localChargeDelete);
   };
 
-  localChargeDelete = () => {
-    this.context.deleteCharge(this.props.charge_id);
-    setTimeout(() => {
-      this.props.setCharges();
-    }, 500);
+  /* Event Handling */
+
+  // Responsible for when user clicks delete button
+  handleClickDelete = () => {
+    if (this.context.signedIn === true) {
+      this.remoteDelete();
+    } else {
+      this.localChargeDelete();
+    }
   };
 
-  // Responsible for setting editing to true, thus revealing form with values instead of charge line
+  // Responsible for when user clicks edit button
   handleClickEdit = () => {
     this.setState({ editing: true });
   };
 
+  // Responsible for when user clicks done editing button
   doneEditing = () => {
     this.setState({ editing: false });
   };
-
-  clipDate = () => {
-    let smaller = this.props.due_date.substring(5, 10);
-    return smaller;
-  };
-
-  componentDidMount() {}
 
   render() {
     return (
@@ -108,16 +112,16 @@ class Charge extends Component {
         {this.state.editing === true ? (
           <AddCharge
             amount={this.props.amount}
-            editing={this.state.editing}
+            category={this.props.category}
             charge_id={this.props.charge_id}
             charge_name={this.props.charge_name}
-            due_date={this.props.due_date}
-            category={this.props.category}
-            occurance={this.props.occurance}
-            month_name={this.props.month_name}
             doneEditing={this.doneEditing}
-            updateNewCharge={this.props.updateNewCharge}
+            due_date={this.props.due_date}
+            editing={this.state.editing}
+            month_name={this.props.month_name}
+            occurance={this.props.occurance}
             setCharges={this.props.setCharges}
+            updateNewCharge={this.props.updateNewCharge}
           />
         ) : (
           <div className="charge" id={"charge" + this.props.charge_id}>
