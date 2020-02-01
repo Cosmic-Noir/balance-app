@@ -6,12 +6,12 @@
 
 /* Id styling */
 
-#charge_name {
-  width: 30%;
-}
-
 #amount {
   min-width: 30px;
   max-width: 100px;
   width: 20%;
+}
+
+#charge_name {
+  width: 30%;
 }
