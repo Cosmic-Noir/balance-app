@@ -129,11 +129,23 @@ class ViewSpending extends Component {
   };
 
   createPieCharge = () => {
+    console.log(window.screen.width);
+    let width;
+    let height;
+    let margin;
+    if (window.screen.width < 500) {
+      width = 310;
+      height = 310;
+      margin = 30;
+    } else {
+      width = 410;
+      height = 410;
+      margin = 40;
+    }
+
     let chartDiv = document.getElementById("chart");
     chartDiv.innerHTML = "";
-    const width = 410;
-    const height = 410;
-    const margin = 40;
+
     const radius = Math.min(width, height) / 2 - margin;
 
     let svg = d3
@@ -233,13 +245,19 @@ class ViewSpending extends Component {
               <option value="all">All</option>
               {this.displayMonths()}
             </select>
-            <button type="submit">Fetch Spending Report</button>
+            <button className="main_button" type="submit">
+              Fetch Spending Report
+            </button>
           </form>
         )}
 
         <div id="categories"></div>
         <div id="chart"></div>
-        <button type="button" onClick={this.props.hideSpendingReport}>
+        <button
+          className="main_button"
+          type="button"
+          onClick={this.props.hideSpendingReport}
+        >
           Hide Spending Report
         </button>
       </div>
