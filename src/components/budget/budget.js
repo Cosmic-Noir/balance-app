@@ -463,7 +463,7 @@ class Budget extends Component {
     return (
       <div className="wrapper">
         <div
-          className="budgetReport flex-column"
+          className="back_style budgetReport flex-column"
           data-aos="fade-in"
           data-aos-duration="2000"
           id={this.props.new === true ? "newBudget" : ""}
@@ -556,7 +556,7 @@ class Budget extends Component {
           )}
         </div>
         {this.props.new !== true ? (
-          <div className="hidden" id="spendingRepo">
+          <div className="back_style hidden" id="spendingRepo">
             <ViewSpending hideSpendingReport={this.hideSpendingReport} />
           </div>
         ) : (

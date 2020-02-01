@@ -230,29 +230,26 @@ class ViewSpending extends Component {
     return (
       <div className="viewSpending" data-aos="fade-in" data-aos-duration="2000">
         <h2>Spending Report:</h2>
-        {this.context.charges[0] === undefined ? (
-          <h3>Please create a new budget to view your spending reports</h3>
-        ) : (
-          <form
-            onSubmit={e => {
-              this.handleSubmit(e);
-            }}
+
+        <form
+          onSubmit={e => {
+            this.handleSubmit(e);
+          }}
+        >
+          <select
+            id="select"
+            onChange={e => this.updateSelected(e.target.value)}
+            name="selected"
+            ref={this.selected}
+            value={this.state.selected}
           >
-            <select
-              id="select"
-              onChange={e => this.updateSelected(e.target.value)}
-              name="selected"
-              ref={this.selected}
-              value={this.state.selected}
-            >
-              <option value="all">All</option>
-              {this.displayMonths()}
-            </select>
-            <button className="main_button" type="submit">
-              Fetch Spending Report
-            </button>
-          </form>
-        )}
+            <option value="all">All</option>
+            {this.displayMonths()}
+          </select>
+          <button className="main_button" type="submit">
+            Fetch Spending Report
+          </button>
+        </form>
 
         <div id="categories"></div>
         <div id="chart"></div>

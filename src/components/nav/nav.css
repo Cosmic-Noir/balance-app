@@ -83,7 +83,6 @@ nav {
 }
 
 .navBar {
-  background-color: rgb(225, 225, 225, 0.7);
   display: flex;
   justify-content: space-between;
   padding: 5px;

@@ -12,13 +12,7 @@
   width: 20px;
 }
 
-.viewSpending {
-  /* margin-top: 30px; */
-}
-
 #spendingRepo {
-  border-radius: 5px;
-  background-color: rgba(251, 251, 251, 0.534);
   margin: 30px auto 0px;
   padding: 10px;
   width: 80%;
@@ -36,7 +30,6 @@
     margin-top: 0px;
     margin-left: 0px;
     max-width: 600px;
-
     width: 40%;
   }
 }

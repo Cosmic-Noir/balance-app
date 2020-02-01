@@ -11,7 +11,12 @@ class Landing extends Component {
   static contextType = balanceContext;
   render() {
     return (
-      <div className="flex-column" data-aos="fade-in" data-aos-duration="2000">
+      <div
+        className="back_style flex-column"
+        data-aos="fade-in"
+        data-aos-duration="2000"
+        id="landing"
+      >
         <h1 id="logo">Balance</h1>
         <h2>
           Personal Budgeting Made <span>Simple</span>
