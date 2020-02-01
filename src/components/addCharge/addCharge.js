@@ -243,6 +243,8 @@ class AddCharge extends Component {
             type="number"
             value={this.state.amount}
           />
+          <br />
+          <label>Category:</label>
           <select
             id="category"
             onChange={e => this.updateCategory(e.target.value)}
