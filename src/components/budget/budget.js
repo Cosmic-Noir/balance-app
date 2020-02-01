@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import AddCharge from "../addCharge/addCharge";
 import AddIncome from "../addIncome/addIncome";
 import Charge from "../charge/charge";
+import Demo from "../demo/demo";
 import TokenService from "../../auth/token-service";
 import ViewSpending from "../viewSpending/viewSpending";
 
@@ -462,6 +463,7 @@ class Budget extends Component {
   render() {
     return (
       <div className="wrapper">
+        {this.context.signedIn === true ? "" : <Demo />}
         <div
           className="back_style budgetReport flex-column"
           data-aos="fade-in"

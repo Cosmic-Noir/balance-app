@@ -1,0 +1,9 @@
+.demo {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  top: 50px;
+  left: 50px;
+  box-shadow: 0 0 0 100vmax rgb(0, 0, 0, 0.3);
+  pointer-events: none;
+}
