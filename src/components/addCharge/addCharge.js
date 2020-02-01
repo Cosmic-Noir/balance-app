@@ -214,9 +214,9 @@ class AddCharge extends Component {
           <input
             className="chargeInput"
             id="due_date"
-            onChange={e => this.updateDueDate(e.target.value)}
             min={this.props.first_of_month}
             name="due_date"
+            onChange={e => this.updateDueDate(e.target.value)}
             ref={this.due_date}
             required
             type="date"
@@ -225,9 +225,9 @@ class AddCharge extends Component {
           <input
             className="chargeInput"
             id="charge_name"
+            name="charge_name"
             onChange={e => this.updateChargeName(e.target.value)}
             placeholder="charge name"
-            name="charge_name"
             ref={this.charge_name}
             required
             type="text"
@@ -237,9 +237,9 @@ class AddCharge extends Component {
           <input
             className="chargeInput"
             id="amount"
+            name="amount"
             onChange={e => this.updateAmount(e.target.value)}
             placeholder="Amount"
-            name="amount"
             ref={this.amount}
             required
             type="number"
@@ -249,9 +249,9 @@ class AddCharge extends Component {
           <label>Category:</label>
           <select
             id="category"
+            name="category"
             onChange={e => this.updateCategory(e.target.value)}
             placeholder="category"
-            name="category"
             ref={this.category}
             value={this.state.category}
             required
@@ -278,15 +278,15 @@ class AddCharge extends Component {
           </select>
           <select
             id="occurance"
+            name="occurance"
             onChange={e => this.updateOccurance(e.target.value)}
             placeholder="occurance"
-            name="occurance"
             ref={this.occurance}
             required
             value={this.state.occurance}
           >
-            <option value="One Time">One Time</option>
             <option value="Monthly">Monthly</option>
+            <option value="One Time">One Time</option>
           </select>
           {this.state.error !== null ? (
             <h5 className="error">{this.state.error}</h5>
