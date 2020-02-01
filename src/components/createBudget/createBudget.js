@@ -86,11 +86,6 @@ class CreateBudget extends Component {
     }
   };
 
-  // Responsible for when user clicks cancel button
-  handleBack = () => {
-    this.props.history.goBack();
-  };
-
   // Responsible for setting imported and new state to true
   handleClickYes = () => {
     this.setState({ imported: true, new: true });
@@ -129,6 +124,14 @@ class CreateBudget extends Component {
   showCreateNew = () => {
     let createNewButton = document.getElementById("createNewButton");
     createNewButton.classList.remove("hidden");
+  };
+
+  newCreate = () => {
+    let option = document.getElementById("createNew");
+    option.classList.remove("hidden");
+    this.setState({ new: false, imported: false, month_name: null });
+    let createNewButton = document.getElementById("createNewButton");
+    createNewButton.classList.add("hidden");
   };
 
   componentDidMount() {
