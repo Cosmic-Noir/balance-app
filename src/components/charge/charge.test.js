@@ -6,12 +6,12 @@ import Charge from "./charge";
 describe(`Charge Component`, () => {
   it(`Renders without crashing`, () => {
     const div = document.createElement("div");
-    ReactDom.render(<Charge />, div);
+    ReactDom.render(<Charge due_date="2020-02-01" />, div);
     ReactDom.unmountComponentAtNode(div);
   });
 
   it(`Renders the UI as expected`, () => {
-    const tree = renderer.create(<Charge />).toJSON;
+    const tree = renderer.create(<Charge due_date="2020-02-01" />).toJSON;
     expect(tree).toMatchSnapshot();
   });
 });
