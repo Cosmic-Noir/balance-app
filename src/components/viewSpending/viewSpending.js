@@ -129,7 +129,6 @@ class ViewSpending extends Component {
   };
 
   createPieCharge = () => {
-    console.log(window.screen.width);
     let width;
     let height;
     let margin;

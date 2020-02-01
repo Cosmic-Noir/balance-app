@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import TokenService from "../../auth/token-service";
 
 /* Styling and Images: */
-import logo from "./logo.png";
 import "./nav.css";
 
 /* Context */
@@ -49,9 +48,7 @@ class Nav extends Component {
         <Link to="/" className="balance" id="navLogo">
           Balance
         </Link>
-        <Link id="navLogo" to="/">
-          <img alt="Logo" className="hidden logo" src={logo} />
-        </Link>
+
         <div className="deskNav">
           <div>
             <Link className="nav" to="/">
