@@ -1,6 +1,7 @@
 .budgetReport {
   margin: 0 auto;
   max-width: 500px;
+  padding-bottom: 5px;
   width: 95%;
 }
 
@@ -12,11 +13,6 @@
 
 .float-right {
   float: right;
-}
-
-.main_button {
-  margin: 10px;
-  padding: 5px 15px;
 }
 
 .month_totals {

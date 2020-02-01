@@ -39,6 +39,7 @@ footer {
   justify-content: center;
   align-items: center;
   bottom: 0px;
+  padding: 5px;
   width: 100%;
 }
 
@@ -140,6 +141,11 @@ main {
 
 .link:hover {
   text-decoration: underline;
+}
+
+.main_button {
+  margin: 5px;
+  padding: 5px 15px;
 }
 
 .red {
