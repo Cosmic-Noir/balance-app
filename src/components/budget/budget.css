@@ -64,7 +64,7 @@
 @media screen and (min-width: 1050px) {
   .budgetReport {
     width: 50%;
-    max-width: 600px;
+    max-width: 900px;
   }
   .wrapper {
     display: flex;
