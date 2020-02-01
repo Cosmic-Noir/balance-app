@@ -1,3 +1,7 @@
+nav {
+  z-index: 10;
+}
+
 /* Class styling */
 
 .balance {
@@ -98,11 +102,13 @@ nav {
 }
 
 #mobileNav {
+  background-color: rgba(251, 251, 251, 0.644);
+  border-radius: 5px;
   display: none;
   position: fixed;
   top: 50px;
-  right: 20px;
-  width: 100px;
+  right: 5px;
+  width: 130px;
   z-index: 10;
 }
 
