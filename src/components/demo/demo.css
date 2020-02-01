@@ -91,6 +91,9 @@
 }
 
 @media screen and (min-width: 430px) {
+  .phase_three {
+    top: 655px;
+  }
   .phase_four {
     top: 775px;
   }
@@ -100,8 +103,11 @@
 }
 
 @media screen and (min-width: 460px) {
+  .phase_three {
+    top: 670px;
+  }
   .phase_four {
-    top: 753px;
+    top: 750px;
   }
   .phase_five {
     top: 790px;
