@@ -53,7 +53,7 @@ class ViewSpending extends Component {
     document.getElementById("categories").innerHTML = "";
 
     let colors = [
-      "#5F1773",
+      "#a35ab8",
       "#0477BF",
       "#04B2D9",
       "#04BFBF",
@@ -164,7 +164,7 @@ class ViewSpending extends Component {
       .scaleOrdinal()
       .domain(data)
       .range([
-        "#5F1773",
+        "#a35ab8",
         "#0477BF",
         "#04B2D9",
         "#04BFBF",

@@ -106,11 +106,7 @@ class Charge extends Component {
 
   render() {
     return (
-      <div
-        className="flex-column chargeWrapper"
-        data-aos="fade-in"
-        data-aos-duration="2000"
-      >
+      <div className="flex-column chargeWrapper">
         {this.state.editing === true ? (
           <AddCharge
             amount={this.props.amount}
