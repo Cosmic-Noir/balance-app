@@ -1,3 +1,5 @@
+/* Class Styling */
+
 .block {
   background-color: rgba(251, 251, 251, 0.534);
   color: #0569a7;
@@ -30,6 +32,8 @@
   display: flex;
   flex-direction: column;
 }
+
+/* Responsive Styling */
 
 @media screen and (min-width: 700px) {
   .dashboard {
