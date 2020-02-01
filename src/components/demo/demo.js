@@ -101,8 +101,10 @@ class Demo extends Component {
           ""
         )}
         {this.state.phase === 6 ? (
-          <div className="demo phase_one tip">
-            <h2>See how easy that was? Time to balance your budget!</h2>
+          <div className="demo phase_six tip">
+            <h2 id="text_six">
+              See how easy that was? Time to balance your budget!
+            </h2>
             <button
               className="animated demo_button infinite main_button pulse"
               onClick={this.increasePhase}
