@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 
 /* Custom Components */
 import Budget from "../budget/budget";
@@ -21,6 +20,9 @@ class CreateBudget extends Component {
     this.setState({ imported_month_name: month_name });
   };
 
+  /* Custom Methods */
+
+  // Responssible for checking if month_name already taken
   checkMonthName = month_name => {
     for (let i = 0; i < this.context.charges.length; i++) {
       if (month_name === this.context.charges[i].month_name) {
@@ -32,8 +34,6 @@ class CreateBudget extends Component {
       }
     }
   };
-
-  /* Custom Methods */
 
   // Responsible for providing options of monthly budgets to import charges from
   displayMonths = () => {
@@ -58,7 +58,57 @@ class CreateBudget extends Component {
     }
   };
 
-  // Responsible for handling form data
+  // Responsible for hiding import question once option selected
+  hideCreate = () => {
+    let option = document.getElementById("createNew");
+    option.classList.add("hidden");
+  };
+
+  // Responsible for hiding budget selection once option selected
+  hideImportMonth = () => {
+    let importOption = document.getElementById("selectImportMonth");
+    importOption.classList.add("hidden");
+  };
+
+  showCreateNew = () => {
+    let createNewButton = document.getElementById("createNewButton");
+    createNewButton.classList.remove("hidden");
+  };
+
+  /* Event Handling */
+
+  // Responsible for when user clicks Create New button on newly created budget
+  handleClickNewCreate = () => {
+    let option = document.getElementById("createNew");
+    option.classList.remove("hidden");
+    this.setState({ new: false, imported: false, month_name: null });
+    let createNewButton = document.getElementById("createNewButton");
+    createNewButton.classList.add("hidden");
+  };
+
+  // Responsible for setting new state to true with non-imported status
+  handleClickNo = () => {
+    this.setState({ new: true });
+    if (this.props.testing !== "true") {
+      this.hideCreate();
+    }
+  };
+
+  // Responsible for setting imported and new state to true
+  handleClickYes = () => {
+    this.setState({ imported: true, new: true });
+    if (this.props.testing !== "true") {
+      this.hideCreate();
+    }
+    setTimeout(() => {
+      if (this.state.imported === true) {
+        let imported_month_name = document.getElementById("imported_month_name")
+          .value;
+        this.setImportedMonth(imported_month_name);
+      }
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -84,54 +134,6 @@ class CreateBudget extends Component {
         this.showCreateNew();
       }
     }
-  };
-
-  // Responsible for setting imported and new state to true
-  handleClickYes = () => {
-    this.setState({ imported: true, new: true });
-    if (this.props.testing !== "true") {
-      this.hideCreate();
-    }
-    setTimeout(() => {
-      if (this.state.imported === true) {
-        let imported_month_name = document.getElementById("imported_month_name")
-          .value;
-        this.setImportedMonth(imported_month_name);
-      }
-    });
-  };
-
-  // Responsible for setting new state to true with non-imported status
-  handleClickNo = () => {
-    this.setState({ new: true });
-    if (this.props.testing !== "true") {
-      this.hideCreate();
-    }
-  };
-
-  // Responsible for hiding import question once option selected
-  hideCreate = () => {
-    let option = document.getElementById("createNew");
-    option.classList.add("hidden");
-  };
-
-  // Responsible for hiding budget selection once option selected
-  hideImportMonth = () => {
-    let importOption = document.getElementById("selectImportMonth");
-    importOption.classList.add("hidden");
-  };
-
-  showCreateNew = () => {
-    let createNewButton = document.getElementById("createNewButton");
-    createNewButton.classList.remove("hidden");
-  };
-
-  newCreate = () => {
-    let option = document.getElementById("createNew");
-    option.classList.remove("hidden");
-    this.setState({ new: false, imported: false, month_name: null });
-    let createNewButton = document.getElementById("createNewButton");
-    createNewButton.classList.add("hidden");
   };
 
   componentDidMount() {
@@ -182,10 +184,10 @@ class CreateBudget extends Component {
                 <option value="Dec">Dec</option>
               </select>
               <input
-                type="number"
                 id="newYear"
                 placeholder="2020"
                 required
+                type="number"
               ></input>
               <button className="main_button" type="submit">
                 Create Budget
@@ -215,19 +217,19 @@ class CreateBudget extends Component {
         <br />
         {this.state.month_name ? (
           <Budget
-            imported_month_name={this.state.imported_month_name}
-            month_name={this.state.month_name}
-            imported={this.state.imported}
-            new={this.state.new}
             history={this.props.history}
+            imported_month_name={this.state.imported_month_name}
+            imported={this.state.imported}
+            month_name={this.state.month_name}
+            new={this.state.new}
           />
         ) : (
           ""
         )}
         <button
           className="hidden main_button"
-          onClick={this.newCreate}
           id="createNewButton"
+          onClick={this.handleClickNewCreate}
         >
           Create New Budget
         </button>
