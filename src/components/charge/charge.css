@@ -57,6 +57,18 @@
   width: 100%;
 }
 
+#amount {
+  min-width: 70px;
+}
+
+#due_date {
+  max-width: 163px;
+}
+
+#charge_name {
+  min-width: 100px;
+}
+
 @media screen and (min-width: 400px) {
   .charge {
     width: 90%;
