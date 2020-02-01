@@ -28,7 +28,7 @@ class Landing extends Component {
             calculate their expenses per paycheck and per month. The Spending
             Report feature allows users to track their spending habits by
             category. See our{" "}
-            <Link to="/dashboard" id="demo">
+            <Link to="/budgets" id="demo">
               Demo
             </Link>{" "}
             to explore the app before signing up.

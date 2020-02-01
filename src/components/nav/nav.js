@@ -59,7 +59,7 @@ class Nav extends Component {
                 Dashboard
               </Link>
             ) : (
-              <Link className="nav" to="/dashboard">
+              <Link className="nav" to="/budgets">
                 Demo
               </Link>
             )}
@@ -121,7 +121,7 @@ class Nav extends Component {
             <Link
               className="mobile"
               onClick={this.toggleMobileMenu}
-              to="/dashboard"
+              to="/budgets"
             >
               Demo
             </Link>{" "}

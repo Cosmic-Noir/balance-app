@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+/* Styling & Images */
+import "./signOut.css";
+
 /* Context */
 import balanceContext from "../../balanceContext";
 
@@ -10,9 +13,16 @@ class SignOut extends Component {
 
   render() {
     return (
-      <div className="flex-column" data-aos="fade-in" data-aos-duration="2000">
+      <div
+        className="back_style flex-column"
+        data-aos="fade-in"
+        data-aos-duration="2000"
+        id="signOut"
+      >
         <h2 className="title">You have signed out!</h2>
-        <Link to="/signIn">Sign In</Link>
+        <Link className="link" to="/signIn">
+          Sign In
+        </Link>
       </div>
     );
   }
