@@ -101,7 +101,10 @@ class ViewSpending extends Component {
         if (!categories[charges[i].category]) {
           categories[charges[i].category] = charges[i].amount;
         } else {
-          categories[charges[i].category] += charges[i].amount;
+          categories[charges[i].category] =
+            Math.round(
+              (categories[charges[i].category] + charges[i].amount) * 100
+            ) / 100;
         }
       }
     } else {
@@ -117,7 +120,10 @@ class ViewSpending extends Component {
         if (!categories[charges[i].category]) {
           categories[charges[i].category] = charges[i].amount;
         } else {
-          categories[charges[i].category] += charges[i].amount;
+          categories[charges[i].category] =
+            Math.round(
+              (categories[charges[i].category] + charges[i].amount) * 100
+            ) / 100;
         }
       }
     }
