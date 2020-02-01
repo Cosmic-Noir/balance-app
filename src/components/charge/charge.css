@@ -4,12 +4,16 @@
   justify-content: space-between;
   align-items: center;
   list-style-type: none;
-  margin: 5px;
-  width: 90%;
+  padding: 5px;
+  width: 100%;
+}
+
+.chargeWrapper {
+  width: 100%;
 }
 
 .date_detail {
-  /* min-width: 130px; */
+  min-width: 50px;
 }
 
 .detail {

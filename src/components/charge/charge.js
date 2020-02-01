@@ -105,7 +105,7 @@ class Charge extends Component {
   render() {
     return (
       <div
-        className="flex-column width-80"
+        className="flex-column chargeWrapper"
         data-aos="fade-in"
         data-aos-duration="2000"
       >
