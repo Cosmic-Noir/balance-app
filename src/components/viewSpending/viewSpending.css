@@ -1,5 +1,13 @@
+text:hover {
+  display: block;
+}
+
 .cat {
   margin: 5px;
+}
+
+.pie_text:hover {
+  display: block;
 }
 
 /* Chart div legend testing */

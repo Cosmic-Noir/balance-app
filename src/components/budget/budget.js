@@ -558,7 +558,7 @@ class Budget extends Component {
           )}
         </div>
         {this.props.new !== true ? (
-          <div className="back_style hidden" id="spendingRepo">
+          <div className="hidden" id="spendingRepo">
             <ViewSpending hideSpendingReport={this.hideSpendingReport} />
           </div>
         ) : (

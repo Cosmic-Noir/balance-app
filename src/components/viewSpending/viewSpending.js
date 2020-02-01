@@ -89,15 +89,17 @@ class ViewSpending extends Component {
   // Responsible for creating an object with totals for each detected categories
   setSpending = () => {
     let categories = {};
-
+    let totalSpent = 0;
     // eslint-disable-next-line
     let charges = this.context.charges.filter(charge => {
       if (charge.category !== "Income") {
         return charge;
       }
     });
+
     if (this.state.selected === "all") {
       for (let i = 0; i < charges.length; i++) {
+        totalSpent += charges[i].amount;
         if (!categories[charges[i].category]) {
           categories[charges[i].category] = charges[i].amount;
         } else {
@@ -117,6 +119,8 @@ class ViewSpending extends Component {
         }
       });
       for (let i = 0; i < charges.length; i++) {
+        totalSpent += charges[i].amount;
+
         if (!categories[charges[i].category]) {
           categories[charges[i].category] = charges[i].amount;
         } else {
@@ -127,7 +131,10 @@ class ViewSpending extends Component {
         }
       }
     }
-    this.setState({ categories: categories });
+    this.setState({
+      categories: categories,
+      totalSpent: Math.round(totalSpent * 100) / 100
+    });
     setTimeout(() => {
       this.displayCategories();
       this.createPieCharge();
@@ -216,24 +223,28 @@ class ViewSpending extends Component {
       .attr("stroke", "black")
       .style("stroke-width", "2px");
 
-    svg
-      .selectAll("#chart")
-      .data(data_ready)
-      .enter()
-      .append("text")
-      .text(function(d) {
-        return d.data.key;
-      })
-      .attr("transform", function(d) {
-        return "translate(" + arcGenerator.centroid(d) + ")";
-      })
-      .style("text-anchor", "middle")
-      .style("font-size", fontSize);
+    // svg
+    //   .selectAll("#chart")
+    //   .data(data_ready)
+    //   .enter()
+    //   .append("text")
+    //   .text(function(d) {
+    //     return d.data.value;
+    //   })
+    //   .attr("transform", function(d) {
+    //     return "translate(" + arcGenerator.centroid(d) + ")";
+    //   })
+    //   .style("text-anchor", "middle")
+    //   .style("font-size", fontSize);
   };
 
   render() {
     return (
-      <div className="viewSpending" data-aos="fade-in" data-aos-duration="2000">
+      <div
+        className="back_style viewSpending"
+        data-aos="fade-in"
+        data-aos-duration="2000"
+      >
         <h2>Spending Report:</h2>
 
         <form
