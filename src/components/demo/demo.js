@@ -6,6 +6,7 @@ class Demo extends Component {
     phase: 1
   };
 
+  // Responsible for increasing state of phase when user clicks next
   increasePhase = () => {
     this.setState({ phase: this.state.phase + 1 });
   };
@@ -16,11 +17,11 @@ class Demo extends Component {
         {this.state.phase === 1 ? (
           <div className="demo phase_one tip">
             <h2 id="text_one">
-              Welcome to your demo tour! This breif tutorial will show you how
-              the app works.
+              Welcome to your demo! This brief tutorial will show you how to use
+              this app
             </h2>
             <button
-              className="animated infinite pulse demo_button main_button"
+              className="animated demo_button infinite main_button pulse"
               id="phase_one"
               onClick={this.increasePhase}
               type="button"
@@ -37,7 +38,7 @@ class Demo extends Component {
               Select any existing budget from this drop down.
             </h2>
             <button
-              className="animated infinite pulse demo_button main_button"
+              className="animated demo_button infinite main_button pulse"
               id="phase_two"
               onClick={this.increasePhase}
               type="button"
@@ -56,7 +57,7 @@ class Demo extends Component {
               budgets.
             </h2>
             <button
-              className="animated infinite pulse demo_button main_button"
+              className="animated demo_button infinite main_button pulse"
               id="phase_three"
               onClick={this.increasePhase}
               type="button"
@@ -73,7 +74,7 @@ class Demo extends Component {
               Edit any charges or income by clicking this button
             </h2>
             <button
-              className="animated infinite pulse demo_button main_button"
+              className="animated demo_button infinite main_button pulse"
               id="phase_four"
               onClick={this.increasePhase}
               type="button"
@@ -88,7 +89,7 @@ class Demo extends Component {
           <div className="demo phase_five">
             <h2 className="tip">Click here to view your Spending Report</h2>
             <button
-              className="animated infinite pulse demo_button main_button"
+              className="animated demo_button infinite main_button pulse"
               onClick={this.increasePhase}
               id="phase_five"
               type="button"
@@ -103,7 +104,7 @@ class Demo extends Component {
           <div className="demo phase_one tip">
             <h2>See how easy that was? Time to balance your budget!</h2>
             <button
-              className="animated infinite pulse demo_button main_button"
+              className="animated demo_button infinite main_button pulse"
               onClick={this.increasePhase}
               type="button"
               id="phase_six"
