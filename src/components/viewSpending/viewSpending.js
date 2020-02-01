@@ -244,6 +244,7 @@ class ViewSpending extends Component {
         className="back_style viewSpending"
         data-aos="fade-in"
         data-aos-duration="2000"
+        id="spending"
       >
         <h2>Spending Report:</h2>
 

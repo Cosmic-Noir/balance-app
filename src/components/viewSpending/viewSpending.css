@@ -10,7 +10,6 @@ text:hover {
   display: block;
 }
 
-/* Chart div legend testing */
 .legend {
   border: 1px solid black;
   position: relative;
@@ -20,24 +19,21 @@ text:hover {
   width: 20px;
 }
 
-#spendingRepo {
-  margin: 30px auto 0px;
+.viewSpending {
+  margin: 30px;
   padding: 10px;
-  width: 95%;
 }
 
 @media screen and (min-width: 500px) {
-  #spendingRepo {
-    width: 90%;
+  .viewSpending {
     max-width: 500px;
   }
 }
 
 @media screen and (min-width: 1050px) {
-  #spendingRepo {
+  .viewSpending {
     margin-top: 0px;
-    margin-left: 0px;
-    max-width: 600px;
-    width: 40%;
+
+    max-width: 700px;
   }
 }
