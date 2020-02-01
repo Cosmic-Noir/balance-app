@@ -151,10 +151,11 @@ class AddCharge extends Component {
     this.props.doneEditing();
   };
 
+  // Responsible for when user clicks update,
   handleClickUpdate = () => {
     let updatedCharge = this.state;
     updatedCharge.charge_id = this.props.charge_id;
-    updatedCharge.month_name = this.props.month_name;
+    // updatedCharge.month_name = this.props.month_name;
     this.props.updateNewCharge(updatedCharge);
   };
 
