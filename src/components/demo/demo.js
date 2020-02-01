@@ -20,7 +20,7 @@ class Demo extends Component {
               the app works.
             </h2>
             <button
-              className="demo_button main_button"
+              className="animated infinite pulse demo_button main_button"
               id="phase_one"
               onClick={this.increasePhase}
               type="button"
@@ -37,7 +37,7 @@ class Demo extends Component {
               Select any existing budget from this drop down.
             </h2>
             <button
-              className="demo_button main_button"
+              className="animated infinite pulse demo_button main_button"
               id="phase_two"
               onClick={this.increasePhase}
               type="button"
@@ -56,7 +56,7 @@ class Demo extends Component {
               budgets.
             </h2>
             <button
-              className="demo_button main_button"
+              className="animated infinite pulse demo_button main_button"
               id="phase_three"
               onClick={this.increasePhase}
               type="button"
@@ -73,7 +73,7 @@ class Demo extends Component {
               Edit any charges or income by clicking this button
             </h2>
             <button
-              className="demo_button main_button"
+              className="animated infinite pulse demo_button main_button"
               id="phase_four"
               onClick={this.increasePhase}
               type="button"
@@ -88,7 +88,7 @@ class Demo extends Component {
           <div className="demo phase_five">
             <h2 className="tip">Click here to view your Spending Report</h2>
             <button
-              className="demo_button main_button"
+              className="animated infinite pulse demo_button main_button"
               onClick={this.increasePhase}
               id="phase_five"
               type="button"
@@ -103,7 +103,7 @@ class Demo extends Component {
           <div className="demo phase_one tip">
             <h2>See how easy that was? Time to balance your budget!</h2>
             <button
-              className="demo_button main_button"
+              className="animated infinite pulse demo_button main_button"
               onClick={this.increasePhase}
               type="button"
               id="phase_six"

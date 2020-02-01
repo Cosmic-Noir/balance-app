@@ -93,7 +93,7 @@
 }
 
 .demo_button {
-  border: 1px solid red;
+  background-color: rgb(113, 187, 248);
   position: absolute;
   z-index: 30;
 }
