@@ -1,13 +1,7 @@
-text:hover {
-  display: block;
-}
+/* Class Styling */
 
 .cat {
   margin: 5px;
-}
-
-.pie_text:hover {
-  display: block;
 }
 
 .legend {
@@ -24,6 +18,8 @@ text:hover {
   padding: 10px;
 }
 
+/* Responsive Styling */
+
 @media screen and (min-width: 500px) {
   .viewSpending {
     max-width: 500px;
@@ -33,7 +29,6 @@ text:hover {
 @media screen and (min-width: 1050px) {
   .viewSpending {
     margin-top: 0px;
-
     max-width: 700px;
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
 import * as d3 from "d3";
 
 /* Context */
@@ -11,80 +10,13 @@ import "./viewSpending.css";
 
 class ViewSpending extends Component {
   state = {
-    selected: "all",
-    categories: {}
+    categories: {},
+    selected: "all"
   };
 
   static contextType = balanceContext;
 
   /* State Setting Methods */
-
-  updateSelected = selected => {
-    this.setState({ selected });
-  };
-
-  /* Custom Methods */
-
-  // Responsible for providing options of monthly budgets
-  displayMonths = () => {
-    const months = {};
-    if (this.context.charges === null) {
-      return null;
-    } else {
-      return this.context.charges.map(charge => {
-        const { month_name } = charge;
-
-        if (months[month_name] === true) {
-          return null;
-        }
-        months[month_name] = true;
-
-        return (
-          <option value={month_name} key={month_name}>
-            {month_name}
-          </option>
-        );
-      });
-    }
-  };
-
-  // Responsible for returning categories with correct spending amounts
-  displayCategories = () => {
-    document.getElementById("categories").innerHTML = "";
-
-    let colors = [
-      "#a35ab8",
-      "#0477BF",
-      "#04B2D9",
-      "#04BFBF",
-      "#04D9B2",
-      "#C187C3",
-      "#FFFDE8",
-      "#A836D9",
-      "#D90D6C",
-      "#7b6888",
-      "#6b486b",
-      "#a05d56",
-      "#90abc5"
-    ];
-
-    let count = 0;
-    for (let category in this.state.categories) {
-      let color = colors[count];
-      document.getElementById(
-        "categories"
-      ).innerHTML += `<div class="flex-column"><div class="legend" style="background-color:${color}" ></div><h4 class="cat">${category}: ${this.state.categories[category]}<h4></div>`;
-      count++;
-    }
-
-    // console.log("displayCategories ran");
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-
-    this.setSpending();
-  };
 
   // Responsible for creating an object with totals for each detected categories
   setSpending = () => {
@@ -140,6 +72,12 @@ class ViewSpending extends Component {
       this.createPieCharge();
     });
   };
+
+  updateSelected = selected => {
+    this.setState({ selected });
+  };
+
+  /* Custom Methods */
 
   createPieCharge = () => {
     let width;
@@ -200,6 +138,7 @@ class ViewSpending extends Component {
 
     svg.attr("class", "chart-svg");
 
+    // For text display - not currently in use
     // var arcGenerator = d3
     //   .arc()
     //   .innerRadius(0)
@@ -223,6 +162,7 @@ class ViewSpending extends Component {
       .attr("stroke", "black")
       .style("stroke-width", "2px");
 
+    // For text display - not currently in use
     // svg
     //   .selectAll("#chart")
     //   .data(data_ready)
@@ -238,6 +178,64 @@ class ViewSpending extends Component {
     //   .style("font-size", fontSize);
   };
 
+  // Responsible for displaying categories in state with associated legend div
+  displayCategories = () => {
+    document.getElementById("categories").innerHTML = "";
+
+    let colors = [
+      "#a35ab8",
+      "#0477BF",
+      "#04B2D9",
+      "#04BFBF",
+      "#04D9B2",
+      "#C187C3",
+      "#FFFDE8",
+      "#A836D9",
+      "#D90D6C",
+      "#7b6888",
+      "#6b486b",
+      "#a05d56",
+      "#90abc5"
+    ];
+
+    let count = 0;
+    for (let category in this.state.categories) {
+      let color = colors[count];
+      document.getElementById(
+        "categories"
+      ).innerHTML += `<div class="flex-column"><div class="legend" style="background-color:${color}" ></div><h4 class="cat">${category}: ${this.state.categories[category]}<h4></div>`;
+      count++;
+    }
+  };
+
+  // Responsible for providing options of monthly budgets
+  displayMonths = () => {
+    const months = {};
+    if (this.context.charges === null) {
+      return null;
+    } else {
+      return this.context.charges.map(charge => {
+        const { month_name } = charge;
+
+        if (months[month_name] === true) {
+          return null;
+        }
+        months[month_name] = true;
+
+        return (
+          <option value={month_name} key={month_name}>
+            {month_name}
+          </option>
+        );
+      });
+    }
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setSpending();
+  };
+
   render() {
     return (
       <div
@@ -247,7 +245,6 @@ class ViewSpending extends Component {
         id="spending"
       >
         <h2>Spending Report:</h2>
-
         <form
           onSubmit={e => {
             this.handleSubmit(e);
