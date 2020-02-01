@@ -147,8 +147,12 @@ class CreateBudget extends Component {
         <div id="createNew">
           <h3>Import last month's charges?</h3>
           <h5>Note this will not include one-time categorized charges</h5>
-          <button onClick={this.handleClickYes}>Yes, Import Charges</button>
-          <button onClick={this.handleClickNo}>No, Start Fresh</button>
+          <button className="main_button" onClick={this.handleClickYes}>
+            Yes, Import Charges
+          </button>
+          <button className="main_button" onClick={this.handleClickNo}>
+            No, Start Fresh
+          </button>
         </div>
         {this.state.new === true ? (
           <div id="selectName">
@@ -179,7 +183,9 @@ class CreateBudget extends Component {
                 placeholder="2020"
                 required
               ></input>
-              <button type="submit">Create Budget</button>
+              <button className="main_button" type="submit">
+                Create Budget
+              </button>
               <h5 className="error">{this.state.error}</h5>
             </form>
           </div>
@@ -215,7 +221,7 @@ class CreateBudget extends Component {
           ""
         )}
         <button
-          className="hidden"
+          className="hidden main_button"
           onClick={this.newCreate}
           id="createNewButton"
         >

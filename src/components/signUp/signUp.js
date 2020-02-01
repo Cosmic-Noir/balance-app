@@ -148,7 +148,9 @@ class SignUp extends Component {
           ) : (
             ""
           )}
-          <button type="submit">Create Account</button>
+          <button className="main_button" type="submit">
+            Create Account
+          </button>
         </form>
         <Link to="/signIn" className="link">
           Sign In

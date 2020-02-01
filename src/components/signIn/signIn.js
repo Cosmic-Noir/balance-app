@@ -117,7 +117,9 @@ class SignIn extends Component {
           ) : (
             ""
           )}
-          <button type="submit">Log In</button>
+          <button className="main_button" type="submit">
+            Log In
+          </button>
         </form>
         <Link to="/signUp" className="link">
           Sign Up

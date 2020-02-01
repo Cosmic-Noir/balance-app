@@ -6,6 +6,7 @@
   list-style-type: none;
   padding: 5px;
   width: 100%;
+  /* flex-wrap: wrap; */
 }
 
 .chargeWrapper {
@@ -47,9 +48,15 @@
   width: 100%;
 }
 
+@media screen and (min-width: 400px) {
+  .charge {
+    width: 90%;
+  }
+}
+
 @media screen and (min-width: 900px) {
   .charge {
-    min-width: 100%;
+    width: 80%;
   }
   .editType {
     min-width: 200px;

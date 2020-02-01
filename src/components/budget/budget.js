@@ -500,10 +500,20 @@ class Budget extends Component {
             setCharges={this.setCharges}
           />
 
-          <button onClick={this.showAddCharge} type="button" id="showAdd">
+          <button
+            className="main_button"
+            onClick={this.showAddCharge}
+            type="button"
+            id="showAdd"
+          >
             Add Charge
           </button>
-          <button onClick={this.showAddIncome} type="button" id="showAddIncome">
+          <button
+            className="main_button"
+            onClick={this.showAddIncome}
+            type="button"
+            id="showAddIncome"
+          >
             Add Income
           </button>
           <AddIncome
@@ -513,17 +523,28 @@ class Budget extends Component {
           />
 
           {this.state.editingBudget === true ? (
-            <button onClick={this.handleDoneEditingClick}>Done Editing</button>
+            <button
+              className="main_button"
+              onClick={this.handleDoneEditingClick}
+            >
+              Done Editing
+            </button>
           ) : (
             ""
           )}
           {this.state.editingBudget !== true ? (
-            <button onClick={this.handleEditBudgetClick}>Edit Budget</button>
+            <button
+              className="main_button"
+              onClick={this.handleEditBudgetClick}
+            >
+              Edit Budget
+            </button>
           ) : (
             ""
           )}
           {this.props.new !== true ? (
             <button
+              className="main_button"
               type="button"
               onClick={this.showSpendingReport}
               id="spendButton"
