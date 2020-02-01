@@ -7,7 +7,7 @@ import TokenService from "../../auth/token-service";
 
 /* Styling & Images */
 import "./charge.css";
-import edit from "./images/edit.jpg";
+import edit from "./images/edit.png";
 import deleteImg from "./images/delete.png";
 
 /* Context */
@@ -131,11 +131,15 @@ class Charge extends Component {
             <span className="name_detail">{this.props.charge_name}</span>
             <span className="detail">{this.props.amount}</span>
             {this.props.editingBudget === true ? (
-              <div className="editType">
-                <button onClick={this.handleClickEdit}>
+              <div className="editDiv">
+                <button className="editType" onClick={this.handleClickEdit}>
                   <img alt="Edit button" className="editingImg" src={edit} />
                 </button>
-                <button onClick={this.handleClickDelete} type="button">
+                <button
+                  className="editType"
+                  onClick={this.handleClickDelete}
+                  type="button"
+                >
                   <img
                     alt="Edit button"
                     className="editingImg"
