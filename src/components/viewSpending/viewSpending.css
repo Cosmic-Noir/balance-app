@@ -15,13 +15,13 @@
 #spendingRepo {
   margin: 30px auto 0px;
   padding: 10px;
-  width: 80%;
+  width: 95%;
 }
 
 @media screen and (min-width: 500px) {
   #spendingRepo {
     width: 90%;
-    max-width: 480px;
+    max-width: 500px;
   }
 }
 
