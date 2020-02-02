@@ -39,7 +39,6 @@ class SignUp extends Component {
 
   handlSubmit = e => {
     e.preventDefault();
-    console.log("Create Account pressed, checking user info...");
 
     // Check if info is valid
     if (this.state.username.length < 6) {
