@@ -26,10 +26,12 @@
 }
 
 .date_detail {
+  max-height: 22px;
   min-width: 50px;
 }
 
 .detail {
+  max-height: 22px;
   padding: 0px 5px;
 }
 
@@ -57,6 +59,7 @@
 
 .name_detail {
   min-width: 130px;
+  max-height: 22px;
 }
 
 /* ID Styling */

@@ -489,9 +489,13 @@ class Budget extends Component {
           <h3 className="title">{this.state.month_name}</h3>
           <div className="flex-column report">{this.displayCharges()}</div>
           <div className="month_totals">
-            <h4>Monthly total Income: {this.displayIncome()} </h4>
-            <h4>Monthly total Expenses: {this.displayExpenses()}</h4>
-            <h4>
+            <h4 className="total">
+              Monthly total Income: {this.displayIncome()}{" "}
+            </h4>
+            <h4 className="total">
+              Monthly total Expenses: {this.displayExpenses()}
+            </h4>
+            <h4 className="total">
               Monthly leftover:{" "}
               {Math.round(
                 (this.displayIncome() + this.displayExpenses()) * 100

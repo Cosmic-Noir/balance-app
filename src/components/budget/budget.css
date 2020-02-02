@@ -20,6 +20,10 @@
   margin: 25px;
 }
 
+.total {
+  max-height: 22px;
+}
+
 .paycheck {
   width: 100%;
 }
@@ -53,6 +57,11 @@
 }
 
 /* ID Styling */
+
+#month_name {
+  height: 29px;
+  width: 109px;
+}
 
 #newBudget {
   width: 100%;
