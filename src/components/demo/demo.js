@@ -35,7 +35,7 @@ class Demo extends Component {
         {this.state.phase === 2 ? (
           <div className="demo phase_two">
             <h2 className="tip">
-              Select any existing budget from this drop down.
+              Select any existing budget from this drop down
             </h2>
             <button
               className="animated demo_button infinite main_button pulse"
@@ -54,7 +54,7 @@ class Demo extends Component {
             <h2 className="tip">
               Add bills or Income by clicking these buttons. Note that
               "One-Time" charges/income will not be imported to newly created
-              budgets.
+              budgets
             </h2>
             <button
               className="animated demo_button infinite main_button pulse"

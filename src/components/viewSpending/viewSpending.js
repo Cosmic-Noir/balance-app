@@ -115,18 +115,18 @@ class ViewSpending extends Component {
       .scaleOrdinal()
       .domain(data)
       .range([
-        "#a35ab8",
         "#0477BF",
         "#04B2D9",
-        "#04BFBF",
+        "#237a7a",
         "#04D9B2",
         "#C187C3",
         "#FFFDE8",
         "#A836D9",
         "#D90D6C",
         "#7b6888",
-        "#6b486b",
-        "#a05d56",
+        "#f5e990",
+        "#271d99",
+        "#d6e630",
         "#90abc5"
       ]);
 
@@ -183,18 +183,18 @@ class ViewSpending extends Component {
     document.getElementById("categories").innerHTML = "";
 
     let colors = [
-      "#a35ab8",
       "#0477BF",
       "#04B2D9",
-      "#04BFBF",
+      "#237a7a",
       "#04D9B2",
       "#C187C3",
       "#FFFDE8",
       "#A836D9",
       "#D90D6C",
       "#7b6888",
-      "#6b486b",
-      "#a05d56",
+      "#f5e990",
+      "#271d99",
+      "#d6e630",
       "#90abc5"
     ];
 
