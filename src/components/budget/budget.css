@@ -16,6 +16,14 @@
   float: right;
 }
 
+.green {
+  color: rgb(28, 88, 28);
+}
+
+.red {
+  color: rgb(148, 20, 37);
+}
+
 .month_totals {
   margin: 25px;
 }

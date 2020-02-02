@@ -28,6 +28,7 @@
   left: 50%;
   height: 150px;
   margin-left: -100px;
+  top: 50px;
   width: 250px;
 }
 
@@ -35,7 +36,7 @@
   left: 50%;
   height: 175px;
   margin-left: -150px;
-  top: 675px;
+  top: 665px;
   width: 300px;
 }
 
@@ -43,7 +44,7 @@
   height: 90px;
   left: 50%;
   margin-left: -100px;
-  top: 798px;
+  top: 783px;
   width: 250px;
 }
 
@@ -51,7 +52,7 @@
   height: 100px;
   left: 50%;
   margin-left: -110px;
-  top: 830px;
+  top: 815px;
   width: 270px;
 }
 
@@ -69,7 +70,7 @@
   background-color: white;
   border-radius: 5px;
   font-size: 18px;
-  padding: 2px;
+  padding: 5px;
   position: absolute;
 }
 
@@ -93,18 +94,18 @@
 #phase_three {
   position: absolute;
   right: 10px;
-  top: 120px;
+  top: 110px;
   z-index: 30;
 }
 
 #phase_four {
   right: 10px;
-  top: 51px;
+  top: 49px;
 }
 
 #phase_five {
   right: 5px;
-  top: 57px;
+  top: 54px;
 }
 
 #phase_six {
@@ -120,24 +121,24 @@
 
 @media screen and (min-width: 430px) {
   .phase_three {
-    top: 655px;
+    top: 644px;
   }
   .phase_four {
-    top: 775px;
+    top: 760px;
   }
   .phase_five {
-    top: 810px;
+    top: 795px;
   }
 }
 
 @media screen and (min-width: 460px) {
   .phase_three {
-    top: 670px;
+    top: 660px;
   }
   .phase_four {
-    top: 754px;
+    top: 740px;
   }
   .phase_five {
-    top: 785px;
+    top: 772px;
   }
 }
