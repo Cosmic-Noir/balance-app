@@ -7,6 +7,11 @@
   width: 95%;
 }
 
+/* ID Styling */
+#newYear {
+  max-width: 120px;
+}
+
 /* Responsive Styling */
 
 @media screen and (min-width: 500px) {
