@@ -23,16 +23,14 @@ class Landing extends Component {
         </h2>
 
         <p className="explanation">
-          <em>
-            Balance is a free, monthly budgeting app that allows users to easily
-            calculate their expenses per paycheck and per month. The Spending
-            Report feature allows users to track their spending habits by
-            category. See our{" "}
-            <Link to="/budgets" id="demo">
-              Demo
-            </Link>{" "}
-            to explore the app before signing up.
-          </em>
+          Balance is a free, monthly budgeting app that allows users to easily
+          calculate their expenses per paycheck and per month. The Spending
+          Report feature allows users to track their spending habits by
+          category. See our{" "}
+          <Link to="/budgets" id="demo">
+            Demo
+          </Link>{" "}
+          to explore the app before signing up.
         </p>
 
         {this.context.signedIn === false ? (
