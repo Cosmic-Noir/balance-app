@@ -150,9 +150,49 @@ const Data = {
     {
       charge_id: 10,
       charge_name: "Pet Insurance",
-      category: "Insurance/Financial",
+      category: "Pets",
       due_date: "2020-01-05",
       amount: 60,
+      month_name: "Jan 2020",
+      user_id: 1,
+      occurance: "Monthly"
+    },
+    {
+      charge_id: 11,
+      charge_name: "Medical Bill",
+      category: "Health",
+      due_date: "2020-01-07",
+      amount: 250,
+      month_name: "Jan 2020",
+      user_id: 1,
+      occurance: "Monthly"
+    },
+    {
+      charge_id: 12,
+      charge_name: "Clothes Shopping",
+      category: "Shopping",
+      due_date: "2020-01-12",
+      amount: 160,
+      month_name: "Jan 2020",
+      user_id: 1,
+      occurance: "Monthly"
+    },
+    {
+      charge_id: 13,
+      charge_name: "Girl Scout Cookie Fund",
+      category: "Other",
+      due_date: "2020-01-17",
+      amount: 30,
+      month_name: "Jan 2020",
+      user_id: 1,
+      occurance: "Monthly"
+    },
+    {
+      charge_id: 14,
+      charge_name: "Student Loan",
+      category: "Student Loans",
+      due_date: "2020-01-22",
+      amount: 90,
       month_name: "Jan 2020",
       user_id: 1,
       occurance: "Monthly"
