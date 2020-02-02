@@ -36,7 +36,7 @@
   left: 50%;
   height: 175px;
   margin-left: -150px;
-  top: 665px;
+  top: 677px;
   width: 300px;
 }
 
@@ -44,16 +44,16 @@
   height: 90px;
   left: 50%;
   margin-left: -100px;
-  top: 783px;
-  width: 250px;
+  top: 799px;
+  width: 270px;
 }
 
 .phase_five {
   height: 100px;
   left: 50%;
-  margin-left: -110px;
-  top: 815px;
-  width: 270px;
+  margin-left: -130px;
+  top: 837px;
+  width: 300px;
 }
 
 .phase_six {
@@ -100,7 +100,7 @@
 
 #phase_four {
   right: 10px;
-  top: 49px;
+  top: 50px;
 }
 
 #phase_five {
@@ -121,24 +121,24 @@
 
 @media screen and (min-width: 430px) {
   .phase_three {
-    top: 644px;
+    top: 654px;
   }
   .phase_four {
-    top: 760px;
+    top: 775px;
   }
   .phase_five {
-    top: 795px;
+    top: 815px;
   }
 }
 
 @media screen and (min-width: 460px) {
   .phase_three {
-    top: 660px;
+    top: 630px;
   }
   .phase_four {
-    top: 740px;
+    top: 755px;
   }
   .phase_five {
-    top: 772px;
+    top: 790px;
   }
 }

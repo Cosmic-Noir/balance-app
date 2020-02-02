@@ -472,10 +472,13 @@ class Budget extends Component {
           data-aos-duration="2000"
           id={this.props.new === true ? "newBudget" : ""}
         >
-          <h2 className="title">Budget Report</h2>
+          <h2 className="budgetTitle title">Budget Report</h2>
 
-          <form className={this.props.new === true ? "hidden" : ""}>
-            <h3>Select Budget:</h3>
+          <form
+            className={this.props.new === true ? "hidden" : ""}
+            id="budgetForm"
+          >
+            <h3 className="budgetTitle">Select Budget:</h3>
             <select
               id="month_name"
               name="month_name"
@@ -486,7 +489,7 @@ class Budget extends Component {
               {this.displayMonths()}
             </select>
           </form>
-          <h3 className="title">{this.state.month_name}</h3>
+          <h3 className="budgetTitle title">{this.state.month_name}</h3>
           <div className="flex-column report">{this.displayCharges()}</div>
           <div className="month_totals">
             <h4 className="total">

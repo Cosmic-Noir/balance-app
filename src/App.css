@@ -132,6 +132,7 @@ main {
 }
 
 .main_button {
+  height: 30px;
   margin: 5px;
   padding: 5px 15px;
 }

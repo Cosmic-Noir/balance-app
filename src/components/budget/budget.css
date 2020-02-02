@@ -66,6 +66,14 @@
 
 /* ID Styling */
 
+#budgetForm {
+  height: 62px;
+}
+
+.budgetTitle {
+  height: 24px;
+}
+
 #month_name {
   height: 29px;
   width: 109px;
