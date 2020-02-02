@@ -21,7 +21,8 @@
 }
 
 #landingHeader {
-  border-bottom: 2px solid rgb(36, 11, 179);
+  color: rgba(0, 0, 2, 0.76);
+  text-decoration: underline;
 }
 
 #logo {
