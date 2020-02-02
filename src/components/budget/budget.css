@@ -20,10 +20,6 @@
   margin: 25px;
 }
 
-.total {
-  max-height: 22px;
-}
-
 .paycheck {
   width: 100%;
 }
@@ -47,6 +43,10 @@
 
 .title {
   margin: 10px;
+}
+
+.total {
+  max-height: 22px;
 }
 
 .wrapper {
