@@ -46,7 +46,8 @@ footer {
 
 h2,
 h3 {
-  font-family: Quicksand;
+  /* font-family: Quicksand; */
+  font-family: Arimo;
 }
 
 input:focus {
