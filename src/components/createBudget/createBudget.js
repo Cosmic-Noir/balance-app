@@ -185,7 +185,7 @@ class CreateBudget extends Component {
               </select>
               <input
                 id="newYear"
-                placeholder="2020"
+                placeholder="year"
                 required
                 type="number"
               ></input>
