@@ -18,7 +18,7 @@ class Landing extends Component {
         id="landing"
       >
         <h1 id="logo">Balance</h1>
-        <h2>
+        <h2 id="landingHeader">
           Personal Budgeting Made <span>Simple</span>
         </h2>
 

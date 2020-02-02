@@ -20,6 +20,10 @@
   width: 90%;
 }
 
+#landingHeader {
+  border-bottom: 2px solid rgb(36, 11, 179);
+}
+
 #logo {
   color: #0569a7;
   font-family: Pacifico;
