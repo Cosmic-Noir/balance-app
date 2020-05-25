@@ -20,7 +20,7 @@ class Budget extends Component {
   state = {
     charges: [],
     editingTable: false,
-    month_name: ""
+    month_name: "",
   };
 
   static contextType = balanceContext;
@@ -28,7 +28,7 @@ class Budget extends Component {
   /* Custom Methods */
 
   // Responsible for taking returned response from server and adding it to current array of charges
-  addReturnedCharges = returnedCharge => {
+  addReturnedCharges = (returnedCharge) => {
     this.context.addNewCharge(returnedCharge);
     this.setState({ charges: [...this.state.charges, returnedCharge] });
   };
@@ -38,14 +38,14 @@ class Budget extends Component {
     let currentPaycheck = 0;
     let expenses = 0;
 
-    let allCharges = this.state.charges.map(charge => {
+    let allCharges = this.state.charges.map((charge) => {
       const {
         charge_id,
         charge_name,
         due_date,
         amount,
         category,
-        occurance
+        occurance,
       } = charge;
 
       if (category === "Income" && charge === this.state.charges[0]) {
@@ -131,7 +131,7 @@ class Budget extends Component {
           Current Income: {pastPaycheck} means {remainder}{" "}
           {remainder < 0 ? "needed to cover expenses" : "leftover from income"}
         </p>
-      </div>
+      </div>,
     ];
     return allCharges;
   };
@@ -162,11 +162,12 @@ class Budget extends Component {
 
   // Responsible for providing options of monthly budgets
   displayMonths = () => {
+    let theCharges = this.context.charges.reverse();
     const months = {};
     if (this.context.charges === null) {
       return null;
     } else {
-      return this.context.charges.map(charge => {
+      return theCharges.map((charge) => {
         const { month_name } = charge;
 
         if (months[month_name] === true) {
@@ -184,7 +185,7 @@ class Budget extends Component {
   };
 
   // Responsible for POST req for adding new charge to server DB
-  postNewCharge = newCharge => {
+  postNewCharge = (newCharge) => {
     const url = config.API_ENDPOINT + "charges";
 
     fetch(url, {
@@ -192,12 +193,12 @@ class Budget extends Component {
       body: JSON.stringify(newCharge),
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ${TokenService.getAuthToken()}`
-      }
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
     })
-      .then(res => {
+      .then((res) => {
         if (!res.ok) {
-          return res.json().then(error => {
+          return res.json().then((error) => {
             console.log(error.message);
             this.setState({ error: error.message });
             throw error;
@@ -227,7 +228,7 @@ class Budget extends Component {
         this.props.testingVal || document.getElementById("month_name").value;
     }
 
-    let charges = this.context.charges.filter(charge => {
+    let charges = this.context.charges.filter((charge) => {
       if (charge.month_name === month_name) {
         return charge;
       } else {
@@ -235,7 +236,7 @@ class Budget extends Component {
       }
     });
 
-    this.setState({ charges: charges }, function() {
+    this.setState({ charges: charges }, function () {
       this.sortCharges();
     });
   };
@@ -254,7 +255,7 @@ class Budget extends Component {
       "Sep",
       "Oct",
       "Nov",
-      "Dec"
+      "Dec",
     ];
     let digit;
     let year = this.state.month_name.substring(4, 9);
@@ -276,13 +277,13 @@ class Budget extends Component {
   // Responsible for filtering charges for "monthly" occurance and updating due_date to selected month_name
   setImportedCharges = () => {
     // eslint-disable-next-line
-    let filteredCharges = this.state.charges.filter(charge => {
+    let filteredCharges = this.state.charges.filter((charge) => {
       if (charge.occurance === "Monthly") {
         return charge;
       }
     });
 
-    let newCharges = filteredCharges.map(charge => {
+    let newCharges = filteredCharges.map((charge) => {
       // Must update charge month value
 
       let months = [
@@ -297,7 +298,7 @@ class Budget extends Component {
         "Sep",
         "Oct",
         "Nov",
-        "Dec"
+        "Dec",
       ];
       let digit;
       let year = this.props.month_name.substring(4, 9);
@@ -323,7 +324,7 @@ class Budget extends Component {
         charge_id: null,
         due_date: newDueDate,
         occurance: charge.occurance,
-        month_name: this.props.month_name
+        month_name: this.props.month_name,
       };
     });
 
@@ -348,7 +349,7 @@ class Budget extends Component {
         newCharges[i].charge_id = Math.floor(Math.random() * 1000);
       }
 
-      this.setState({ charges: newCharges }, function() {
+      this.setState({ charges: newCharges }, function () {
         this.sortCharges();
       });
 
@@ -360,7 +361,7 @@ class Budget extends Component {
   };
 
   // Responsible for setting month_name in state
-  setMonth = month_name => {
+  setMonth = (month_name) => {
     this.setState({ month_name: month_name });
     this.setCharges();
     setTimeout(() => {
@@ -369,7 +370,7 @@ class Budget extends Component {
   };
 
   // Responsible for setting month_name when user is importing charges
-  setMonthDelay = month_name => {
+  setMonthDelay = (month_name) => {
     this.setState({ month_name: month_name });
     setTimeout(() => {
       this.setCharges();
@@ -414,11 +415,11 @@ class Budget extends Component {
   };
 
   // Responsible for updating a charge in current charge state in budget
-  updateNewCharge = updatedCharge => {
+  updateNewCharge = (updatedCharge) => {
     this.setState({
-      charges: this.state.charges.map(charge =>
+      charges: this.state.charges.map((charge) =>
         charge.charge_id !== updatedCharge.charge_id ? charge : updatedCharge
-      )
+      ),
     });
   };
 
@@ -482,7 +483,7 @@ class Budget extends Component {
             <select
               id="month_name"
               name="month_name"
-              onChange={e => this.setMonth(e.target.value)}
+              onChange={(e) => this.setMonth(e.target.value)}
               ref={this.state.month_name}
               value={this.state.month_name}
             >
@@ -584,5 +585,5 @@ Budget.propTypes = {
   imported: PropTypes.bool,
   imported_month_name: PropTypes.string,
   month_name: PropTypes.string,
-  new: PropTypes.bool
+  new: PropTypes.bool,
 };
