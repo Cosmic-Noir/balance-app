@@ -1,7 +1,7 @@
 <img src="README_images/balance.png#banner" alt="banner"
 	title="banner" width="450" height="250" />
 
-Balance is paycheck-to-paycheck and monthly budgeting app. Designed with simplicity in mind, this app allows users to create personal budgets for each month and re-use their budgets as templates for new months.
+Balance is a paycheck-to-paycheck and monthly budgeting app. Designed with simplicity in mind, this app allows users to create personal budgets for each month and re-use their budgets as templates for new months.
 
 # Approach
 
